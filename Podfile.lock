@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.4.1)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - Highlightr (2.1.0)
+  - markymark (10.1.1)
+  - Optik (0.4.0)
+
+DEPENDENCIES:
+  - AlamofireImage
+  - Highlightr
+  - markymark
+  - Optik
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - Highlightr
+    - markymark
+    - Optik
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
+  markymark: 29adb8789fa6b3db97b04b7585d65f13931b5aa5
+  Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
+
+PODFILE CHECKSUM: 66884ced046fae789b913094603571aa932abf9d
+
+COCOAPODS: 1.10.1

@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */; };
+		E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E804260097DF00211FD2 /* LicenseViewController.swift */; };
+		E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E96769D025AE0F4D00D1826C /* mtdeck.js */; };
+		E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AA825ADDDFD0068F632 /* AppDelegate.swift */; };
+		E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */; };
+		E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AAC25ADDDFD0068F632 /* ViewController.swift */; };
+		E9732AB025ADDDFD0068F632 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9732AAE25ADDDFD0068F632 /* Main.storyboard */; };
+		E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9732AB125ADDE000068F632 /* Assets.xcassets */; };
+		E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */; };
+		E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */; };
+		E993A2E725B07F90003DAE3A /* AlamofireImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */; };
+		E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */; };
+		E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */; };
+		E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E993A31525B2EEA9003DAE3A /* DebugerViewController.xib */; };
+		E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E993A39225B4B7D3003DAE3A /* marindeck.js */; };
+		E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507825D3CD240084A00C /* String+leftPadding.swift */; };
+		E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507925D3CD240084A00C /* UIColor+hex.swift */; };
+		E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507A25D3CD240084A00C /* UIView+.swift */; };
+		E9A8507F25D3CD240084A00C /* Error+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507B25D3CD240084A00C /* Error+.swift */; };
+		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
+		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
+		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		318393D6B672121074CA0B5D /* Pods-Marindeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marindeck.debug.xcconfig"; path = "Target Support Files/Pods-Marindeck/Pods-Marindeck.debug.xcconfig"; sourceTree = "<group>"; };
+		97B149403DDF43B1C8360F10 /* Pods-Marindeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marindeck.release.xcconfig"; path = "Target Support Files/Pods-Marindeck/Pods-Marindeck.release.xcconfig"; sourceTree = "<group>"; };
+		CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marindeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E929E804260097DF00211FD2 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		E96769C725ADEFA600D1826C /* Marindeck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Marindeck.entitlements; sourceTree = "<group>"; };
+		E96769D025AE0F4D00D1826C /* mtdeck.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mtdeck.js; sourceTree = "<group>"; };
+		E9732AA525ADDDFD0068F632 /* Marindeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marindeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9732AA825ADDDFD0068F632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E9732AAC25ADDDFD0068F632 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E9732AAF25ADDDFD0068F632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E9732AB125ADDE000068F632 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9732AB425ADDE000068F632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9732AB625ADDE000068F632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
+		E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireImageDownloader.swift; sourceTree = "<group>"; };
+		E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugerViewController.swift; sourceTree = "<group>"; };
+		E993A31525B2EEA9003DAE3A /* DebugerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugerViewController.xib; sourceTree = "<group>"; };
+		E993A39225B4B7D3003DAE3A /* marindeck.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = marindeck.js; sourceTree = "<group>"; };
+		E9A8507825D3CD240084A00C /* String+leftPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+leftPadding.swift"; sourceTree = "<group>"; };
+		E9A8507925D3CD240084A00C /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		E9A8507A25D3CD240084A00C /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		E9A8507B25D3CD240084A00C /* Error+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+.swift"; sourceTree = "<group>"; };
+		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
+		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9732AA225ADDDFD0068F632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43EA2BA5720518F1FBE06298 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E929E803260097C100211FD2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */,
+				E929E804260097DF00211FD2 /* LicenseViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E9732A9C25ADDDFD0068F632 = {
+			isa = PBXGroup;
+			children = (
+				E9732AA725ADDDFD0068F632 /* Marindeck */,
+				E9732AA625ADDDFD0068F632 /* Products */,
+				F181E4C23DE886A8FEAB54DC /* Pods */,
+				43EA2BA5720518F1FBE06298 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E9732AA625ADDDFD0068F632 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9732AA525ADDDFD0068F632 /* Marindeck.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9732AA725ADDDFD0068F632 /* Marindeck */ = {
+			isa = PBXGroup;
+			children = (
+				E9EFE099261DAA0300ABBAC8 /* Extension */,
+				E96769C725ADEFA600D1826C /* Marindeck.entitlements */,
+				E9EA8A3625FF53C200561975 /* Application */,
+				E9EA8A3525FF53AB00561975 /* View */,
+				E993A26B25AEDFE5003DAE3A /* js */,
+				E9A8507725D3CD240084A00C /* Extensions */,
+				E9732AB125ADDE000068F632 /* Assets.xcassets */,
+				E9732AB625ADDE000068F632 /* Info.plist */,
+			);
+			path = Marindeck;
+			sourceTree = "<group>";
+		};
+		E993A26B25AEDFE5003DAE3A /* js */ = {
+			isa = PBXGroup;
+			children = (
+				E96769D025AE0F4D00D1826C /* mtdeck.js */,
+				E993A39225B4B7D3003DAE3A /* marindeck.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		E9A8507725D3CD240084A00C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E9A8507825D3CD240084A00C /* String+leftPadding.swift */,
+				E9A8507925D3CD240084A00C /* UIColor+hex.swift */,
+				E9A8507A25D3CD240084A00C /* UIView+.swift */,
+				E9A8507B25D3CD240084A00C /* Error+.swift */,
+				E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9EA8A3525FF53AB00561975 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9EFE097261D9D7E00ABBAC8 /* Debuger */,
+				E929E803260097C100211FD2 /* Settings */,
+				E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */,
+				E9732AAE25ADDDFD0068F632 /* Main.storyboard */,
+				E9732AAC25ADDDFD0068F632 /* ViewController.swift */,
+				E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */,
+				E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */,
+				E9EA8A3225FF53A400561975 /* MenuViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9EA8A3625FF53C200561975 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E9732AA825ADDDFD0068F632 /* AppDelegate.swift */,
+				E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E9EFE097261D9D7E00ABBAC8 /* Debuger */ = {
+			isa = PBXGroup;
+			children = (
+				E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */,
+				E993A31525B2EEA9003DAE3A /* DebugerViewController.xib */,
+			);
+			path = Debuger;
+			sourceTree = "<group>";
+		};
+		E9EFE099261DAA0300ABBAC8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F181E4C23DE886A8FEAB54DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				318393D6B672121074CA0B5D /* Pods-Marindeck.debug.xcconfig */,
+				97B149403DDF43B1C8360F10 /* Pods-Marindeck.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9732AA425ADDDFD0068F632 /* Marindeck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9732AB925ADDE000068F632 /* Build configuration list for PBXNativeTarget "Marindeck" */;
+			buildPhases = (
+				F4BD4AAF0352647C36B0A398 /* [CP] Check Pods Manifest.lock */,
+				E9732AA125ADDDFD0068F632 /* Sources */,
+				E9732AA225ADDDFD0068F632 /* Frameworks */,
+				E9732AA325ADDDFD0068F632 /* Resources */,
+				5E74D76816B587B2FEA65FF3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Marindeck;
+			productName = Marindecker;
+			productReference = E9732AA525ADDDFD0068F632 /* Marindeck.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9732A9D25ADDDFD0068F632 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					E9732AA425ADDDFD0068F632 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = E9732AA025ADDDFD0068F632 /* Build configuration list for PBXProject "Marindeck" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E9732A9C25ADDDFD0068F632;
+			productRefGroup = E9732AA625ADDDFD0068F632 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9732AA425ADDDFD0068F632 /* Marindeck */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9732AA325ADDDFD0068F632 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
+				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
+				E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */,
+				E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */,
+				E9732AB025ADDDFD0068F632 /* Main.storyboard in Resources */,
+				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E74D76816B587B2FEA65FF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Marindeck/Pods-Marindeck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Marindeck/Pods-Marindeck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Marindeck/Pods-Marindeck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4BD4AAF0352647C36B0A398 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Marindeck-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9732AA125ADDDFD0068F632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E993A2E725B07F90003DAE3A /* AlamofireImageDownloader.swift in Sources */,
+				E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */,
+				E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */,
+				E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */,
+				E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */,
+				E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */,
+				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
+				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
+				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
+				E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */,
+				E9A8507F25D3CD240084A00C /* Error+.swift in Sources */,
+				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
+				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
+				E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */,
+				E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9732AAE25ADDDFD0068F632 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9732AAF25ADDDFD0068F632 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9732AB425ADDE000068F632 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9732AB725ADDE000068F632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E9732AB825ADDE000068F632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E9732ABA25ADDE000068F632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 318393D6B672121074CA0B5D /* Pods-Marindeck.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 726VR75V6L;
+				INFOPLIST_FILE = Marindeck/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E9732ABB25ADDE000068F632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97B149403DDF43B1C8360F10 /* Pods-Marindeck.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 726VR75V6L;
+				INFOPLIST_FILE = Marindeck/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9732AA025ADDDFD0068F632 /* Build configuration list for PBXProject "Marindeck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9732AB725ADDE000068F632 /* Debug */,
+				E9732AB825ADDE000068F632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9732AB925ADDE000068F632 /* Build configuration list for PBXNativeTarget "Marindeck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9732ABA25ADDE000068F632 /* Debug */,
+				E9732ABB25ADDE000068F632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9732A9D25ADDDFD0068F632 /* Project object */;
+}
