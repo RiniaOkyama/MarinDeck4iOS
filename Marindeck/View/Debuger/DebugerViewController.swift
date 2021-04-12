@@ -7,6 +7,7 @@
 
 import UIKit
 import Highlightr
+//HighlightView
 
 class DebugerViewController: UIViewController {
     var delegate: ViewController?
@@ -28,11 +29,14 @@ class DebugerViewController: UIViewController {
         let textContainer = NSTextContainer(size: view.bounds.size)
         layoutManager.addTextContainer(textContainer)
         
-        textView = UITextView(frame: editorView.frame, textContainer: textContainer)
+        textView = UITextView(frame: editorView.bounds, textContainer: textContainer)
         textView.autocorrectionType = .no
         textView.smartQuotesType = .no
-        
-        self.view.addSubview(textView)
+        textView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        textView.autocapitalizationType = UITextAutocapitalizationType.none
+//        textView.inputAccessoryView = TOOLBAR
+//        self.view.addSubview(textView)
+        self.editorView.addSubview(textView)
         self.view.bringSubviewToFront(segmentCtrl)
 
         // Do any additional setup after loading the view.

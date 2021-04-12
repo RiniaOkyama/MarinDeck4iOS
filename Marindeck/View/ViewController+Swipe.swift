@@ -71,6 +71,8 @@ extension ViewController{
                 })
             })
         }else{
+            menuView.translatesAutoresizingMaskIntoConstraints = false
+            mainDeckView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckBlurView.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.3, animations: {
                 self.mainDeckBlurView.backgroundColor = .none

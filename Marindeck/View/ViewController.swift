@@ -124,8 +124,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         mainDeckBlurView.backgroundColor = .none
         mainDeckBlurView.isUserInteractionEnabled = false
         
-        menuView.translatesAutoresizingMaskIntoConstraints = true
-        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+//        menuView.translatesAutoresizingMaskIntoConstraints = true
+//        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
     }
     
 
@@ -191,6 +191,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         self.view.layoutIfNeeded()
         
         if (sender.state == .began){
+            menuView.translatesAutoresizingMaskIntoConstraints = true
+            mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+            
             menuVC.setUserIcon(url: getUserIcon())
             let (name, id) = getUserNameID()
             menuVC.setUserNameID(name: name, id: id)

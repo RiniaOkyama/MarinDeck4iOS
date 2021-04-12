@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCustomJSViewController" customModule="Marindeck" customModuleProvider="target">
+            <connections>
+                <outlet property="editorView" destination="ZtJ-2H-Zkv" id="TNz-aT-nQb"/>
+                <outlet property="toolbar" destination="T9y-As-ivK" id="ttl-jJ-0Av"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOv-F8-pL4">
+                    <rect key="frame" x="359" y="20.5" width="35" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="aNa-VN-vYi"/>
+                        <constraint firstAttribute="width" constant="35" id="v0y-5q-Awj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="tintColor" systemColor="secondaryLabelColor"/>
+                    <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="close" destination="-1" eventType="touchUpInside" id="IfU-wP-wL2"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オートセーブ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16I-J7-xGF">
+                    <rect key="frame" x="20" y="27" width="104" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-2H-Zkv">
+                    <rect key="frame" x="0.0" y="67" width="414" height="741"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="16I-J7-xGF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="CKT-ut-RQr"/>
+                <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="top" secondItem="iOv-F8-pL4" secondAttribute="bottom" constant="12" id="Ihu-Im-6zj"/>
+                <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SJ2-mu-hB3"/>
+                <constraint firstItem="iOv-F8-pL4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="T09-Q5-UBT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZtJ-2H-Zkv" secondAttribute="trailing" id="WTq-gA-n7O"/>
+                <constraint firstItem="16I-J7-xGF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="27" id="YUg-kU-RwR"/>
+                <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="jaF-z3-fVQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iOv-F8-pL4" secondAttribute="trailing" constant="20" id="vvd-Cq-cJ3"/>
+            </constraints>
+            <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-39.130434782608695" y="97.767857142857139"/>
+        </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="T9y-As-ivK">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="1w0-bk-DUr"/>
+                <barButtonItem title="Done" id="cma-JJ-9vR"/>
+            </items>
+            <point key="canvasLocation" x="-39.130434782608695" y="-255.80357142857142"/>
+        </toolbar>
+    </objects>
+    <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

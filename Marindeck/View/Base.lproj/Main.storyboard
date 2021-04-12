@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -156,6 +156,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="wAT-an-moa" kind="modal" id="09q-cn-icc"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="1ML-zj-mJx">
                                         <rect key="frame" x="20" y="198.5" width="374" height="43.5"/>
@@ -310,6 +313,53 @@
             </objects>
             <point key="canvasLocation" x="749" y="75"/>
         </scene>
+        <!--CustomJS View Controller-->
+        <scene sceneID="Qal-Ka-xB2">
+            <objects>
+                <viewController id="wAT-an-moa" customClass="CustomJSViewController" customModule="Marindeck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q4x-LM-TgG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASY-0s-eC7">
+                                <rect key="frame" x="359" y="20.5" width="35" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="c4g-Co-amG"/>
+                                    <constraint firstAttribute="height" constant="35" id="htA-PH-Swa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="close" destination="wAT-an-moa" eventType="touchUpInside" id="cK2-tZ-2OC"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4nY-Fl-4K1">
+                                <rect key="frame" x="0.0" y="64" width="414" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lq3-aa-n7n"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4nY-Fl-4K1" firstAttribute="leading" secondItem="Lq3-aa-n7n" secondAttribute="leading" id="6ld-Ms-oW1"/>
+                            <constraint firstAttribute="bottom" secondItem="4nY-Fl-4K1" secondAttribute="bottom" id="WeW-b7-HgB"/>
+                            <constraint firstItem="4nY-Fl-4K1" firstAttribute="top" secondItem="Lq3-aa-n7n" secondAttribute="top" constant="64" id="ew5-ZB-nY7"/>
+                            <constraint firstItem="ASY-0s-eC7" firstAttribute="top" secondItem="Lq3-aa-n7n" secondAttribute="top" constant="20" id="fOQ-Je-TPG"/>
+                            <constraint firstItem="Lq3-aa-n7n" firstAttribute="trailing" secondItem="4nY-Fl-4K1" secondAttribute="trailing" id="juw-Qj-ww3"/>
+                            <constraint firstItem="Lq3-aa-n7n" firstAttribute="trailing" secondItem="ASY-0s-eC7" secondAttribute="trailing" constant="20" id="zGw-sT-Rae"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ix8-Fp-lJx"/>
+                    <connections>
+                        <outlet property="tableView" destination="4nY-Fl-4K1" id="cm0-0v-QTz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ItW-mE-kbN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718.840579710145" y="-69.642857142857139"/>
+        </scene>
         <!--License View Controller-->
         <scene sceneID="T2C-dg-iC2">
             <objects>
@@ -367,8 +417,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYW-nF-qdq" customClass="MarkDownTextView" customModule="markymark">
-                                <rect key="frame" x="32" y="94" width="350" height="272.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYW-nF-qdq" customClass="MarkDownTextView" customModule="markymark">
+                                <rect key="frame" x="32" y="94" width="350" height="682"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text">
@@ -390,6 +440,7 @@
                             <constraint firstItem="Jff-MD-rJR" firstAttribute="trailing" secondItem="NYW-nF-qdq" secondAttribute="trailing" constant="32" id="ABZ-cg-HCq"/>
                             <constraint firstItem="x3V-SQ-2Sn" firstAttribute="top" secondItem="Jff-MD-rJR" secondAttribute="top" constant="32" id="I17-Eg-op3"/>
                             <constraint firstItem="NYW-nF-qdq" firstAttribute="leading" secondItem="Jff-MD-rJR" secondAttribute="leading" constant="32" id="KJI-C9-ziJ"/>
+                            <constraint firstItem="Jff-MD-rJR" firstAttribute="bottom" secondItem="NYW-nF-qdq" secondAttribute="bottom" constant="32" id="N4i-GU-vcs"/>
                             <constraint firstItem="NYW-nF-qdq" firstAttribute="top" secondItem="x3V-SQ-2Sn" secondAttribute="bottom" constant="32" id="f8f-Cb-kSP"/>
                         </constraints>
                     </view>
@@ -397,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUo-Xs-EwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2152" y="661"/>
+            <point key="canvasLocation" x="2203" y="661"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="HAk-Im-xMF">
@@ -476,8 +527,15 @@
         <image name="logo2" width="2430" height="1080"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -26,6 +26,15 @@
 		E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507925D3CD240084A00C /* UIColor+hex.swift */; };
 		E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507A25D3CD240084A00C /* UIView+.swift */; };
 		E9A8507F25D3CD240084A00C /* Error+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507B25D3CD240084A00C /* Error+.swift */; };
+		E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */; };
+		E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */; };
+		E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */; };
+		E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB1262401FD00E27F14 /* Const.swift */; };
+		E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */; };
+		E9BA5AB72624039600E27F14 /* CustomJSAddCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */; };
+		E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */; };
+		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
+		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
 		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
 		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
 		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
@@ -56,6 +65,15 @@
 		E9A8507925D3CD240084A00C /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		E9A8507A25D3CD240084A00C /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E9A8507B25D3CD240084A00C /* Error+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+.swift"; sourceTree = "<group>"; };
+		E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSViewController.swift; sourceTree = "<group>"; };
+		E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSCellTableViewCell.swift; sourceTree = "<group>"; };
+		E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomJSCellTableViewCell.xib; sourceTree = "<group>"; };
+		E9BA5AB1262401FD00E27F14 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSAddCellTableViewCell.swift; sourceTree = "<group>"; };
+		E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomJSAddCellTableViewCell.xib; sourceTree = "<group>"; };
+		E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoSinceDate.swift"; sourceTree = "<group>"; };
+		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
+		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
 		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
 		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
@@ -84,6 +102,7 @@
 		E929E803260097C100211FD2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E9BA5A912623FD9900E27F14 /* CustomJS */,
 				E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */,
 				E929E804260097DF00211FD2 /* LicenseViewController.swift */,
 			);
@@ -111,6 +130,7 @@
 		E9732AA725ADDDFD0068F632 /* Marindeck */ = {
 			isa = PBXGroup;
 			children = (
+				E9BA5AB0262401F400E27F14 /* Const */,
 				E9EFE099261DAA0300ABBAC8 /* Extension */,
 				E96769C725ADEFA600D1826C /* Marindeck.entitlements */,
 				E9EA8A3625FF53C200561975 /* Application */,
@@ -142,6 +162,28 @@
 				E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9BA5A912623FD9900E27F14 /* CustomJS */ = {
+			isa = PBXGroup;
+			children = (
+				E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */,
+				E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */,
+				E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */,
+				E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */,
+				E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */,
+				E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */,
+				E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */,
+			);
+			path = CustomJS;
+			sourceTree = "<group>";
+		};
+		E9BA5AB0262401F400E27F14 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				E9BA5AB1262401FD00E27F14 /* Const.swift */,
+			);
+			path = Const;
 			sourceTree = "<group>";
 		};
 		E9EA8A3525FF53AB00561975 /* View */ = {
@@ -181,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */,
+				E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -255,8 +298,11 @@
 			files = (
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
 				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
+				E9BA5AB72624039600E27F14 /* CustomJSAddCellTableViewCell.xib in Resources */,
 				E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */,
 				E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */,
+				E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */,
+				E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */,
 				E9732AB025ADDDFD0068F632 /* Main.storyboard in Resources */,
 				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
 			);
@@ -316,7 +362,9 @@
 				E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */,
 				E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */,
 				E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */,
+				E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */,
 				E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */,
+				E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */,
 				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
@@ -324,8 +372,12 @@
 				E9A8507F25D3CD240084A00C /* Error+.swift in Sources */,
 				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
 				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
+				E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */,
 				E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */,
+				E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */,
 				E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */,
+				E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */,
+				E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
