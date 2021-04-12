@@ -7,7 +7,9 @@
 
 import UIKit
 
+
 class CustomJSCellTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -17,7 +19,11 @@ class CustomJSCellTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = .clear
         self.backView.layer.cornerRadius = 8
+        
+
     }
+    
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

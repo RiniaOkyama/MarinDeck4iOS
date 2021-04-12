@@ -49,6 +49,11 @@ class EditCustomJSViewController: UIViewController {
         textView.text = customJS.js
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateJS()
+    }
+    
     init(index: Int) {
         super.init(nibName: nil, bundle: nil)
         
@@ -58,15 +63,17 @@ class EditCustomJSViewController: UIViewController {
     func fetchJS(){
         let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         
-        let jsonData = jsonArray[-self.index].data(using: .utf8)!
+        let jsonData = jsonArray.reversed()[self.index].data(using: .utf8)!
+        
         customJS = try! JSONDecoder().decode(CustomJS.self, from: jsonData)
     }
     func updateJS() {
         var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         customJS.created_at = Date()
+        customJS.js = textView.text
         let jsonData = try! JSONEncoder().encode(customJS)
         let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray[-self.index] = jsonString
+        jsonArray[jsonArray.count - self.index - 1] = jsonString
         userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
         
     }

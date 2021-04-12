@@ -87,6 +87,16 @@ extension CustomJSViewController:  UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if customJSs.count == indexPath.row { return }
+        
+        let vc = EditCustomJSViewController(index: indexPath.row)
+//        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc,animated: true,completion: nil)
+    }
+     
+    
     
 }
 
@@ -117,7 +127,7 @@ extension CustomJSViewController: CustomJSAddCellOutput {
                     // FIXME
                     self.createCustomJS(customJS: CustomJS(title: text, js: "", created_at: Date()))
                     let vc = EditCustomJSViewController(index: 0)
-                    vc.modalPresentationStyle = .overFullScreen
+//                    vc.modalPresentationStyle = .overFullScreen
                     self.present(vc,animated: true,completion: nil)
                  }
              }
