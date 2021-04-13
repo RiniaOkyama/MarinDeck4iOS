@@ -93,7 +93,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="j6i-qu-9Zt">
-                    <rectEdge key="edges" left="YES"/>
                     <connections>
                         <action selector="panTopWithSender:" destination="BYZ-38-t0r" id="eHU-iZ-9uW"/>
                     </connections>

@@ -12,7 +12,7 @@ import SafariServices
 import Optik
 
 
-class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
         return SwipeStruct()
     }()
@@ -88,6 +88,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        webView.allowsLinkPreview = false
 //        webView.navigationDelegate = self
 
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panTop))
+        edgePan.edges = .left
+        edgePan.delegate = self
+        
+        webView.addGestureRecognizer(edgePan)
+//        view.addGestureRecognizer(edgePan)
 
 
         let deckURL = URL(string: "https://tweetdeck.twitter.com")
@@ -101,6 +107,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
 
     }
+    
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith
+        otherGestureRecognizer: UIGestureRecognizer
+        ) -> Bool {
+        return true
+    }
+    
     
     func setupView() {
         self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
@@ -152,6 +167,31 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //             scrollView.pinchGestureRecognizer?.isEnabled = false
 //    }
     
+    
+    func loadCSSFile(forResource: String, ofType:String = "css"){
+        guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
+            print("faild load style.css")
+            return
+        }
+        let mtFile = FileHandle(forReadingAtPath: mtPath)!
+        let mtContentData = mtFile.readDataToEndOfFile()
+        let css = String(data: mtContentData, encoding: .utf8)!
+        mtFile.closeFile()
+        var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
+        deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
+        deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
+        let script = """
+const h = document.documentElement;
+const s = document.createElement('style');
+s.insertAdjacentHTML('beforeend', "\(deletecomment)");
+h.insertAdjacentElement('beforeend', s)
+"""
+        webView.evaluateJavaScript(script){ object, error in
+            print("stylecss : ", error ?? "成功")
+        }
+    }
+
+    
     func loadJsFile(forResource: String, ofType:String = "js"){
         guard let mtPath = Bundle.main.path(forResource:forResource, ofType:ofType) else {
             print("ERROR")
@@ -195,7 +235,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return (userName, userID)
     }
     
-    @IBAction func panTop(sender: UIScreenEdgePanGestureRecognizer) {
+    @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
         let move:CGPoint = sender.translation(in: view)
         
         if self.menuView.frame.origin.x > 0 && 0 < move.x{
@@ -427,8 +467,10 @@ extension ViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        loadJsFile(forResource: "mtdeck")
+//        loadJsFile(forResource: "mtdeck")
+        loadJsFile(forResource: "marindeck-css")
         loadJsFile(forResource: "marindeck")
+        loadCSSFile(forResource: "marindeck")
         
         let cjss = fetchCustomJSs()
         for item in cjss {

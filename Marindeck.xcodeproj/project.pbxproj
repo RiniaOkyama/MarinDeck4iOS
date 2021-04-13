@@ -17,6 +17,8 @@
 		E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9732AB125ADDE000068F632 /* Assets.xcassets */; };
 		E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */; };
 		E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */; };
+		E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */ = {isa = PBXBuildFile; fileRef = E9836FE42625AF5300FE711D /* marindeck-css.js */; };
+		E9836FE82625C50D00FE711D /* marindeck.css in Resources */ = {isa = PBXBuildFile; fileRef = E9836FE72625C50D00FE711D /* marindeck.css */; };
 		E993A2E725B07F90003DAE3A /* AlamofireImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */; };
 		E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */; };
 		E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */; };
@@ -56,6 +58,8 @@
 		E9732AB425ADDE000068F632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9732AB625ADDE000068F632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
+		E9836FE42625AF5300FE711D /* marindeck-css.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "marindeck-css.js"; sourceTree = "<group>"; };
+		E9836FE72625C50D00FE711D /* marindeck.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = marindeck.css; sourceTree = "<group>"; };
 		E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireImageDownloader.swift; sourceTree = "<group>"; };
 		E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugerViewController.swift; sourceTree = "<group>"; };
@@ -145,8 +149,10 @@
 		E993A26B25AEDFE5003DAE3A /* js */ = {
 			isa = PBXGroup;
 			children = (
+				E9836FE42625AF5300FE711D /* marindeck-css.js */,
 				E96769D025AE0F4D00D1826C /* mtdeck.js */,
 				E993A39225B4B7D3003DAE3A /* marindeck.js */,
+				E9836FE72625C50D00FE711D /* marindeck.css */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -297,6 +303,8 @@
 				E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */,
 				E9732AB025ADDDFD0068F632 /* Main.storyboard in Resources */,
 				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
+				E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */,
+				E9836FE82625C50D00FE711D /* marindeck.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
