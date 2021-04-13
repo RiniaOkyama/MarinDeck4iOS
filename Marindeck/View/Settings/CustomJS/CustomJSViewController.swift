@@ -95,6 +95,43 @@ class CustomJSViewController: UIViewController {
         let jsonString = String(data: jsonData, encoding: .utf8)!
         jsonArray[itemindex] = jsonString
         userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
+        updateCustomJSs()
+        tableView.reloadData()
+    }
+    
+    
+    func updateCustomJSDialog(index: Int) {
+        var alertTextField: UITextField?
+        var customJS = customJSs[index]
+
+        let alert = UIAlertController(
+                title: "Edit Custom JS",
+                message: "",
+                preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField(
+                configurationHandler: { (textField: UITextField!) in
+                    textField.text = customJS.title
+                    alertTextField = textField
+                })
+        alert.addAction(
+                UIAlertAction(
+                        title: "Cancel",
+                        style: UIAlertAction.Style.cancel,
+                        handler: nil))
+        alert.addAction(
+                UIAlertAction(
+                        title: "OK",
+                        style: UIAlertAction.Style.default) { _ in
+                    if let text = alertTextField?.text {
+                        customJS.created_at = Date()
+                        customJS.title = text
+                        self.updateCustomJS(index: index, customJS: customJS)
+                        
+                    }
+                }
+        )
+
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
@@ -136,9 +173,7 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { action in
-                if let cell = tableView.cellForRow(at: indexPath) {
-//
-                }
+                self.updateCustomJSDialog(index: indexPath.row)
             }
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { action in
@@ -174,7 +209,7 @@ extension CustomJSViewController: CustomJSAddCellOutput {
                         handler: nil))
         alert.addAction(
                 UIAlertAction(
-                        title: "OK",
+                        title: "Create",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
                         // FIXME
