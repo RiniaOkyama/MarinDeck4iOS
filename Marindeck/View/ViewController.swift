@@ -36,6 +36,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var mainDeckBlurView: UIView!
     
     var isMenuOpen = false
+    private let userDefaults = UserDefaults.standard
 
 
     lazy var loadingIndicator: UIActivityIndicatorView = {
@@ -150,6 +151,23 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
 //             scrollView.pinchGestureRecognizer?.isEnabled = false
 //    }
+    
+    func loadJsFile(forResource: String, ofType:String = "js"){
+        guard let mtPath = Bundle.main.path(forResource:forResource, ofType:ofType) else {
+            print("ERROR")
+            return
+        }
+        let mtFile = FileHandle(forReadingAtPath: mtPath)!
+        let mtContentData = mtFile.readDataToEndOfFile()
+        let mtContentString = String(data: mtContentData, encoding: .utf8)!
+        mtFile.closeFile()
+
+        let mtScript = mtContentString
+        webView.evaluateJavaScript(mtScript) { object, error in
+            print("webViewLog : ", error ?? "成功")
+        }
+    }
+
 
     @IBAction func debugPressed() {
         let vc = DebugerViewController()
@@ -370,6 +388,16 @@ extension ViewController: WKScriptMessageHandler {
 
         return [edit, delete]
     }
+    
+    func fetchCustomJSs() -> [CustomJS] {
+        let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
+        var retArray: [CustomJS] = []
+        for item in jsonArray {
+            let jsonData = item.data(using: .utf8)!
+            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
+        }
+        return retArray
+    }
 }
 
 
@@ -399,32 +427,12 @@ extension ViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadJsFile(forResource: "mtdeck")
+        loadJsFile(forResource: "marindeck")
         
-        guard let mtPath = Bundle.main.path(forResource: "mtdeck", ofType: "js") else {
-            print("LoadError MTDeck")
-            return
-        }
-        let mtFile = FileHandle(forReadingAtPath: mtPath)!
-        let mtContentData = mtFile.readDataToEndOfFile()
-        let mtContentString = String(data: mtContentData, encoding: .utf8)!
-        mtFile.closeFile()
-
-        let mtScript = mtContentString
-        webView.evaluateJavaScript(mtScript) { object, error in
-            print("webViewLog : ", error ?? "成功")
-        }
-        guard let marinPath = Bundle.main.path(forResource: "marindeck", ofType: "js") else {
-            print("LoadError MarinDeck")
-            return
-        }
-        let marinFile = FileHandle(forReadingAtPath: marinPath)!
-        let marinContentData = marinFile.readDataToEndOfFile()
-        let marinContentString = String(data: marinContentData, encoding: .utf8)!
-        marinFile.closeFile()
-
-        let marinScript = marinContentString
-        webView.evaluateJavaScript(marinScript) { object, error in
-            print("webViewLog : ", error ?? "成功")
+        let cjss = fetchCustomJSs()
+        for item in cjss {
+            debugJS(script: item.js)
         }
     }
 

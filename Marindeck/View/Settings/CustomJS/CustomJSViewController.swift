@@ -32,6 +32,12 @@ class CustomJSViewController: UIViewController {
         tableView.register(UINib(nibName: "CustomJSCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomJSAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let bvc = self.presentingViewController?.presentingViewController as? ViewController
+        bvc?.webView.reload()
+    }
 
     @IBAction func close() {
         self.dismiss(animated: true, completion: nil)
@@ -105,7 +111,7 @@ class CustomJSViewController: UIViewController {
         var customJS = customJSs[index]
 
         let alert = UIAlertController(
-                title: "Edit Custom JS",
+                title: "カスタムJSを編集",
                 message: "",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
@@ -115,12 +121,12 @@ class CustomJSViewController: UIViewController {
                 })
         alert.addAction(
                 UIAlertAction(
-                        title: "Cancel",
+                        title: "キャンセル",
                         style: UIAlertAction.Style.cancel,
                         handler: nil))
         alert.addAction(
                 UIAlertAction(
-                        title: "OK",
+                        title: "変更する",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
                         customJS.created_at = Date()
@@ -194,8 +200,8 @@ extension CustomJSViewController: CustomJSAddCellOutput {
         var alertTextField: UITextField?
 
         let alert = UIAlertController(
-                title: "Create Custom JS",
-                message: "Enter new title",
+                title: "カスタムJSを作成",
+                message: "",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
                 configurationHandler: { (textField: UITextField!) in
@@ -204,12 +210,12 @@ extension CustomJSViewController: CustomJSAddCellOutput {
                 })
         alert.addAction(
                 UIAlertAction(
-                        title: "Cancel",
+                        title: "キャンセル",
                         style: UIAlertAction.Style.cancel,
                         handler: nil))
         alert.addAction(
                 UIAlertAction(
-                        title: "Create",
+                        title: "作成",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
                         // FIXME

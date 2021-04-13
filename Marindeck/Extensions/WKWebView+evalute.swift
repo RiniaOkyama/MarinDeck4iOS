@@ -17,7 +17,7 @@ extension WKWebView {
             result = value
             isCompletion = true
         }
-
+        // FIXME: wtf
         while !isCompletion {
             RunLoop.current.run(mode: .default, before: Date() + 0.1)
         }

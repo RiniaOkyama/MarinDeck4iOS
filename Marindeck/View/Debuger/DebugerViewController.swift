@@ -10,6 +10,7 @@ import Highlightr
 //HighlightView
 
 class DebugerViewController: UIViewController {
+    // FIXME
     var delegate: ViewController?
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var segmentCtrl: UISegmentedControl!
