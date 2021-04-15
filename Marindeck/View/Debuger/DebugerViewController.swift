@@ -27,7 +27,7 @@ class DebugerViewController: UIViewController {
         let layoutManager = NSLayoutManager()
         textStorage.addLayoutManager(layoutManager)
 
-        let textContainer = NSTextContainer(size: view.bounds.size)
+        let textContainer = NSTextContainer(size: CGSize(width: view.bounds.size.width, height: 100000000000))
         layoutManager.addTextContainer(textContainer)
         
         textView = UITextView(frame: editorView.bounds, textContainer: textContainer)

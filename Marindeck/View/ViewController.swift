@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     @IBOutlet weak var bottomBackView: UIView!
     @IBOutlet weak var topBackView: UIView!
     @IBOutlet weak var debugFloatingBtn: UIButton!
+    @IBOutlet weak var tweetFloatingBtn: UIButton!
     
     @IBOutlet weak var menuView: UIView!
     var menuVC: MenuViewController!
@@ -127,12 +128,21 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleAspectFill
 
-        debugFloatingBtn.layer.cornerRadius = 48 / 2
+        debugFloatingBtn.layer.cornerRadius = 24
         debugFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         debugFloatingBtn.layer.shadowColor = UIColor.black.cgColor
         debugFloatingBtn.layer.shadowOpacity = 0.9
         debugFloatingBtn.layer.shadowRadius = 4
         debugFloatingBtn.isHidden = true
+        
+        tweetFloatingBtn.layer.cornerRadius = 24
+        tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
+        tweetFloatingBtn.layer.shadowOpacity = 0.9
+        tweetFloatingBtn.layer.shadowRadius = 4
+        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+//        debugFloatingBtn.isHidden = true
+        
         
         mainDeckView.backgroundColor = .none
         
@@ -208,6 +218,11 @@ h.insertAdjacentElement('beforeend', s)
         }
     }
 
+    @IBAction func tweetPressed() {
+        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
+            print("webViewLog : ", error ?? "成功")
+        }
+    }
 
     @IBAction func debugPressed() {
         let vc = DebugerViewController()
@@ -369,6 +384,7 @@ extension ViewController: WKScriptMessageHandler {
 //            let imgsURL = imgUrls.map({
 //                URL(string: $0)!
 //            })
+            let imageDownloader = AlamofireImageDownloader()
             let imageViewer = Optik.imageViewer(
                     withImages: imgs,
                     initialImageDisplayIndex: index,
@@ -455,7 +471,7 @@ extension ViewController: WKNavigationDelegate {
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
         let host = url?.host
-        
+        print(host, url)
         if host == "tweetdeck.twitter.com" || host == "mobile.twitter.com" {
             decisionHandler(.allow)
         }else{
@@ -517,7 +533,7 @@ extension ViewController: UIViewControllerPreviewingDelegate {
 
         print("value!!!!", index, urls)
 
-        var imgUrls = urls.map({
+        let imgUrls = urls.map({
             url2NomalImg($0)
         })
 
@@ -570,5 +586,3 @@ func url2UIImage(url: String) -> UIImage {
     }
     return UIImage()
 }
-
-

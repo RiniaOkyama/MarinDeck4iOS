@@ -57,6 +57,20 @@
                                     <segue destination="0su-yw-0yt" kind="embed" id="1y8-V1-kcp"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9v-pz-eSb">
+                                <rect key="frame" x="346" y="748" width="48" height="48"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="ghB-vR-bvv"/>
+                                    <constraint firstAttribute="height" constant="48" id="yYD-2c-rRF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="tweet"/>
+                                <connections>
+                                    <action selector="tweetPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="u9Y-cF-5OA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,9 +82,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="95p-Pr-vfx" secondAttribute="trailing" id="BGm-gO-oCe"/>
                             <constraint firstItem="95p-Pr-vfx" firstAttribute="top" secondItem="AjS-Cn-qwX" secondAttribute="bottom" id="CwR-Es-1C3"/>
                             <constraint firstItem="gy9-se-7fd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K5R-eR-F8F"/>
+                            <constraint firstItem="V9v-pz-eSb" firstAttribute="top" secondItem="cIw-Of-AaE" secondAttribute="bottom" constant="26" id="Qht-93-4RN"/>
                             <constraint firstItem="I8j-5m-JKv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Sfd-0i-SwN"/>
                             <constraint firstItem="95p-Pr-vfx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZLd-88-FV9"/>
                             <constraint firstItem="AjS-Cn-qwX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d09-0m-ogF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V9v-pz-eSb" secondAttribute="trailing" constant="20" id="eZA-4a-ruf"/>
                             <constraint firstItem="95p-Pr-vfx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="exl-28-UTO"/>
                             <constraint firstItem="I8j-5m-JKv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-280" id="fTj-H2-iip"/>
                             <constraint firstAttribute="bottom" secondItem="I8j-5m-JKv" secondAttribute="bottom" id="p7n-Hl-FDI"/>
@@ -88,6 +104,7 @@
                         <outlet property="mainDeckView" destination="95p-Pr-vfx" id="kCx-tU-0nc"/>
                         <outlet property="menuView" destination="I8j-5m-JKv" id="Stl-4X-r8c"/>
                         <outlet property="topBackView" destination="AjS-Cn-qwX" id="3t8-wt-fhD"/>
+                        <outlet property="tweetFloatingBtn" destination="V9v-pz-eSb" id="vWs-Pe-jvg"/>
                         <segue destination="Ve0-Md-qIV" kind="modal" identifier="toSettings" modalPresentationStyle="formSheet" id="mjj-rk-RJy"/>
                     </connections>
                 </viewController>
@@ -524,6 +541,7 @@
         <image name="ladybug" catalog="system" width="128" height="128"/>
         <image name="logo2" width="2430" height="1080"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="tweet" width="1080" height="1080"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
@@ -537,6 +555,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
