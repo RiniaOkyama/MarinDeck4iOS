@@ -24,7 +24,6 @@ class CustomJSViewController: UIViewController {
 
         updateCustomJSs()
 
-
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -73,13 +72,8 @@ class CustomJSViewController: UIViewController {
 
     func deleteCustomJS(index: Int) {
         let cjss = fetchCustomJSs()
-        var itemindex = 0
-        for (index, item) in cjss.enumerated() {
-            if item.created_at == customJSs[index].created_at {
-                itemindex = index
-                break
-            }
-        }
+        let itemindex = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
+        
         var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         jsonArray.remove(at: itemindex)
         userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
@@ -89,13 +83,8 @@ class CustomJSViewController: UIViewController {
     
     func updateCustomJS(index: Int, customJS: CustomJS) {
         let cjss = fetchCustomJSs()
-        var itemindex = 0
-        for (index, item) in cjss.enumerated() {
-            if item.created_at == customJSs[index].created_at {
-                itemindex = index
-                break
-            }
-        }
+        let itemindex = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
+
         var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         let jsonData = try! JSONEncoder().encode(customJS)
         let jsonString = String(data: jsonData, encoding: .utf8)!
