@@ -88,4 +88,7 @@ class EditCustomJSViewController: UIViewController {
         updateJS()
     }
     
+    @IBAction func keyboardDonePressed(_ sender: Any) {
+        textView.resignFirstResponder()
+    }
 }

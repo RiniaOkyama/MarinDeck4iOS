@@ -65,7 +65,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <items>
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="1w0-bk-DUr"/>
-                <barButtonItem title="Done" id="cma-JJ-9vR"/>
+                <barButtonItem title="Done" id="cma-JJ-9vR">
+                    <connections>
+                        <action selector="keyboardDonePressed:" destination="-1" id="UKr-te-4Ph"/>
+                    </connections>
+                </barButtonItem>
             </items>
             <point key="canvasLocation" x="-39.130434782608695" y="-255.80357142857142"/>
         </toolbar>
