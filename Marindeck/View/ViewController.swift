@@ -109,6 +109,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             registerForPreviewing(with: self, sourceView: view)
         }
         
+        
+        self.mainDeckView.addSubview(webView)
+        self.view.addSubview(mainDeckBlurView)
+        
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+        let doneItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(dismissKeyboard) )
+        let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let gifItem = UIBarButtonItem(image: UIImage(named: "gif"), style: .plain, target: self, action: #selector(openSelectGif))
+        doneItem.tintColor = .black
+        toolbar.setItems([gifItem, flexibleSpaceItem, doneItem], animated: false)
+        toolbar.sizeToFit()
+
+        webView.addIndexAccessoryView(toolbar: toolbar)
+
+        
         // TEST ////////////////////////////////////////////////////////////
         
         //Use image's path to create NSData
@@ -177,6 +193,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        self.menuView.frame.origin.x = -self.menuView.frame.width
     }
 
+    
+    @objc func dismissKeyboard() {
+        webView.resignFirstResponder()
+    }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         print("presentationControllerDidDismiss!!!!!!!!!!!!!!")
@@ -228,9 +248,9 @@ h.insertAdjacentElement('beforeend', s)
             print("webViewLog : ", error ?? "成功")
         }
     }
+    
 
     @IBAction func tweetPressed() {
-        openSelectGif()
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
             print("webViewLog : ", error ?? "成功")
         }
@@ -248,7 +268,7 @@ h.insertAdjacentElement('beforeend', s)
         return ((ret as? String) ?? "", error)
     }
     
-    func openSelectGif() {
+    @objc func openSelectGif() {
         let giphy = GiphyViewController()
         Giphy.configure(apiKey: env[EnvKeys.GIPHY_API_KEY] ?? "")
 //        giphy.theme = GPHTheme(type: settingsViewController.theme)
@@ -344,8 +364,9 @@ extension ViewController: WKScriptMessageHandler {
         case "viewDidLoad":
             self.loadingIndicator.stopAnimating()
             self.debugFloatingBtn.isHidden = false
-            self.mainDeckView.addSubview(webView)
-            self.view.addSubview(mainDeckBlurView)
+            self.mainDeckView.isHidden = false
+//            self.mainDeckView.addSubview(webView)
+//            self.view.addSubview(mainDeckBlurView)
             // FIXME
             self.bottomBackView.backgroundColor = #colorLiteral(red: 0.1075549349, green: 0.1608583331, blue: 0.2208467424, alpha: 1)
 //            self.view.backgroundColor = UIColor(hex: "F5F5F5")

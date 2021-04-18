@@ -49,6 +49,7 @@
 		E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB19B262C069F00F6997A /* moduleraid.js */; };
 		E9EFB1AA262C1F5F00F6997A /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1A9262C1F5F00F6997A /* .env */; };
 		E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1AD262C1F7A00F6997A /* .env.sample */; };
+		E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */; };
 		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		E9EFB19B262C069F00F6997A /* moduleraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = moduleraid.js; sourceTree = "<group>"; };
 		E9EFB1A9262C1F5F00F6997A /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		E9EFB1AD262C1F7A00F6997A /* .env.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.sample; sourceTree = "<group>"; };
+		E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+removeToolbar.swift"; sourceTree = "<group>"; };
 		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +229,7 @@
 				E9A8507A25D3CD240084A00C /* UIView+.swift */,
 				E9A8507B25D3CD240084A00C /* Error+.swift */,
 				E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */,
+				E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,7 +259,6 @@
 		E9EA8A3525FF53AB00561975 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E9EF3FAB26280DED004729B5 /* Widget */,
 				E9EFE097261D9D7E00ABBAC8 /* Debuger */,
 				E929E803260097C100211FD2 /* Settings */,
 				E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */,
@@ -278,13 +280,6 @@
 				E9EFB1AD262C1F7A00F6997A /* .env.sample */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		E9EF3FAB26280DED004729B5 /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widget;
 			sourceTree = "<group>";
 		};
 		E9EF3FB526280E2B004729B5 /* MarinDeckExtension */ = {
@@ -477,6 +472,7 @@
 				E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */,
 				E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */,
 				E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */,
+				E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */,
 				E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */,
 				E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */,
 				E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */,

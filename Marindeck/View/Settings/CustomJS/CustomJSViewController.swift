@@ -100,7 +100,7 @@ class CustomJSViewController: UIViewController {
         var customJS = customJSs[index]
 
         let alert = UIAlertController(
-                title: "カスタムJSを編集",
+                title: "カスタムJS名を編集",
                 message: "",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
@@ -193,7 +193,7 @@ extension CustomJSViewController: CustomJSAddCellOutput {
 
         let alert = UIAlertController(
                 title: "カスタムJSを作成",
-                message: "",
+                message: "作成するカスタムJSの名前を入力してください",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
                 configurationHandler: { (textField: UITextField!) in
