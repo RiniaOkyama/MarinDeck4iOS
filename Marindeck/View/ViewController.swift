@@ -10,6 +10,7 @@ import WebKit
 import SafariServices
 
 import Optik
+import GiphyUISDK
 
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
@@ -38,6 +39,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
+    private let env = ProcessInfo.processInfo.environment
 
 
     lazy var loadingIndicator: UIActivityIndicatorView = {
@@ -106,6 +108,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             registerForPreviewing(with: self, sourceView: view)
         }
+        
+        // TEST ////////////////////////////////////////////////////////////
+        
+        //Use image's path to create NSData
+        
+//        print(data)
+        
+        
+        // ////////////////////////////////////////////////////////////////
 
     }
     
@@ -219,6 +230,7 @@ h.insertAdjacentElement('beforeend', s)
     }
 
     @IBAction func tweetPressed() {
+        openSelectGif()
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
             print("webViewLog : ", error ?? "成功")
         }
@@ -234,6 +246,21 @@ h.insertAdjacentElement('beforeend', s)
         let (ret, error) = webView.evaluateWithError(javaScript: script)
 //        print(ret, error)
         return ((ret as? String) ?? "", error)
+    }
+    
+    func openSelectGif() {
+        let giphy = GiphyViewController()
+        Giphy.configure(apiKey: env[EnvKeys.GIPHY_API_KEY] ?? "")
+//        giphy.theme = GPHTheme(type: settingsViewController.theme)
+//        giphy.mediaTypeConfig = settingsViewController.mediaTypeConfig
+        GiphyViewController.trayHeightMultiplier = 0.7
+//        giphy.showConfirmationScreen = settingsViewController.confirmationScreen == .on
+        giphy.shouldLocalizeSearch = true
+        giphy.delegate = self
+        giphy.dimBackground = true
+        giphy.modalPresentationStyle = .overCurrentContext
+
+        present(giphy, animated: true, completion: nil)
     }
     
     func openSettings() {
@@ -484,6 +511,7 @@ extension ViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 //        loadJsFile(forResource: "mtdeck")
+        loadJsFile(forResource: "moduleraid")
         loadJsFile(forResource: "marindeck-css")
         loadJsFile(forResource: "marindeck")
         loadCSSFile(forResource: "marindeck")
@@ -585,4 +613,37 @@ func url2UIImage(url: String) -> UIImage {
         print("Error : \(err.localizedDescription)")
     }
     return UIImage()
+}
+
+
+extension ViewController: GiphyDelegate {
+    func didSearch(for term: String) {
+        print("your user made a search! ", term)
+    }
+    
+    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia) {
+        giphyViewController.dismiss(animated: true, completion: { [weak self] in
+//            print(media.url(rendition: .original, fileType: .gif))
+            self?.loadingIndicator.startAnimating()
+            self?.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            DispatchQueue(label: "tweetgifload.async").async {
+                let url:URL = URL(string: media.url(rendition: .original, fileType: .gif)!)!
+                //Now use image to create into NSData format
+                let imageData:NSData = NSData.init(contentsOf: url)!
+                let data = imageData.base64EncodedString(options: [])
+                DispatchQueue.main.sync {
+                    self?.webView.evaluateJavaScript("addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { object, error in
+                        print("gifLoad : ", error ?? "成功")
+                        self?.loadingIndicator.stopAnimating()
+                        self?.mainDeckBlurView.backgroundColor = .clear
+                    }
+                }
+            }
+        })
+        GPHCache.shared.clear()
+    }
+    
+    func didDismiss(controller: GiphyViewController?) {
+        GPHCache.shared.clear()
+    }
 }

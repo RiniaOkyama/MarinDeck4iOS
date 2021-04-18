@@ -104,6 +104,7 @@ The following component(s) are licensed under the MIT License reproduced below
 * MTDeck, Copyright (c) 2021 mkizka
 * Marky-Mark, Copyright (c) 2016 M2mobi
 * Optik, Copyright (c) 2017 Prolific Interactive.
+* [moduleRaid](https://github.com/pixeldesu/moduleRaid), Copyright (c) 2018 Andreas N.
 
 ```
 Permission is hereby granted, free of charge, to any person obtaining a copy

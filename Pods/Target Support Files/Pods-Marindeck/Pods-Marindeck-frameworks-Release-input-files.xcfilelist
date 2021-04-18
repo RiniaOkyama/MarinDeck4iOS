@@ -3,4 +3,6 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
 ${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework
 ${BUILT_PRODUCTS_DIR}/Optik/Optik.framework
+${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework
 ${BUILT_PRODUCTS_DIR}/markymark/markymark.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/GiphyUISDK/GiphyUISDK.framework/GiphyUISDK

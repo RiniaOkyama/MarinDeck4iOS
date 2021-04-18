@@ -2,3 +2,4 @@
 *.zip
 *.ipa
 .idea/
+Marindeck/Application/.env

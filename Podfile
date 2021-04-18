@@ -8,6 +8,7 @@ target 'Marindeck' do
   pod "AlamofireImage"
   pod 'Highlightr' # js highlight
   pod 'markymark'  # markdown
+  pod 'Giphy', :podspec => 'https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec'
   #pod 'HighlightJS'
 
 

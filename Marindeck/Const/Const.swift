@@ -11,3 +11,7 @@ import Foundation
 struct UserDefaultsKey {
     static let customJSs = "customJSs"
 }
+
+struct EnvKeys {
+    static let GIPHY_API_KEY = "GIPHY_API_KEY"
+}

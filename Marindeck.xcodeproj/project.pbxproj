@@ -46,6 +46,9 @@
 		E9EF3FBC26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E9EF3FB826280E2B004729B5 /* MarinDeckExtension.intentdefinition */; };
 		E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E9EF3FB826280E2B004729B5 /* MarinDeckExtension.intentdefinition */; };
 		E9EF3FC026280E2E004729B5 /* MarinDeckExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9EF3FB026280E2B004729B5 /* MarinDeckExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB19B262C069F00F6997A /* moduleraid.js */; };
+		E9EFB1AA262C1F5F00F6997A /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1A9262C1F5F00F6997A /* .env */; };
+		E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1AD262C1F7A00F6997A /* .env.sample */; };
 		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +122,9 @@
 		E9EF3FB926280E2E004729B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9EF3FBB26280E2E004729B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EF3FC126280E2E004729B5 /* MarinDeckExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarinDeckExtensionExtension.entitlements; sourceTree = "<group>"; };
+		E9EFB19B262C069F00F6997A /* moduleraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = moduleraid.js; sourceTree = "<group>"; };
+		E9EFB1A9262C1F5F00F6997A /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
+		E9EFB1AD262C1F7A00F6997A /* .env.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.sample; sourceTree = "<group>"; };
 		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +208,7 @@
 		E993A26B25AEDFE5003DAE3A /* js */ = {
 			isa = PBXGroup;
 			children = (
+				E9EFB19B262C069F00F6997A /* moduleraid.js */,
 				E9836FE42625AF5300FE711D /* marindeck-css.js */,
 				E96769D025AE0F4D00D1826C /* mtdeck.js */,
 				E993A39225B4B7D3003DAE3A /* marindeck.js */,
@@ -267,6 +274,8 @@
 			children = (
 				E9732AA825ADDDFD0068F632 /* AppDelegate.swift */,
 				E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */,
+				E9EFB1A9262C1F5F00F6997A /* .env */,
+				E9EFB1AD262C1F7A00F6997A /* .env.sample */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -389,8 +398,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
 				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
+				E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */,
 				E9BA5AB72624039600E27F14 /* CustomJSAddCellTableViewCell.xib in Resources */,
 				E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */,
 				E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */,
@@ -400,6 +411,7 @@
 				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
 				E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */,
 				E9836FE82625C50D00FE711D /* marindeck.css in Resources */,
+				E9EFB1AA262C1F5F00F6997A /* .env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

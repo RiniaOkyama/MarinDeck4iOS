@@ -7,6 +7,11 @@ document.documentElement.style.webkitUserSelect='none';
 document.documentElement.style.webkitTouchCallout='none';
 
 
+//const moduleRaid = require('./moduleraid');
+let mR = moduleRaid();
+// Grab TweetDeck's jQuery from webpack
+var jq = mR && mR.findFunction('jQuery') && mR.findFunction('jquery:')[0];
+
 // ロード後に走るので、検証したい場合はwindow.onload等を使えください。
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 (async () => {
@@ -73,6 +78,17 @@ function style_init(){
 }
 
 ///////////////////////////////////////
+
+function addTweetImage(base64, type, name) {
+    var bin = atob(base64.replace(/^.*,/, '')); // decode base64
+    var buffer = new Uint8Array(bin.length); // to binary data
+    for (var i = 0; i < bin.length; i++) {
+        buffer[i] = bin.charCodeAt(i);
+    }
+    const imgFile = new File([buffer.buffer], name, {type: type});
+    
+    jq(document).trigger("uiFilesAdded",{files: [imgFile]});
+}
 
 function swiftLog(...msg){
   webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
