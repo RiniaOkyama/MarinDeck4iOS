@@ -6,6 +6,11 @@ document.documentElement.style.webkitUserSelect='none';
 // menu 禁止
 document.documentElement.style.webkitTouchCallout='none';
 
+// Zoom禁止
+const viewport = document.querySelector('meta[name=viewport]')
+if (viewport) {
+  viewport.content += ',maximum-scale=1'
+}
 
 //const moduleRaid = require('./moduleraid');
 let mR = moduleRaid();

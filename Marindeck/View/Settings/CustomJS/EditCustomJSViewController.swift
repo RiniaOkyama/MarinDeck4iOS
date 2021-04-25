@@ -43,15 +43,26 @@ class EditCustomJSViewController: UIViewController {
 //        view.addSubview(textView)
         
         
-        
         fetchJS()
         
         textView.text = customJS.js
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        textView.becomeFirstResponder()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.editorView.resignFirstResponder()
+//        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         updateJS()
+        let bvc = self.presentingViewController as? CustomJSViewController
+        bvc?.updateCustomJSs()
+        bvc?.tableView.reloadData()
     }
     
     init(index: Int) {
@@ -60,22 +71,39 @@ class EditCustomJSViewController: UIViewController {
         self.index = index
     }
     
-    func fetchJS(){
+    func fetchCustomJSs() -> [CustomJS] {
         let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        
-        let jsonData = jsonArray.reversed()[self.index].data(using: .utf8)!
-        
-        customJS = try! JSONDecoder().decode(CustomJS.self, from: jsonData)
+        var retArray: [CustomJS] = []
+        for item in jsonArray {
+            let jsonData = item.data(using: .utf8)!
+            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
+        }
+        return retArray
+    }
+    
+    func fetchJS(){
+        customJS = fetchCustomJSs().sorted(by: { $0.created_at > $1.created_at })[self.index]
     }
     func updateJS() {
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        customJS.created_at = Date()
+//        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
+        if customJS.js == textView.text {
+            return
+        }
         customJS.js = textView.text
+//        let jsonData = try! JSONEncoder().encode(customJS)
+//        let jsonString = String(data: jsonData, encoding: .utf8)!
+//        jsonArray[jsonArray.count - self.index - 1] = jsonString
+//        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
+        
+        let cjss = fetchCustomJSs()
+        let itemindex = cjss.firstIndex(where: { $0.created_at == customJS.created_at })!
+        customJS.created_at = Date()
+
+        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         let jsonData = try! JSONEncoder().encode(customJS)
         let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray[jsonArray.count - self.index - 1] = jsonString
+        jsonArray[itemindex] = jsonString
         userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-        
     }
     
     required init?(coder: NSCoder) {

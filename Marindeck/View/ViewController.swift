@@ -311,6 +311,7 @@ h.insertAdjacentElement('beforeend', s)
         self.view.layoutIfNeeded()
         
         if (sender.state == .began){
+            print("began") // FIXME Column move disable
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
             
@@ -324,6 +325,7 @@ h.insertAdjacentElement('beforeend', s)
         }
         
         else if(sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
+            print("cancel or end or fail") // FIXME Column move enable
             if mainDeckView.frame.origin.x > self.view.frame.width/3{
                 isMenuOpen = true
                 UIView.animate(withDuration: 0.3, animations: {

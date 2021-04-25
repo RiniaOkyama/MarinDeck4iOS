@@ -72,7 +72,10 @@ class CustomJSViewController: UIViewController {
 
     func deleteCustomJS(index: Int) {
         let cjss = fetchCustomJSs()
-        let itemindex = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
+        updateCustomJSs()
+        let itemindex: Int = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
+//        print(itemindexx, index)
+//        let itemindex = index
         
         var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         jsonArray.remove(at: itemindex)
@@ -193,7 +196,7 @@ extension CustomJSViewController: CustomJSAddCellOutput {
 
         let alert = UIAlertController(
                 title: "カスタムJSを作成",
-                message: "作成するカスタムJSの名前を入力してください",
+                message: "作成するカスタムJSにタイトルを付けてください",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
                 configurationHandler: { (textField: UITextField!) in
