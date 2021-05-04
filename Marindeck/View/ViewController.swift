@@ -93,6 +93,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
+        webView.frame.size.width = view.frame.width
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
