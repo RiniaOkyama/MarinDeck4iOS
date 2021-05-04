@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95p-Pr-vfx">
-                                <rect key="frame" x="0.0" y="20" width="414" height="876"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjS-Cn-qwX">
@@ -76,22 +76,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="95p-Pr-vfx" firstAttribute="leading" secondItem="I8j-5m-JKv" secondAttribute="trailing" id="1AO-VL-VpB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cIw-Of-AaE" secondAttribute="bottom" constant="140" id="1Bh-2h-oJn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gy9-se-7fd" secondAttribute="trailing" id="1oG-DI-4gE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AjS-Cn-qwX" secondAttribute="trailing" id="6Vk-Kf-1qd"/>
-                            <constraint firstAttribute="bottom" secondItem="95p-Pr-vfx" secondAttribute="bottom" id="9bU-t3-aZE"/>
-                            <constraint firstItem="95p-Pr-vfx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bci-2I-RUX"/>
+                            <constraint firstItem="95p-Pr-vfx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8SR-79-VuP"/>
                             <constraint firstItem="gy9-se-7fd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K5R-eR-F8F"/>
                             <constraint firstItem="V9v-pz-eSb" firstAttribute="top" secondItem="cIw-Of-AaE" secondAttribute="bottom" constant="26" id="Qht-93-4RN"/>
                             <constraint firstItem="I8j-5m-JKv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Sfd-0i-SwN"/>
                             <constraint firstItem="AjS-Cn-qwX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d09-0m-ogF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V9v-pz-eSb" secondAttribute="trailing" constant="20" id="eZA-4a-ruf"/>
                             <constraint firstItem="I8j-5m-JKv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-280" id="fTj-H2-iip"/>
-                            <constraint firstItem="95p-Pr-vfx" firstAttribute="top" secondItem="AjS-Cn-qwX" secondAttribute="bottom" id="lJ6-Bg-IjF"/>
+                            <constraint firstItem="95p-Pr-vfx" firstAttribute="leading" secondItem="I8j-5m-JKv" secondAttribute="trailing" id="iPh-n4-cSJ"/>
+                            <constraint firstItem="95p-Pr-vfx" firstAttribute="top" secondItem="AjS-Cn-qwX" secondAttribute="bottom" id="jqd-f7-y9r"/>
                             <constraint firstAttribute="bottom" secondItem="I8j-5m-JKv" secondAttribute="bottom" id="p7n-Hl-FDI"/>
                             <constraint firstItem="AjS-Cn-qwX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pTK-sD-kSY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cIw-Of-AaE" secondAttribute="trailing" constant="20" id="qEI-f1-3P3"/>
+                            <constraint firstItem="95p-Pr-vfx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rup-dO-SGd"/>
                             <constraint firstAttribute="bottom" secondItem="gy9-se-7fd" secondAttribute="bottom" id="sc8-GJ-wBI"/>
                         </constraints>
                         <connections>
@@ -488,8 +488,9 @@
                                     <action selector="openSettings" destination="0su-yw-0yt" eventType="touchUpInside" id="247-ft-7dZ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-or-ZyM">
-                                <rect key="frame" x="25" y="65.5" width="60" height="57"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-or-ZyM">
+                                <rect key="frame" x="25" y="64.5" width="60" height="59"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="r3S-Sn-QA1"/>
                                     <constraint firstAttribute="width" constant="60" id="xfL-Jp-Wnl"/>
@@ -541,7 +542,7 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="ladybug" catalog="system" width="128" height="128"/>
         <image name="logo2" width="2430" height="1080"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="tweet" width="1080" height="1080"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
