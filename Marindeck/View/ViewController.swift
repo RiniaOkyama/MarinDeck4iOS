@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Marindecker
+//  Marindeck
 //
 //  Created by craptone on 2021/01/12.
 //
@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     public var javaScriptString = ""
     @IBOutlet weak var mainDeckView: UIView!
     @IBOutlet weak var bottomBackView: UIView!
+    @IBOutlet weak var bottomBackViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var topBackView: UIView!
     @IBOutlet weak var debugFloatingBtn: UIButton!
     @IBOutlet weak var tweetFloatingBtn: UIButton!
@@ -50,6 +51,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         ActivityIndicator.style = .medium
         return ActivityIndicator
     }()
+    
+    private var isBottomBackViewHidden = false {
+        didSet {
+            if isBottomBackViewHidden {
+                bottomBackView.isHidden = true
+                bottomBackViewConstraint.constant = 0
+            }else {
+                bottomBackView.isHidden = false
+                bottomBackViewConstraint.constant = 50
+            }
+        }
+    }
 
 
     override func viewDidLoad() {
@@ -60,7 +73,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         self.view.addSubview(loadingIndicator)
 
         loadingIndicator.startAnimating()
-        
+                
         // FIXME
         menuVC = self.children[0] as! MenuViewController
         menuVC.delegate = self
@@ -78,7 +91,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         webConfiguration.userContentController = userContentController
 
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        mainDeckView.backgroundColor = .red
+        webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
@@ -97,6 +111,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         
         webView.addGestureRecognizer(edgePan)
 //        view.addGestureRecognizer(edgePan)
+        webView.backgroundColor = .white
 
 
         let deckURL = URL(string: "https://tweetdeck.twitter.com")
@@ -148,6 +163,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     func setupView() {
         self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         self.bottomBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
+        self.bottomBackView.backgroundColor = .green
+        isBottomBackViewHidden = true
+        self.view.backgroundColor = .green
         self.topBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         
         imageView.center = view.center
@@ -162,7 +180,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         debugFloatingBtn.layer.shadowRadius = 4
         debugFloatingBtn.isHidden = true
         
-        tweetFloatingBtn.layer.cornerRadius = 24
+        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
         tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
         tweetFloatingBtn.layer.shadowOpacity = 0.9
@@ -358,6 +376,7 @@ h.insertAdjacentElement('beforeend', s)
 }
 
 
+// MARK: JS Binding
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // FIXME
@@ -370,12 +389,17 @@ extension ViewController: WKScriptMessageHandler {
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
             // FIXME
-            self.bottomBackView.backgroundColor = #colorLiteral(red: 0.1075549349, green: 0.1608583331, blue: 0.2208467424, alpha: 1)
+//            self.bottomBackView.backgroundColor = #colorLiteral(red: 0.1075549349, green: 0.1608583331, blue: 0.2208467424, alpha: 1)
 //            self.view.backgroundColor = UIColor(hex: "F5F5F5")
 //            self.bottomBackView.backgroundColor = UIColor(hex: "ffffff")
 //            self.topBackView.backgroundColor = UIColor(hex: "F5F5F5")
-            self.bottomBackView.isHidden = false
-            webView.anchorAll(equalTo: mainDeckView)
+//            self.bottomBackView.isHidden = false
+            // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる
+            webView.translatesAutoresizingMaskIntoConstraints = false
+
+//            webView.anchorAll(equalTo: mainDeckView)
+//            webView.frame = mainDeckView.bounds
+            webView.backgroundColor = .cyan
             
             menuVC.setUserIcon(url: getUserIcon())
 
@@ -623,7 +647,7 @@ extension ViewController: UIViewControllerPreviewingDelegate {
 
 }
 
-
+// FIXME
 func url2UIImage(url: String) -> UIImage {
     let url = URL(string: url)
     if url == nil {
