@@ -10,6 +10,7 @@ import Foundation
 
 struct UserDefaultsKey {
     static let customJSs = "customJSs"
+    static let isDebugBtnHidden = "isDebugBtnHidden"
 }
 
 struct EnvKeys {
