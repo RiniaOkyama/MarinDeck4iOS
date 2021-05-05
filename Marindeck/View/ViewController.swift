@@ -93,7 +93,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
+        
+        // あほくさ
         webView.frame.size.width = view.frame.width
+        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
+        webView.frame.origin.y = topBackView.frame.height
+        
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
@@ -399,7 +404,7 @@ extension ViewController: WKScriptMessageHandler {
             webView.translatesAutoresizingMaskIntoConstraints = false
 
 //            webView.anchorAll(equalTo: mainDeckView)
-//            webView.frame = mainDeckView.bounds
+            webView.frame = mainDeckView.bounds
             webView.backgroundColor = .cyan
             
             menuVC.setUserIcon(url: getUserIcon())
