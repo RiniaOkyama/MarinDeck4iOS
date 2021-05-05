@@ -1,8 +1,12 @@
 # MarinDeck for iOS
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/vitomcharm?style=flat-square)](https://twitter.com/vitomcharm)[![Discord](https://img.shields.io/badge/Discord-join-blue)](https://discord.gg/JKsqaxcnCW)![version](https://img.shields.io/badge/version-Alpha-red)
+[![Twitter Follow](https://img.shields.io/twitter/follow/vitomcharm?style=flat-square)](https://twitter.com/vitomcharm)
+[![Discord](https://img.shields.io/badge/Discord-join-blue)](https://discord.gg/JKsqaxcnCW)
+![version](https://img.shields.io/badge/version-Alpha-red)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_shield)
 
+
+[<img src="https://dply.me/mcdh5i/button/large" alt="Try it on your device via DeployGate">](https://dply.me/mcdh5i#install)
 
 
 リリースまではmasterブランチで開発する予定です。
@@ -14,7 +18,5 @@
 ## License
 
 検討中
-
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_large)
