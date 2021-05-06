@@ -12,6 +12,11 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "設定"
+        self.navigationController?.navigationBar.barTintColor = .systemBackground
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,13 +46,23 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 && indexPath.row == 2 {
-            if let url = URL(string: "https://discord.gg/JKsqaxcnCW") {
-                UIApplication.shared.open(url)
+        
+        if indexPath.section == 1 {
+            if indexPath.row == 2 {
+                let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
+                navigationController?.pushViewController(vc, animated: true)
             }
-        }else if indexPath.section == 2 && indexPath.row == 4 {
-            if let url = URL(string: "http://fantia.jp/hisubway") {
-                UIApplication.shared.open(url)
+        }
+        
+        else if indexPath.section == 2 {
+            if indexPath.row == 2{
+                if let url = URL(string: "https://discord.gg/JKsqaxcnCW") {
+                    UIApplication.shared.open(url)
+                }
+            }else if indexPath.row == 4 {
+                if let url = URL(string: "http://fantia.jp/hisubway") {
+                    UIApplication.shared.open(url)
+                }
             }
         }
     }
