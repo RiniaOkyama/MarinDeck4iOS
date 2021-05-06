@@ -189,7 +189,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
         tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
-        tweetFloatingBtn.layer.shadowOpacity = 0.9
+        tweetFloatingBtn.layer.shadowOpacity = 0.3
         tweetFloatingBtn.layer.shadowRadius = 4
         tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
 //        debugFloatingBtn.isHidden = true
@@ -308,7 +308,11 @@ h.insertAdjacentElement('beforeend', s)
     }
     
     func openSettings() {
-        self.performSegue(withIdentifier: "toSettings", sender: nil)
+//        self.performSegue(withIdentifier: "toSettings", sender: nil)
+        let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     func getUserIcon() -> String{

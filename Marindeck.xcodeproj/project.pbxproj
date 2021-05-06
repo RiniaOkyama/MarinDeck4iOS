@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */; };
 		E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E804260097DF00211FD2 /* LicenseViewController.swift */; };
+		E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F57072643A87A00593DF4 /* ThemeViewController.swift */; };
+		E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */; };
+		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
 		E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E96769D025AE0F4D00D1826C /* mtdeck.js */; };
 		E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AA825ADDDFD0068F632 /* AppDelegate.swift */; };
 		E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */; };
@@ -83,6 +86,9 @@
 		97B149403DDF43B1C8360F10 /* Pods-Marindeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marindeck.release.xcconfig"; path = "Target Support Files/Pods-Marindeck/Pods-Marindeck.release.xcconfig"; sourceTree = "<group>"; };
 		CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marindeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E929E804260097DF00211FD2 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		E93F57072643A87A00593DF4 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
+		E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
 		E96769C725ADEFA600D1826C /* Marindeck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Marindeck.entitlements; sourceTree = "<group>"; };
 		E96769D025AE0F4D00D1826C /* mtdeck.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mtdeck.js; sourceTree = "<group>"; };
 		E9732AA525ADDDFD0068F632 /* Marindeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marindeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,11 +172,22 @@
 		E929E803260097C100211FD2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E93F57042643A81200593DF4 /* Theme */,
 				E9BA5A912623FD9900E27F14 /* CustomJS */,
 				E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */,
 				E929E804260097DF00211FD2 /* LicenseViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E93F57042643A81200593DF4 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E93F57072643A87A00593DF4 /* ThemeViewController.swift */,
+				E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */,
+				E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		E9732A9C25ADDDFD0068F632 = {
@@ -405,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
+				E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */,
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
 				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
 				E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */,
@@ -487,12 +505,14 @@
 				E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */,
 				E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */,
 				E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */,
+				E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */,
 				E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */,
 				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
 				E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */,
 				E9A8507F25D3CD240084A00C /* Error+.swift in Sources */,
+				E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */,
 				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
 				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
 				E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */,
