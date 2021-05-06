@@ -37,6 +37,7 @@
 		E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */; };
 		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
 		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
+		E9E7E52B2643477400443186 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7E52A2643477400443186 /* MenuItemView.swift */; };
 		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
 		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
 		E9EF3FB226280E2B004729B5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF3FB126280E2B004729B5 /* WidgetKit.framework */; };
@@ -113,6 +114,7 @@
 		E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoSinceDate.swift"; sourceTree = "<group>"; };
 		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
+		E9E7E52A2643477400443186 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
 		E9EF3FB026280E2B004729B5 /* MarinDeckExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MarinDeckExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,9 +258,19 @@
 			path = Const;
 			sourceTree = "<group>";
 		};
+		E9E7E52E2643477E00443186 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E9EA8A3225FF53A400561975 /* MenuViewController.swift */,
+				E9E7E52A2643477400443186 /* MenuItemView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		E9EA8A3525FF53AB00561975 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9E7E52E2643477E00443186 /* Menu */,
 				E9EFE097261D9D7E00ABBAC8 /* Debuger */,
 				E929E803260097C100211FD2 /* Settings */,
 				E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */,
@@ -266,7 +278,6 @@
 				E9732AAC25ADDDFD0068F632 /* ViewController.swift */,
 				E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */,
 				E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */,
-				E9EA8A3225FF53A400561975 /* MenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,6 +482,7 @@
 				E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */,
 				E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */,
 				E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */,
+				E9E7E52B2643477400443186 /* MenuItemView.swift in Sources */,
 				E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */,
 				E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */,
 				E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */,

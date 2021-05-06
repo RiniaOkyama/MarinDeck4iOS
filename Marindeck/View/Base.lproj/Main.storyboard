@@ -497,17 +497,73 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestAccount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eai-3F-GbR">
-                                <rect key="frame" x="25" y="140" width="230" height="25"/>
+                                <rect key="frame" x="25" y="140" width="230" height="25.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Zj-807">
-                                <rect key="frame" x="25" y="167" width="230" height="18"/>
+                                <rect key="frame" x="25" y="167.5" width="230" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ba-KR-x9x">
+                                <rect key="frame" x="12" y="217.5" width="256" height="561.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="21c-6I-ALx">
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="164"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47l-ux-vNe" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="256" height="52"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="SfQ-6q-CB9"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="person" catalog="system"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="プロフィール(まだ)"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGg-ez-ShH" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="56" width="256" height="52"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="ubE-wy-SkR"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="arrow.clockwise" catalog="system"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="リロード"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsG-wW-U0B" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="112" width="256" height="52"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="xDf-oP-Vrs"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="カラムの編集(まだ)"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="rectangle.stack.fill" catalog="system"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="47l-ux-vNe" secondAttribute="trailing" id="33j-dU-ows"/>
+                                            <constraint firstItem="KGg-ez-ShH" firstAttribute="leading" secondItem="21c-6I-ALx" secondAttribute="leading" id="3VO-Nu-mtY"/>
+                                            <constraint firstAttribute="trailing" secondItem="KGg-ez-ShH" secondAttribute="trailing" id="mZo-8b-cK8"/>
+                                            <constraint firstItem="47l-ux-vNe" firstAttribute="leading" secondItem="21c-6I-ALx" secondAttribute="leading" id="rZP-nE-7oS"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="21c-6I-ALx" firstAttribute="top" secondItem="3Ba-KR-x9x" secondAttribute="top" id="2EX-f5-bC1"/>
+                                    <constraint firstItem="21c-6I-ALx" firstAttribute="leading" secondItem="3Ba-KR-x9x" secondAttribute="leading" id="LXz-wT-HV6"/>
+                                    <constraint firstItem="21c-6I-ALx" firstAttribute="width" secondItem="3Ba-KR-x9x" secondAttribute="width" id="XxQ-JQ-TFg"/>
+                                    <constraint firstAttribute="bottom" secondItem="21c-6I-ALx" secondAttribute="bottom" id="eJY-P7-riQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="21c-6I-ALx" secondAttribute="trailing" id="ouS-AX-Ztc"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="88c-hh-IzT"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -515,6 +571,8 @@
                             <constraint firstItem="H9N-or-ZyM" firstAttribute="leading" secondItem="88c-hh-IzT" secondAttribute="leading" constant="25" id="0cv-4S-ezr"/>
                             <constraint firstAttribute="bottom" secondItem="N1Q-iw-ns0" secondAttribute="bottom" constant="25" id="1lr-O3-MPK"/>
                             <constraint firstItem="eai-3F-GbR" firstAttribute="leading" secondItem="88c-hh-IzT" secondAttribute="leading" constant="25" id="2ia-zz-kS6"/>
+                            <constraint firstItem="3Ba-KR-x9x" firstAttribute="top" secondItem="QZQ-Zj-807" secondAttribute="bottom" constant="32" id="3DJ-Kk-lf7"/>
+                            <constraint firstItem="88c-hh-IzT" firstAttribute="trailing" secondItem="3Ba-KR-x9x" secondAttribute="trailing" constant="12" id="9gW-ko-Tas"/>
                             <constraint firstItem="88c-hh-IzT" firstAttribute="trailing" secondItem="eai-3F-GbR" secondAttribute="trailing" constant="25" id="G2n-dC-uur"/>
                             <constraint firstItem="eai-3F-GbR" firstAttribute="top" secondItem="H9N-or-ZyM" secondAttribute="bottom" constant="16" id="L0A-rx-uAF"/>
                             <constraint firstItem="N1Q-iw-ns0" firstAttribute="centerY" secondItem="nyB-cX-Xhh" secondAttribute="centerY" id="P88-ry-jXU"/>
@@ -522,7 +580,9 @@
                             <constraint firstItem="H9N-or-ZyM" firstAttribute="top" secondItem="IHq-iu-1Os" secondAttribute="top" constant="64" id="WFI-wV-wa6"/>
                             <constraint firstItem="88c-hh-IzT" firstAttribute="trailing" secondItem="QZQ-Zj-807" secondAttribute="trailing" constant="25" id="cHC-vQ-Ert"/>
                             <constraint firstItem="QZQ-Zj-807" firstAttribute="leading" secondItem="88c-hh-IzT" secondAttribute="leading" constant="25" id="eHV-Ff-UXv"/>
+                            <constraint firstItem="3Ba-KR-x9x" firstAttribute="leading" secondItem="88c-hh-IzT" secondAttribute="leading" constant="12" id="kUN-Dz-hTq"/>
                             <constraint firstAttribute="trailing" secondItem="N1Q-iw-ns0" secondAttribute="trailing" constant="130" id="odo-fy-2XU"/>
+                            <constraint firstItem="N1Q-iw-ns0" firstAttribute="top" secondItem="3Ba-KR-x9x" secondAttribute="bottom" constant="32" id="tTu-TQ-KY3"/>
                             <constraint firstItem="QZQ-Zj-807" firstAttribute="top" secondItem="eai-3F-GbR" secondAttribute="bottom" constant="2" id="uWD-uU-CQP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nyB-cX-Xhh" secondAttribute="trailing" constant="32" id="uj7-5F-Dig"/>
                         </constraints>
@@ -530,6 +590,8 @@
                     <connections>
                         <outlet property="idLabel" destination="QZQ-Zj-807" id="UQN-N5-yE9"/>
                         <outlet property="nameLabel" destination="eai-3F-GbR" id="kjP-hR-KIk"/>
+                        <outlet property="profileMenu" destination="47l-ux-vNe" id="R7N-Rx-qZa"/>
+                        <outlet property="reloadMenu" destination="KGg-ez-ShH" id="l1R-pu-OTi"/>
                         <outlet property="userIconImageView" destination="H9N-or-ZyM" id="3kN-fk-HkY"/>
                     </connections>
                 </viewController>
@@ -539,10 +601,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="ladybug" catalog="system" width="128" height="128"/>
         <image name="logo2" width="2430" height="1080"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="tweet" width="1080" height="1080"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
