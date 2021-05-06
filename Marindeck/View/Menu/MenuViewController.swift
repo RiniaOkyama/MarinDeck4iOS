@@ -9,6 +9,7 @@ import UIKit
 
 protocol MenuDelegate {
     func openSettings()
+    func reload()
 }
 
 class MenuViewController: UIViewController {
@@ -17,6 +18,9 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var userIconImageView: UIImageView!
+    
+    @IBOutlet weak var profileMenu: MenuItemView!
+    @IBOutlet weak var reloadMenu: MenuItemView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +31,18 @@ class MenuViewController: UIViewController {
         userIconImageView.clipsToBounds = true
         userIconImageView.layer.cornerRadius = 30
         
+        profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
+        reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
 
+
+    }
+    
+    @objc func profileTapped() {
+        print("profileTapped")
+    }
+    
+    @objc func reloadTapped() {
+        delegate.reload()
     }
     
     func setUserIcon(url:String){

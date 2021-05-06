@@ -586,7 +586,9 @@ extension ViewController: WKNavigationDelegate {
 }
 
 extension ViewController: MenuDelegate {
-    
+    func reload() {
+        webView.reload()
+    }
 }
 
 extension ViewController: ImageViewerDelegate {
