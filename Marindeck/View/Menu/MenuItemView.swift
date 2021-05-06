@@ -78,5 +78,21 @@ final class MenuItemView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: target, action: action)
         self.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.backgroundColor = .clear
+        })
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.backgroundColor = .clear
+        })
+    }
 
 }

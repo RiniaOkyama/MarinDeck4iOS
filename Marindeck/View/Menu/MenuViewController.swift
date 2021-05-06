@@ -38,10 +38,17 @@ class MenuViewController: UIViewController {
     }
     
     @objc func profileTapped() {
-        print("profileTapped")
+        self.profileMenu.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.profileMenu.backgroundColor = .clear
+        })
     }
     
     @objc func reloadTapped() {
+        self.reloadMenu.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.reloadMenu.backgroundColor = .clear
+        })
         delegate.reload()
     }
     

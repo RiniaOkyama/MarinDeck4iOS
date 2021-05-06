@@ -61,6 +61,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
 //            cell.applyButton.setTitle("適用", for: .normal)
             cell.applyButton.backgroundColor = .systemGray6 // teal
             cell.applyButton.setTitle("利用不可", for: .normal)
+            cell.applyButton.setImage(UIImage(), for: .normal)
         }
         
         return cell

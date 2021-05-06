@@ -91,7 +91,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         webConfiguration.userContentController = userContentController
 
-        mainDeckView.backgroundColor = .red
+//        mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
         
         // あほくさ
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         
         webView.addGestureRecognizer(edgePan)
 //        view.addGestureRecognizer(edgePan)
-        webView.backgroundColor = .white
+        webView.backgroundColor = .clear
 
 
         let deckURL = URL(string: "https://tweetdeck.twitter.com")
@@ -138,9 +138,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
         let doneItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(dismissKeyboard) )
         let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let iconSpaceItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        iconSpaceItem.width = 8
         let gifItem = UIBarButtonItem(image: UIImage(named: "gif"), style: .plain, target: self, action: #selector(openSelectGif))
-        doneItem.tintColor = .black
-        toolbar.setItems([gifItem, flexibleSpaceItem, doneItem], animated: false)
+        let photoItem = UIBarButtonItem(image: UIImage(named: "photo"), style: .plain, target: self, action: #selector(openSelectGif))
+        
+        gifItem.tintColor = .label
+        photoItem.tintColor = .label
+        doneItem.tintColor = .label
+        toolbar.setItems([photoItem, iconSpaceItem, gifItem, flexibleSpaceItem, doneItem], animated: false)
         toolbar.sizeToFit()
 
         webView.addIndexAccessoryView(toolbar: toolbar)
@@ -169,9 +175,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     func setupView() {
         self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         self.bottomBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
-        self.bottomBackView.backgroundColor = .green
+//        self.bottomBackView.backgroundColor = .green
         isBottomBackViewHidden = true
-        self.view.backgroundColor = .green
+//        self.view.backgroundColor = .green
         self.topBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         
         imageView.center = view.center
@@ -409,7 +415,10 @@ extension ViewController: WKScriptMessageHandler {
 
 //            webView.anchorAll(equalTo: mainDeckView)
             webView.frame = mainDeckView.bounds
-            webView.backgroundColor = .cyan
+            
+            #if DEBUG
+//                webView.backgroundColor = .cyan
+            #endif
             
             menuVC.setUserIcon(url: getUserIcon())
 
