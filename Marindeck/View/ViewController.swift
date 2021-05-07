@@ -118,9 +118,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         edgePan.edges = .left
         edgePan.delegate = self
         
+        self.webView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         webView.addGestureRecognizer(edgePan)
-//        view.addGestureRecognizer(edgePan)
-        webView.backgroundColor = .clear
+        let interaction = UIContextMenuInteraction(delegate: self)
+        webView.addInteraction(interaction)
 
 
         let deckURL = URL(string: "https://tweetdeck.twitter.com")
@@ -167,11 +168,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     func setupView() {
         self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         self.bottomBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
-//        self.bottomBackView.backgroundColor = .green
-        isBottomBackViewHidden = true
-//        self.view.backgroundColor = .green
         self.topBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
-        
+        isBottomBackViewHidden = true
         imageView.center = view.center
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 15
@@ -802,3 +800,45 @@ extension ViewController: GiphyDelegate {
 //        return [edit, delete]
 //    }
 //}
+
+
+extension ViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
+        if imgurl.1.count == 0 {
+            return nil
+        }
+        if imgurl.1[0] == "" {
+            print("img is nil...")
+            return nil
+        }
+//        let imgs = imgurl.1.map({
+//            url2UIImage(url: $0)
+//        })
+
+//        self.view.addSubview(imageView)
+//        let imageViewer = Optik.imageViewer(
+//                withImages: imgs,
+//                initialImageDisplayIndex: imgurl.0,
+//                delegate: self
+//        )
+//        imageViewer.view.backgroundColor = .none
+//        setBlurView()
+    
+        let previewProvider: () -> UIViewController? = { [unowned self] in
+            return ImageHapticPreviewViewController(image: url2UIImage(url: imgurl.1[imgurl.0]))
+//                return Optik.imageViewer(
+//                    withImages: [url2UIImage(url: imgurl.1[imgurl.0])]
+//    //                initialImageDisplayIndex: imgurl.0,
+//    //                delegate: self
+//            )
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
+            let importAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in }
+            let createAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in }
+            return UIMenu(title: "全部まだできないよ", children: [importAction, createAction])
+        }
+    }
+        
+}
