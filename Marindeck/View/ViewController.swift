@@ -12,6 +12,10 @@ import SafariServices
 import Optik
 import GiphyUISDK
 
+#if DEBUG
+import FLEX
+#endif
+
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
@@ -149,17 +153,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         toolbar.sizeToFit()
 
         webView.addIndexAccessoryView(toolbar: toolbar)
-
-        
-        // TEST ////////////////////////////////////////////////////////////
-        
-        //Use image's path to create NSData
-        
-//        print(data)
-        
-        
-        // ////////////////////////////////////////////////////////////////
-
     }
     
     func gestureRecognizer(
@@ -191,8 +184,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         tweetFloatingBtn.layer.shadowRadius = 4
 //        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         tweetFloatingBtn.setImage(UIImage(named: "tweet")!)
-        tweetFloatingBtn.baseButton.imageView.frame.size = CGSize(width: 50, height: 50)
-        tweetFloatingBtn.baseButton.imageView.center = tweetFloatingBtn.baseButton.center
         tweetFloatingBtn.tapped = tweetPressed
         
         let debugAction = NDTweetBtnAction(
@@ -210,9 +201,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                 handler: { (NDTweetBtnAction) -> Void in
                     self.tweetPressed()
                 })
-        
-        tweetFloatingBtn.actionBtn2.imageView.frame.size = CGSize(width: 50, height: 50)
-        tweetFloatingBtn.actionBtn2.imageView.center = CGPoint(x: tweetFloatingBtn.actionBtn2.bounds.width / 2, y: tweetFloatingBtn.actionBtn2.bounds.height / 2)
 
         tweetFloatingBtn.addAction(action: debugAction)
         tweetFloatingBtn.addAction(action: gifAction)
@@ -229,9 +217,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         
 //        menuView.translatesAutoresizingMaskIntoConstraints = true
 //        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+
     }
     
 
+    @objc func onOrientationDidChange(notification: NSNotification) {
+        // FIXME
+        mainDeckView.bounds = view.bounds
+        webView.frame = mainDeckView.bounds
+        mainDeckBlurView.frame.size = mainDeckView.bounds.size
+    }
+    
     override var canBecomeFirstResponder: Bool {
         get { return true }
     }
@@ -240,6 +238,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         
+        webView.frame = mainDeckView.bounds
+        
+        #if DEBUG
+            FLEXManager.shared.showExplorer()
+        #endif
 //        self.menuView.frame.origin.x = -self.menuView.frame.width
     }
 
@@ -351,6 +354,13 @@ h.insertAdjacentElement('beforeend', s)
         return (userName, userID)
     }
     
+    func isColumnScroll(_ bool: Bool) {
+        let isScroll = bool ? "on" : "off"
+        webView.evaluateJavaScript("columnScroll.\(isScroll)()") { object, error in
+            print("webViewLog : ", error ?? "成功")
+        }
+    }
+    
     @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
         let move:CGPoint = sender.translation(in: view)
         
@@ -365,9 +375,10 @@ h.insertAdjacentElement('beforeend', s)
         self.view.layoutIfNeeded()
         
         if (sender.state == .began){
-            print("began") // FIXME Column move disable
-            menuView.translatesAutoresizingMaskIntoConstraints = true
-            mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+            print("began")
+//            isColumnScroll(false)
+            menuView.translatesAutoresizingMaskIntoConstraints = false
+            mainDeckView.translatesAutoresizingMaskIntoConstraints = false
             
             menuVC.setUserIcon(url: getUserIcon())
             let (name, id) = getUserNameID()
@@ -379,7 +390,11 @@ h.insertAdjacentElement('beforeend', s)
         }
         
         else if(sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
-            print("cancel or end or fail") // FIXME Column move enable
+            print("cancel or end or fail")
+//            isColumnScroll(true)
+            menuView.translatesAutoresizingMaskIntoConstraints = true
+            mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+            
             if mainDeckView.frame.origin.x > self.view.frame.width/3{
                 isMenuOpen = true
                 UIView.animate(withDuration: 0.3, animations: {
@@ -406,8 +421,6 @@ h.insertAdjacentElement('beforeend', s)
         // reset
         sender.setTranslation(CGPoint.zero, in: view)
     }
-    
-
 
 }
 
@@ -443,7 +456,7 @@ extension ViewController: WKScriptMessageHandler {
             menuVC.setUserIcon(url: getUserIcon())
 
         case "jsCallbackHandler":
-            print("JS Log:", message.body)
+            print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
 
         case "imageViewPos":
             guard let imgpos = message.body as? [Int] else {
@@ -573,7 +586,42 @@ extension ViewController: WKScriptMessageHandler {
 // MARK: - 10 WKWebView ui delegate
 extension ViewController: WKUIDelegate {
     // delegate
-
+    func webView(_ webView: WKWebView, contextMenuConfigurationForElement elementInfo: WKContextMenuElementInfo, completionHandler: @escaping (UIContextMenuConfiguration?) -> Void) {
+        guard let url = elementInfo.linkURL?.absoluteString else {
+            completionHandler(nil)
+            return
+        }
+        print(url)
+        if url == "https://tweetdeck.twitter.com/#" {
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
+            completionHandler(configuration)
+            return
+        }
+        // FIXME
+        else if url.hasPrefix("https://twitter.com/") {
+//            completionHandler(nil)
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
+            completionHandler(configuration)
+            return
+        }
+        
+        else if url.hasPrefix("https://t.co/") {
+            let imageTweet = UIAction(title: "写真をツイート（できん）", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { _ in print("Send to Friend") }
+            let imageSave = UIAction(title: "写真を保存（できん）", image: UIImage(systemName: "square.and.arrow.down")) { _ in print("Send to Friend") }
+            
+            let previewProvider: () -> SFSafariViewController? = { [unowned self] in
+                    return SFSafariViewController(url: elementInfo.linkURL!)
+                }
+            
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { _ in
+              UIMenu(title: "", children: [imageTweet, imageSave])
+            }
+            completionHandler(configuration)
+        }else {
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
+            completionHandler(configuration)
+        }
+    }
 }
 
 // MARK: - 11 WKWebView WKNavigation delegate
@@ -583,10 +631,14 @@ extension ViewController: WKNavigationDelegate {
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
-        let host = url?.host
-        print(host, url)
+        guard let host = url?.host else {
+            decisionHandler(.cancel)
+            return
+        }
         if host == "tweetdeck.twitter.com" || host == "mobile.twitter.com" {
             decisionHandler(.allow)
+        }else if host.hasPrefix("https://t.co/") {
+            decisionHandler(.cancel)
         }else{
             let safariVC = SFSafariViewController(url: url!)
             present(safariVC, animated: true, completion: nil)
@@ -735,3 +787,18 @@ extension ViewController: GiphyDelegate {
         GPHCache.shared.clear()
     }
 }
+
+
+//extension AlbumViewController {
+//    public override var previewActionItems: [UIPreviewActionItem] {
+//        let edit = UIPreviewAction(title: "編集", style: .default) { _, _ in
+//            print("編集をタップ")
+//        }
+//
+//        let delete = UIPreviewAction(title: "削除", style: .destructive) { _, _ in
+//            print("削除をタップ")
+//        }
+//
+//        return [edit, delete]
+//    }
+//}

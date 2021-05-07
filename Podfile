@@ -10,6 +10,7 @@ target 'Marindeck' do
   pod 'markymark'  # markdown
   pod 'Giphy', :podspec => 'https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec'
   #pod 'HighlightJS'
+  pod 'FLEX', :configurations => ['Debug'] # Debuger
 
 
 
