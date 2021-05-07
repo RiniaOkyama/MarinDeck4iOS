@@ -41,6 +41,7 @@
 		E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */; };
 		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
 		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
+		E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */; };
 		E9E7E52B2643477400443186 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7E52A2643477400443186 /* MenuItemView.swift */; };
 		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
 		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
@@ -122,6 +123,7 @@
 		E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoSinceDate.swift"; sourceTree = "<group>"; };
 		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
+		E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHapticPreviewViewController.swift; sourceTree = "<group>"; };
 		E9E7E52A2643477400443186 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				E93F5736264416AB00593DF4 /* NDTweetBtn.swift */,
+				E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
+				E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */,
 				E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */,
 				E9A8507F25D3CD240084A00C /* Error+.swift in Sources */,
 				E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */,
