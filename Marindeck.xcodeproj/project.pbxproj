@@ -174,7 +174,6 @@
 		E929E803260097C100211FD2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E93F57352644167700593DF4 /* CustomView */,
 				E93F57042643A81200593DF4 /* Theme */,
 				E9BA5A912623FD9900E27F14 /* CustomJS */,
 				E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */,
@@ -298,6 +297,7 @@
 		E9EA8A3525FF53AB00561975 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E93F57352644167700593DF4 /* CustomView */,
 				E9E7E52E2643477E00443186 /* Menu */,
 				E9EFE097261D9D7E00ABBAC8 /* Debuger */,
 				E929E803260097C100211FD2 /* Settings */,
@@ -708,7 +708,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,7 +734,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

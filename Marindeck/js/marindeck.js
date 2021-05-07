@@ -43,7 +43,35 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
         }
     }
 })();
-　
+
+
+// カラムのスクロール。 Menu開くときにカラムと一緒に動かなくするため。
+const columnScroll = {
+  style: null,
+  init: () => {
+    if (!columnScroll.style) {
+      columnScroll.style = document.createElement('style')
+      document.head.insertAdjacentElement('beforeend', columnScroll.style)
+    }
+    columnScroll.style.textContent = ''
+  },
+  on: () => {
+    columnScroll.init()
+    columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
+  },
+  off: () => {
+    columnScroll.init()
+    columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
+  }
+}
+
+document.addEventListener('touchstart', (e) => {
+  if (e.touches[0].clientX <= 8) {
+    columnScroll.off()
+  } else {
+    columnScroll.on()
+  }
+}, { passive: true })
 
 
 function loginStyled(){

@@ -9,7 +9,7 @@
 import UIKit
 
 /// View controller for displaying a collection of photos.
-internal final class AlbumViewController: UIViewController {
+open class AlbumViewController: UIViewController {
     
     private struct Constants {
         static let spacingBetweenImages: CGFloat = 40
@@ -50,11 +50,11 @@ internal final class AlbumViewController: UIViewController {
     
     // MARK: Override properties
     
-    override var prefersStatusBarHidden : Bool {
+    open override var prefersStatusBarHidden : Bool {
         return viewDidAppear
     }
     
-    override var preferredStatusBarUpdateAnimation : UIStatusBarAnimation {
+    open override var preferredStatusBarUpdateAnimation : UIStatusBarAnimation {
         return .fade
     }
     
@@ -105,19 +105,19 @@ internal final class AlbumViewController: UIViewController {
         setupPageViewController()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("Invalid initializer.")
     }
     
     // MARK: - Override functions
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         setupDesign()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if !viewDidAppear {
@@ -135,7 +135,7 @@ internal final class AlbumViewController: UIViewController {
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: { (_) in
@@ -143,7 +143,7 @@ internal final class AlbumViewController: UIViewController {
             }, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
+    open override func didReceiveMemoryWarning() {
         cachedRemoteImages = [:]
     }
     
@@ -258,7 +258,7 @@ internal final class AlbumViewController: UIViewController {
 
 extension AlbumViewController: UIPageViewControllerDataSource {
     
-    func pageViewController(_ pageViewController: UIPageViewController,
+    public func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let imageViewController = viewController as? ImageViewController else {
             return nil
@@ -267,7 +267,7 @@ extension AlbumViewController: UIPageViewControllerDataSource {
         return self.imageViewController(forIndex: imageViewController.index - 1)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController,
+    public func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let imageViewController = viewController as? ImageViewController else {
             return nil
@@ -282,7 +282,7 @@ extension AlbumViewController: UIPageViewControllerDataSource {
 
 extension AlbumViewController: UIPageViewControllerDelegate {
     
-    func pageViewController(_ pageViewController: UIPageViewController,
+    public func pageViewController(_ pageViewController: UIPageViewController,
                             didFinishAnimating finished: Bool,
                                                previousViewControllers: [UIViewController],
                                                transitionCompleted completed: Bool) {
