@@ -24,8 +24,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     @IBOutlet weak var bottomBackView: UIView!
     @IBOutlet weak var bottomBackViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var topBackView: UIView!
-    @IBOutlet weak var debugFloatingBtn: UIButton!
-    @IBOutlet weak var tweetFloatingBtn: UIButton!
+    @IBOutlet weak var tweetFloatingBtn: NDTweetBtn!
     
     @IBOutlet weak var menuView: UIView!
     var menuVC: MenuViewController!
@@ -184,21 +183,42 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleAspectFill
-
-        debugFloatingBtn.layer.cornerRadius = 24
-        debugFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        debugFloatingBtn.layer.shadowColor = UIColor.black.cgColor
-        debugFloatingBtn.layer.shadowOpacity = 0.9
-        debugFloatingBtn.layer.shadowRadius = 4
-        debugFloatingBtn.isHidden = true
         
-        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
+//        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
         tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
         tweetFloatingBtn.layer.shadowOpacity = 0.3
         tweetFloatingBtn.layer.shadowRadius = 4
-        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-//        debugFloatingBtn.isHidden = true
+//        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        tweetFloatingBtn.setImage(UIImage(named: "tweet")!)
+        tweetFloatingBtn.baseButton.imageView.frame.size = CGSize(width: 50, height: 50)
+        tweetFloatingBtn.baseButton.imageView.center = tweetFloatingBtn.baseButton.center
+        tweetFloatingBtn.tapped = tweetPressed
+        
+        let debugAction = NDTweetBtnAction(
+                image: UIImage(systemName: "ladybug")!,
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.debugPressed()
+                })
+        let gifAction = NDTweetBtnAction(
+                image: UIImage(named: "gif")!.withRenderingMode(.alwaysTemplate),
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.openSelectGif()
+                })
+        let tweetAction = NDTweetBtnAction(
+                image: UIImage(named: "tweet")!,
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.tweetPressed()
+                })
+        
+        tweetFloatingBtn.actionBtn2.imageView.frame.size = CGSize(width: 50, height: 50)
+        tweetFloatingBtn.actionBtn2.imageView.center = CGPoint(x: tweetFloatingBtn.actionBtn2.bounds.width / 2, y: tweetFloatingBtn.actionBtn2.bounds.height / 2)
+
+        tweetFloatingBtn.addAction(action: debugAction)
+        tweetFloatingBtn.addAction(action: gifAction)
+        tweetFloatingBtn.addAction(action: tweetAction)
+        
+        tweetFloatingBtn.isHidden = true
         
         
         mainDeckView.backgroundColor = .none
@@ -400,7 +420,7 @@ extension ViewController: WKScriptMessageHandler {
                 // MARK: WKWebView Didload
         case "viewDidLoad":
             self.loadingIndicator.stopAnimating()
-            self.debugFloatingBtn.isHidden = false
+            self.tweetFloatingBtn.isHidden = false
             self.mainDeckView.isHidden = false
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
