@@ -45,6 +45,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     private let userDefaults = UserDefaults.standard
     private let env = ProcessInfo.processInfo.environment
 
+    private var imagePreviewSelectedIndex = 0
+    private var imagePreviewImageStrings: [String] = []
 
     lazy var loadingIndicator: UIActivityIndicatorView = {
         let ActivityIndicator = UIActivityIndicatorView()
@@ -130,9 +132,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         let myRequest = URLRequest(url: deckURL!)
         webView.load(myRequest)
         
-        if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-            registerForPreviewing(with: self, sourceView: view)
-        }
+//        if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//            registerForPreviewing(with: self, sourceView: view)
+//        }
         
         
         self.mainDeckView.addSubview(webView)
@@ -687,7 +689,8 @@ extension ViewController: ImageViewerDelegate {
 
 }
 
-extension ViewController: UIViewControllerPreviewingDelegate {
+//extension ViewController: UIViewControllerPreviewingDelegate {
+extension ViewController {
 
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
         guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
@@ -697,44 +700,45 @@ extension ViewController: UIViewControllerPreviewingDelegate {
         let index = valueStrings[0] as! Int
         let urls = valueStrings[1] as! [String]
 
-        print("value!!!!", index, urls)
-
         let imgUrls = urls.map({
             url2NomalImg($0)
         })
 
+        print("getPositionElements", index, imgUrls)
+
         return (index, imgUrls)
     }
 
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if isMenuOpen{return nil}
-        let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
-        if imgurl.1.count == 0 {
-            return nil
-        }
-        if imgurl.1[0] == "" {
-            print("img is nil...")
-            return nil
-        }
-        let imgs = imgurl.1.map({
-            url2UIImage(url: $0)
-        })
-
-        self.view.addSubview(imageView)
-        let imageViewer = Optik.imageViewer(
-                withImages: imgs,
-                initialImageDisplayIndex: imgurl.0,
-                delegate: self
-        )
-//        imageViewer.view.backgroundColor = .none
-//        setBlurView()
-        return imageViewer
-
-    }
-
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        show(viewControllerToCommit, sender: self)
-    }
+    // Peek and Pop
+//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+//        if isMenuOpen{return nil}
+//        let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
+//        if imgurl.1.count == 0 {
+//            return nil
+//        }
+//        if imgurl.1[0] == "" {
+//            print("img is nil...")
+//            return nil
+//        }
+//        let imgs = imgurl.1.map({
+//            url2UIImage(url: $0)
+//        })
+//
+//        self.view.addSubview(imageView)
+//        let imageViewer = Optik.imageViewer(
+//                withImages: imgs,
+//                initialImageDisplayIndex: imgurl.0,
+//                delegate: self
+//        )
+////        imageViewer.view.backgroundColor = .none
+////        setBlurView()
+//        return imageViewer
+//
+//    }
+//
+//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+//        show(viewControllerToCommit, sender: self)
+//    }
 
 }
 
@@ -813,19 +817,10 @@ extension ViewController: UIContextMenuInteractionDelegate {
             print("img is nil...")
             return nil
         }
-//        let imgs = imgurl.1.map({
-//            url2UIImage(url: $0)
-//        })
+        
+        imagePreviewSelectedIndex = imgurl.0
+        imagePreviewImageStrings = imgurl.1
 
-//        self.view.addSubview(imageView)
-//        let imageViewer = Optik.imageViewer(
-//                withImages: imgs,
-//                initialImageDisplayIndex: imgurl.0,
-//                delegate: self
-//        )
-//        imageViewer.view.backgroundColor = .none
-//        setBlurView()
-    
         let previewProvider: () -> UIViewController? = { [unowned self] in
             return ImageHapticPreviewViewController(image: url2UIImage(url: imgurl.1[imgurl.0]))
 //                return Optik.imageViewer(
@@ -838,6 +833,23 @@ extension ViewController: UIContextMenuInteractionDelegate {
             let importAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in }
             let createAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in }
             return UIMenu(title: "全部まだできないよ", children: [importAction, createAction])
+        }
+    }
+    
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.preferredCommitStyle = .pop
+        animator.addCompletion {
+            let imgs = self.imagePreviewImageStrings.map({
+                url2UIImage(url: $0)
+            })
+            self.view.addSubview(self.imageView)
+            let imageViewer = Optik.imageViewer(
+                    withImages: imgs,
+                    initialImageDisplayIndex: self.imagePreviewSelectedIndex,
+                    delegate: self
+            )
+            self.present(imageViewer, animated: false, completion: nil)
         }
     }
         
