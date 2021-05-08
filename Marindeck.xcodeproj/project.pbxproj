@@ -42,6 +42,9 @@
 		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
 		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
 		E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */; };
+		E9C2CC1C26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */; };
+		E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */; };
+		E9C2CC2426469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */; };
 		E9E7E52B2643477400443186 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7E52A2643477400443186 /* MenuItemView.swift */; };
 		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
 		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
@@ -124,6 +127,9 @@
 		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
 		E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHapticPreviewViewController.swift; sourceTree = "<group>"; };
+		E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+WKScriptMessageHandler.swift"; sourceTree = "<group>"; };
+		E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewCotroller+ViewSetup.swift"; sourceTree = "<group>"; };
+		E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIContextMenuInteractionDelegate.swift"; sourceTree = "<group>"; };
 		E9E7E52A2643477400443186 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
@@ -288,6 +294,18 @@
 			path = Const;
 			sourceTree = "<group>";
 		};
+		E9C2CC1A264697CA003EC5A0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E9732AAC25ADDDFD0068F632 /* ViewController.swift */,
+				E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */,
+				E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */,
+				E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */,
+				E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		E9E7E52E2643477E00443186 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,10 +322,9 @@
 				E9E7E52E2643477E00443186 /* Menu */,
 				E9EFE097261D9D7E00ABBAC8 /* Debuger */,
 				E929E803260097C100211FD2 /* Settings */,
+				E9C2CC1A264697CA003EC5A0 /* Core */,
 				E9732AB325ADDE000068F632 /* LaunchScreen.storyboard */,
 				E9732AAE25ADDDFD0068F632 /* Main.storyboard */,
-				E9732AAC25ADDDFD0068F632 /* ViewController.swift */,
-				E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */,
 				E993A2E625B07F90003DAE3A /* AlamofireImageDownloader.swift */,
 			);
 			path = View;
@@ -511,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E993A2E725B07F90003DAE3A /* AlamofireImageDownloader.swift in Sources */,
+				E9C2CC1C26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift in Sources */,
 				E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */,
 				E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */,
 				E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */,
@@ -520,9 +538,11 @@
 				E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */,
 				E993A30D25B2CB96003DAE3A /* SettingsTableViewController.swift in Sources */,
 				E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */,
+				E9C2CC2426469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift in Sources */,
 				E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */,
 				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
+				E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
 				E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */,
 				E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */,
