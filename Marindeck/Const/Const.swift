@@ -6,13 +6,66 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct UserDefaultsKey {
     static let customJSs = "customJSs"
     static let isDebugBtnHidden = "isDebugBtnHidden"
+    static let themeID = "themeID"
 }
 
 struct EnvKeys {
     static let GIPHY_API_KEY = "GIPHY_API_KEY"
+}
+
+// Codable?
+struct Theme{
+    var title: String // テーマ名
+    var id: String // かさらないように。一度変更したら変更しないでください。
+    var description: String = "" // テーマの説明
+    var user: String
+    var icon: String // テーマのアイコンURL。アイコン作るセンスがなければ設定しないほうがいい。
+
+    var js: String // テーマのJS。テーマに関係ないjsは含まないこと。
+    var css: String // テーマのCSS。
+    
+//    var backgroundColor: String = UIColor.systemBackground.toHexString()
+//    var secondaryBackgroundColor: String = UIColor.secondarySystemBackground.toHexString()
+//    var labelColor: String = UIColor.label.toHexString()
+//    var subLabelColor: String = UIColor.secondaryLabel.toHexString()
+//    var tweetButtonColor: String = ""
+    
+    var backgroundColor: UIColor = .systemBackground
+    var secondaryBackgroundColor: UIColor = .secondarySystemBackground
+    var labelColor: UIColor = .label
+    var subLabelColor: UIColor = .secondaryLabel
+    var tweetButtonColor: UIColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+}
+
+let themes = [
+    Theme(title: "デフォルト", id: "0", description: "デフォルトでず。", user: "TweetDeck", icon: "", js: "", css: ""),
+    Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "", js: getFile2Text("Theme-Midnight"), css: "",
+          backgroundColor: .black,
+          secondaryBackgroundColor: UIColor(hex: "242424"),
+          labelColor: .white,
+          subLabelColor: .lightGray,
+          tweetButtonColor: UIColor(hex: "242424")
+    ),
+    Theme(title: "Wumpus", id: "2", description: "hakunagi", user: "hakunagi", icon: "", js: "", css: ""),
+]
+
+fileprivate func getFile2Text(_ forResource: String, ofType: String = "js") -> String{
+    if let filepath = Bundle.main.path(forResource: forResource, ofType: ofType) {
+        do {
+            let contents = try String(contentsOfFile: filepath)
+            return contents
+        } catch {
+            print("\(forResource) load error")
+            return ""
+        }
+    } else {
+        print("\(forResource) not found!")
+        return ""
+    }
 }

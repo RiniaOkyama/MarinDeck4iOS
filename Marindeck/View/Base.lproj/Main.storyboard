@@ -311,6 +311,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="ログアウト" id="GRH-kJ-jqs">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5vr-mv-1I6">
+                                        <rect key="frame" x="20" y="658.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5vr-mv-1I6" id="8z0-jL-chq">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ログアウト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Of-JB-4oA">
+                                                    <rect key="frame" x="20" y="11" width="87" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemPinkColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Ve0-Md-qIV" id="cPA-LG-jaF"/>
@@ -400,6 +421,112 @@
             </objects>
             <point key="canvasLocation" x="2202.898550724638" y="-56.25"/>
         </scene>
+        <!--Theme Detail View Controller-->
+        <scene sceneID="G2N-70-r1o">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="ggo-oy-6YR" customClass="ThemeDetailViewController" customModule="Marindeck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dpJ-DS-94y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marindeck_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-R1-m4H">
+                                <rect key="frame" x="32" y="60" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="C8E-rg-dxR"/>
+                                    <constraint firstAttribute="height" constant="100" id="ow6-ET-YjZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="デフォルト" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDC-rS-v8P">
+                                <rect key="frame" x="152" y="68" width="238" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By TweetDeck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHq-On-ZPg">
+                                <rect key="frame" x="152" y="103" width="238" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="デフォルトです。" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEG-80-AEU">
+                                <rect key="frame" x="32" y="258" width="350" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="hZk-C9-1eZ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="YNF-zV-suL">
+                                <rect key="frame" x="32" y="192" width="350" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuw-34-Vjr">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="42"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="bvA-Ve-bFk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="プレビュー">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="preview" destination="ggo-oy-6YR" eventType="touchUpInside" id="rAg-OU-EpA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKz-ke-eMH">
+                                        <rect key="frame" x="182" y="0.0" width="168" height="42"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="8fw-KQ-0Ev"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                        <state key="normal" title="適用">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="apply" destination="ggo-oy-6YR" eventType="touchUpInside" id="AHL-VH-vfa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="8vv-DI-07J"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zh8-cE-wRX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zh8-cE-wRX" firstAttribute="trailing" secondItem="HHq-On-ZPg" secondAttribute="trailing" constant="24" id="8A1-rd-BoZ"/>
+                            <constraint firstItem="HHq-On-ZPg" firstAttribute="top" secondItem="NDC-rS-v8P" secondAttribute="bottom" constant="12" id="EN9-9q-sHm"/>
+                            <constraint firstItem="YNF-zV-suL" firstAttribute="leading" secondItem="zh8-cE-wRX" secondAttribute="leading" constant="32" id="Jtp-Vo-ihH"/>
+                            <constraint firstItem="NDC-rS-v8P" firstAttribute="top" secondItem="zh8-cE-wRX" secondAttribute="top" constant="24" id="RIM-5k-GKi"/>
+                            <constraint firstItem="YNF-zV-suL" firstAttribute="top" secondItem="Oc4-R1-m4H" secondAttribute="bottom" constant="32" id="UsK-cL-1pf"/>
+                            <constraint firstItem="zh8-cE-wRX" firstAttribute="trailing" secondItem="NDC-rS-v8P" secondAttribute="trailing" constant="24" id="VkR-Vm-e4E"/>
+                            <constraint firstItem="Oc4-R1-m4H" firstAttribute="top" secondItem="zh8-cE-wRX" secondAttribute="top" constant="16" id="VqU-3I-Oct"/>
+                            <constraint firstItem="CEG-80-AEU" firstAttribute="top" secondItem="YNF-zV-suL" secondAttribute="bottom" constant="24" id="azi-db-Srk"/>
+                            <constraint firstItem="HHq-On-ZPg" firstAttribute="leading" secondItem="Oc4-R1-m4H" secondAttribute="trailing" constant="20" id="btC-Mt-nrI"/>
+                            <constraint firstItem="CEG-80-AEU" firstAttribute="leading" secondItem="zh8-cE-wRX" secondAttribute="leading" constant="32" id="dUs-n5-BQ3"/>
+                            <constraint firstItem="NDC-rS-v8P" firstAttribute="leading" secondItem="Oc4-R1-m4H" secondAttribute="trailing" constant="20" id="n53-D6-XDy"/>
+                            <constraint firstItem="Oc4-R1-m4H" firstAttribute="leading" secondItem="zh8-cE-wRX" secondAttribute="leading" constant="32" id="tK3-77-C0m"/>
+                            <constraint firstItem="zh8-cE-wRX" firstAttribute="trailing" secondItem="CEG-80-AEU" secondAttribute="trailing" constant="32" id="uyY-qa-TeQ"/>
+                            <constraint firstItem="zh8-cE-wRX" firstAttribute="trailing" secondItem="YNF-zV-suL" secondAttribute="trailing" constant="32" id="zVg-dm-MrC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="applyBtn" destination="nKz-ke-eMH" id="dGK-ld-I9F"/>
+                        <outlet property="descriptionTextView" destination="CEG-80-AEU" id="cRB-J5-KGz"/>
+                        <outlet property="iconView" destination="Oc4-R1-m4H" id="EUq-Ju-OPt"/>
+                        <outlet property="previewBtn" destination="cuw-34-Vjr" id="b5o-Jx-YSr"/>
+                        <outlet property="titleLabel" destination="NDC-rS-v8P" id="eQY-Cl-fRr"/>
+                        <outlet property="userLabel" destination="HHq-On-ZPg" id="Us7-Ys-2SJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzE-xe-X1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2929" y="-56"/>
+        </scene>
         <!--License View Controller-->
         <scene sceneID="T2C-dg-iC2">
             <objects>
@@ -457,7 +584,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYW-nF-qdq" customClass="MarkDownTextView" customModule="markymark">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYW-nF-qdq" customClass="MarkDownTextView" customModule="markymark">
                                 <rect key="frame" x="32" y="94" width="350" height="682"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -480,7 +607,6 @@
                             <constraint firstItem="Jff-MD-rJR" firstAttribute="trailing" secondItem="NYW-nF-qdq" secondAttribute="trailing" constant="32" id="ABZ-cg-HCq"/>
                             <constraint firstItem="x3V-SQ-2Sn" firstAttribute="top" secondItem="Jff-MD-rJR" secondAttribute="top" constant="32" id="I17-Eg-op3"/>
                             <constraint firstItem="NYW-nF-qdq" firstAttribute="leading" secondItem="Jff-MD-rJR" secondAttribute="leading" constant="32" id="KJI-C9-ziJ"/>
-                            <constraint firstItem="Jff-MD-rJR" firstAttribute="bottom" secondItem="NYW-nF-qdq" secondAttribute="bottom" constant="32" id="N4i-GU-vcs"/>
                             <constraint firstItem="NYW-nF-qdq" firstAttribute="top" secondItem="x3V-SQ-2Sn" secondAttribute="bottom" constant="32" id="f8f-Cb-kSP"/>
                         </constraints>
                     </view>
@@ -625,6 +751,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Marindeck_logo" width="566.92999267578125" height="566.92999267578125"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="logo2" width="2430" height="1080"/>
@@ -650,6 +777,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

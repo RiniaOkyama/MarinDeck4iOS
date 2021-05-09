@@ -7,39 +7,28 @@
 
 import UIKit
 
-struct Theme: Codable{
-    var title: String // テーマ名
-    var id: String // かさらないように。一度変更したら変更しないでください。
-    var description: String // テーマの説明
-    var icon: String // テーマのアイコンURL。アイコン作るセンスがなければ設定しないほうがいい。
-//    var screenshots: [UIImage] // スクリーンショット。
-    var js: String // テーマのJS。テーマに関係ないjsは含まないこと。
-    var css: String // テーマのCSS。
-}
-
 class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var applyID = "0"
-    
-    let themes = [
-        Theme(title: "デフォルト", id: "0", description: "デフォルトでず。", icon: "", js: "", css: ""),
-        Theme(title: "Midnight", id: "1", description: "Midra", icon: "", js: "", css: ""),
-        Theme(title: "Wumpus", id: "2", description: "hakunagi", icon: "", js: "", css: ""),
-    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "着せ替え"
-        
-        view.backgroundColor = .secondarySystemBackground
-        
+                        
         tableView.register(UINib(nibName: "ThemeTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .secondarySystemBackground
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = .secondaryBackgroundColor
+        tableView.backgroundColor = .secondaryBackgroundColor
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,18 +42,31 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         let theme = themes[indexPath.row]
         cell.titleLabel.text = theme.title
         cell.descriptionLabel.text = theme.description
+        
+        cell.titleLabel.textColor = .labelColor
+        cell.descriptionLabel.textColor = .labelColor
+        cell.backView.backgroundColor = .backgroundColor
+        cell.applyButton.setTitleColor(.labelColor, for: .normal)
+        cell.applyButton.tintColor = .labelColor
+        cell.applyButton.backgroundColor = .secondaryBackgroundColor
+
 
         if applyID == theme.id{
             cell.applyButton.setTitle("適用済", for: .disabled)
-            cell.applyButton.backgroundColor = .systemGray6
+            cell.applyButton.backgroundColor = .secondaryBackgroundColor
         }else {
 //            cell.applyButton.setTitle("適用", for: .normal)
-            cell.applyButton.backgroundColor = .systemGray6 // teal
+            cell.applyButton.backgroundColor = .secondaryBackgroundColor // teal
             cell.applyButton.setTitle("利用不可", for: .normal)
             cell.applyButton.setImage(UIImage(), for: .normal)
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "Detail") as! ThemeDetailViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
