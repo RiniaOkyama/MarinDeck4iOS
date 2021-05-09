@@ -21,18 +21,18 @@ class ThemeTableViewCell: UITableViewCell {
         backView.layer.cornerRadius = 8
         applyButton.layer.cornerRadius = 6
         applyButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-
+    
         selectionStyle = .none
         
-        self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
+//        self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
     }
     
-    @objc func tapped() {
-        backView.backgroundColor = .gray
-        UIView.animate(withDuration: 0.3, animations: {
-            self.backView.backgroundColor = .systemBackground
-        })
-    }
+//    @objc func tapped() {
+//        backView.backgroundColor = .gray
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.backView.backgroundColor = .systemBackground
+//        })
+//    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -14,6 +14,9 @@
 		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
 		E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F5736264416AB00593DF4 /* NDTweetBtn.swift */; };
 		E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E96769D025AE0F4D00D1826C /* mtdeck.js */; };
+		E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97247F8264795DB0044C87E /* ThemeDetailViewController.swift */; };
+		E9724811264837640044C87E /* UIColor+themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9724810264837640044C87E /* UIColor+themes.swift */; };
+		E9724816264847870044C87E /* Theme-Midnight.js in Resources */ = {isa = PBXBuildFile; fileRef = E9724815264847870044C87E /* Theme-Midnight.js */; };
 		E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AA825ADDDFD0068F632 /* AppDelegate.swift */; };
 		E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */; };
 		E9732AAD25ADDDFD0068F632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9732AAC25ADDDFD0068F632 /* ViewController.swift */; };
@@ -97,6 +100,9 @@
 		E93F5736264416AB00593DF4 /* NDTweetBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDTweetBtn.swift; sourceTree = "<group>"; };
 		E96769C725ADEFA600D1826C /* Marindeck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Marindeck.entitlements; sourceTree = "<group>"; };
 		E96769D025AE0F4D00D1826C /* mtdeck.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mtdeck.js; sourceTree = "<group>"; };
+		E97247F8264795DB0044C87E /* ThemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDetailViewController.swift; sourceTree = "<group>"; };
+		E9724810264837640044C87E /* UIColor+themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+themes.swift"; sourceTree = "<group>"; };
+		E9724815264847870044C87E /* Theme-Midnight.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "Theme-Midnight.js"; sourceTree = "<group>"; };
 		E9732AA525ADDDFD0068F632 /* Marindeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marindeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9732AA825ADDDFD0068F632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 				E93F57072643A87A00593DF4 /* ThemeViewController.swift */,
 				E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */,
 				E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */,
+				E97247F8264795DB0044C87E /* ThemeDetailViewController.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -207,6 +214,14 @@
 				E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		E97248142648474F0044C87E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E9724815264847870044C87E /* Theme-Midnight.js */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		E9732A9C25ADDDFD0068F632 = {
@@ -248,6 +263,7 @@
 		E993A26B25AEDFE5003DAE3A /* js */ = {
 			isa = PBXGroup;
 			children = (
+				E97248142648474F0044C87E /* Theme */,
 				E9EFB19B262C069F00F6997A /* moduleraid.js */,
 				E9836FE42625AF5300FE711D /* marindeck-css.js */,
 				E96769D025AE0F4D00D1826C /* mtdeck.js */,
@@ -268,6 +284,7 @@
 				E9A8507B25D3CD240084A00C /* Error+.swift */,
 				E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */,
 				E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */,
+				E9724810264837640044C87E /* UIColor+themes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9724816264847870044C87E /* Theme-Midnight.js in Resources */,
 				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
 				E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */,
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
@@ -550,6 +568,7 @@
 				E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */,
 				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
 				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
+				E9724811264837640044C87E /* UIColor+themes.swift in Sources */,
 				E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */,
 				E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */,
 				E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */,
@@ -558,6 +577,7 @@
 				E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */,
 				E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */,
 				E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */,
+				E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

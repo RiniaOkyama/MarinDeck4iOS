@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class SettingsTableViewController: UITableViewController {
 
@@ -13,6 +14,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.title = "設定"
+        self.view.backgroundColor = .secondaryBackgroundColor
         self.navigationController?.navigationBar.barTintColor = .systemBackground
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -64,6 +66,33 @@ class SettingsTableViewController: UITableViewController {
                     UIApplication.shared.open(url)
                 }
             }
+        }
+        
+        else if indexPath == IndexPath(row: 0, section: 3) {
+            let alert: UIAlertController = UIAlertController(title: "ログアウト", message: "先にいってしまうでござるか", preferredStyle:  .alert)
+
+            let defaultAction: UIAlertAction = UIAlertAction(title: "ログアウト", style: .destructive, handler:{
+                (action: UIAlertAction!) -> Void in
+                
+                URLSession.shared.reset {}
+                UserDefaults.standard.synchronize()
+                let dataStore = WKWebsiteDataStore.default()
+                dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                    dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
+                }
+                
+                let bvc = self.presentingViewController as? ViewController
+                bvc?.webView.reload()
+            })
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
+                (action: UIAlertAction!) -> Void in })
+
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+
+            present(alert, animated: true, completion: nil)
+            
+
         }
     }
 

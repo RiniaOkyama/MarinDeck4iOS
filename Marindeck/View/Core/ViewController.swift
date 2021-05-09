@@ -292,6 +292,13 @@ h.insertAdjacentElement('beforeend', s)
         let index = valueStrings[0] as! Int
         let urls = valueStrings[1] as! [String]
 
+//        var imgUrls: [String] = []
+//        for url in urls {
+//            if let imgurl = url2NomalImg(url) {
+//                imgUrls.append(imgurl)
+//
+//            }
+//        }
         let imgUrls = urls.map({
             url2NomalImg($0)
         })
@@ -322,8 +329,11 @@ h.insertAdjacentElement('beforeend', s)
 
     func url2NomalImg(_ str: String) -> String {
         var r = url2SmallImg(str)
-        r = r.replacingOccurrences(of: "&name=small", with: "&name=large")
-        return r
+        if let index = r.range(of: "&name")?.lowerBound{
+            r = String(r[...index]) // + "name=orig"
+            return r
+        }
+        return ""
     }
     
     func fetchCustomJSs() -> [CustomJS] {
@@ -339,9 +349,19 @@ h.insertAdjacentElement('beforeend', s)
     func imagePreviewer(index: Int, urls: [String]) {
         print("imagePreviewer index: \(index), url: \(urls)")
 
+//        var imgUrls: [String] = []
+//        for url in urls {
+//            if let imgurl = url2NomalImg(url) {
+//                imgUrls.append(imgurl)
+//
+//            }
+//        }
         var imgUrls = urls.map({
             url2NomalImg($0)
         })
+        
+        print("parsed", imgUrls)
+        
         if imgUrls.count == 0 {
             return
         }
