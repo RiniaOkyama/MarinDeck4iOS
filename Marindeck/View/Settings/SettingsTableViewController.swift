@@ -65,6 +65,7 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.section == 1 {
             if indexPath.row == 2 {
                 let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
+                vc.viewController = presentingViewController as! ViewController
                 navigationController?.pushViewController(vc, animated: true)
             }
         }

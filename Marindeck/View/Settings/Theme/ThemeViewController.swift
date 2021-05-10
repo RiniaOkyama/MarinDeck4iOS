@@ -11,12 +11,15 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    var applyID = "0"
+    public var viewController: ViewController!
+    var applyID: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "着せ替え"
                         
+        updateApplyID()
+        
         tableView.register(UINib(nibName: "ThemeTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -31,7 +34,13 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
         tableView.backgroundColor = .secondaryBackgroundColor
+        
+        updateApplyID()
         tableView.reloadData()
+    }
+    
+    func updateApplyID() {
+        applyID = UserDefaults.standard.string(forKey: UserDefaultsKey.themeID) ?? "0"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,15 +62,14 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.applyButton.tintColor = .labelColor
         cell.applyButton.backgroundColor = .secondaryBackgroundColor
 
-
         if applyID == theme.id{
-            cell.applyButton.setTitle("適用済", for: .disabled)
+            cell.applyButton.setTitle("適用済", for: .normal)
+            cell.applyButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
             cell.applyButton.backgroundColor = .secondaryBackgroundColor
         }else {
-//            cell.applyButton.setTitle("適用", for: .normal)
-            cell.applyButton.backgroundColor = .secondaryBackgroundColor // teal
-            cell.applyButton.setTitle("利用不可", for: .normal)
-            cell.applyButton.setImage(UIImage(), for: .normal)
+            cell.applyButton.setTitle("適用", for: .normal)
+            cell.applyButton.backgroundColor = .systemTeal // teal
+            cell.applyButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
         }
         
         return cell
@@ -70,6 +78,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "Detail") as! ThemeDetailViewController
         vc.theme = themes[indexPath.row]
+        vc.viewController = viewController
         navigationController?.pushViewController(vc, animated: true)
     }
     

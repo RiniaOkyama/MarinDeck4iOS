@@ -24,6 +24,8 @@ class ThemeDetailViewController: UIViewController {
             userLabel?.text = "by \(theme?.user)"
         }
     }
+    
+    public var viewController: ViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,7 @@ class ThemeDetailViewController: UIViewController {
     
     @IBAction func apply() {
         UserDefaults.standard.setValue( theme?.id, forKey: UserDefaultsKey.themeID)
+        viewController.webView.reload()
         reload()
     }
     
