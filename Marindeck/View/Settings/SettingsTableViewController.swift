@@ -31,6 +31,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.tintColor = .labelColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         self.view.backgroundColor = .secondaryBackgroundColor
         titleLabel.forEach({
             $0.textColor = .labelColor

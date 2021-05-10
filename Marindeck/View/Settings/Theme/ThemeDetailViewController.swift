@@ -15,6 +15,15 @@ class ThemeDetailViewController: UIViewController {
     
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var previewBtn: UIButton!
+    
+    public var theme: Theme? = nil {
+        didSet {
+            titleLabel?.text = theme?.title
+            descriptionTextView?.text = theme?.description
+//            iconView.image = theme?.icon
+            userLabel?.text = "by \(theme?.user)"
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +31,11 @@ class ThemeDetailViewController: UIViewController {
         self.title = "デフォルト"
         applyBtn.layer.cornerRadius = 6
         previewBtn.layer.cornerRadius = 6
+        
+        titleLabel?.text = theme?.title
+        descriptionTextView?.text = theme?.description
+//            iconView.image = theme?.icon
+        userLabel?.text = theme?.user
         
         reload()
     }
@@ -37,12 +51,12 @@ class ThemeDetailViewController: UIViewController {
     }
     
     @IBAction func preview() {
-        UserDefaults.standard.setValue("0", forKey: UserDefaultsKey.themeID)
-        reload()
+//        UserDefaults.standard.setValue("0", forKey: UserDefaultsKey.themeID)
+//        reload()
     }
     
     @IBAction func apply() {
-        UserDefaults.standard.setValue("1", forKey: UserDefaultsKey.themeID)
+        UserDefaults.standard.setValue( theme?.id, forKey: UserDefaultsKey.themeID)
         reload()
     }
     
