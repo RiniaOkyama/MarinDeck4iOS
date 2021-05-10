@@ -28,6 +28,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.tintColor = .labelColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
         tableView.backgroundColor = .secondaryBackgroundColor
         tableView.reloadData()
@@ -68,6 +69,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "Detail") as! ThemeDetailViewController
+        vc.theme = themes[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
