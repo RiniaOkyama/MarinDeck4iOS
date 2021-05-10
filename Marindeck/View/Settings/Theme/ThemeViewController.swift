@@ -26,6 +26,8 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = .labelColor
         view.backgroundColor = .secondaryBackgroundColor
         tableView.backgroundColor = .secondaryBackgroundColor
         tableView.reloadData()
