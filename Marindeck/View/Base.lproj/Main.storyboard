@@ -339,6 +339,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="xNb-hY-XGb"/>
+                    <connections>
+                        <outletCollection property="titleLabel" destination="25W-XT-4PI" collectionClass="NSMutableArray" id="PuQ-ZS-ecD"/>
+                        <outletCollection property="titleLabel" destination="kGa-Gz-6XG" collectionClass="NSMutableArray" id="IT7-gO-6fG"/>
+                        <outletCollection property="titleLabel" destination="3jh-83-S3a" collectionClass="NSMutableArray" id="2Dn-RL-x2y"/>
+                        <outletCollection property="titleLabel" destination="YkZ-WD-38a" collectionClass="NSMutableArray" id="0L1-8c-LtO"/>
+                        <outletCollection property="titleLabel" destination="G19-zP-4LD" collectionClass="NSMutableArray" id="G6B-pi-v0H"/>
+                        <outletCollection property="titleLabel" destination="Z1e-0c-usZ" collectionClass="NSMutableArray" id="puO-R5-73t"/>
+                        <outletCollection property="titleLabel" destination="eRj-KM-XGr" collectionClass="NSMutableArray" id="Kfx-dT-iPq"/>
+                        <outletCollection property="titleLabel" destination="gSK-oI-7Qi" collectionClass="NSMutableArray" id="azB-ww-OX9"/>
+                        <outletCollection property="titleLabel" destination="GQ1-eM-49f" collectionClass="NSMutableArray" id="Mvz-Xz-obz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Om-ic-6z1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

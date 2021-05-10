@@ -9,12 +9,12 @@ import UIKit
 import WebKit
 
 class SettingsTableViewController: UITableViewController {
+    @IBOutlet var titleLabel: [UILabel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "設定"
-        self.view.backgroundColor = .secondaryBackgroundColor
         self.navigationController?.navigationBar.barTintColor = .systemBackground
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -24,6 +24,18 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = .labelColor
+        self.view.backgroundColor = .secondaryBackgroundColor
+        titleLabel.forEach({
+            $0.textColor = .labelColor
+        })
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -97,13 +109,19 @@ class SettingsTableViewController: UITableViewController {
     }
 
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+
 //        cell.selectionStyle = .none
-//
-//        return cell
-//    }
+        cell.backgroundColor = .backgroundColor
+        cell.textLabel?.textColor = .red
+        cell.contentView.backgroundColor = .backgroundColor
+//        cell.backgroundView?.backgroundColor = .yellow
+
+        return cell
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
