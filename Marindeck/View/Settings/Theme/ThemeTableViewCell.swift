@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol ThemeTableViewCellDelegate {
+    func apply(tag: Int)
+}
+
 class ThemeTableViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
+    
+    public var delegate: ThemeTableViewCellDelegate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +31,10 @@ class ThemeTableViewCell: UITableViewCell {
         selectionStyle = .none
         
 //        self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
+    }
+    
+    @IBAction func apply() {
+        delegate.apply(tag: self.tag)
     }
     
 //    @objc func tapped() {
