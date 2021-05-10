@@ -30,13 +30,16 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        reloadColor()
+        updateApplyID()
+        tableView.reloadData()
+    }
+    
+    func reloadColor() {
         navigationController?.navigationBar.tintColor = .labelColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
         tableView.backgroundColor = .secondaryBackgroundColor
-        
-        updateApplyID()
-        tableView.reloadData()
     }
     
     func updateApplyID() {
@@ -61,6 +64,8 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.applyButton.setTitleColor(.labelColor, for: .normal)
         cell.applyButton.tintColor = .labelColor
         cell.applyButton.backgroundColor = .secondaryBackgroundColor
+        cell.tag = indexPath.row
+        cell.delegate = self
 
         if applyID == theme.id{
             cell.applyButton.setTitle("適用済", for: .normal)
@@ -82,4 +87,16 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+extension ThemeViewController: ThemeTableViewCellDelegate {
+    func apply(tag: Int) {
+        let id = themes[tag].id
+        if applyID == id { return }
+        UserDefaults.standard.setValue(id, forKey: UserDefaultsKey.themeID)
+        viewController.webView.reload()
+        updateApplyID()
+        tableView.reloadData()
+        reloadColor()
+    }
 }
