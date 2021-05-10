@@ -55,6 +55,16 @@ let themes = [
     Theme(title: "Wumpus", id: "2", description: "hakunagi", user: "hakunagi", icon: "", js: "", css: ""),
 ]
 
+func fetchTheme() -> Theme{
+    let userDefaults = UserDefaults.standard
+    if let themeID = userDefaults.string(forKey: UserDefaultsKey.themeID){
+        return themes.filter({ $0.id == themeID })[0]
+    }else {
+        return themes[0]
+    }
+}
+
+
 fileprivate func getFile2Text(_ forResource: String, ofType: String = "js") -> String{
     if let filepath = Bundle.main.path(forResource: forResource, ofType: ofType) {
         do {

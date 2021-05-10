@@ -436,6 +436,10 @@ extension ViewController: WKNavigationDelegate {
         for item in cjss {
             debugJS(script: item.js)
         }
+        
+        let theme = fetchTheme()
+        debugJS(script: theme.js)
+        
     }
 
     public func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
