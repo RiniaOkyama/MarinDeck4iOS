@@ -28,7 +28,7 @@ class ThemeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "デフォルト"
+        self.title = theme?.title
         applyBtn.layer.cornerRadius = 6
         previewBtn.layer.cornerRadius = 6
         
