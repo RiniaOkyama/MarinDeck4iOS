@@ -153,9 +153,10 @@ public class NDTweetBtn: UIView {
     }
     
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        baseBtnTouchUp()
+        if !isPressing {
+            baseBtnTouchUp()
+        }
     }
-    
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isPressing {
             isPressing = !isPressing
