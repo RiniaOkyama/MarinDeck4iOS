@@ -134,12 +134,44 @@ public class NDTweetBtn: UIView {
         }
     }
     
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        baseButton.imageView.frame.size = CGSize(width: 20, height: 20)
+        baseButton.imageView.center = baseButton.center
+
+        let animation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.duration = 0.1
+        animation.toValue = self.baseButton.bounds.width / 2
+        animation.autoreverses = false
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        baseButton.layer.add(animation, forKey: nil)
+
+        UIView.animate(withDuration: 0.1, animations: {
+            self.baseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }, completion: { _ in
+        })
+    }
+    
+    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        baseBtnTouchUp()
+    }
+    
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isPressing {
             isPressing = !isPressing
         }else {
             tapped?()
+            baseBtnTouchUp()
         }
+    }
+    
+    private func baseBtnTouchUp() {
+        baseButton.imageView.frame.size = CGSize(width: 30, height: 30)
+        baseButton.imageView.center = baseButton.center
+
+        UIView.animate(withDuration: 0.1, animations: {
+            self.baseButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: { _ in })
     }
 
     public func setImage(_ image: UIImage) {
