@@ -73,6 +73,8 @@ extension ViewController: WKScriptMessageHandler {
             let urls = valueStrings[1] as! [String]
             self.imagePreviewer(index: index, urls: urls)
             
+        case "isTweetButtonHidden":
+            tweetFloatingBtn.isHidden = message.body as? Bool ?? false
         default:
             return
         }

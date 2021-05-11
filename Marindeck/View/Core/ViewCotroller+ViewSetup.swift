@@ -89,6 +89,7 @@ extension ViewController {
         userContentController.add(self, name: "viewDidLoad")
         userContentController.add(self, name: "openSettings")
         userContentController.add(self, name: "loadImage")
+        userContentController.add(self, name: "isTweetButtonHidden")
 
         webConfiguration.userContentController = userContentController
 

@@ -74,6 +74,11 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: true })
 
 
+function isTweetButtonHidden(bool) {
+    webkit.messageHandlers.isTweetButtonHidden.postMessage(bool);
+}
+
+
 function loginStyled(){
     document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").hidden = true;
     document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").style.backgroundColor = "#252525";
