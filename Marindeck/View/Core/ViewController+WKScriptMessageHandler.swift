@@ -22,9 +22,10 @@ extension ViewController: WKScriptMessageHandler {
 //            self.view.addSubview(mainDeckBlurView)
             // FIXME
 //            self.bottomBackView.backgroundColor = #colorLiteral(red: 0.1075549349, green: 0.1608583331, blue: 0.2208467424, alpha: 1)
-//            self.view.backgroundColor = UIColor(hex: "F5F5F5")
-//            self.bottomBackView.backgroundColor = UIColor(hex: "ffffff")
-//            self.topBackView.backgroundColor = UIColor(hex: "F5F5F5")
+            self.view.backgroundColor = .backgroundColor
+            self.webView.backgroundColor = .backgroundColor
+            self.bottomBackView.backgroundColor = .backgroundColor
+            self.topBackView.backgroundColor = .backgroundColor
 //            self.bottomBackView.isHidden = false
             // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる
             webView.translatesAutoresizingMaskIntoConstraints = false

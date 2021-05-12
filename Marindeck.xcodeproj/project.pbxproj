@@ -11,6 +11,7 @@
 		E91470F1264AAF37009BC91E /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */; };
 		E9147106264B34C8009BC91E /* TermsOfUse.md in Resources */ = {isa = PBXBuildFile; fileRef = E9147105264B34C8009BC91E /* TermsOfUse.md */; };
 		E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E804260097DF00211FD2 /* LicenseViewController.swift */; };
+		E92CF6F4264B73960001A719 /* Theme-Frostclear.js in Resources */ = {isa = PBXBuildFile; fileRef = E92CF6F3264B73960001A719 /* Theme-Frostclear.js */; };
 		E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F57072643A87A00593DF4 /* ThemeViewController.swift */; };
 		E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */; };
 		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
@@ -98,6 +99,7 @@
 		E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		E9147105264B34C8009BC91E /* TermsOfUse.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TermsOfUse.md; sourceTree = "<group>"; };
 		E929E804260097DF00211FD2 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		E92CF6F3264B73960001A719 /* Theme-Frostclear.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "Theme-Frostclear.js"; sourceTree = "<group>"; };
 		E93F57072643A87A00593DF4 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				E9724815264847870044C87E /* Theme-Midnight.js */,
+				E92CF6F3264B73960001A719 /* Theme-Frostclear.js */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */,
 				E9836FE82625C50D00FE711D /* marindeck.css in Resources */,
 				E9EFB1AA262C1F5F00F6997A /* .env in Resources */,
+				E92CF6F4264B73960001A719 /* Theme-Frostclear.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

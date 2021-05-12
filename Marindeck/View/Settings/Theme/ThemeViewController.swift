@@ -59,13 +59,14 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.descriptionLabel.text = theme.description
         
         cell.titleLabel.textColor = .labelColor
-        cell.descriptionLabel.textColor = .labelColor
+        cell.descriptionLabel.textColor = .subLabelColor
         cell.backView.backgroundColor = .backgroundColor
         cell.applyButton.setTitleColor(.labelColor, for: .normal)
         cell.applyButton.tintColor = .labelColor
         cell.applyButton.backgroundColor = .secondaryBackgroundColor
         cell.tag = indexPath.row
         cell.delegate = self
+        cell.iconView.image = UIImage(named: theme.icon) ?? UIImage(named: "Marindeck_logo")
 
         if applyID == theme.id{
             cell.applyButton.setTitle("適用済", for: .normal)
@@ -75,6 +76,8 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.applyButton.setTitle("適用", for: .normal)
             cell.applyButton.backgroundColor = .systemTeal // teal
             cell.applyButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+            cell.applyButton.setTitleColor(.white, for: .normal)
+            cell.applyButton.tintColor = .white
         }
         
         return cell
