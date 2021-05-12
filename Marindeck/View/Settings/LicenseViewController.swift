@@ -73,10 +73,10 @@ class LicenseViewController: UIViewController {
         //Styling. See README for more styling options
         markDownView.styling.paragraphStyling.textColor = .label
         markDownView.styling.headingStyling.textColorsForLevels = [
-            .label, //H1 (i.e. # Title)
-            .label,  //H2, ... (i.e. ## Subtitle, ### Sub subtitle)
-            .label,
-            .label
+            .labelColor, //H1 (i.e. # Title)
+            .labelColor,  //H2, ... (i.e. ## Subtitle, ### Sub subtitle)
+            .labelColor,
+            .labelColor
         ]
 //        markDownView.styling.headingStyling.textColorsForLevels = [.orange, .black]
 //        markDownView.styling.linkStyling.textColor = .blue
