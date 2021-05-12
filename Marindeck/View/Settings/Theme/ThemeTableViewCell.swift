@@ -22,8 +22,9 @@ class ThemeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
+        iconView.clipsToBounds = true
+        iconView.layer.cornerRadius = iconView.frame.width / 2
         backView.layer.cornerRadius = 8
         applyButton.layer.cornerRadius = 6
         applyButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)

@@ -26,6 +26,8 @@ class ThemeDetailViewController: UIViewController {
     }
     
     public var viewController: ViewController!
+    
+    private var isApplied = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +36,14 @@ class ThemeDetailViewController: UIViewController {
         applyBtn.layer.cornerRadius = 6
         previewBtn.layer.cornerRadius = 6
         
+        iconView.clipsToBounds = true
+        iconView.layer.cornerRadius = iconView.frame.width / 2
+        iconView.image = UIImage(named: theme?.icon ?? "") ?? UIImage(named: "Marindeck_logo")
         titleLabel?.text = theme?.title
         descriptionTextView?.text = theme?.description
 //            iconView.image = theme?.icon
         userLabel?.text = theme?.user
-        
+    
         reload()
     }
     
@@ -50,6 +55,22 @@ class ThemeDetailViewController: UIViewController {
         titleLabel.textColor = .labelColor
         userLabel.textColor = .subLabelColor
         descriptionTextView.textColor = .subLabelColor
+        
+        if let themeID = UserDefaults.standard.string(forKey: UserDefaultsKey.themeID){
+            if themeID == theme?.id {
+                isApplied = true
+            }
+        }
+        
+        if isApplied {
+            applyBtn.backgroundColor = .backgroundColor
+            applyBtn.setTitle("適用済", for: .normal)
+            applyBtn.setTitleColor(.subLabelColor, for: .normal)
+
+        }else {
+            applyBtn.backgroundColor = .systemTeal
+            applyBtn.setTitle("適用", for: .normal)
+        }
     }
     
     @IBAction func preview() {
@@ -58,6 +79,7 @@ class ThemeDetailViewController: UIViewController {
     }
     
     @IBAction func apply() {
+        if isApplied { return }
         UserDefaults.standard.setValue( theme?.id, forKey: UserDefaultsKey.themeID)
         viewController.webView.reload()
         reload()

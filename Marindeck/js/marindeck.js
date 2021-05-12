@@ -1,6 +1,4 @@
-// FIXME: Background color なにかで管理。
 document.body.style.backgroundColor = "#15202b";
-//document.body.style.backgroundColor = "#efefef";
 // select 禁止
 document.documentElement.style.webkitUserSelect='none';
 // menu 禁止

@@ -44,7 +44,12 @@ struct Theme{
 }
 
 let themes = [
-    Theme(title: "デフォルト", id: "0", description: "デフォルトでず。", user: "TweetDeck", icon: "", js: "", css: ""),
+    Theme(title: "デフォルト", id: "0", description: "デフォルトでず。", user: "TweetDeck", icon: "", js: "", css: "",
+          backgroundColor: UIColor(hex: "15202b"),
+          secondaryBackgroundColor: UIColor(hex: "0d131a"),
+          labelColor: .white,
+          subLabelColor: .lightGray
+      ),
     Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "", js: getFile2Text("Theme-Midnight"), css: "",
           backgroundColor: .black,
           secondaryBackgroundColor: UIColor(hex: "242424"),
@@ -53,6 +58,13 @@ let themes = [
           tweetButtonColor: UIColor(hex: "242424")
     ),
     Theme(title: "Wumpus", id: "2", description: "hakunagi", user: "hakunagi", icon: "", js: "", css: ""),
+    Theme(title: "Frostclear", id: "3", user: "Midra", icon: "Frostclear-icon", js: getFile2Text("Theme-Frostclear"), css: "",
+          backgroundColor: UIColor(hex: "1a1a1a"),
+          secondaryBackgroundColor: UIColor(hex: "242424"),
+          labelColor: .white,
+          subLabelColor: .lightGray,
+          tweetButtonColor: UIColor(hex: "242424")
+    ),
 ]
 
 func fetchTheme() -> Theme{
