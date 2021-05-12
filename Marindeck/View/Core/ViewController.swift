@@ -257,7 +257,7 @@ h.insertAdjacentElement('beforeend', s)
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
             
-            if mainDeckView.frame.origin.x > self.view.frame.width/3{
+            if mainDeckView.frame.origin.x > self.menuView.frame.width / 2{
                 isMenuOpen = true
                 UIView.animate(withDuration: 0.3, animations: {
                     self.menuView.frame.origin.x = 0
