@@ -581,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="1492.753623188406" y="660.9375"/>
         </scene>
-        <!--View Controller-->
+        <!--Terms Of Use View Controller-->
         <scene sceneID="UxJ-Jj-2NQ">
             <objects>
-                <viewController id="yMM-At-PXX" sceneMemberID="viewController">
+                <viewController id="yMM-At-PXX" customClass="TermsOfUseViewController" customModule="Marindeck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fpj-1l-gDg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -595,33 +595,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYW-nF-qdq" customClass="MarkDownTextView" customModule="markymark">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOg-hA-66m">
                                 <rect key="frame" x="32" y="94" width="350" height="682"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text">
-                                        <string key="value">
-
-## クラッシュレポート
-アプリがクラッシュすると、問題の原因を修正するためにレポートが作成されます。このレポートには、通常は特徴的なコンピュータシステムに関する技術情報が含まれています。これらのレポートを送信するかどうかを選択できます。過去にレポートを送信することを選択した場合でも、設定でレポートをオフにすることができます。
-
-## お問い合わせ
-* ご質問やご要望等がございましたらメールでお知らせください。</string>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="ふぁえふえｆへｆへふえふぇうｈｆｈふｈふへｆはえふぁｓｆじゃｆじゃｓｆｋさｌｆｋｓｊｆかｊｓｆ">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="labelColor"/>
+                                            <font key="NSFont" size="14" name=".HiraKakuInterface-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jff-MD-rJR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="x3V-SQ-2Sn" firstAttribute="leading" secondItem="Jff-MD-rJR" secondAttribute="leading" constant="32" id="87D-TZ-XrL"/>
-                            <constraint firstItem="Jff-MD-rJR" firstAttribute="trailing" secondItem="NYW-nF-qdq" secondAttribute="trailing" constant="32" id="ABZ-cg-HCq"/>
+                            <constraint firstItem="dOg-hA-66m" firstAttribute="leading" secondItem="Jff-MD-rJR" secondAttribute="leading" constant="32" id="F5m-nK-qV6"/>
                             <constraint firstItem="x3V-SQ-2Sn" firstAttribute="top" secondItem="Jff-MD-rJR" secondAttribute="top" constant="32" id="I17-Eg-op3"/>
-                            <constraint firstItem="NYW-nF-qdq" firstAttribute="leading" secondItem="Jff-MD-rJR" secondAttribute="leading" constant="32" id="KJI-C9-ziJ"/>
-                            <constraint firstItem="NYW-nF-qdq" firstAttribute="top" secondItem="x3V-SQ-2Sn" secondAttribute="bottom" constant="32" id="f8f-Cb-kSP"/>
+                            <constraint firstItem="Jff-MD-rJR" firstAttribute="bottom" secondItem="dOg-hA-66m" secondAttribute="bottom" constant="32" id="I3n-88-yZB"/>
+                            <constraint firstItem="Jff-MD-rJR" firstAttribute="trailing" secondItem="dOg-hA-66m" secondAttribute="trailing" constant="32" id="Lsa-A5-BNz"/>
+                            <constraint firstItem="dOg-hA-66m" firstAttribute="top" secondItem="x3V-SQ-2Sn" secondAttribute="bottom" constant="32" id="Nlu-AF-oor"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hrx-dH-4PE"/>
+                    <connections>
+                        <outlet property="textView" destination="dOg-hA-66m" id="m92-9j-mHi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUo-Xs-EwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

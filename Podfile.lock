@@ -17,6 +17,7 @@ PODS:
   - libwebp/webp (1.2.0)
   - markymark (10.1.1)
   - Optik (0.4.0)
+  - SwiftyMarkdown (1.2.3)
 
 DEPENDENCIES:
   - AlamofireImage
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - Highlightr
   - markymark
   - Optik
+  - SwiftyMarkdown
 
 SPEC REPOS:
   trunk:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - libwebp
     - markymark
     - Optik
+    - SwiftyMarkdown
 
 EXTERNAL SOURCES:
   Giphy:
@@ -49,7 +52,8 @@ SPEC CHECKSUMS:
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   markymark: 29adb8789fa6b3db97b04b7585d65f13931b5aa5
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
+  SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: f2ffd6db03194b76a816dcabd5ac709030b872b8
+PODFILE CHECKSUM: c2b6f44acb867cff0ae3b0ad84b47be9dac3a183
 
 COCOAPODS: 1.10.1
