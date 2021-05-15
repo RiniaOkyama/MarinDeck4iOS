@@ -89,7 +89,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         // FIXME
         mainDeckView.bounds = view.bounds
         webView.frame = mainDeckView.bounds
-        mainDeckBlurView.frame.size = mainDeckView.bounds.size
+        mainDeckBlurView.frame.size = view.bounds.size
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -242,13 +242,14 @@ h.insertAdjacentElement('beforeend', s)
             menuView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckView.translatesAutoresizingMaskIntoConstraints = false
             
-            menuVC.setUserIcon(url: getUserIcon())
-            let (name, id) = getUserNameID()
-            menuVC.setUserNameID(name: name, id: id)
             mainDeckBlurView.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.2, animations: {
                 self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             })
+            
+            menuVC.setUserIcon(url: getUserIcon())
+            let (name, id) = getUserNameID()
+            menuVC.setUserNameID(name: name, id: id)
         }
         
         else if(sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
@@ -415,8 +416,8 @@ extension ViewController: WKNavigationDelegate {
         }
         if host == "tweetdeck.twitter.com" || host == "mobile.twitter.com" {
             decisionHandler(.allow)
-        }else if host.hasPrefix("https://t.co/") {
-            decisionHandler(.cancel)
+//        }else if host.hasPrefix("t.co") {
+//            decisionHandler(.cancel)
         }else{
             let safariVC = SFSafariViewController(url: url!)
             present(safariVC, animated: true, completion: nil)
