@@ -6,6 +6,7 @@
 [![Discord](https://img.shields.io/badge/Discord-join-blue)](https://discord.gg/JKsqaxcnCW)
 ![version](https://img.shields.io/badge/version-Alpha-red)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_shield)
+[<img src="https://user-images.githubusercontent.com/54408846/118393692-55b3a000-b67b-11eb-997b-073596be55fc.png" width=80>](https://b.hatena.ne.jp/entry/s/github.com/RiniaOkyama/MarinDeck4iOS)
 
 [<img src="https://dply.me/mcdh5i/button/large" alt="Try it on your device via DeployGate">](https://dply.me/mcdh5i#install)
 
