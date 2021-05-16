@@ -71,14 +71,20 @@ extension ViewController: UIContextMenuInteractionDelegate {
             return ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
-//            let tweetAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in }
+            let tweetAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in
+                guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+                self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
+                    print("gifLoad : ", error ?? "成功")
+                }
+                
+            }
             let likeAction = UIAction(title: "いいね", image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
                 self.positionTweetLike(x: Int(location.x), y: Int(location.y))
             }
             let saveAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in
                 UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
             }
-            return UIMenu(title: "", children: [likeAction, saveAction])
+            return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])
         }
     }
     
