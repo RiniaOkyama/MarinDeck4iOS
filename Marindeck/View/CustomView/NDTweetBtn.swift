@@ -320,25 +320,19 @@ public class NDTweetBtn: UIView {
     }
 
     private func whichActionBtn(point: CGPoint) -> Int? {
-//        let diff = point.x - point.y
-//        if diff > -70 && diff < 70 {
-//            return 1
-//        } else if diff < 70 {
-//            return 2
-//        } else if diff > 70 {
-//            return 0
-//        } else {
-//            return nil
-//        }
-        if self.actionBtn0.frame.contains(point) {
+        if cgRect2AboutRect(self.actionBtn0.frame).contains(point) {
             return 0
-        }else if self.actionBtn1.frame.contains(point) {
+        }else if cgRect2AboutRect(self.actionBtn1.frame).contains(point) {
             return 1
-        }else if self.actionBtn2.frame.contains(point) {
+        }else if cgRect2AboutRect(self.actionBtn2.frame).contains(point) {
             return 2
         }else {
             return nil
         }
+    }
+    
+    private func cgRect2AboutRect(_ rect: CGRect) -> CGRect {
+        return CGRect(x: rect.origin.x - 40, y: rect.origin.y - 40, width: rect.size.width + 40, height: rect.size.height + 40)
     }
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
