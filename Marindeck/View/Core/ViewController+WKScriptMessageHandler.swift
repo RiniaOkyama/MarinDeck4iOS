@@ -25,7 +25,9 @@ extension ViewController: WKScriptMessageHandler {
             self.view.backgroundColor = .backgroundColor
             self.webView.backgroundColor = .backgroundColor
             self.bottomBackView.backgroundColor = .backgroundColor
-            self.topBackView.backgroundColor = .backgroundColor
+            self.topBackView.backgroundColor = .topBarColor
+            
+            setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false
             // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる
             webView.translatesAutoresizingMaskIntoConstraints = false

@@ -40,6 +40,9 @@ struct Theme{
     var secondaryBackgroundColor: UIColor = .secondarySystemBackground
     var labelColor: UIColor = .label
     var subLabelColor: UIColor = .secondaryLabel
+    
+    var topBarColor: UIColor = #colorLiteral(red: 0.08278211206, green: 0.123489894, blue: 0.1700443327, alpha: 1)
+    var statusBarColor: UIStatusBarStyle = .lightContent
     var tweetButtonColor: UIColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
 }
 
@@ -73,9 +76,10 @@ let themes = [
           icon: "Dolce-icon",
           js: getFile2Text("Theme-Dolce_v2"), css: "",
           backgroundColor: #colorLiteral(red: 0.9286773205, green: 0.9065366387, blue: 0.831628263, alpha: 1),
-          secondaryBackgroundColor: UIColor(hex: "242424"),
-          labelColor: .white,
+          secondaryBackgroundColor: #colorLiteral(red: 0.9643818736, green: 0.9560024142, blue: 0.8829116225, alpha: 1),
+          labelColor: .darkGray,
           subLabelColor: .lightGray,
+          topBarColor: #colorLiteral(red: 0.8769347072, green: 0.4038944244, blue: 0.4008696377, alpha: 1),
           tweetButtonColor: UIColor(hex: "242424")
     ),
 ]

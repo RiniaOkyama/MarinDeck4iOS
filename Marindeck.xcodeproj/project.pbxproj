@@ -10,6 +10,7 @@
 		08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */; };
 		E91470F1264AAF37009BC91E /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */; };
 		E9147106264B34C8009BC91E /* TermsOfUse.md in Resources */ = {isa = PBXBuildFile; fileRef = E9147105264B34C8009BC91E /* TermsOfUse.md */; };
+		E921914C2650F504000435EA /* WKWebView+safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921914B2650F504000435EA /* WKWebView+safeAreaInsets.swift */; };
 		E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E804260097DF00211FD2 /* LicenseViewController.swift */; };
 		E92CF6F4264B73960001A719 /* Theme-Frostclear.js in Resources */ = {isa = PBXBuildFile; fileRef = E92CF6F3264B73960001A719 /* Theme-Frostclear.js */; };
 		E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F57072643A87A00593DF4 /* ThemeViewController.swift */; };
@@ -99,6 +100,7 @@
 		CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marindeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		E9147105264B34C8009BC91E /* TermsOfUse.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TermsOfUse.md; sourceTree = "<group>"; };
+		E921914B2650F504000435EA /* WKWebView+safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+safeAreaInsets.swift"; sourceTree = "<group>"; };
 		E929E804260097DF00211FD2 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		E92CF6F3264B73960001A719 /* Theme-Frostclear.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "Theme-Frostclear.js"; sourceTree = "<group>"; };
 		E93F57072643A87A00593DF4 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				E9823A0325FF8F7100A70AB4 /* UIImage+URL.swift */,
 				E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */,
 				E9724810264837640044C87E /* UIColor+themes.swift */,
+				E921914B2650F504000435EA /* WKWebView+safeAreaInsets.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */,
 				E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */,
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
+				E921914C2650F504000435EA /* WKWebView+safeAreaInsets.swift in Sources */,
 				E91470F1264AAF37009BC91E /* TermsOfUseViewController.swift in Sources */,
 				E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,

@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjS-Cn-qwX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="KlH-1P-gaW"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-se-7fd">
                                 <rect key="frame" x="0.0" y="895" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -25,17 +32,8 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95p-Pr-vfx">
-                                <rect key="frame" x="0.0" y="10" width="414" height="885"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjS-Cn-qwX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="FSm-N5-a84">
-                                        <variation key="heightClass=regular" constant="10"/>
-                                    </constraint>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="44" width="414" height="851"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-WB-8td" customClass="NDTweetBtn" customModule="Marindeck" customModuleProvider="target">
                                 <rect key="frame" x="338" y="742" width="56" height="56"/>
@@ -69,11 +67,11 @@
                             <constraint firstItem="AjS-Cn-qwX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d09-0m-ogF"/>
                             <constraint firstItem="I8j-5m-JKv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-280" id="fTj-H2-iip"/>
                             <constraint firstItem="95p-Pr-vfx" firstAttribute="leading" secondItem="I8j-5m-JKv" secondAttribute="trailing" id="iPh-n4-cSJ"/>
-                            <constraint firstItem="95p-Pr-vfx" firstAttribute="top" secondItem="AjS-Cn-qwX" secondAttribute="bottom" id="jqd-f7-y9r"/>
                             <constraint firstAttribute="bottom" secondItem="I8j-5m-JKv" secondAttribute="bottom" id="p7n-Hl-FDI"/>
                             <constraint firstItem="AjS-Cn-qwX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pTK-sD-kSY"/>
                             <constraint firstItem="95p-Pr-vfx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rup-dO-SGd"/>
                             <constraint firstAttribute="bottom" secondItem="gy9-se-7fd" secondAttribute="bottom" id="sc8-GJ-wBI"/>
+                            <constraint firstItem="95p-Pr-vfx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tA0-xy-O6Y"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="j6i-qu-9Zt" appends="YES" id="Ycu-Uv-A0D"/>

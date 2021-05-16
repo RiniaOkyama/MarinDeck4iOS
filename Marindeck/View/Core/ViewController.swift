@@ -107,7 +107,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     
     
     // MARK: StatusbarColor
-    private var statusBarStyle: UIStatusBarStyle = .default
+    private (set) var statusBarStyle: UIStatusBarStyle = .default
     func setStatusBarStyle(style: UIStatusBarStyle) {
         statusBarStyle = style
         self.setNeedsStatusBarAppearanceUpdate()
@@ -353,19 +353,7 @@ h.insertAdjacentElement('beforeend', s)
         return ""
     }
     
-    
-    func saveImage(image: UIImage, fileName: String ) -> Bool{
-        let pngImageData = image.pngData()
-        let documentsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appendingPathComponent(fileName)
-        do {
-            try pngImageData!.write(to: fileURL)
-        } catch {
-            return false
-        }
-        return true
-    }
-    
+
     func fetchCustomJSs() -> [CustomJS] {
         let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         var retArray: [CustomJS] = []
