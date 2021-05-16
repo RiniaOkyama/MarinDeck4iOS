@@ -74,7 +74,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidLoad()
         
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+        webView.frame = mainDeckView.bounds
         
+        #if DEBUG
+            FLEXManager.shared.showExplorer()
+        #endif
     }
     
     func gestureRecognizer(
@@ -95,17 +104,17 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     override var canBecomeFirstResponder: Bool {
         get { return true }
     }
+    
+    
+    // MARK: StatusbarColor
+    private var statusBarStyle: UIStatusBarStyle = .default
+    func setStatusBarStyle(style: UIStatusBarStyle) {
+        statusBarStyle = style
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.becomeFirstResponder()
-        
-        webView.frame = mainDeckView.bounds
-        
-        #if DEBUG
-            FLEXManager.shared.showExplorer()
-        #endif
-//        self.menuView.frame.origin.x = -self.menuView.frame.width
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
     }
 
     
@@ -285,7 +294,14 @@ h.insertAdjacentElement('beforeend', s)
         sender.setTranslation(CGPoint.zero, in: view)
     }
     
+    func positionTweetLike(x: Int, y: Int) {
+        webView.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { object, error in
+            print("touchPointTweetLike : ", error ?? "成功")
+        })
+    }
+    
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
+        print("position", x, y)
         guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
             return (0, [])
         }
@@ -335,6 +351,19 @@ h.insertAdjacentElement('beforeend', s)
             return r
         }
         return ""
+    }
+    
+    
+    func saveImage(image: UIImage, fileName: String ) -> Bool{
+        let pngImageData = image.pngData()
+        let documentsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(fileName)
+        do {
+            try pngImageData!.write(to: fileURL)
+        } catch {
+            return false
+        }
+        return true
     }
     
     func fetchCustomJSs() -> [CustomJS] {
