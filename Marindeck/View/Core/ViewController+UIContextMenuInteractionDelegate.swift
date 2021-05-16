@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 
 import Optik
+import SPAlert
 
 // MARK: - WKWebView ui delegate
 extension ViewController: WKUIDelegate {
@@ -64,14 +65,20 @@ extension ViewController: UIContextMenuInteractionDelegate {
         
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
+        let image = url2UIImage(url: imgurl.1[imgurl.0])
 
         let previewProvider: () -> UIViewController? = { [unowned self] in
-            return ImageHapticPreviewViewController(image: url2UIImage(url: imgurl.1[imgurl.0]))
+            return ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
-            let importAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in }
-            let createAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in }
-            return UIMenu(title: "全部まだできないよ", children: [importAction, createAction])
+//            let tweetAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in }
+            let likeAction = UIAction(title: "いいね", image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
+                self.positionTweetLike(x: Int(location.x), y: Int(location.y))
+            }
+            let saveAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
+            }
+            return UIMenu(title: "", children: [likeAction, saveAction])
         }
     }
     
@@ -90,6 +97,22 @@ extension ViewController: UIContextMenuInteractionDelegate {
             )
             self.present(imageViewer, animated: false, completion: nil)
         }
+    }
+    
+//    @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
+//       guard error == nil else {
+//          return
+//       }
+//        
+//    }
+    
+    @objc
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        guard error == nil else {
+            return
+        }
+        let alertView = SPAlertView(title: "保存しました", preset: .done)
+        alertView.present(duration: 0.7)
     }
         
 }

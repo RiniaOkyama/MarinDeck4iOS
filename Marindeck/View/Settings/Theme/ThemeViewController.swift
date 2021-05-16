@@ -56,7 +56,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let theme = themes[indexPath.row]
         cell.titleLabel.text = theme.title
-        cell.descriptionLabel.text = theme.description
+        cell.descriptionLabel.text = theme.user
         
         cell.titleLabel.textColor = .labelColor
         cell.descriptionLabel.textColor = .subLabelColor
@@ -74,7 +74,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.applyButton.backgroundColor = .secondaryBackgroundColor
         }else {
             cell.applyButton.setTitle("適用", for: .normal)
-            cell.applyButton.backgroundColor = .systemTeal // teal
+            cell.applyButton.backgroundColor = .systemTeal
             cell.applyButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
             cell.applyButton.setTitleColor(.white, for: .normal)
             cell.applyButton.tintColor = .white

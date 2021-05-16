@@ -57,7 +57,9 @@ let themes = [
           subLabelColor: .lightGray,
           tweetButtonColor: UIColor(hex: "242424")
     ),
-    Theme(title: "Wumpus", id: "2", description: "hakunagi", user: "hakunagi", icon: "", js: "", css: ""),
+    Theme(title: "Wumpus", id: "2",
+          description: "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです",
+          user: "hakunagi", icon: "", js: "", css: ""),
     
     Theme(title: "Frostclear", id: "3", user: "Midra", icon: "Frostclear-icon", js: getFile2Text("Theme-Frostclear"), css: "",
           backgroundColor: UIColor(hex: "1a1a1a"),

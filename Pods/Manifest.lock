@@ -17,6 +17,7 @@ PODS:
   - libwebp/webp (1.2.0)
   - markymark (10.1.1)
   - Optik (0.4.0)
+  - SPAlert (3.0.7)
   - SwiftyMarkdown (1.2.3)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - Highlightr
   - markymark
   - Optik
+  - SPAlert
   - SwiftyMarkdown
 
 SPEC REPOS:
@@ -37,6 +39,7 @@ SPEC REPOS:
     - libwebp
     - markymark
     - Optik
+    - SPAlert
     - SwiftyMarkdown
 
 EXTERNAL SOURCES:
@@ -52,8 +55,9 @@ SPEC CHECKSUMS:
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   markymark: 29adb8789fa6b3db97b04b7585d65f13931b5aa5
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
+  SPAlert: 5993dcf4f741001b65143066b53c3ad9b5ad0f0b
   SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: c2b6f44acb867cff0ae3b0ad84b47be9dac3a183
+PODFILE CHECKSUM: 8a7d6c920b4a527abe35e1ac24555a6b961a9821
 
 COCOAPODS: 1.10.1

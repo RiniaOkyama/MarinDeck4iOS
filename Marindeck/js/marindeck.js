@@ -134,6 +134,10 @@ function openSettings(){
     webkit.messageHandlers.openSettings.postMessage(true);
 }
 
+function touchPointTweetLike(x, y) {
+    document.elementFromPoint(x, y).closest(".tweet").getElementsByClassName("tweet-action")[2].click();
+}
+
 function positionElement(x,y){
     webkit.messageHandlers.jsCallbackHandler.postMessage("CALLED position element");
     const element = document.elementFromPoint(x, y);
