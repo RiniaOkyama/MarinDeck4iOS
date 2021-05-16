@@ -77,8 +77,8 @@ let themes = [
           js: getFile2Text("Theme-Dolce_v2"), css: "",
           backgroundColor: #colorLiteral(red: 0.9286773205, green: 0.9065366387, blue: 0.831628263, alpha: 1),
           secondaryBackgroundColor: #colorLiteral(red: 0.9643818736, green: 0.9560024142, blue: 0.8829116225, alpha: 1),
-          labelColor: .darkGray,
-          subLabelColor: .lightGray,
+          labelColor: UIColor(hex: "714116"),
+          subLabelColor: UIColor(hex: "714116"),
           topBarColor: #colorLiteral(red: 0.8769347072, green: 0.4038944244, blue: 0.4008696377, alpha: 1),
           tweetButtonColor: UIColor(hex: "242424")
     ),
