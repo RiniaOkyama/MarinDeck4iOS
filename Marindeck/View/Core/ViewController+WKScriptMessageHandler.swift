@@ -26,6 +26,8 @@ extension ViewController: WKScriptMessageHandler {
             self.webView.backgroundColor = .backgroundColor
             self.bottomBackView.backgroundColor = .backgroundColor
             self.topBackView.backgroundColor = .topBarColor
+            self.menuVC.loadViewIfNeeded()
+            self.menuVC.viewDidLoad()
             
             setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false

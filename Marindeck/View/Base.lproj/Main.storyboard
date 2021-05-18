@@ -752,10 +752,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="columnMenu" destination="AsG-wW-U0B" id="yXR-YA-2G6"/>
                         <outlet property="idLabel" destination="QZQ-Zj-807" id="UQN-N5-yE9"/>
                         <outlet property="nameLabel" destination="eai-3F-GbR" id="kjP-hR-KIk"/>
                         <outlet property="profileMenu" destination="47l-ux-vNe" id="R7N-Rx-qZa"/>
                         <outlet property="reloadMenu" destination="KGg-ez-ShH" id="l1R-pu-OTi"/>
+                        <outlet property="settingsButton" destination="nyB-cX-Xhh" id="xBE-gv-x0s"/>
                         <outlet property="userIconImageView" destination="H9N-or-ZyM" id="3kN-fk-HkY"/>
                     </connections>
                 </viewController>
