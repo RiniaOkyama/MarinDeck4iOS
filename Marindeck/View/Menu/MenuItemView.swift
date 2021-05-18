@@ -31,7 +31,7 @@ final class MenuItemView: UIView {
         imgView.frame.origin.x = 12
         imgView.contentMode = .scaleAspectFit
         imgView.image = iconImage
-        imgView.tintColor = .white
+        imgView.tintColor = .labelColor
         return imgView
     }()
     
@@ -40,7 +40,7 @@ final class MenuItemView: UIView {
         label.frame.size.height = self.frame.height
         label.frame.size.width =  self.frame.width - (36 + 12)
         label.frame.origin.x = 36 + 12
-        label.textColor = .white
+        label.textColor = .labelColor
         
         return label
     }()

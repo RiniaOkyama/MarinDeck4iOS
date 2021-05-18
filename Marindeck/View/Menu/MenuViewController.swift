@@ -18,18 +18,28 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var userIconImageView: UIImageView!
+    @IBOutlet weak var settingsButton: UIButton!
     
     @IBOutlet weak var profileMenu: MenuItemView!
     @IBOutlet weak var reloadMenu: MenuItemView!
+    @IBOutlet weak var columnMenu: MenuItemView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // FIXME
-        self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
+        self.view.backgroundColor = .backgroundColor
+        
+        nameLabel.textColor = .labelColor
+        idLabel.textColor = .subLabelColor
         
         userIconImageView.clipsToBounds = true
         userIconImageView.layer.cornerRadius = 30
+        
+        [profileMenu, reloadMenu, columnMenu].forEach({
+            $0?.iconView.tintColor = .labelColor
+            $0?.titleLabel.textColor = .labelColor
+        })
+        settingsButton.tintColor = .labelColor
         
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
