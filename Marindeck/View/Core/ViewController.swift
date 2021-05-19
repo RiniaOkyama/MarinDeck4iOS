@@ -44,6 +44,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
     private let env = ProcessInfo.processInfo.environment
+    var picker: UIImagePickerController! = UIImagePickerController()
 
     var imagePreviewSelectedIndex = 0
     var imagePreviewImageStrings: [String] = []
@@ -174,13 +175,16 @@ h.insertAdjacentElement('beforeend', s)
     }
     
 
-    @IBAction func tweetPressed() {
+    @objc func tweetPressed() {
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
             print("webViewLog : ", error ?? "成功")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.focusTweetTextArea()
+            }
         }
     }
 
-    @IBAction func debugPressed() {
+    @objc func debugPressed() {
         let vc = DebugerViewController()
         vc.delegate = self
         present(vc, animated: true, completion: nil)
@@ -205,6 +209,14 @@ h.insertAdjacentElement('beforeend', s)
         giphy.modalPresentationStyle = .overCurrentContext
 
         present(giphy, animated: true, completion: nil)
+    }
+    
+    @objc func openSelectPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = false
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     func openSettings() {
@@ -323,6 +335,13 @@ h.insertAdjacentElement('beforeend', s)
         print("getPositionElements", index, imgUrls)
 
         return (index, imgUrls)
+    }
+    
+    func focusTweetTextArea() {
+        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed.hide-detail-view-inline > div.js-app-content.app-content.is-open > div:nth-child(1) > div > div > div > div > div > div.position-rel.compose-text-container.padding-a--10.br--4 > textarea\").focus()") { object, error in
+            print("focusTweetTextArea : ", error ?? "成功")
+            
+        }
     }
     
     func setBlurView() {
@@ -532,5 +551,38 @@ extension ViewController: GiphyDelegate {
     
     func didDismiss(controller: GiphyViewController?) {
         GPHCache.shared.clear()
+    }
+}
+
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("\(info)")
+        if let image = info[.originalImage] as? UIImage {
+            guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+            self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
+                print("photoselected : ", error ?? "成功")
+            }
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+        if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+            guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+            self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
+                print("photoselected : ", error ?? "成功")
+            }
+        } else{
+            print("Error")
+        }
+
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
