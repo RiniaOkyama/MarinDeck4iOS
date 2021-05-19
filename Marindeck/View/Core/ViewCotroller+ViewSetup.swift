@@ -138,11 +138,13 @@ extension ViewController {
         let iconSpaceItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         iconSpaceItem.width = 8
         let gifItem = UIBarButtonItem(image: UIImage(named: "gif"), style: .plain, target: self, action: #selector(openSelectGif))
-        let photoItem = UIBarButtonItem(image: UIImage(named: "photo"), style: .plain, target: self, action: #selector(openSelectGif))
+        let photoItem = UIBarButtonItem(image: UIImage(named: "photo"), style: .plain, target: self, action: #selector(openSelectPhoto))
         
-        gifItem.tintColor = .label
-        photoItem.tintColor = .label
-        doneItem.tintColor = .label
+        gifItem.tintColor = .labelColor
+        photoItem.tintColor = .labelColor
+        doneItem.tintColor = .labelColor
+        toolbar.backgroundColor = .backgroundColor
+        toolbar.barTintColor = .backgroundColor
         toolbar.setItems([photoItem, iconSpaceItem, gifItem, flexibleSpaceItem, doneItem], animated: false)
         toolbar.sizeToFit()
 
