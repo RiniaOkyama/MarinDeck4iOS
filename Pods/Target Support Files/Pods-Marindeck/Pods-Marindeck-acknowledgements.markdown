@@ -47,6 +47,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## DeployGateSDK
+
+Copyright 2015 DeployGate Inc. All rights reserved.
+
 ## FLEX
 
 Copyright (c) 2014-2016, Flipboard

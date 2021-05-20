@@ -13,6 +13,7 @@ target 'Marindeck' do
   #pod 'HighlightJS'
   pod 'FLEX', :configurations => ['Debug'] # Debuger
   pod 'SPAlert'
+  pod "DeployGateSDK"
 
 
 

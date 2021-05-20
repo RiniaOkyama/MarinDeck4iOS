@@ -13,10 +13,18 @@ struct UserDefaultsKey {
     static let customJSs = "customJSs"
     static let isDebugBtnHidden = "isDebugBtnHidden"
     static let themeID = "themeID"
+    
+    static let allKeys = [
+        customJSs,
+        isDebugBtnHidden,
+        themeID
+    ]
 }
 
 struct EnvKeys {
     static let GIPHY_API_KEY = "GIPHY_API_KEY"
+    static let DEPLOYGATE_SDK_API_KEY = "DEPLOYGATE_SDK_API_KEY"
+    static let DEPLOYGATE_SDK_USERNAME = "DEPLOYGATE_SDK_USERNAME"
 }
 
 // Codable?

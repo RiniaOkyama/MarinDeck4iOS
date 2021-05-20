@@ -72,6 +72,16 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2015 DeployGate Inc. All rights reserved.</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>DeployGateSDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>Copyright (c) 2014-2016, Flipboard
 All rights reserved.
 
