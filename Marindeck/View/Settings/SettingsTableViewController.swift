@@ -7,9 +7,13 @@
 
 import UIKit
 import WebKit
+import UniformTypeIdentifiers // iOS14~
+import MobileCoreServices // ~iOS13
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
+    
+    private var dController: UIDocumentInteractionController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,57 +72,116 @@ class SettingsTableViewController: UITableViewController {
     }
     //Footerの高さ
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
+        return 12
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 1 {
-            if indexPath.row == 2 {
-                let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
-                vc.viewController = presentingViewController as! ViewController
-                navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        // CustomJSはStoryboardの方から遷移操作してます。
         
-        else if indexPath.section == 2 {
-            if indexPath.row == 2{
-                if let url = URL(string: "https://discord.gg/JKsqaxcnCW") {
-                    UIApplication.shared.open(url)
-                }
-            }else if indexPath.row == 4 {
-                if let url = URL(string: "http://fantia.jp/hisubway") {
-                    UIApplication.shared.open(url)
-                }
-            }
+        switch indexPath {
+        case IndexPath(row: 2, section: 1):
+            presentTheme()
+        case IndexPath(row: 2, section: 2):
+            issue()
+        case IndexPath(row: 4, section: 2):
+            donate()
+        case IndexPath(row: 0, section: 3):
+            importSettings()
+        case IndexPath(row: 1, section: 3):
+            exportSettings()
+        case IndexPath(row: 0, section: 4):
+            logout()
+        default:
+            break
         }
-        
-        else if indexPath == IndexPath(row: 0, section: 3) {
-            let alert: UIAlertController = UIAlertController(title: "ログアウト", message: "先にいってしまうでござるか", preferredStyle:  .alert)
-
-            let defaultAction: UIAlertAction = UIAlertAction(title: "ログアウト", style: .destructive, handler:{
-                (action: UIAlertAction!) -> Void in
-                
-                URLSession.shared.reset {}
-                UserDefaults.standard.synchronize()
-                let dataStore = WKWebsiteDataStore.default()
-                dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-                    dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
-                }
-                
-                let bvc = self.presentingViewController as? ViewController
-                bvc?.webView.reload()
-            })
-            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
-                (action: UIAlertAction!) -> Void in })
-
-            alert.addAction(cancelAction)
-            alert.addAction(defaultAction)
-
-            present(alert, animated: true, completion: nil)
+    }
+    
+    func presentTheme() {
+        let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
+        vc.viewController = presentingViewController as? ViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func donate() {
+        if let url = URL(string: "http://fantia.jp/hisubway") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func issue() {
+        if let url = URL(string: "https://discord.gg/JKsqaxcnCW") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func importSettings() {
+        if #available(iOS 14.0, *) {
+            let picker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.json], asCopy: true)
+            picker.delegate = self
+            self.navigationController?.present(picker, animated: true, completion: nil)
             
-
+        }else {
+            let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON)], in: .import)
+            picker.delegate = self
+            self.navigationController?.present(picker, animated: true, completion: nil)
         }
+
+    }
+    
+    func exportSettings() {
+        let userdefaultsData = UserDefaults.standard.dictionaryRepresentation()
+        
+        var dict:[String: Any] = [:]
+        for (key, value) in userdefaultsData {
+            if UserDefaultsKey.allKeys.contains(key) {
+                dict[key] = value
+            }
+        }
+        
+        guard let json = try? JSONSerialization.data(withJSONObject: dict, options: []) else { return }
+        let data = String(data: json, encoding: .utf8)!
+        
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("MarinDeckSettings.json")!
+        do{
+            try data.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+        }catch{
+            print("データ保存でエラー")
+            return
+        }
+
+        dController = UIDocumentInteractionController.init(url: url)
+        if !(dController.presentOpenInMenu(from: view.frame, in: self.view, animated: true)) {
+            print("ファイルに対応するアプリがない")
+        }
+    }
+    
+    func logout() {
+        let alert: UIAlertController = UIAlertController(title: "ログアウト", message: "先にいってしまうでござるか", preferredStyle:  .alert)
+
+        let defaultAction: UIAlertAction = UIAlertAction(title: "ログアウト", style: .destructive, handler:{
+            (action: UIAlertAction!) -> Void in
+            
+            URLSession.shared.reset {}
+            UserDefaults.standard.synchronize()
+            let dataStore = WKWebsiteDataStore.default()
+            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
+            }
+            
+            let bvc = self.presentingViewController as? ViewController
+            bvc?.webView.reload()
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            alert.dismiss(animated: true, completion: nil)
+        })
+
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+
+        present(alert, animated: true, completion: nil)
+        
     }
 
     
@@ -181,4 +244,36 @@ class SettingsTableViewController: UITableViewController {
     }
     */
 
+}
+
+// ~iOS13
+extension SettingsTableViewController: UIDocumentPickerDelegate {
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let filePath = urls.first {
+            print("ファイルパス:\(filePath)")
+            
+            let fileData = try! Data(contentsOf: filePath);
+            
+            let dict:[String: Any] = try! JSONSerialization.jsonObject(with: fileData, options: []) as? [String: Any] ?? [:]
+            for (key, value) in dict {
+                if UserDefaultsKey.allKeys.contains(key) {
+                    UserDefaults.standard.setValue(value, forKey: key)
+                }
+            }
+            
+            let alert: UIAlertController = UIAlertController(title: "設定をインポートしました。", message: "アプリ再起動をおすすめします。", preferredStyle:  .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler:{
+                (action: UIAlertAction!) -> Void in
+                alert.dismiss(animated: true, completion: nil)
+            })
+
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("キャンセル")
+    }
 }

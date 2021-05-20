@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             fatalError(error.localizedDescription)
         }
+        
+        let env = ProcessInfo.processInfo.environment
+        DeployGateSDK
+            .sharedInstance()
+            .launchApplication(withAuthor: env[EnvKeys.DEPLOYGATE_SDK_USERNAME], key: env[EnvKeys.DEPLOYGATE_SDK_API_KEY])
+        
         return true
     }
 

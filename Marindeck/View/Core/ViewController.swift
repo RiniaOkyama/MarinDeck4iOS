@@ -75,13 +75,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidLoad()
         
         setupView()
+        
+        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         webView.frame = mainDeckView.bounds
-        
         #if DEBUG
             FLEXManager.shared.showExplorer()
         #endif

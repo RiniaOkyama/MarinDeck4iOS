@@ -2,6 +2,7 @@ PODS:
   - Alamofire (5.4.1)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
+  - DeployGateSDK (1.0.7)
   - FLEX (4.4.1)
   - Giphy (2.1.7):
     - libwebp
@@ -22,6 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage
+  - DeployGateSDK
   - FLEX
   - Giphy (from `https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec`)
   - Highlightr
@@ -34,6 +36,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - DeployGateSDK
     - FLEX
     - Highlightr
     - libwebp
@@ -49,6 +52,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  DeployGateSDK: df3d5838db7e35c05a711c35a3bdeef3c2b016ba
   FLEX: 7ca2c8cd3a435ff501ff6d2f2141e9bdc934eaab
   Giphy: 3bd0c57d981cc8c7e0521d4a48f81353173186f9
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
@@ -58,6 +62,6 @@ SPEC CHECKSUMS:
   SPAlert: 5993dcf4f741001b65143066b53c3ad9b5ad0f0b
   SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: 8a7d6c920b4a527abe35e1ac24555a6b961a9821
+PODFILE CHECKSUM: 2a327812a26ca20a1bfb47714ca9d81137822c4d
 
 COCOAPODS: 1.10.1
