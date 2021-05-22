@@ -221,7 +221,7 @@ function SecretMode(){
           }
           else{
             endedlist.push(image);
-              webkit.messageHandlers.loadImage.postMessage(String(image.style.backgroundImage));
+//              webkit.messageHandlers.loadImage.postMessage(String(image.style.backgroundImage));
             image.addEventListener("click", function(clickedItem){
               const res = positionElement(clickedItem.x, clickedItem.y);
               webkit.messageHandlers.imagePreviewer.postMessage(res);

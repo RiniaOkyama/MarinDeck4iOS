@@ -9,6 +9,7 @@ import UIKit
 
 protocol MenuDelegate {
     func openSettings()
+    func openProfile()
     func reload()
 }
 
@@ -23,6 +24,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var profileMenu: MenuItemView!
     @IBOutlet weak var reloadMenu: MenuItemView!
     @IBOutlet weak var columnMenu: MenuItemView!
+    
+    @IBOutlet weak var marinDeckLogoView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +43,8 @@ class MenuViewController: UIViewController {
             $0?.titleLabel.textColor = .labelColor
         })
         settingsButton.tintColor = .labelColor
-        
+        marinDeckLogoView.image =  marinDeckLogoView.image?.withRenderingMode(.alwaysTemplate)
+        marinDeckLogoView.tintColor = .labelColor
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
 
@@ -52,6 +56,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.profileMenu.backgroundColor = .clear
         })
+        delegate.openProfile()
     }
     
     @objc func reloadTapped() {

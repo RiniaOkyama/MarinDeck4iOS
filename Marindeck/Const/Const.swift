@@ -21,6 +21,7 @@ struct UserDefaultsKey {
     ]
 }
 
+
 struct EnvKeys {
     static let GIPHY_API_KEY = "GIPHY_API_KEY"
     static let DEPLOYGATE_SDK_API_KEY = "DEPLOYGATE_SDK_API_KEY"

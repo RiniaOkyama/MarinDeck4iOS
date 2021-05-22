@@ -724,7 +724,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="person" catalog="system"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="プロフィール(まだ)"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="プロフィール"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGg-ez-ShH" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
@@ -792,6 +792,7 @@
                     <connections>
                         <outlet property="columnMenu" destination="AsG-wW-U0B" id="yXR-YA-2G6"/>
                         <outlet property="idLabel" destination="QZQ-Zj-807" id="UQN-N5-yE9"/>
+                        <outlet property="marinDeckLogoView" destination="N1Q-iw-ns0" id="KYn-Ly-gAs"/>
                         <outlet property="nameLabel" destination="eai-3F-GbR" id="kjP-hR-KIk"/>
                         <outlet property="profileMenu" destination="47l-ux-vNe" id="R7N-Rx-qZa"/>
                         <outlet property="reloadMenu" destination="KGg-ez-ShH" id="l1R-pu-OTi"/>

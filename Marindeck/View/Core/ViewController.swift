@@ -246,6 +246,7 @@ h.insertAdjacentElement('beforeend', s)
         }
     }
     
+    // MARK: Menu open
     @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
         let move:CGPoint = sender.translation(in: view)
         
@@ -342,8 +343,24 @@ h.insertAdjacentElement('beforeend', s)
     func focusTweetTextArea() {
         webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed.hide-detail-view-inline > div.js-app-content.app-content.is-open > div:nth-child(1) > div > div > div > div > div > div.position-rel.compose-text-container.padding-a--10.br--4 > textarea\").focus()") { object, error in
             print("focusTweetTextArea : ", error ?? "成功")
-            
         }
+    }
+    
+    func closeMenu() {
+        isMenuOpen = false
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        mainDeckView.translatesAutoresizingMaskIntoConstraints = false
+        mainDeckBlurView.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.mainDeckBlurView.backgroundColor = .none
+          
+            self.mainDeckBlurView.frame.origin.x = 0
+            self.mainDeckView.frame.origin.x = 0
+            self.bottomBackView.frame.origin.x = 0
+            self.topBackView.frame.origin.x = 0
+            
+            self.menuView.frame.origin.x = -self.menuView.frame.width
+        })
     }
     
     func setBlurView() {
@@ -491,6 +508,13 @@ extension ViewController: WKNavigationDelegate {
 extension ViewController: MenuDelegate {
     func reload() {
         webView.reload()
+    }
+    
+    func openProfile() {
+        self.closeMenu()
+        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
+            print("openProfile : ", error ?? "成功")
+        }
     }
 }
 
