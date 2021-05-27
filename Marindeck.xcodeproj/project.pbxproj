@@ -40,6 +40,8 @@
 		E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507925D3CD240084A00C /* UIColor+hex.swift */; };
 		E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507A25D3CD240084A00C /* UIView+.swift */; };
 		E9A8507F25D3CD240084A00C /* Error+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507B25D3CD240084A00C /* Error+.swift */; };
+		E9B93617265F2F0100875A59 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B93619265F2F0100875A59 /* Localizable.strings */; };
+		E9B9361E265F357A00875A59 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B9361D265F357A00875A59 /* String+localized.swift */; };
 		E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */; };
 		E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */; };
 		E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */; };
@@ -134,6 +136,10 @@
 		E9A8507925D3CD240084A00C /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		E9A8507A25D3CD240084A00C /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E9A8507B25D3CD240084A00C /* Error+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+.swift"; sourceTree = "<group>"; };
+		E9B9360F265F2E8B00875A59 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E9B93618265F2F0100875A59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9B9361C265F2F0400875A59 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9B9361D265F357A00875A59 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSCellTableViewCell.swift; sourceTree = "<group>"; };
 		E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomJSCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 		E9732AA725ADDDFD0068F632 /* Marindeck */ = {
 			isa = PBXGroup;
 			children = (
+				E9B93612265F2EB500875A59 /* Strings */,
 				E9BA5AB0262401F400E27F14 /* Const */,
 				E9A8507725D3CD240084A00C /* Extensions */,
 				E9EA8A3625FF53C200561975 /* Application */,
@@ -302,8 +309,17 @@
 				E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */,
 				E9724810264837640044C87E /* UIColor+themes.swift */,
 				E921914B2650F504000435EA /* WKWebView+safeAreaInsets.swift */,
+				E9B9361D265F357A00875A59 /* String+localized.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9B93612265F2EB500875A59 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				E9B93619265F2F0100875A59 /* Localizable.strings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		E9BA5A912623FD9900E27F14 /* CustomJS */ = {
@@ -471,6 +487,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = E9732A9C25ADDDFD0068F632;
 			productRefGroup = E9732AA625ADDDFD0068F632 /* Products */;
@@ -493,6 +510,7 @@
 				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
 				E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */,
 				E9147106264B34C8009BC91E /* TermsOfUse.md in Resources */,
+				E9B93617265F2F0100875A59 /* Localizable.strings in Resources */,
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
 				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
 				E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */,
@@ -618,6 +636,7 @@
 				E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */,
 				E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */,
 				E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */,
+				E9B9361E265F357A00875A59 /* String+localized.swift in Sources */,
 				E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,6 +665,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9732AAF25ADDDFD0068F632 /* Base */,
+				E9B9360F265F2E8B00875A59 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -658,6 +678,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		E9B93619265F2F0100875A59 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9B93618265F2F0100875A59 /* en */,
+				E9B9361C265F2F0400875A59 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -665,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -727,6 +757,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
