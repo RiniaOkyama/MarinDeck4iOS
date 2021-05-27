@@ -7,8 +7,8 @@
 
 import UIKit
 import WebKit
-import UniformTypeIdentifiers // iOS14~
-import MobileCoreServices // ~iOS13
+import UniformTypeIdentifiers //  iOS14~
+import MobileCoreServices     // ~iOS13
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
@@ -18,7 +18,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "設定"
+        self.title = "settings.navigation.title".localized
         self.navigationController?.navigationBar.barTintColor = .systemBackground
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

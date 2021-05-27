@@ -1,0 +1,27 @@
+"menu.profile.title" = "Profile";
+"menu.reload.title" = "Reload";
+"menu.editColumn.title" = "Edit coloumn";
+
+// Settings
+"settings.navigation.title" = "Settings";
+"settings.general.header.title" = "General";
+"settings.customize.header.title" = "Customize";
+"settings.appinfo.header.title" = "App info";
+"settings.logout.header.title" = "Logout";
+
+"settings.customJS.cell.title" = "Custom JavaScript";
+"settings.customCSS.cell.title" = "Custom CSS";
+"settings.theme.cell.title" = "Theme";
+
+"settings.termsOfUse.cell.title" = "Team of use";
+"settings.license.cell.title" = "License";
+"settings.issueEnhancement.cell.title" = "issue, enhancement";
+"settings.developers.cell.title" = "Developers";
+"settings.donate.cell.title" = "Donate";
+"settings.version.cell.title" = "Version";
+
+"settings.importSettings.cell.title" = "Import settings";
+"settings.exportSettings.cell.title" = "Export settings";
+
+"settings.logout.cell.title" = "logout";
+

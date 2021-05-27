@@ -29,6 +29,10 @@ extension ViewController: WKScriptMessageHandler {
             self.menuVC.loadViewIfNeeded()
             self.menuVC.viewDidLoad()
             
+            print("self.view   : ", self.view.bounds)
+            print("WebViewFrame: ", self.webView.bounds)
+            print("DeckUIView  : ", self.mainDeckView.bounds)
+            
             setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false
             // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる

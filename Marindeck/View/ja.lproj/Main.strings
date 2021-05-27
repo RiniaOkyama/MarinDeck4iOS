@@ -1,0 +1,78 @@
+
+/* Class = "UILabel"; text = "ネイティブのプレビューを使用"; ObjectID = "25W-XT-4PI"; */
+"25W-XT-4PI.text" = "ネイティブのプレビューを使用";
+
+/* Class = "UITableViewSection"; headerTitle = "ログアウト"; ObjectID = "2qv-XT-C7t"; */
+"2qv-XT-C7t.headerTitle" = "ログアウト";
+
+/* Class = "UILabel"; text = "カスタムCSS"; ObjectID = "3jh-83-S3a"; */
+"3jh-83-S3a.text" = "カスタムCSS";
+
+/* Class = "UILabel"; text = "設定をインポート"; ObjectID = "9Of-JB-4oA"; */
+"9Of-JB-4oA.text" = "設定をインポート";
+
+/* Class = "UILabel"; text = "設定をエクスポート"; ObjectID = "9s8-52-qb7"; */
+"9s8-52-qb7.text" = "設定をエクスポート";
+
+/* Class = "UITextView"; text = "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです"; ObjectID = "CEG-80-AEU"; */
+"CEG-80-AEU.text" = "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです";
+
+/* Class = "UILabel"; text = "0.0.0 Alpha"; ObjectID = "DkX-M1-Evn"; */
+"DkX-M1-Evn.text" = "0.0.0 Alpha";
+
+/* Class = "UILabel"; text = "利用規約"; ObjectID = "G19-zP-4LD"; */
+"G19-zP-4LD.text" = "利用規約";
+
+/* Class = "UILabel"; text = "バージョン"; ObjectID = "GQ1-eM-49f"; */
+"GQ1-eM-49f.text" = "バージョン";
+
+/* Class = "UILabel"; text = "By TweetDeck"; ObjectID = "HHq-On-ZPg"; */
+"HHq-On-ZPg.text" = "By TweetDeck";
+
+/* Class = "UILabel"; text = "デフォルト"; ObjectID = "NDC-rS-v8P"; */
+"NDC-rS-v8P.text" = "デフォルト";
+
+/* Class = "UILabel"; text = "@twitter"; ObjectID = "QZQ-Zj-807"; */
+"QZQ-Zj-807.text" = "@twitter";
+
+/* Class = "UITableViewSection"; headerTitle = "アプリについて"; ObjectID = "QcA-JT-qUC"; */
+"QcA-JT-qUC.headerTitle" = "アプリについて";
+
+/* Class = "UILabel"; text = "サポーターの皆様"; ObjectID = "Yhd-Po-OYi"; */
+"Yhd-Po-OYi.text" = "サポーターの皆様";
+
+/* Class = "UILabel"; text = "着せ替え"; ObjectID = "YkZ-WD-38a"; */
+"YkZ-WD-38a.text" = "着せ替え";
+
+/* Class = "UILabel"; text = "ライセンス情報"; ObjectID = "Z1e-0c-usZ"; */
+"Z1e-0c-usZ.text" = "ライセンス情報";
+
+/* Class = "UILabel"; text = "ログアウト"; ObjectID = "ZZp-Ll-buN"; */
+"ZZp-Ll-buN.text" = "ログアウト";
+
+/* Class = "UIButton"; normalTitle = "プレビュー"; ObjectID = "cuw-34-Vjr"; */
+"cuw-34-Vjr.normalTitle" = "プレビュー";
+
+/* Class = "UITableViewSection"; headerTitle = "カスタマイズ"; ObjectID = "d0p-CE-9K3"; */
+"d0p-CE-9K3.headerTitle" = "カスタマイズ";
+
+/* Class = "UILabel"; text = "ご意見・ご要望"; ObjectID = "eRj-KM-XGr"; */
+"eRj-KM-XGr.text" = "ご意見・ご要望";
+
+/* Class = "UILabel"; text = "TestAccount"; ObjectID = "eai-3F-GbR"; */
+"eai-3F-GbR.text" = "TestAccount";
+
+/* Class = "UILabel"; text = "寄付"; ObjectID = "gSK-oI-7Qi"; */
+"gSK-oI-7Qi.text" = "寄付";
+
+/* Class = "UILabel"; text = "カスタムJavaScript"; ObjectID = "kGa-Gz-6XG"; */
+"kGa-Gz-6XG.text" = "カスタムJavaScript";
+
+/* Class = "UIButton"; normalTitle = "適用"; ObjectID = "nKz-ke-eMH"; */
+"nKz-ke-eMH.normalTitle" = "適用";
+
+/* Class = "UITableViewSection"; headerTitle = "一般"; ObjectID = "vTI-XN-UL0"; */
+"vTI-XN-UL0.headerTitle" = "一般";
+
+/* Class = "UILabel"; text = "利用規約"; ObjectID = "x3V-SQ-2Sn"; */
+"x3V-SQ-2Sn.text" = "利用規約";

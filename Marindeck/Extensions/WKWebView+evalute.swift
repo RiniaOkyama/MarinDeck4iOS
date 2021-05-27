@@ -35,7 +35,7 @@ extension WKWebView {
             error = errorLog
             isCompletion = true
         }
-
+        // FXIME: crap
         while !isCompletion {
             RunLoop.current.run(mode: .default, before: Date() + 0.1)
         }

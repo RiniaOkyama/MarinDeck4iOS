@@ -192,9 +192,9 @@ h.insertAdjacentElement('beforeend', s)
         present(vc, animated: true, completion: nil)
     }
 
+    @discardableResult
     func debugJS(script: String) -> (String, Error?) {
         let (ret, error) = webView.evaluateWithError(javaScript: script)
-//        print(ret, error)
         return ((ret as? String) ?? "", error)
     }
     
