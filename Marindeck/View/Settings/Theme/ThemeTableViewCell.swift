@@ -26,7 +26,7 @@ class ThemeTableViewCell: UITableViewCell {
         iconView.clipsToBounds = true
         iconView.layer.cornerRadius = iconView.frame.width / 2
         backView.layer.cornerRadius = 8
-        applyButton.layer.cornerRadius = 6
+        applyButton.layer.cornerRadius = 8
         applyButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
     
         selectionStyle = .none

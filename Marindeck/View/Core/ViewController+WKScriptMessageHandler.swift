@@ -20,8 +20,7 @@ extension ViewController: WKScriptMessageHandler {
             self.mainDeckView.isHidden = false
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
-            // FIXME
-//            self.bottomBackView.backgroundColor = #colorLiteral(red: 0.1075549349, green: 0.1608583331, blue: 0.2208467424, alpha: 1)
+
             self.view.backgroundColor = .backgroundColor
             self.webView.backgroundColor = .backgroundColor
             self.bottomBackView.backgroundColor = .backgroundColor
@@ -29,9 +28,6 @@ extension ViewController: WKScriptMessageHandler {
             self.menuVC.loadViewIfNeeded()
             self.menuVC.viewDidLoad()
             
-            print("self.view   : ", self.view.bounds)
-            print("WebViewFrame: ", self.webView.bounds)
-            print("DeckUIView  : ", self.mainDeckView.bounds)
             
             setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false

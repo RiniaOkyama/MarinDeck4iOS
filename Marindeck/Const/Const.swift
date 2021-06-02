@@ -81,7 +81,9 @@ let themes = [
           tweetButtonColor: UIColor(hex: "242424")
     ),
     
-    Theme(title: "Dolce", id: "4", user: "L1n4r1A a.k.a. るなち✿(人柱)",
+    Theme(title: "Dolce", id: "4",
+          description: "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです",
+          user: "L1n4r1A a.k.a. るなち✿(人柱)",
           icon: "Dolce-icon",
           js: getFile2Text("Theme-Dolce_v2"), css: "",
           backgroundColor: #colorLiteral(red: 0.9286773205, green: 0.9065366387, blue: 0.831628263, alpha: 1),
