@@ -68,7 +68,7 @@ class ThemeDetailViewController: UIViewController {
             applyBtn.setTitleColor(.subLabelColor, for: .normal)
 
         }else {
-            applyBtn.backgroundColor = .systemTeal
+            applyBtn.backgroundColor = .systemBlue
             applyBtn.setTitle("適用", for: .normal)
         }
     }
