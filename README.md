@@ -1,4 +1,4 @@
-![MarinDeck4iOSHeader](https://user-images.githubusercontent.com/54408846/118355668-25510080-b5ac-11eb-9457-d4a27c183702.png)
+![MarinDeckheader](https://user-images.githubusercontent.com/54408846/120736622-89217600-c527-11eb-8201-af83cf131a29.png)
 
 # MarinDeck for iOS
 
