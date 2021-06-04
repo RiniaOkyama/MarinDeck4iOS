@@ -22,7 +22,7 @@
 import UIKit
 
 /**
- Represent icon wrapper.
+ SPAlert: Represent icon wrapper.
  Included default styles and can be custom image.
  */
 public enum SPAlertIconPreset {
@@ -34,7 +34,7 @@ public enum SPAlertIconPreset {
     case custom(_ image: UIImage)
 }
 
-// Get view by preset
+// Get view and haptic by Preset.
 
 public extension SPAlertIconPreset {
     
@@ -49,21 +49,18 @@ public extension SPAlertIconPreset {
             return imageView
         }
     }
-}
-
-// Get haptic by preset
-
-public extension SPAlertIconPreset {
     
     func getHaptic() -> SPAlertHaptic {
         switch self {
+        case .done: return .success
         case .error: return .error
-        default: return .success
+        case .heart: return .success
+        case .custom(_): return .none
         }
     }
 }
 
-// Get layout by preset
+// Get layout by preset.
 
 public extension SPAlertLayout {
     

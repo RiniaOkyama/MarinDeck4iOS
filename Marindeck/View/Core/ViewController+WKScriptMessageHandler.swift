@@ -16,8 +16,10 @@ extension ViewController: WKScriptMessageHandler {
                 // MARK: WKWebView Didload
         case "viewDidLoad":
             self.loadingIndicator.stopAnimating()
-            self.tweetFloatingBtn.isHidden = false
-            self.mainDeckView.isHidden = false
+            if !isMainDeckViewLock {
+                self.tweetFloatingBtn.isHidden = false
+                self.mainDeckView.isHidden = false
+            }
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
 
