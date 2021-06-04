@@ -1,9 +1,8 @@
 PODS:
-  - Alamofire (5.4.1)
-  - AlamofireImage (4.1.0):
-    - Alamofire (~> 5.1)
+  - Alamofire (5.4.3)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
   - DeployGateSDK (1.0.7)
-  - FLEX (4.4.1)
   - Giphy (2.1.7):
     - libwebp
   - Highlightr (2.1.0)
@@ -18,13 +17,12 @@ PODS:
   - libwebp/webp (1.2.0)
   - markymark (10.1.1)
   - Optik (0.4.0)
-  - SPAlert (3.0.7)
+  - SPAlert (3.0.9)
   - SwiftyMarkdown (1.2.3)
 
 DEPENDENCIES:
   - AlamofireImage
   - DeployGateSDK
-  - FLEX
   - Giphy (from `https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec`)
   - Highlightr
   - markymark
@@ -37,7 +35,6 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - DeployGateSDK
-    - FLEX
     - Highlightr
     - libwebp
     - markymark
@@ -50,18 +47,17 @@ EXTERNAL SOURCES:
     :podspec: https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   DeployGateSDK: df3d5838db7e35c05a711c35a3bdeef3c2b016ba
-  FLEX: 7ca2c8cd3a435ff501ff6d2f2141e9bdc934eaab
   Giphy: 3bd0c57d981cc8c7e0521d4a48f81353173186f9
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   markymark: 29adb8789fa6b3db97b04b7585d65f13931b5aa5
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
-  SPAlert: 5993dcf4f741001b65143066b53c3ad9b5ad0f0b
+  SPAlert: 6af1f3bb37d74891a6918a5ecde4934c980f0d41
   SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: 2a327812a26ca20a1bfb47714ca9d81137822c4d
+PODFILE CHECKSUM: 51c6df65745b8c2011386ee9638042e3bb23003b
 
 COCOAPODS: 1.10.1

@@ -7,17 +7,19 @@
 
 import Foundation
 import UIKit
-
+import LocalAuthentication
 
 struct UserDefaultsKey {
     static let customJSs = "customJSs"
     static let isDebugBtnHidden = "isDebugBtnHidden"
     static let themeID = "themeID"
+    static let isUseBiometrics = "isUseBiometrics"
     
     static let allKeys = [
         customJSs,
         isDebugBtnHidden,
-        themeID
+        themeID,
+        isUseBiometrics
     ]
 }
 
@@ -117,5 +119,57 @@ fileprivate func getFile2Text(_ forResource: String, ofType: String = "js") -> S
     } else {
         print("\(forResource) not found!")
         return ""
+    }
+}
+
+
+/// 生体認証が利用可能かどうか
+func canUseBiometrics() -> Bool {
+
+        let context = LAContext()
+        var error: NSError? = nil
+
+        let result = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+
+        guard !result else { return true }
+
+        if let error = error {
+            // iOS11以降とそれ以前ではErrorのコード名が異なるため、場合分け
+            if #available(iOS 11.0, *) {
+                switch error.code {
+                case LAError.biometryNotEnrolled.rawValue, LAError.biometryLockout.rawValue:
+                    return true
+                default:
+                    return false
+                }
+            } else {
+                switch error.code {
+                case LAError.touchIDNotEnrolled.rawValue, LAError.touchIDLockout.rawValue:
+                    return true
+                default:
+                    return false
+                }
+            }
+        }
+        return false
+    }
+
+/// 生体認証を実行する
+func doBiometricsAuthentication() {
+    let context = LAContext()
+
+    // 生体認証を使う理由。空文字だと失敗扱いになるので、必ず文字を入れる
+    let reason = "ロックを解除"
+
+    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { (success, evaluateError) in
+        if success {
+            print("Success!!")
+        } else {
+            guard let error = evaluateError as NSError? else {
+                print("Error")
+                return
+            }
+            print("\(error.code): \(error.localizedDescription)")
+        }
     }
 }

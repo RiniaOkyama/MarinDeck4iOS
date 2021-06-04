@@ -13,6 +13,8 @@ import MobileCoreServices     // ~iOS13
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
     
+    @IBOutlet weak var biometricsSwitch: UISwitch!
+    
     private var dController: UIDocumentInteractionController!
 
     override func viewDidLoad() {
@@ -29,6 +31,8 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
     }
     
     
@@ -42,19 +46,10 @@ class SettingsTableViewController: UITableViewController {
             $0.textColor = .labelColor
         })
         tableView.reloadData()
+        
+        biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 2
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
     
     
     @objc func onDismiss() {
@@ -95,6 +90,10 @@ class SettingsTableViewController: UITableViewController {
         default:
             break
         }
+    }
+    
+    @IBAction func setBiometrics() {
+        UserDefaults.standard.setValue(biometricsSwitch.isOn, forKey: UserDefaultsKey.isUseBiometrics)
     }
     
     func presentTheme() {
