@@ -13,10 +13,6 @@ import LocalAuthentication
 import Optik
 import GiphyUISDK
 
-#if DEBUG
-//import FLEX
-#endif
-
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
@@ -79,16 +75,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         
         DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
         
+        checkBiometrics()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         webView.frame = mainDeckView.bounds
-        #if DEBUG
-//            FLEXManager.shared.showExplorer()
-        #endif
-        checkBiometrics()
     }
     
     func gestureRecognizer(
