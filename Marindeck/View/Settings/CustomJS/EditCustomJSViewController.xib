@@ -34,12 +34,6 @@
                         <action selector="close" destination="-1" eventType="touchUpInside" id="IfU-wP-wL2"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オートセーブ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16I-J7-xGF">
-                    <rect key="frame" x="20" y="27" width="104" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" systemColor="secondaryLabelColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-2H-Zkv">
                     <rect key="frame" x="0.0" y="67" width="414" height="741"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,12 +42,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="16I-J7-xGF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="CKT-ut-RQr"/>
                 <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="top" secondItem="iOv-F8-pL4" secondAttribute="bottom" constant="12" id="Ihu-Im-6zj"/>
                 <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SJ2-mu-hB3"/>
                 <constraint firstItem="iOv-F8-pL4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="T09-Q5-UBT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZtJ-2H-Zkv" secondAttribute="trailing" id="WTq-gA-n7O"/>
-                <constraint firstItem="16I-J7-xGF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="27" id="YUg-kU-RwR"/>
                 <constraint firstItem="ZtJ-2H-Zkv" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="jaF-z3-fVQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iOv-F8-pL4" secondAttribute="trailing" constant="20" id="vvd-Cq-cJ3"/>
             </constraints>

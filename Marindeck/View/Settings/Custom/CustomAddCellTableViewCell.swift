@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol CustomJSAddCellOutput {
+protocol CustomAddCellOutput {
     func create()
 }
 
-class CustomJSAddCellTableViewCell: UITableViewCell {
-    public var delegate: CustomJSAddCellOutput!
+class CustomAddCellTableViewCell: UITableViewCell {
+    public var delegate: CustomAddCellOutput!
     
     @IBOutlet weak var backView: UIView!
 
