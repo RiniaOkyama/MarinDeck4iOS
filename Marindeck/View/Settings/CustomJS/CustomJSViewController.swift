@@ -23,6 +23,8 @@ class CustomJSViewController: UIViewController {
         super.viewDidLoad()
 
         updateCustomJSs()
+        
+        view.backgroundColor = .backgroundColor
 
         tableView.dataSource = self
         tableView.delegate = self

@@ -80,7 +80,7 @@ class EditCustomCSSViewController: UIViewController {
     @IBAction func close() {
         self.dismiss(animated: true, completion: nil)
         
-        updateCSS()
+//        updateCSS()
     }
     
     @IBAction func keyboardDonePressed(_ sender: Any) {

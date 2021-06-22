@@ -34,7 +34,7 @@
                     <color key="tintColor" systemColor="secondaryLabelColor"/>
                     <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                     <connections>
-                        <action selector="close" destination="-1" eventType="touchUpInside" id="4Op-w9-Mg6"/>
+                        <action selector="close" destination="-1" eventType="touchUpInside" id="XfX-cl-H3R"/>
                     </connections>
                 </button>
             </subviews>

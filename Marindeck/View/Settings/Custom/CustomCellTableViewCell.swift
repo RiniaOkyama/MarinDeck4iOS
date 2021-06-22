@@ -17,10 +17,11 @@ class CustomCellTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .clear
+        self.backgroundColor = .backgroundColor
         self.backView.layer.cornerRadius = 8
-        
-
+        backView.backgroundColor = .secondaryBackgroundColor
+        titleLabel.textColor = .labelColor
+        dateLabel.textColor = .subLabelColor
     }
     
 

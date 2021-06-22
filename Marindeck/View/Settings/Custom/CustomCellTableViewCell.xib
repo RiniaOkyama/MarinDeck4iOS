@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3日前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-dd-YFb">
-                                <rect key="frame" x="12" y="58" width="272" height="18"/>
+                                <rect key="frame" x="12" y="56" width="272" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="QZZ-dd-YFb" secondAttribute="bottom" constant="2" id="aDs-r5-g8C"/>
+                            <constraint firstAttribute="bottom" secondItem="QZZ-dd-YFb" secondAttribute="bottom" constant="4" id="aDs-r5-g8C"/>
                             <constraint firstAttribute="trailing" secondItem="QZZ-dd-YFb" secondAttribute="trailing" constant="12" id="f1T-Bv-wkW"/>
                             <constraint firstItem="kzX-XG-GGO" firstAttribute="leading" secondItem="s7e-rw-gf0" secondAttribute="leading" constant="16" id="gxd-Ig-3WD"/>
                             <constraint firstAttribute="trailing" secondItem="kzX-XG-GGO" secondAttribute="trailing" constant="12" id="kLS-2b-5dZ"/>

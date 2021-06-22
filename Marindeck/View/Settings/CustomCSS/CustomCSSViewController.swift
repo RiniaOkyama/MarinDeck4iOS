@@ -57,8 +57,32 @@ class CustomCSSViewController: UIViewController {
         try! realm.write({
             realm.add(customCSS)
         })
+        tableView.reloadData()
     }
     
+    func deleteCustomCSS(index: Int) {
+        let alert = UIAlertController(
+            title: "\(customCSSs[index].title)を消去",
+                message: "本当に削除しますか？",
+                preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertAction.Style.cancel,
+                    handler: nil))
+        alert.addAction(
+                UIAlertAction(
+                    title: "消去",
+                    style: UIAlertAction.Style.destructive) { _ in
+                    try! self.realm.write({
+                        self.realm.delete(self.customCSSs[index])
+                    })
+                    self.tableView.reloadData()
+                }
+        )
+
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     func updateCustomCSSDialog(index: Int) {
@@ -90,30 +114,6 @@ class CustomCSSViewController: UIViewController {
                         })
                         self.updateCustomCSSs()
                     }
-                }
-        )
-
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func deleteCustomCSS(index: Int) {
-        let alert = UIAlertController(
-            title: "\(customCSSs[index].title)を消去",
-                message: "本当に削除しますか？",
-                preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(
-                UIAlertAction(
-                    title: "キャンセル",
-                    style: UIAlertAction.Style.cancel,
-                    handler: nil))
-        alert.addAction(
-                UIAlertAction(
-                    title: "消去",
-                    style: UIAlertAction.Style.destructive) { _ in
-                    try! self.realm.write({
-                        self.realm.delete(self.customCSSs[index])
-                    })
-                
                 }
         )
 
