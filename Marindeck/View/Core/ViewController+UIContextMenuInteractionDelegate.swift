@@ -65,7 +65,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
-        let image = url2UIImage(url: imgurl.1[imgurl.0])
+        guard let image = url2UIImage(url: imgurl.1[imgurl.0]) else { return nil }
 
         let previewProvider: () -> UIViewController? = { [unowned self] in
             return ImageHapticPreviewViewController(image: image)
@@ -92,9 +92,10 @@ extension ViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
-            let imgs = self.imagePreviewImageStrings.map({
+            let imgs = self.imagePreviewImageStrings.compactMap({
                 url2UIImage(url: $0)
             })
+            if imgs.isEmpty { return }
             self.view.addSubview(self.imageView)
             let imageViewer = Optik.imageViewer(
                     withImages: imgs,
@@ -105,15 +106,8 @@ extension ViewController: UIContextMenuInteractionDelegate {
         }
     }
     
-//    @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
-//       guard error == nil else {
-//          return
-//       }
-//        
-//    }
     
-    @objc
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         guard error == nil else {
             return
         }

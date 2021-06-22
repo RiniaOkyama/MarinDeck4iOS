@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */; };
 		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
 		E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F5736264416AB00593DF4 /* NDTweetBtn.swift */; };
+		E9426B7F267986BF00B141A7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E9426B7E267986BF00B141A7 /* RealmSwift */; };
 		E95CA5D6264E919100AA2305 /* Theme-Dolce_v2.js in Resources */ = {isa = PBXBuildFile; fileRef = E95CA5D5264E919000AA2305 /* Theme-Dolce_v2.js */; };
 		E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E96769D025AE0F4D00D1826C /* mtdeck.js */; };
 		E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97247F8264795DB0044C87E /* ThemeDetailViewController.swift */; };
@@ -43,11 +44,11 @@
 		E9B93617265F2F0100875A59 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B93619265F2F0100875A59 /* Localizable.strings */; };
 		E9B9361E265F357A00875A59 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B9361D265F357A00875A59 /* String+localized.swift */; };
 		E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */; };
-		E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */; };
-		E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */; };
+		E9BA5A982623FE3300E27F14 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5A962623FE3300E27F14 /* CustomCellTableViewCell.swift */; };
+		E9BA5A992623FE3300E27F14 /* CustomCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5A972623FE3300E27F14 /* CustomCellTableViewCell.xib */; };
 		E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB1262401FD00E27F14 /* Const.swift */; };
-		E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */; };
-		E9BA5AB72624039600E27F14 /* CustomJSAddCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */; };
+		E9BA5AB62624039600E27F14 /* CustomAddCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB42624039600E27F14 /* CustomAddCellTableViewCell.swift */; };
+		E9BA5AB72624039600E27F14 /* CustomAddCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5AB52624039600E27F14 /* CustomAddCellTableViewCell.xib */; };
 		E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */; };
 		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
 		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
@@ -55,6 +56,8 @@
 		E9C2CC1C26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */; };
 		E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */; };
 		E9C2CC2426469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */; };
+		E9DAA1142681BADE00BFE244 /* EditCustomCSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DAA1122681BADE00BFE244 /* EditCustomCSSViewController.swift */; };
+		E9DAA1152681BADE00BFE244 /* EditCustomCSSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DAA1132681BADE00BFE244 /* EditCustomCSSViewController.xib */; };
 		E9E7E52B2643477400443186 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7E52A2643477400443186 /* MenuItemView.swift */; };
 		E9EA8A3325FF53A400561975 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3225FF53A400561975 /* MenuViewController.swift */; };
 		E9EA8A3925FF5D0C00561975 /* ViewController+Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */; };
@@ -70,6 +73,7 @@
 		E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1AD262C1F7A00F6997A /* .env.sample */; };
 		E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */; };
 		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
+		E9F0704B2671D21400CA812B /* CustomCSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0704A2671D21400CA812B /* CustomCSSViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,11 +145,11 @@
 		E9B9361C265F2F0400875A59 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9B9361D265F357A00875A59 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSViewController.swift; sourceTree = "<group>"; };
-		E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSCellTableViewCell.swift; sourceTree = "<group>"; };
-		E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomJSCellTableViewCell.xib; sourceTree = "<group>"; };
+		E9BA5A962623FE3300E27F14 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		E9BA5A972623FE3300E27F14 /* CustomCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellTableViewCell.xib; sourceTree = "<group>"; };
 		E9BA5AB1262401FD00E27F14 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSAddCellTableViewCell.swift; sourceTree = "<group>"; };
-		E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomJSAddCellTableViewCell.xib; sourceTree = "<group>"; };
+		E9BA5AB42624039600E27F14 /* CustomAddCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddCellTableViewCell.swift; sourceTree = "<group>"; };
+		E9BA5AB52624039600E27F14 /* CustomAddCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAddCellTableViewCell.xib; sourceTree = "<group>"; };
 		E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoSinceDate.swift"; sourceTree = "<group>"; };
 		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+WKScriptMessageHandler.swift"; sourceTree = "<group>"; };
 		E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewCotroller+ViewSetup.swift"; sourceTree = "<group>"; };
 		E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIContextMenuInteractionDelegate.swift"; sourceTree = "<group>"; };
+		E9DAA1122681BADE00BFE244 /* EditCustomCSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomCSSViewController.swift; sourceTree = "<group>"; };
+		E9DAA1132681BADE00BFE244 /* EditCustomCSSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomCSSViewController.xib; sourceTree = "<group>"; };
 		E9E7E52A2643477400443186 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E9EA8A3225FF53A400561975 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9EA8A3825FF5D0C00561975 /* ViewController+Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Swipe.swift"; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 		E9EFB1AD262C1F7A00F6997A /* .env.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.sample; sourceTree = "<group>"; };
 		E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+removeToolbar.swift"; sourceTree = "<group>"; };
 		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
+		E9F0704A2671D21400CA812B /* CustomCSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCSSViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9426B7F267986BF00B141A7 /* RealmSwift in Frameworks */,
 				08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				E93F57042643A81200593DF4 /* Theme */,
+				E9DAA1112681B9D000BFE244 /* Custom */,
+				E9F070412671CDB400CA812B /* CustomCSS */,
 				E9BA5A912623FD9900E27F14 /* CustomJS */,
 				E993A30C25B2CB94003DAE3A /* SettingsTableViewController.swift */,
 				E929E804260097DF00211FD2 /* LicenseViewController.swift */,
@@ -269,6 +279,7 @@
 		E9732AA725ADDDFD0068F632 /* Marindeck */ = {
 			isa = PBXGroup;
 			children = (
+				E9F070472671D0CF00CA812B /* Model */,
 				E9B93612265F2EB500875A59 /* Strings */,
 				E9BA5AB0262401F400E27F14 /* Const */,
 				E9A8507725D3CD240084A00C /* Extensions */,
@@ -326,10 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				E9BA5A922623FDB700E27F14 /* CustomJSViewController.swift */,
-				E9BA5A962623FE3300E27F14 /* CustomJSCellTableViewCell.swift */,
-				E9BA5A972623FE3300E27F14 /* CustomJSCellTableViewCell.xib */,
-				E9BA5AB42624039600E27F14 /* CustomJSAddCellTableViewCell.swift */,
-				E9BA5AB52624039600E27F14 /* CustomJSAddCellTableViewCell.xib */,
 				E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */,
 				E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */,
 			);
@@ -354,6 +361,17 @@
 				E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E9DAA1112681B9D000BFE244 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				E9BA5A962623FE3300E27F14 /* CustomCellTableViewCell.swift */,
+				E9BA5A972623FE3300E27F14 /* CustomCellTableViewCell.xib */,
+				E9BA5AB42624039600E27F14 /* CustomAddCellTableViewCell.swift */,
+				E9BA5AB52624039600E27F14 /* CustomAddCellTableViewCell.xib */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		E9E7E52E2643477E00443186 /* Menu */ = {
@@ -411,6 +429,23 @@
 			path = Debuger;
 			sourceTree = "<group>";
 		};
+		E9F070412671CDB400CA812B /* CustomCSS */ = {
+			isa = PBXGroup;
+			children = (
+				E9F0704A2671D21400CA812B /* CustomCSSViewController.swift */,
+				E9DAA1122681BADE00BFE244 /* EditCustomCSSViewController.swift */,
+				E9DAA1132681BADE00BFE244 /* EditCustomCSSViewController.xib */,
+			);
+			path = CustomCSS;
+			sourceTree = "<group>";
+		};
+		E9F070472671D0CF00CA812B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F181E4C23DE886A8FEAB54DC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +476,9 @@
 				E9EF3FBF26280E2E004729B5 /* PBXTargetDependency */,
 			);
 			name = Marindeck;
+			packageProductDependencies = (
+				E9426B7E267986BF00B141A7 /* RealmSwift */,
+			);
 			productName = Marindecker;
 			productReference = E9732AA525ADDDFD0068F632 /* Marindeck.app */;
 			productType = "com.apple.product-type.application";
@@ -490,6 +528,9 @@
 				ja,
 			);
 			mainGroup = E9732A9C25ADDDFD0068F632;
+			packageReferences = (
+				E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = E9732AA625ADDDFD0068F632 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DAA1152681BADE00BFE244 /* EditCustomCSSViewController.xib in Resources */,
 				E95CA5D6264E919100AA2305 /* Theme-Dolce_v2.js in Resources */,
 				E9724816264847870044C87E /* Theme-Midnight.js in Resources */,
 				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
@@ -514,11 +556,11 @@
 				E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */,
 				E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */,
 				E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */,
-				E9BA5AB72624039600E27F14 /* CustomJSAddCellTableViewCell.xib in Resources */,
+				E9BA5AB72624039600E27F14 /* CustomAddCellTableViewCell.xib in Resources */,
 				E9732AB525ADDE000068F632 /* LaunchScreen.storyboard in Resources */,
 				E9732AB225ADDE000068F632 /* Assets.xcassets in Resources */,
 				E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */,
-				E9BA5A992623FE3300E27F14 /* CustomJSCellTableViewCell.xib in Resources */,
+				E9BA5A992623FE3300E27F14 /* CustomCellTableViewCell.xib in Resources */,
 				E9732AB025ADDDFD0068F632 /* Main.storyboard in Resources */,
 				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
 				E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */,
@@ -619,6 +661,7 @@
 				E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */,
 				E921914C2650F504000435EA /* WKWebView+safeAreaInsets.swift in Sources */,
 				E91470F1264AAF37009BC91E /* TermsOfUseViewController.swift in Sources */,
+				E9DAA1142681BADE00BFE244 /* EditCustomCSSViewController.swift in Sources */,
 				E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
 				E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */,
@@ -628,13 +671,14 @@
 				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
 				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
 				E9724811264837640044C87E /* UIColor+themes.swift in Sources */,
-				E9BA5A982623FE3300E27F14 /* CustomJSCellTableViewCell.swift in Sources */,
+				E9F0704B2671D21400CA812B /* CustomCSSViewController.swift in Sources */,
+				E9BA5A982623FE3300E27F14 /* CustomCellTableViewCell.swift in Sources */,
 				E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */,
 				E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */,
 				E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */,
 				E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */,
 				E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */,
-				E9BA5AB62624039600E27F14 /* CustomJSAddCellTableViewCell.swift in Sources */,
+				E9BA5AB62624039600E27F14 /* CustomAddCellTableViewCell.swift in Sources */,
 				E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */,
 				E9B9361E265F357A00875A59 /* String+localized.swift in Sources */,
 				E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */,
@@ -943,6 +987,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9426B7E267986BF00B141A7 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E9732A9D25ADDDFD0068F632 /* Project object */;
 }

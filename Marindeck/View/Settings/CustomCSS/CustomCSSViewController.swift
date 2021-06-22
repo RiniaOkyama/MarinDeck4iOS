@@ -2,27 +2,31 @@
 //  CustomJSViewController.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/04/12.
+//  Created by craptone on 2021/06/10
 //
 
 import UIKit
+import RealmSwift
 
-struct CustomJS: Codable {
-    var title: String
-    var js: String
-    var created_at: Date
+
+class CustomCSS: Object {
+    @objc dynamic var title: String = ""
+    @objc dynamic var css: String = ""
+    @objc dynamic var created_at: Date = Date()
 }
 
-class CustomJSViewController: UIViewController {
+class CustomCSSViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
-    private var customJSs: [CustomJS] = []
-
+    private var realm = try! Realm()
+    private var customCSSs: Results<CustomCSS>!
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateCustomJSs()
+        updateCustomCSSs()
+        
+        view.backgroundColor = .backgroundColor
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -30,6 +34,8 @@ class CustomJSViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
+
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,73 +48,29 @@ class CustomJSViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func updateCustomJSs() {
-        customJSs = fetchCustomJSs().sorted(by: { $0.created_at > $1.created_at })
-    }
-
-    func fetchCustomJSs() -> [CustomJS] {
-        let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        var retArray: [CustomJS] = []
-        for item in jsonArray {
-            let jsonData = item.data(using: .utf8)!
-            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
-        }
-        return retArray
-    }
-
-    func createCustomJS(customJS: CustomJS) {
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        let jsonData = try! JSONEncoder().encode(customJS)
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray.append(jsonString)
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-
-        updateCustomJSs()
-        tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-        tableView.endUpdates()
-//        self.tableView.reloadData()
-    }
-
-    func deleteCustomJS(index: Int) {
-        let cjss = fetchCustomJSs()
-        updateCustomJSs()
-        let itemindex: Int = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
-//        print(itemindexx, index)
-//        let itemindex = index
-        
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        jsonArray.remove(at: itemindex)
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-        updateCustomJSs()
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    func updateCustomCSSs() {
+        customCSSs = realm.objects(CustomCSS.self)
     }
     
-    func updateCustomJS(index: Int, customJS: CustomJS) {
-        let cjss = fetchCustomJSs()
-        let itemindex = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
-
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        let jsonData = try! JSONEncoder().encode(customJS)
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray[itemindex] = jsonString
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-        updateCustomJSs()
-        tableView.reloadData()
+    func createCustomCSS(customCSS: CustomCSS) {
+        try! realm.write({
+            realm.add(customCSS)
+        })
     }
     
     
-    func updateCustomJSDialog(index: Int) {
+    
+    func updateCustomCSSDialog(index: Int) {
         var alertTextField: UITextField?
-        var customJS = customJSs[index]
+        let customCSS = customCSSs[index]
 
         let alert = UIAlertController(
-                title: "カスタムJS名を編集",
+                title: "カスタムCSS名を編集",
                 message: "",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
                 configurationHandler: { (textField: UITextField!) in
-                    textField.text = customJS.title
+                    textField.text = customCSS.title
                     alertTextField = textField
                 })
         alert.addAction(
@@ -121,10 +83,11 @@ class CustomJSViewController: UIViewController {
                         title: "変更する",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        customJS.created_at = Date()
-                        customJS.title = text
-                        self.updateCustomJS(index: index, customJS: customJS)
-                        
+                        try! self.realm.write({
+                            customCSS.created_at = Date()
+                            customCSS.title = text
+                        })
+
                     }
                 }
         )
@@ -135,13 +98,13 @@ class CustomJSViewController: UIViewController {
 }
 
 
-extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
+extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customJSs.count + 1
+        return customCSSs.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if customJSs.count == indexPath.row {
+        if customCSSs.count == indexPath.row {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! CustomAddCellTableViewCell
             cell.selectionStyle = .none
             cell.delegate = self
@@ -149,9 +112,9 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCellTableViewCell
             cell.selectionStyle = .none
-            let customJS = customJSs[indexPath.row]
-            cell.titleLabel.text = customJS.title
-            cell.dateLabel.text = customJS.created_at.offsetFrom()
+            let customCSS = customCSSs[indexPath.row]
+            cell.titleLabel.text = customCSS.title
+            cell.dateLabel.text = customCSS.created_at.offsetFrom()
 
             return cell
         }
@@ -159,27 +122,27 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if customJSs.count == indexPath.row {
+        if customCSSs.count == indexPath.row {
             return
         }
 
-        let vc = EditCustomJSViewController(index: indexPath.row)
+        let vc = EditCustomCSSViewController(customCSS: customCSSs[indexPath.row])
 //        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if customJSs.count == indexPath.row {
+        if customCSSs.count == indexPath.row {
             return nil
         }
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { action in
-                self.updateCustomJSDialog(index: indexPath.row)
+//                self.updateCustomJSDialog(index: indexPath.row)
             }
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { action in
                 print("indexPath is ", indexPath)
-                self.deleteCustomJS(index: indexPath.row)
+//                self.deleteCustomJS(index: indexPath.row)
             }
             return UIMenu(title: "", image: nil, identifier: nil, children: [edit, delete])
         }
@@ -189,14 +152,14 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
 
 }
 
-extension CustomJSViewController: CustomAddCellOutput {
+extension CustomCSSViewController: CustomAddCellOutput {
     // TODO
     func create() {
         var alertTextField: UITextField?
 
         let alert = UIAlertController(
-                title: "カスタムJSを作成",
-                message: "作成するカスタムJSにタイトルを付けてください",
+                title: "カスタムCSSを作成",
+                message: "作成するカスタムCSSにタイトルを付けてください",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
                 configurationHandler: { (textField: UITextField!) in
@@ -213,9 +176,11 @@ extension CustomJSViewController: CustomAddCellOutput {
                         title: "作成",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        // FIXME
-                        self.createCustomJS(customJS: CustomJS(title: text, js: "", created_at: Date()))
-                        let vc = EditCustomJSViewController(index: 0)
+                        let customCSS = CustomCSS()
+                        customCSS.title = text
+                        self.createCustomCSS(customCSS: customCSS)
+
+                        let vc = EditCustomCSSViewController(customCSS: customCSS)
 //                    vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     }

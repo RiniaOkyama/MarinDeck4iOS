@@ -13,7 +13,7 @@ class EditCustomJSViewController: UIViewController {
 
     private var index: Int!
     private var customJS: CustomJS!
-    var textView : UITextView!
+    var textView: UITextView!
 
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!

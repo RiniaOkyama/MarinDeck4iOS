@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CustomJSCellTableViewCell: UITableViewCell {
+class CustomCellTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

@@ -442,16 +442,7 @@ h.insertAdjacentElement('beforeend', s)
     }
     
     func imagePreviewer(index: Int, urls: [String]) {
-        print("imagePreviewer index: \(index), url: \(urls)")
-
-//        var imgUrls: [String] = []
-//        for url in urls {
-//            if let imgurl = url2NomalImg(url) {
-//                imgUrls.append(imgurl)
-//
-//            }
-//        }
-        var imgUrls = urls.map({
+        let imgUrls = urls.map({
             url2NomalImg($0)
         })
         
@@ -465,26 +456,17 @@ h.insertAdjacentElement('beforeend', s)
             return
         }
 
-        let imgs = imgUrls.map({
+        let imgs = imgUrls.compactMap({
             url2UIImage(url: $0)
         })
+        
+        if imgs.isEmpty { return }
 
-        print("loaded!")
-//            let imgsURL = imgUrls.map({
-//                URL(string: $0)!
-//            })
-        let imageDownloader = AlamofireImageDownloader()
         let imageViewer = Optik.imageViewer(
                 withImages: imgs,
                 initialImageDisplayIndex: index,
                 delegate: self
         )
-//            let imageDownloader = AlamofireImageDownloader()
-//            let imageViewer = Optik.imageViewer(
-//                withURLs: imgsURL,
-//                imageDownloader: imageDownloader
-////                delegate: self
-//            )
 
         imageView.image = imgs[index]
         self.view.addSubview(imageView)
@@ -572,10 +554,10 @@ extension ViewController: ImageViewerDelegate {
 
 
 // FIXME
-func url2UIImage(url: String) -> UIImage {
+func url2UIImage(url: String) -> UIImage? {
     let url = URL(string: url)
     if url == nil {
-        return UIImage()
+        return nil
     }
     do {
         let data = try Data(contentsOf: url!)
@@ -583,7 +565,7 @@ func url2UIImage(url: String) -> UIImage {
     } catch let err {
         print("Error : \(err.localizedDescription)")
     }
-    return UIImage()
+    return nil
 }
 
 
