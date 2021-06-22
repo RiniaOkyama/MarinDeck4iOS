@@ -443,6 +443,7 @@
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                 <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                                 <connections>
+                                    <action selector="close" destination="gJ7-vG-6a9" eventType="touchUpInside" id="FbV-dE-y6c"/>
                                     <action selector="close" destination="wAT-an-moa" eventType="touchUpInside" id="lGS-H1-wLE"/>
                                 </connections>
                             </button>

@@ -19,8 +19,9 @@ class CustomAddCellTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .backgroundColor
         backView.layer.cornerRadius = 8
+        backView.backgroundColor = .secondaryBackgroundColor
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.create))
         backView.addGestureRecognizer(gesture)
