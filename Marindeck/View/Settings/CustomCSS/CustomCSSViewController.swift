@@ -1,5 +1,5 @@
 //
-//  CustomJSViewController.swift
+//  CustomCSSViewController.swift
 //  Marindeck
 //
 //  Created by craptone on 2021/06/10
@@ -50,6 +50,7 @@ class CustomCSSViewController: UIViewController {
 
     func updateCustomCSSs() {
         customCSSs = realm.objects(CustomCSS.self)
+        tableView.reloadData()
     }
     
     func createCustomCSS(customCSS: CustomCSS) {
@@ -87,8 +88,32 @@ class CustomCSSViewController: UIViewController {
                             customCSS.created_at = Date()
                             customCSS.title = text
                         })
-
+                        self.updateCustomCSSs()
                     }
+                }
+        )
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteCustomCSS(index: Int) {
+        let alert = UIAlertController(
+            title: "\(customCSSs[index].title)を消去",
+                message: "本当に削除しますか？",
+                preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(
+                UIAlertAction(
+                    title: "キャンセル",
+                    style: UIAlertAction.Style.cancel,
+                    handler: nil))
+        alert.addAction(
+                UIAlertAction(
+                    title: "消去",
+                    style: UIAlertAction.Style.destructive) { _ in
+                    try! self.realm.write({
+                        self.realm.delete(self.customCSSs[index])
+                    })
+                
                 }
         )
 
@@ -137,12 +162,12 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { action in
-//                self.updateCustomJSDialog(index: indexPath.row)
+                self.updateCustomCSSDialog(index: indexPath.row)
             }
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { action in
                 print("indexPath is ", indexPath)
-//                self.deleteCustomJS(index: indexPath.row)
+                self.deleteCustomCSS(index: indexPath.row)
             }
             return UIMenu(title: "", image: nil, identifier: nil, children: [edit, delete])
         }
@@ -153,7 +178,6 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension CustomCSSViewController: CustomAddCellOutput {
-    // TODO
     func create() {
         var alertTextField: UITextField?
 
