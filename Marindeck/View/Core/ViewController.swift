@@ -12,6 +12,7 @@ import LocalAuthentication
 
 import Optik
 import GiphyUISDK
+import RealmSwift
 
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
@@ -40,6 +41,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
     private let env = ProcessInfo.processInfo.environment
+    private let realm = try! Realm()
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
 
@@ -235,6 +237,21 @@ h.insertAdjacentElement('beforeend', s)
     func debugJS(script: String) -> (String, Error?) {
         let (ret, error) = webView.evaluateWithError(javaScript: script)
         return ((ret as? String) ?? "", error)
+    }
+    
+    func debugCSS(css: String) {
+        var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
+        deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
+        deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
+        let script = """
+const h = document.documentElement;
+const s = document.createElement('style');
+s.insertAdjacentHTML('beforeend', "\(deletecomment)");
+h.insertAdjacentElement('beforeend', s)
+"""
+        webView.evaluateJavaScript(script){ object, error in
+            print("stylecss : ", error ?? "成功")
+        }
     }
     
     @objc func openSelectGif() {
@@ -513,6 +530,12 @@ extension ViewController: WKNavigationDelegate {
         for item in cjss {
             debugJS(script: item.js)
         }
+        
+        let csss = realm.objects(CustomCSS.self)
+        for item in csss {
+            debugCSS(css: item.css)
+        }
+        
         
         let theme = fetchTheme()
         debugJS(script: theme.js)
