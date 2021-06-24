@@ -227,17 +227,16 @@ public class NDTweetBtn: UIView {
             
             guard let actionIndex = whichActionBtn(point: pos) else {
                 selectedIndex = nil
-                AudioServicesPlaySystemSound(1519)
                 UIView.animate(withDuration: 0.1, animations: {
                     actionBtns.forEach({ $0.transform = CGAffineTransform(scaleX: 1, y: 1) })
                 })
                 return
             }
-            
-            selectedIndex = actionIndex
-            if actionBtns[actionIndex].transform != CGAffineTransform(scaleX: 1.1, y: 1.1) {
+            if selectedIndex != actionIndex {
                 AudioServicesPlaySystemSound(1519)
             }
+            selectedIndex = actionIndex
+            
             UIView.animate(withDuration: 0.1, animations: {
                 actionBtns[actionIndex].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             })
