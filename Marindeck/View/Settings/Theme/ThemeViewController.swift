@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -16,7 +17,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "着せ替え"
+        self.title = L10n.Settings.Theme.Cell.title
                         
         updateApplyID()
         

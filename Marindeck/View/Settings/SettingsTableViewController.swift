@@ -13,6 +13,8 @@ import MobileCoreServices     // ~iOS13
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
     
+    @IBOutlet weak var themeLabel: UILabel!
+    
     @IBOutlet weak var biometricsSwitch: UISwitch!
     
     private var dController: UIDocumentInteractionController!
@@ -33,6 +35,8 @@ class SettingsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
 //        biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
+        
+        themeLabel.text = L10n.Settings.Theme.Cell.title
     }
     
     

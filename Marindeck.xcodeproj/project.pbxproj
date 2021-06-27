@@ -18,6 +18,8 @@
 		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
 		E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F5736264416AB00593DF4 /* NDTweetBtn.swift */; };
 		E9426B7F267986BF00B141A7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E9426B7E267986BF00B141A7 /* RealmSwift */; };
+		E9583E1D2688A79C0083AA53 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9583E1C2688A79C0083AA53 /* strings.swift */; };
+		E9583E212688A7B70083AA53 /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9583E202688A7B70083AA53 /* assets-images.swift */; };
 		E95CA5D6264E919100AA2305 /* Theme-Dolce_v2.js in Resources */ = {isa = PBXBuildFile; fileRef = E95CA5D5264E919000AA2305 /* Theme-Dolce_v2.js */; };
 		E96769D125AE0F4D00D1826C /* mtdeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E96769D025AE0F4D00D1826C /* mtdeck.js */; };
 		E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97247F8264795DB0044C87E /* ThemeDetailViewController.swift */; };
@@ -113,6 +115,8 @@
 		E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
 		E93F5736264416AB00593DF4 /* NDTweetBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDTweetBtn.swift; sourceTree = "<group>"; };
+		E9583E1C2688A79C0083AA53 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
+		E9583E202688A7B70083AA53 /* assets-images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "assets-images.swift"; sourceTree = "<group>"; };
 		E95CA5D5264E919000AA2305 /* Theme-Dolce_v2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "Theme-Dolce_v2.js"; sourceTree = "<group>"; };
 		E96769C725ADEFA600D1826C /* Marindeck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Marindeck.entitlements; sourceTree = "<group>"; };
 		E96769D025AE0F4D00D1826C /* mtdeck.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mtdeck.js; sourceTree = "<group>"; };
@@ -245,6 +249,15 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		E9583E192688A7470083AA53 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				E9583E1C2688A79C0083AA53 /* strings.swift */,
+				E9583E202688A7B70083AA53 /* assets-images.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		E97248142648474F0044C87E /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +292,7 @@
 		E9732AA725ADDDFD0068F632 /* Marindeck */ = {
 			isa = PBXGroup;
 			children = (
+				E9583E192688A7470083AA53 /* Generated */,
 				E9F070472671D0CF00CA812B /* Model */,
 				E9B93612265F2EB500875A59 /* Strings */,
 				E9BA5AB0262401F400E27F14 /* Const */,
@@ -664,9 +678,11 @@
 				E9DAA1142681BADE00BFE244 /* EditCustomCSSViewController.swift in Sources */,
 				E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */,
 				E9823A0425FF8F7100A70AB4 /* UIImage+URL.swift in Sources */,
+				E9583E212688A7B70083AA53 /* assets-images.swift in Sources */,
 				E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */,
 				E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */,
 				E9A8507F25D3CD240084A00C /* Error+.swift in Sources */,
+				E9583E1D2688A79C0083AA53 /* strings.swift in Sources */,
 				E93F57082643A87A00593DF4 /* ThemeViewController.swift in Sources */,
 				E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */,
 				E9732AA925ADDDFD0068F632 /* AppDelegate.swift in Sources */,
