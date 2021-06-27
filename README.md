@@ -1,9 +1,10 @@
-![MarinDeckheader](https://user-images.githubusercontent.com/54408846/120736622-89217600-c527-11eb-8201-af83cf131a29.png)
+![MarinDeckheader](https://user-images.githubusercontent.com/66313777/123541317-d1c2fc80-d77e-11eb-97f9-7733bfb23d44.png)
 
 # MarinDeck for iOS
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/vitomcharm?style=flat-square)](https://twitter.com/vitomcharm)
 [![Discord](https://img.shields.io/badge/Discord-join-blue)](https://discord.gg/JKsqaxcnCW)
+[![Official](https://img.shields.io/badge/Official%20Site-Visit-blue)](https://hisubway.online/marindeck)
 ![version](https://img.shields.io/badge/version-Alpha-red)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_shield)
 [<img src="https://user-images.githubusercontent.com/54408846/118393692-55b3a000-b67b-11eb-997b-073596be55fc.png" width=80>](https://b.hatena.ne.jp/entry/s/github.com/RiniaOkyama/MarinDeck4iOS)
@@ -18,7 +19,7 @@
 
 
 
-Check out [hisubway.online/marindeck](https://hisubway.online/marindeck/) and follow us on [twitter.com/HiSubway](https://twitter.com/HiSubway) or [twitter.com/vitomcharm](https://twitter.com/vitomcharm)
+Check out [hisubway.online/marindeck](https://hisubway.online/marindeck/) and follow us on [twitter.com/HiSubway](https://twitter.com/HiSubway) and [twitter.com/vitomcharm](https://twitter.com/vitomcharm)
 
 ## How to contribute
 
