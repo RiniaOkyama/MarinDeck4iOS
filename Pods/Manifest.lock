@@ -18,6 +18,7 @@ PODS:
   - markymark (10.1.1)
   - Optik (0.4.0)
   - SPAlert (3.0.9)
+  - SwiftGen (6.4.0)
   - SwiftyMarkdown (1.2.3)
 
 DEPENDENCIES:
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - markymark
   - Optik
   - SPAlert
+  - SwiftGen
   - SwiftyMarkdown
 
 SPEC REPOS:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - markymark
     - Optik
     - SPAlert
+    - SwiftGen
     - SwiftyMarkdown
 
 EXTERNAL SOURCES:
@@ -56,8 +59,9 @@ SPEC CHECKSUMS:
   markymark: 29adb8789fa6b3db97b04b7585d65f13931b5aa5
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
   SPAlert: 6af1f3bb37d74891a6918a5ecde4934c980f0d41
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: 51c6df65745b8c2011386ee9638042e3bb23003b
+PODFILE CHECKSUM: 83d9d34c7a9751fd71a5689c2c61635121f7acc0
 
 COCOAPODS: 1.10.1

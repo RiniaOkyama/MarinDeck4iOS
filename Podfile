@@ -15,6 +15,8 @@ target 'Marindeck' do
   pod 'SPAlert'
   pod "DeployGateSDK"
 
+  pod "SwiftGen"
+
 
 
 

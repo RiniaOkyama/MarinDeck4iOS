@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -208,8 +207,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="着せ替え" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkZ-WD-38a">
-                                                    <rect key="frame" x="20" y="11" width="70" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L10n.Settings.Theme.Cell.title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkZ-WD-38a">
+                                                    <rect key="frame" x="20" y="11" width="225" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
@@ -407,6 +406,7 @@
                     <navigationItem key="navigationItem" id="xNb-hY-XGb"/>
                     <connections>
                         <outlet property="biometricsSwitch" destination="dCK-Gg-vcn" id="BSO-1s-2x2"/>
+                        <outlet property="themeLabel" destination="YkZ-WD-38a" id="yEr-Yt-ViW"/>
                         <outletCollection property="titleLabel" destination="25W-XT-4PI" collectionClass="NSMutableArray" id="PuQ-ZS-ecD"/>
                         <outletCollection property="titleLabel" destination="kGa-Gz-6XG" collectionClass="NSMutableArray" id="IT7-gO-6fG"/>
                         <outletCollection property="titleLabel" destination="3jh-83-S3a" collectionClass="NSMutableArray" id="2Dn-RL-x2y"/>

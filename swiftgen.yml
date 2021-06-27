@@ -1,0 +1,15 @@
+strings:
+  inputs: 
+    - MarinDeck/Base.lproj
+    - Marindeck/Strings/ja.lproj
+    # - Marindeck/Strings/en.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: MarinDeck/Generated/strings.swift
+xcassets:
+  inputs:
+    - MarinDeck/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: MarinDeck/Generated/assets-images.swift
