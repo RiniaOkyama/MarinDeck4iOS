@@ -12,7 +12,7 @@
 
 "settings.customJS.cell.title" = "カスタムJavaScript";
 "settings.customCSS.cell.title" = "カスタムCSS";
-"settings.theme.cell.title" = "着せ替え";
+"settings.theme.cell.title" = "テーマ";
 
 "settings.termsOfUse.cell.title" = "利用規約";
 "settings.license.cell.title" = "ライセンス";
