@@ -524,9 +524,7 @@ extension ViewController: WKNavigationDelegate {
         loadJsFile(forResource: "moduleraid")
         loadJsFile(forResource: "marindeck-css")
         loadJsFile(forResource: "marindeck")
-        print("unko")
         loadCSSFile(forResource: "marindeck")
-        print("deta")
         
         let cjss = fetchCustomJSs()
         for item in cjss {

@@ -29,6 +29,7 @@ extension ViewController: WKScriptMessageHandler {
             self.topBackView.backgroundColor = .topBarColor
             self.menuVC.loadViewIfNeeded()
             self.menuVC.viewDidLoad()
+            self.setupWebViewToolBar()
             
             
             setStatusBarStyle(style: fetchTheme().statusBarColor)
