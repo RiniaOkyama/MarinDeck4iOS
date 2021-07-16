@@ -30,20 +30,14 @@ extension ViewController: WKScriptMessageHandler {
             self.menuVC.loadViewIfNeeded()
             self.menuVC.viewDidLoad()
             self.setupWebViewToolBar()
-            
-            
+
             setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false
             // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる
             webView.translatesAutoresizingMaskIntoConstraints = false
 
-//            webView.anchorAll(equalTo: mainDeckView)
             webView.frame = mainDeckView.bounds
-            
-            #if DEBUG
-//                webView.backgroundColor = .cyan
-            #endif
-            
+
             menuVC.setUserIcon(url: getUserIcon())
 
         case "jsCallbackHandler":
@@ -60,7 +54,6 @@ extension ViewController: WKScriptMessageHandler {
             imageView.frame = CGRect(x: imgpos[0], y: imgpos[1] + Int(UIApplication.shared.statusBarFrame.size.height), width: imgpos[2], height: imgpos[3])
 
         case "openSettings":
-            print("openSettings")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.performSegue(withIdentifier: "toSettings", sender: nil)
             }
@@ -80,7 +73,7 @@ extension ViewController: WKScriptMessageHandler {
             let index = valueStrings[0] as! Int
             let urls = valueStrings[1] as! [String]
             self.imagePreviewer(index: index, urls: urls)
-            
+
         case "isTweetButtonHidden":
             tweetFloatingBtn.isHidden = message.body as? Bool ?? false
         default:
