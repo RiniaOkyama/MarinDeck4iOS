@@ -285,22 +285,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        self.navigationController?.pushViewController(vc!, animated: true)
     }
 
-    func getUserIcon() -> String {
-        return (webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div > img').src") as? String) ?? "https://pbs.twimg.com/media/Ewk-ESrUYAAZYKe?format=jpg&name=medium"
-    }
-
-    func getUserNameID() -> (String, String) {
-        let userName = webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app > header > div > div.js-account-summary > a > div > div > div > span').innerText") as? String ?? "unknown"
-        let userID = webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app > header > div > div.js-account-summary > a > div > div > span').innerText") as? String ?? "@unknown"
-        return (userName, userID)
-    }
-
-    func isColumnScroll(_ bool: Bool) {
-        let isScroll = bool ? "on" : "off"
-        webView.evaluateJavaScript("columnScroll.\(isScroll)()") { object, error in
-            print("webViewLog : ", error ?? "成功")
-        }
-    }
 
     // MARK: Menu open
     @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
@@ -363,11 +347,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         sender.setTranslation(CGPoint.zero, in: view)
     }
 
-    func positionTweetLike(x: Int, y: Int) {
-        webView.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { object, error in
-            print("touchPointTweetLike : ", error ?? "成功")
-        })
-    }
 
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
         guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
@@ -385,11 +364,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return (index, imgUrls)
     }
 
-    func focusTweetTextArea() {
-        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed.hide-detail-view-inline > div.js-app-content.app-content.is-open > div:nth-child(1) > div > div > div > div > div > div.position-rel.compose-text-container.padding-a--10.br--4 > textarea\").focus()") { object, error in
-            print("focusTweetTextArea : ", error ?? "成功")
-        }
-    }
 
     func closeMenu() {
         isMenuOpen = false
