@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */; };
+		668181C66EAD57BA065D3F44 /* ViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668187D7AB1B020164C53A50 /* ViewController+Binding.swift */; };
 		E91470F1264AAF37009BC91E /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */; };
 		E9147106264B34C8009BC91E /* TermsOfUse.md in Resources */ = {isa = PBXBuildFile; fileRef = E9147105264B34C8009BC91E /* TermsOfUse.md */; };
 		E921914C2650F504000435EA /* WKWebView+safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921914B2650F504000435EA /* WKWebView+safeAreaInsets.swift */; };
@@ -17,7 +18,6 @@
 		E93F570D2643AF1500593DF4 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F570B2643AF1500593DF4 /* ThemeTableViewCell.swift */; };
 		E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F570C2643AF1500593DF4 /* ThemeTableViewCell.xib */; };
 		E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F5736264416AB00593DF4 /* NDTweetBtn.swift */; };
-		E9426B7F267986BF00B141A7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E9426B7E267986BF00B141A7 /* RealmSwift */; };
 		E9583E1D2688A79C0083AA53 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9583E1C2688A79C0083AA53 /* strings.swift */; };
 		E9583E212688A7B70083AA53 /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9583E202688A7B70083AA53 /* assets-images.swift */; };
 		E95CA5D6264E919100AA2305 /* Theme-Dolce_v2.js in Resources */ = {isa = PBXBuildFile; fileRef = E95CA5D5264E919000AA2305 /* Theme-Dolce_v2.js */; };
@@ -104,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		318393D6B672121074CA0B5D /* Pods-Marindeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marindeck.debug.xcconfig"; path = "Target Support Files/Pods-Marindeck/Pods-Marindeck.debug.xcconfig"; sourceTree = "<group>"; };
+		668187D7AB1B020164C53A50 /* ViewController+Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Binding.swift"; sourceTree = "<group>"; };
 		97B149403DDF43B1C8360F10 /* Pods-Marindeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marindeck.release.xcconfig"; path = "Target Support Files/Pods-Marindeck/Pods-Marindeck.release.xcconfig"; sourceTree = "<group>"; };
 		CEA28C2D60DF9D5D334E129A /* Pods_Marindeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marindeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91470F0264AAF37009BC91E /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +188,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9426B7F267986BF00B141A7 /* RealmSwift in Frameworks */,
 				08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +373,7 @@
 				E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */,
 				E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */,
 				E9C2CC2326469F79003EC5A0 /* ViewController+UIContextMenuInteractionDelegate.swift */,
+				668187D7AB1B020164C53A50 /* ViewController+Binding.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -491,7 +492,7 @@
 			);
 			name = Marindeck;
 			packageProductDependencies = (
-				E9426B7E267986BF00B141A7 /* RealmSwift */,
+				E9426B7E267986BF00B141A7,
 			);
 			productName = Marindecker;
 			productReference = E9732AA525ADDDFD0068F632 /* Marindeck.app */;
@@ -543,7 +544,7 @@
 			);
 			mainGroup = E9732A9C25ADDDFD0068F632;
 			packageReferences = (
-				E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				E9426B7D267986BF00B141A7,
 			);
 			productRefGroup = E9732AA625ADDDFD0068F632 /* Products */;
 			projectDirPath = "";
@@ -698,6 +699,7 @@
 				E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */,
 				E9B9361E265F357A00875A59 /* String+localized.swift in Sources */,
 				E97247F9264795DB0044C87E /* ThemeDetailViewController.swift in Sources */,
+				668181C66EAD57BA065D3F44 /* ViewController+Binding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,7 +1009,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		E9426B7D267986BF00B141A7 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
@@ -1018,9 +1020,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E9426B7E267986BF00B141A7 /* RealmSwift */ = {
+		E9426B7E267986BF00B141A7 = {
 			isa = XCSwiftPackageProductDependency;
-			package = E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = E9426B7D267986BF00B141A7;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
