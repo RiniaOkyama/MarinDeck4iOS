@@ -62,21 +62,25 @@ extension ViewController: UIContextMenuInteractionDelegate {
             print("img is nil...")
             return nil
         }
-        
+
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
-        guard let image = url2UIImage(url: imgurl.1[imgurl.0]) else { return nil }
+        guard let image = url2UIImage(url: imgurl.1[imgurl.0]) else {
+            return nil
+        }
 
         let previewProvider: () -> UIViewController? = { [unowned self] in
             return ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
             let tweetAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in
-                guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+                guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
+                    return
+                }
                 self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
                     print("gifLoad : ", error ?? "成功")
                 }
-                
+
             }
             let likeAction = UIAction(title: "いいね", image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
                 self.positionTweetLike(x: Int(location.x), y: Int(location.y))
@@ -87,15 +91,17 @@ extension ViewController: UIContextMenuInteractionDelegate {
             return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])
         }
     }
-    
-    
+
+
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
             let imgs = self.imagePreviewImageStrings.compactMap({
                 url2UIImage(url: $0)
             })
-            if imgs.isEmpty { return }
+            if imgs.isEmpty {
+                return
+            }
             self.view.addSubview(self.imageView)
             let imageViewer = Optik.imageViewer(
                     withImages: imgs,
@@ -105,8 +111,8 @@ extension ViewController: UIContextMenuInteractionDelegate {
             self.present(imageViewer, animated: false, completion: nil)
         }
     }
-    
-    
+
+
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         guard error == nil else {
             return
@@ -114,6 +120,6 @@ extension ViewController: UIContextMenuInteractionDelegate {
         let alertView = SPAlertView(title: "保存しました", preset: .done)
         alertView.present(duration: 0.7)
     }
-        
+
 }
 

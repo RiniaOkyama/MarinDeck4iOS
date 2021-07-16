@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var swipeStruct = {
         return SwipeStruct()
     }()
-    
+
     var webView: WKWebView!
     public var javaScriptString = ""
     @IBOutlet weak var mainDeckView: UIView!
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return blurView
     }()
     var mainDeckBlurView: UIView!
-    
+
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
     private let env = ProcessInfo.processInfo.environment
@@ -56,13 +56,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         ActivityIndicator.style = .medium
         return ActivityIndicator
     }()
-    
+
     var isBottomBackViewHidden = false {
         didSet {
             if isBottomBackViewHidden {
                 bottomBackView.isHidden = true
                 bottomBackViewConstraint.constant = 0
-            }else {
+            } else {
                 bottomBackView.isHidden = false
                 bottomBackViewConstraint.constant = 50
             }
@@ -72,25 +72,25 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
-        
+
         DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
-        
+
         checkBiometrics()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         webView.frame = mainDeckView.bounds
     }
-    
+
     func gestureRecognizer(
-        _ gestureRecognizer: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWith
-        otherGestureRecognizer: UIGestureRecognizer
-        ) -> Bool {
+            _ gestureRecognizer: UIGestureRecognizer,
+            shouldRecognizeSimultaneouslyWith
+            otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
         return true
     }
 
@@ -100,14 +100,17 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         webView.frame = mainDeckView.bounds
         mainDeckBlurView.frame.size = view.bounds.size
     }
-    
+
     override var canBecomeFirstResponder: Bool {
-        get { return true }
+        get {
+            return true
+        }
     }
-    
-    
+
+
     // MARK: StatusbarColor
     private (set) var statusBarStyle: UIStatusBarStyle = .default
+
     func setStatusBarStyle(style: UIStatusBarStyle) {
         statusBarStyle = style
         self.setNeedsStatusBarAppearanceUpdate()
@@ -117,7 +120,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return statusBarStyle
     }
 
-    
+
     @objc func dismissKeyboard() {
         webView.resignFirstResponder()
     }
@@ -131,7 +134,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
 //             scrollView.pinchGestureRecognizer?.isEnabled = false
 //    }
-    
+
     func checkBiometrics() {
         let isUseBiometrics = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics)
         if isUseBiometrics {
@@ -170,16 +173,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                         print("\(error.code): \(error.localizedDescription)")
                     }
                 }
-            }else {
+            } else {
                 // 生体認証をオンにしているが、許可されていない。
             }
         }
     }
-    
-    
-    func loadCSSFile(forResource: String, ofType:String = "css"){
+
+
+    func loadCSSFile(forResource: String, ofType: String = "css") {
         guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
-            print("faild load style.css")
+            print("failed load style.css")
             return
         }
         let mtFile = FileHandle(forReadingAtPath: mtPath)!
@@ -190,19 +193,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
         deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
         let script = """
-const h = document.documentElement;
-const s = document.createElement('style');
-s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-h.insertAdjacentElement('beforeend', s)
-"""
-        webView.evaluateJavaScript(script){ object, error in
+                     const h = document.documentElement;
+                     const s = document.createElement('style');
+                     s.insertAdjacentHTML('beforeend', "\(deletecomment)");
+                     h.insertAdjacentElement('beforeend', s)
+                     """
+        webView.evaluateJavaScript(script) { object, error in
             print("stylecss : ", error ?? "成功")
         }
     }
 
-    
-    func loadJsFile(forResource: String, ofType:String = "js"){
-        guard let mtPath = Bundle.main.path(forResource:forResource, ofType:ofType) else {
+
+    func loadJsFile(forResource: String, ofType: String = "js") {
+        guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
             print("ERROR")
             return
         }
@@ -216,7 +219,7 @@ h.insertAdjacentElement('beforeend', s)
             print("webViewLog : ", error ?? "成功")
         }
     }
-    
+
 
     @objc func tweetPressed() {
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
@@ -238,29 +241,26 @@ h.insertAdjacentElement('beforeend', s)
         let (ret, error) = webView.evaluateWithError(javaScript: script)
         return ((ret as? String) ?? "", error)
     }
-    
+
     func debugCSS(css: String) {
         var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
         deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
         let script = """
-const h = document.documentElement;
-const s = document.createElement('style');
-s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-h.insertAdjacentElement('beforeend', s)
-"""
-        webView.evaluateJavaScript(script){ object, error in
+                     const h = document.documentElement;
+                     const s = document.createElement('style');
+                     s.insertAdjacentHTML('beforeend', "\(deletecomment)");
+                     h.insertAdjacentElement('beforeend', s)
+                     """
+        webView.evaluateJavaScript(script) { object, error in
             print("stylecss : ", error ?? "成功")
         }
     }
-    
+
     @objc func openSelectGif() {
         let giphy = GiphyViewController()
         Giphy.configure(apiKey: env[EnvKeys.GIPHY_API_KEY] ?? "")
-//        giphy.theme = GPHTheme(type: settingsViewController.theme)
-//        giphy.mediaTypeConfig = settingsViewController.mediaTypeConfig
         GiphyViewController.trayHeightMultiplier = 0.7
-//        giphy.showConfirmationScreen = settingsViewController.confirmationScreen == .on
         giphy.shouldLocalizeSearch = true
         giphy.delegate = self
         giphy.dimBackground = true
@@ -268,7 +268,7 @@ h.insertAdjacentElement('beforeend', s)
 
         present(giphy, animated: true, completion: nil)
     }
-    
+
     @objc func openSelectPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = false
@@ -276,7 +276,7 @@ h.insertAdjacentElement('beforeend', s)
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-    
+
     func openSettings() {
 //        self.performSegue(withIdentifier: "toSettings", sender: nil)
         let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
@@ -284,79 +284,77 @@ h.insertAdjacentElement('beforeend', s)
         present(nvc, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(vc!, animated: true)
     }
-    
-    func getUserIcon() -> String{
+
+    func getUserIcon() -> String {
         return (webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div > img').src") as? String) ?? "https://pbs.twimg.com/media/Ewk-ESrUYAAZYKe?format=jpg&name=medium"
     }
-    
+
     func getUserNameID() -> (String, String) {
         let userName = webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app > header > div > div.js-account-summary > a > div > div > div > span').innerText") as? String ?? "unknown"
         let userID = webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app > header > div > div.js-account-summary > a > div > div > span').innerText") as? String ?? "@unknown"
         return (userName, userID)
     }
-    
+
     func isColumnScroll(_ bool: Bool) {
         let isScroll = bool ? "on" : "off"
         webView.evaluateJavaScript("columnScroll.\(isScroll)()") { object, error in
             print("webViewLog : ", error ?? "成功")
         }
     }
-    
+
     // MARK: Menu open
     @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
-        let move:CGPoint = sender.translation(in: view)
-        
-        if self.menuView.frame.origin.x > 0 && 0 < move.x{
-            
-        }else{
+        let move: CGPoint = sender.translation(in: view)
+
+        if self.menuView.frame.origin.x > 0 && 0 < move.x {
+
+        } else {
             mainDeckView.center.x += move.x
             mainDeckBlurView.center.x += move.x
             self.menuView.center.x += move.x
         }
-        
+
         self.view.layoutIfNeeded()
-        
-        if (sender.state == .began){
+
+        if (sender.state == .began) {
             print("began")
 //            isColumnScroll(false)
             menuView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckView.translatesAutoresizingMaskIntoConstraints = false
-            
+
             mainDeckBlurView.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.2, animations: {
                 self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             })
-            
+
             menuVC.setUserIcon(url: getUserIcon())
             let (name, id) = getUserNameID()
             menuVC.setUserNameID(name: name, id: id)
-        }
-        
-        else if(sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
+        } else if (sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
             print("cancel or end or fail")
 //            isColumnScroll(true)
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
-            
-            if mainDeckView.frame.origin.x > self.menuView.frame.width / 2{
+
+            if mainDeckView.frame.origin.x > self.menuView.frame.width / 2 {
                 isMenuOpen = true
                 UIView.animate(withDuration: 0.3, animations: {
                     self.menuView.frame.origin.x = 0
                     self.mainDeckBlurView.frame.origin.x = self.menuView.frame.width
                     self.mainDeckView.frame.origin.x = self.menuView.frame.width
                 })
-            }else{
+            } else {
                 mainDeckBlurView.isUserInteractionEnabled = false
                 UIView.animate(withDuration: 0.3, animations: {
                     self.mainDeckBlurView.backgroundColor = .none
 //                    self.topBackBlurView.backgroundColor = .none
 //                    self.bottomBackBlurView.backgroundColor = .none
-                    
+
                     self.mainDeckBlurView.frame.origin.x = 0
                     self.mainDeckView.frame.origin.x = 0
                     self.bottomBackView.frame.origin.x = 0
                     self.topBackView.frame.origin.x = 0
-                    
+
                     self.menuView.frame.origin.x = -self.menuView.frame.width
                 })
             }
@@ -364,15 +362,14 @@ h.insertAdjacentElement('beforeend', s)
         // reset
         sender.setTranslation(CGPoint.zero, in: view)
     }
-    
+
     func positionTweetLike(x: Int, y: Int) {
         webView.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { object, error in
             print("touchPointTweetLike : ", error ?? "成功")
         })
     }
-    
+
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
-        print("position", x, y)
         guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
             return (0, [])
         }
@@ -380,28 +377,20 @@ h.insertAdjacentElement('beforeend', s)
         let index = valueStrings[0] as! Int
         let urls = valueStrings[1] as! [String]
 
-//        var imgUrls: [String] = []
-//        for url in urls {
-//            if let imgurl = url2NomalImg(url) {
-//                imgUrls.append(imgurl)
-//
-//            }
-//        }
         let imgUrls = urls.map({
             url2NomalImg($0)
         })
-
         print("getPositionElements", index, imgUrls)
 
         return (index, imgUrls)
     }
-    
+
     func focusTweetTextArea() {
         webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed.hide-detail-view-inline > div.js-app-content.app-content.is-open > div:nth-child(1) > div > div > div > div > div > div.position-rel.compose-text-container.padding-a--10.br--4 > textarea\").focus()") { object, error in
             print("focusTweetTextArea : ", error ?? "成功")
         }
     }
-    
+
     func closeMenu() {
         isMenuOpen = false
         menuView.translatesAutoresizingMaskIntoConstraints = false
@@ -409,16 +398,16 @@ h.insertAdjacentElement('beforeend', s)
         mainDeckBlurView.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.3, animations: {
             self.mainDeckBlurView.backgroundColor = .none
-          
+
             self.mainDeckBlurView.frame.origin.x = 0
             self.mainDeckView.frame.origin.x = 0
             self.bottomBackView.frame.origin.x = 0
             self.topBackView.frame.origin.x = 0
-            
+
             self.menuView.frame.origin.x = -self.menuView.frame.width
         })
     }
-    
+
     func setBlurView() {
         blurView.frame = self.view.frame
         view.addSubview(blurView)
@@ -440,13 +429,13 @@ h.insertAdjacentElement('beforeend', s)
 
     func url2NomalImg(_ str: String) -> String {
         var r = url2SmallImg(str)
-        if let index = r.range(of: "&name")?.lowerBound{
+        if let index = r.range(of: "&name")?.lowerBound {
             r = String(r[...index]) // + "name=orig"
             return r
         }
         return ""
     }
-    
+
 
     func fetchCustomJSs() -> [CustomJS] {
         let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
@@ -457,14 +446,13 @@ h.insertAdjacentElement('beforeend', s)
         }
         return retArray
     }
-    
+
     func imagePreviewer(index: Int, urls: [String]) {
         let imgUrls = urls.map({
             url2NomalImg($0)
         })
-        
         print("parsed", imgUrls)
-        
+
         if imgUrls.count == 0 {
             return
         }
@@ -476,8 +464,10 @@ h.insertAdjacentElement('beforeend', s)
         let imgs = imgUrls.compactMap({
             url2UIImage(url: $0)
         })
-        
-        if imgs.isEmpty { return }
+
+        if imgs.isEmpty {
+            return
+        }
 
         let imageViewer = Optik.imageViewer(
                 withImages: imgs,
@@ -489,8 +479,6 @@ h.insertAdjacentElement('beforeend', s)
         self.view.addSubview(imageView)
 //            imageViewer.presentationController?.delegate = self
         present(imageViewer, animated: true, completion: nil)
-
-
     }
 
 }
@@ -511,49 +499,49 @@ extension ViewController: WKNavigationDelegate {
             decisionHandler(.allow)
 //        }else if host.hasPrefix("t.co") {
 //            decisionHandler(.cancel)
-        }else{
+        } else {
             let safariVC = SFSafariViewController(url: url!)
             present(safariVC, animated: true, completion: nil)
-            
+
             decisionHandler(.cancel)
         }
     }
-    
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 //        loadJsFile(forResource: "mtdeck")
         loadJsFile(forResource: "moduleraid")
         loadJsFile(forResource: "marindeck-css")
         loadJsFile(forResource: "marindeck")
         loadCSSFile(forResource: "marindeck")
-        
+
         let cjss = fetchCustomJSs()
         for item in cjss {
             debugJS(script: item.js)
         }
-        
+
         let csss = realm.objects(CustomCSS.self)
         for item in csss {
             debugCSS(css: item.css)
         }
-        
-        
+
+
         let theme = fetchTheme()
         debugJS(script: theme.js)
-        
+
     }
 
     public func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
         let vc = UIViewController()
         return vc
     }
-    
+
 }
 
 extension ViewController: MenuDelegate {
     func reload() {
         webView.reload()
     }
-    
+
     func openProfile() {
         self.closeMenu()
         webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
@@ -596,16 +584,16 @@ extension ViewController: GiphyDelegate {
     func didSearch(for term: String) {
         print("your user made a search! ", term)
     }
-    
+
     func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia) {
         giphyViewController.dismiss(animated: true, completion: { [weak self] in
 //            print(media.url(rendition: .original, fileType: .gif))
             self?.loadingIndicator.startAnimating()
             self?.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             DispatchQueue(label: "tweetgifload.async").async {
-                let url:URL = URL(string: media.url(rendition: .original, fileType: .gif)!)!
+                let url: URL = URL(string: media.url(rendition: .original, fileType: .gif)!)!
                 //Now use image to create into NSData format
-                let imageData:NSData = NSData.init(contentsOf: url)!
+                let imageData: NSData = NSData.init(contentsOf: url)!
                 let data = imageData.base64EncodedString(options: [])
                 DispatchQueue.main.sync {
                     self?.webView.evaluateJavaScript("addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { object, error in
@@ -618,7 +606,7 @@ extension ViewController: GiphyDelegate {
         })
         GPHCache.shared.clear()
     }
-    
+
     func didDismiss(controller: GiphyViewController?) {
         GPHCache.shared.clear()
     }
@@ -626,26 +614,30 @@ extension ViewController: GiphyDelegate {
 
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         print("\(info)")
         if let image = info[.originalImage] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
+                return
+            }
             self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
                 print("photoselected : ", error ?? "成功")
             }
             dismiss(animated: true, completion: nil)
         }
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
 
         if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else { return }
+            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
+                return
+            }
             self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
                 print("photoselected : ", error ?? "成功")
             }
-        } else{
+        } else {
             print("Error")
         }
 
