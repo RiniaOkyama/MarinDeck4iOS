@@ -370,7 +370,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         menuView.translatesAutoresizingMaskIntoConstraints = false
         mainDeckView.translatesAutoresizingMaskIntoConstraints = false
         mainDeckBlurView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.mainDeckBlurView.backgroundColor = .none
 
             self.mainDeckBlurView.frame.origin.x = 0
@@ -514,6 +514,7 @@ extension ViewController: WKNavigationDelegate {
 extension ViewController: MenuDelegate {
     func reload() {
         webView.reload()
+        closeMenu()
     }
 
     func openProfile() {
