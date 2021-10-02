@@ -546,7 +546,7 @@ func url2UIImage(url: String) -> UIImage? {
     }
     do {
         let data = try Data(contentsOf: url!)
-        return UIImage(data: data)!
+        return UIImage(data: data)
     } catch let err {
         print("Error : \(err.localizedDescription)")
     }

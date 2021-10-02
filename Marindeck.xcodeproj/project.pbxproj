@@ -39,6 +39,7 @@
 		E993A31625B2EEAA003DAE3A /* DebugerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A31425B2EEA9003DAE3A /* DebugerViewController.swift */; };
 		E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E993A31525B2EEA9003DAE3A /* DebugerViewController.xib */; };
 		E993A39325B4B7D4003DAE3A /* marindeck.js in Resources */ = {isa = PBXBuildFile; fileRef = E993A39225B4B7D3003DAE3A /* marindeck.js */; };
+		E9A82C7D26DE2C0D00C80854 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E9426B7E267986BF00B141A7 /* RealmSwift */; };
 		E9A8507C25D3CD240084A00C /* String+leftPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507825D3CD240084A00C /* String+leftPadding.swift */; };
 		E9A8507D25D3CD240084A00C /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507925D3CD240084A00C /* UIColor+hex.swift */; };
 		E9A8507E25D3CD240084A00C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8507A25D3CD240084A00C /* UIView+.swift */; };
@@ -188,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A82C7D26DE2C0D00C80854 /* RealmSwift in Frameworks */,
 				08ACD7C369837892DC567AAA /* Pods_Marindeck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,7 +494,7 @@
 			);
 			name = Marindeck;
 			packageProductDependencies = (
-				E9426B7E267986BF00B141A7,
+				E9426B7E267986BF00B141A7 /* RealmSwift */,
 			);
 			productName = Marindecker;
 			productReference = E9732AA525ADDDFD0068F632 /* Marindeck.app */;
@@ -544,7 +546,7 @@
 			);
 			mainGroup = E9732A9C25ADDDFD0068F632;
 			packageReferences = (
-				E9426B7D267986BF00B141A7,
+				E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = E9732AA625ADDDFD0068F632 /* Products */;
 			projectDirPath = "";
@@ -881,14 +883,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 726VR75V6L;
+				CURRENT_PROJECT_VERSION = 000006;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Marindeck/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.6;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -911,14 +914,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 726VR75V6L;
+				CURRENT_PROJECT_VERSION = 000006;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Marindeck/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -1009,7 +1013,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E9426B7D267986BF00B141A7 = {
+		E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
@@ -1020,9 +1024,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E9426B7E267986BF00B141A7 = {
+		E9426B7E267986BF00B141A7 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E9426B7D267986BF00B141A7;
+			package = E9426B7D267986BF00B141A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
