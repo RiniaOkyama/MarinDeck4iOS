@@ -11,16 +11,18 @@ import UIKit
 struct SwipeStruct {
     var isMenuCloseRight: Bool = false
     var isFirstTouch: Bool = false
-
+    var isMoving = false
 }
 
 extension ViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         swipeStruct.isFirstTouch = true
+        swipeStruct.isMoving = false
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swipeStruct.isMoving = true
         if !isMenuOpen {
             return
         }
@@ -63,6 +65,12 @@ extension ViewController {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !swipeStruct.isMoving {
+            closeMenu()
+            return
+        }
+        swipeStruct.isMoving = false
+        
         if mainDeckView.frame.origin.x > self.menuView.frame.width / 2 {
             isMenuOpen = true
             UIView.animate(withDuration: 0.3, animations: {
