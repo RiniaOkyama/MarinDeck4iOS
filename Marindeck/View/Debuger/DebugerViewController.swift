@@ -40,8 +40,22 @@ class DebugerViewController: UIViewController {
         self.editorView.addSubview(textView)
         self.view.bringSubviewToFront(segmentCtrl)
 
-        // Do any additional setup after loading the view.
+        textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    
+    @objc func keyboardWillShowNotification(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+    @objc func keyboardWillHideNotification(_ notification: Notification) {
+        textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
+    }
+    
     
     func errorAlert(_ string: String){
         let alert: UIAlertController = UIAlertController(title: "実行エラー", message: string, preferredStyle:  UIAlertController.Style.alert)
