@@ -47,14 +47,14 @@ extension ViewController: WKScriptMessageHandler {
             print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
 
         case .imageViewPos:
-            guard let imgpos = message.body as? [Int] else {
+            guard let imgpos = message.body as? [Float] else {
                 return
             }
             print("IMGPOS!!!: ", imgpos)
 //            imageView.center = view.center
 //            imageView.frame.origin.y = view.frame.origin.y
 
-            imageView.frame = CGRect(x: imgpos[0], y: imgpos[1] + Int(UIApplication.shared.statusBarFrame.size.height), width: imgpos[2], height: imgpos[3])
+            imageView.frame = CGRect(x: Int(imgpos[0]), y: Int(imgpos[1]), width: Int(imgpos[2]), height: Int(imgpos[3]))
 
         case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -72,9 +72,9 @@ extension ViewController: WKScriptMessageHandler {
 
 
         case .imagePreviewer:
-            let valueStrings = message.body as! [Any]
-            let index = valueStrings[0] as! Int
-            let urls = valueStrings[1] as! [String]
+            guard let valueStrings = message.body as? [Any] else { return }
+            guard let index = valueStrings[0] as? Int else { return }
+            guard let urls = valueStrings[1] as? [String] else { return }
             self.imagePreviewer(index: index, urls: urls)
 
         case .isTweetButtonHidden:
