@@ -144,22 +144,34 @@ function touchPointTweetLike(x, y) {
     document.elementFromPoint(x, y).closest(".tweet").getElementsByClassName("tweet-action")[2].click();
 }
 
-function positionElement(x,y){
+function positionElement(x, y){
     webkit.messageHandlers.jsCallbackHandler.postMessage("CALLED position element");
     const element = document.elementFromPoint(x, y);
+    console.log(element);
     webkit.messageHandlers.jsCallbackHandler.postMessage(String(element.style.backgroundImage));
 
+    if (!element.classList.contains("js-media-image-link") && !element.classList.contains("media-img")) {
+        console.log(element.classList)
+        return
+    }
+    
     let openImgNum = 0
     let imgUrls = []
     element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function(item, index){
-      imgUrls.push(item.style.backgroundImage);
-      if (item == element){
+        const img = item.style.backgroundImage
+        if (img === "") {
+            imgUrls.push(item.querySelector("img").src);
+        }else {
+            imgUrls.push(img);
+        }
+        if (item === element){
           openImgNum = index;
           swiftLog("openImgNum", index);
-      }
+        }
     })
 
     var rect = element.getBoundingClientRect();
+    console.log(rect);
     webkit.messageHandlers.imageViewPos.postMessage([rect.left, rect.top, rect.width, rect.height]);
     // webkit.messageHandlers.imagePreviewer.postMessage(imgUrls);
     return [openImgNum, imgUrls]
@@ -226,12 +238,13 @@ function SecretMode(){
               
           }
           else{
-            endedlist.push(image);
-//              webkit.messageHandlers.loadImage.postMessage(String(image.style.backgroundImage));
-            image.addEventListener("click", function(clickedItem){
-              const res = positionElement(clickedItem.x, clickedItem.y);
-              webkit.messageHandlers.imagePreviewer.postMessage(res);
-            });
+//              if (image.classList.includes("js-media-image-link")) {
+                endedlist.push(image);
+                image.addEventListener("click", function(clickedItem){
+                const res = positionElement(clickedItem.x, clickedItem.y);
+                webkit.messageHandlers.imagePreviewer.postMessage(res);
+                });
+//              }
           }
         });
     }
