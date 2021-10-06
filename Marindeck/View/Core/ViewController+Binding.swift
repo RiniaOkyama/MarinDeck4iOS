@@ -33,6 +33,7 @@ extension ViewController {
         return (webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div > img').src") as? String) ?? "https://pbs.twimg.com/media/Ewk-ESrUYAAZYKe?format=jpg&name=medium"
     }
     
+    // FIXME: あとから出てきたheaderに適用されない。
     func setStatusBarSpace(height: Int) {
         let headerHeight = height + 50
         webView.evaluateJavaScript("""

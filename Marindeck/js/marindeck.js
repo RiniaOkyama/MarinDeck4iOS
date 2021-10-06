@@ -31,15 +31,21 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
         swiftLog("login style changed");
     }catch(e){swiftLog("login load error" + String(e));}
     
-    while(true){
-        try{
-            style_init()
-            document.querySelector(".open-modal").remove();
-            break
-        }catch(e){
-            await sleep(500);
+    // 画像のモーダルを抹殺
+    new MutationObserver((records) => {
+      return [...records || []].forEach((record) => {
+        const target = record.target
+        if (target instanceof HTMLElement) {
+          const isOpenModal = target.id === 'open-modal'
+          if (isOpenModal) {
+            const mediatable = target.querySelector('.js-mediatable')
+            const dismiss = target.querySelector('.js-dismiss')
+            if (mediatable && dismiss) dismiss.click()
+          }
         }
-    }
+      })
+    }).observe(document.body, {childList: true, subtree: true})
+
 })();
 
 
