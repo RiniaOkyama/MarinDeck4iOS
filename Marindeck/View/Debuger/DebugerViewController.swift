@@ -79,20 +79,7 @@ class DebugerViewController: UIViewController {
     }
     
     @IBAction func run(){
-        var script = ""
-        if segmentCtrl.selectedSegmentIndex == 1{
-            var deletecomment = textView.text!.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
-            deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
-            deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
-            print(deletecomment)
-            script = """
-var s = document.createElement("style");
-s.innerHTML = "\(deletecomment)";
-document.getElementsByTagName("head")[0].appendChild(s);
-"""
-        }else{
-            script = textView.text
-        }
+        let script = segmentCtrl.selectedSegmentIndex == 0 ? textView.text! : delegate!.css2JS(css: textView.text!)
         let (_, error) = delegate!.debugJS(script: script)
         
         if error != nil{
