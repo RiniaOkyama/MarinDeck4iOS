@@ -241,17 +241,23 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         let (ret, error) = webView.evaluateWithError(javaScript: script)
         return ((ret as? String) ?? "", error)
     }
-
-    func debugCSS(css: String) {
+    
+    func css2JS(css: String) -> String {
         var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
         deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
         let script = """
+                     (() => {
                      const h = document.documentElement;
                      const s = document.createElement('style');
                      s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-                     h.insertAdjacentElement('beforeend', s)
+                     h.insertAdjacentElement('beforeend', s);
+                     })();
                      """
+        return script
+    }
+    func debugCSS(css: String) {
+        let script = css2JS(css: css)
         webView.evaluateJavaScript(script) { object, error in
             print("stylecss : ", error ?? "成功")
         }
