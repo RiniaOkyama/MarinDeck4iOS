@@ -2,7 +2,7 @@
 //  Error+.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/01/17.
+//  Created by Rinia on 2021/01/17.
 //
 
 import Foundation

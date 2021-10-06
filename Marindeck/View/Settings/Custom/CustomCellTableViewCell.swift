@@ -2,7 +2,7 @@
 //  CustomJSCellTableViewCell.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/04/12.
+//  Created by Rinia on 2021/04/12.
 //
 
 import UIKit

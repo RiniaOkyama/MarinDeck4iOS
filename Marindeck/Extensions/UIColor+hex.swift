@@ -2,7 +2,7 @@
 //  UIColor+hex.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/01/13.
+//  Created by Rinia on 2021/01/13.
 //
 
 import Foundation

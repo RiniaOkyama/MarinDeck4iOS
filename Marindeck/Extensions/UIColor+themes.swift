@@ -2,7 +2,7 @@
 //  UIColor+themes.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/05/10.
+//  Created by Rinia on 2021/05/10.
 //
 
 import UIKit

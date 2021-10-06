@@ -55,6 +55,7 @@
 		E9BA5ABA262406FD00E27F14 /* Date+timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */; };
 		E9BA5ABE26240ECA00E27F14 /* EditCustomJSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */; };
 		E9BA5ABF26240ECA00E27F14 /* EditCustomJSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */; };
+		E9BF7311270D5BD900D73985 /* JSCallbackFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF7310270D5BD900D73985 /* JSCallbackFlag.swift */; };
 		E9C2CC172645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */; };
 		E9C2CC1C26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */; };
 		E9C2CC2026469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */; };
@@ -159,6 +160,7 @@
 		E9BA5AB9262406FD00E27F14 /* Date+timeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoSinceDate.swift"; sourceTree = "<group>"; };
 		E9BA5ABC26240ECA00E27F14 /* EditCustomJSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomJSViewController.swift; sourceTree = "<group>"; };
 		E9BA5ABD26240ECA00E27F14 /* EditCustomJSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCustomJSViewController.xib; sourceTree = "<group>"; };
+		E9BF7310270D5BD900D73985 /* JSCallbackFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSCallbackFlag.swift; sourceTree = "<group>"; };
 		E9C2CC162645AFA1003EC5A0 /* ImageHapticPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHapticPreviewViewController.swift; sourceTree = "<group>"; };
 		E9C2CC1B26469817003EC5A0 /* ViewController+WKScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+WKScriptMessageHandler.swift"; sourceTree = "<group>"; };
 		E9C2CC1F26469E0C003EC5A0 /* ViewCotroller+ViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewCotroller+ViewSetup.swift"; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				E9BA5AB1262401FD00E27F14 /* Const.swift */,
+				E9BF7310270D5BD900D73985 /* JSCallbackFlag.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				E9BA5A982623FE3300E27F14 /* CustomCellTableViewCell.swift in Sources */,
 				E929E805260097DF00211FD2 /* LicenseViewController.swift in Sources */,
 				E93F5737264416AB00593DF4 /* NDTweetBtn.swift in Sources */,
+				E9BF7311270D5BD900D73985 /* JSCallbackFlag.swift in Sources */,
 				E9BA5A932623FDB700E27F14 /* CustomJSViewController.swift in Sources */,
 				E9732AAB25ADDDFD0068F632 /* SceneDelegate.swift in Sources */,
 				E9BA5AB2262401FD00E27F14 /* Const.swift in Sources */,
@@ -884,14 +888,14 @@
 				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 000006;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 726VR75V6L;
 				INFOPLIST_FILE = Marindeck/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.6;
+				MARKETING_VERSION = 0.0.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -915,14 +919,14 @@
 				CODE_SIGN_ENTITLEMENTS = Marindeck/Marindeck.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 000006;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 726VR75V6L;
 				INFOPLIST_FILE = Marindeck/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.6;
+				MARKETING_VERSION = 0.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = marindeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

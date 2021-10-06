@@ -2,7 +2,7 @@
 //  DebugerViewController.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/01/16.
+//  Created by Rinia on 2021/01/16.
 //
 
 import UIKit

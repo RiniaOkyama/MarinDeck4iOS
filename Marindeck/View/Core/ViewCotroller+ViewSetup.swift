@@ -2,7 +2,7 @@
 //  ViewCotroller+ViewSetup.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/05/08.
+//  Created by Rinia on 2021/05/08.
 //
 
 import UIKit
@@ -83,13 +83,10 @@ extension ViewController {
 
         let userContentController = WKUserContentController()
         // FIXME: 循環参照の恐れアリ。
-        userContentController.add(self, name: "jsCallbackHandler")
-        userContentController.add(self, name: "imagePreviewer")
-        userContentController.add(self, name: "imageViewPos")
-        userContentController.add(self, name: "viewDidLoad")
-        userContentController.add(self, name: "openSettings")
-        userContentController.add(self, name: "loadImage")
-        userContentController.add(self, name: "isTweetButtonHidden")
+        JSCallbackFlag.allCases.forEach {
+            userContentController.add(self, name: $0.rawValue)
+        }
+        
 
         webConfiguration.userContentController = userContentController
 
@@ -98,9 +95,9 @@ extension ViewController {
 
         // あほくさ
         webView.frame.size.width = view.frame.width
-        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
-        webView.frame.origin.y = topBackView.frame.height
-
+//        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
+//        webView.frame.origin.y = topBackView.frame.height
+        
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
@@ -129,6 +126,11 @@ extension ViewController {
         let myRequest = URLRequest(url: deckURL!)
         webView.load(myRequest)
         self.mainDeckView.addSubview(webView)
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        webView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
 
     func setupWebViewToolBar() {
