@@ -2,7 +2,7 @@
 //  AlamofireImageDownloader.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/01/14.
+//  Created by Rinia on 2021/01/14.
 //
 
 import Optik

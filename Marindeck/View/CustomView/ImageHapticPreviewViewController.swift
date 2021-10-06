@@ -2,7 +2,7 @@
 //  ImageHapticPreviewViewController.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/05/08.
+//  Created by Rinia on 2021/05/08.
 //
 
 import UIKit

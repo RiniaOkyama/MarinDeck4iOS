@@ -2,7 +2,7 @@
 //  TermsOfUseViewController.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/05/11.
+//  Created by Rinia on 2021/05/11.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  ViewController+WKScriptMessageHandler.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/05/08.
+//  Created by Rinia on 2021/05/08.
 //
 
 import UIKit
@@ -12,9 +12,10 @@ import WebKit
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // FIXME
-        switch message.name {
+        
+        switch JSCallbackFlag(rawValue: message.name) {
                 // MARK: WKWebView Didload
-        case "viewDidLoad":
+        case .viewDidLoad:
             self.loadingIndicator.stopAnimating()
             if !isMainDeckViewLock {
                 self.tweetFloatingBtn.isHidden = false
@@ -37,13 +38,15 @@ extension ViewController: WKScriptMessageHandler {
             webView.translatesAutoresizingMaskIntoConstraints = false
 
             webView.frame = mainDeckView.bounds
+            
+            setStatusBarSpace(height: Int(UIApplication.shared.statusBarFrame.height))
 
             menuVC.setUserIcon(url: getUserIcon())
 
-        case "jsCallbackHandler":
+        case .jsCallbackHandler:
             print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
 
-        case "imageViewPos":
+        case .imageViewPos:
             guard let imgpos = message.body as? [Int] else {
                 return
             }
@@ -53,13 +56,13 @@ extension ViewController: WKScriptMessageHandler {
 
             imageView.frame = CGRect(x: imgpos[0], y: imgpos[1] + Int(UIApplication.shared.statusBarFrame.size.height), width: imgpos[2], height: imgpos[3])
 
-        case "openSettings":
+        case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.performSegue(withIdentifier: "toSettings", sender: nil)
             }
 
 
-        case "loadImage":
+        case .loadImage:
 //            guard let url = (message.body as? String) else {
 //                return
 //            }
@@ -68,13 +71,13 @@ extension ViewController: WKScriptMessageHandler {
             break
 
 
-        case "imagePreviewer":
+        case .imagePreviewer:
             let valueStrings = message.body as! [Any]
             let index = valueStrings[0] as! Int
             let urls = valueStrings[1] as! [String]
             self.imagePreviewer(index: index, urls: urls)
 
-        case "isTweetButtonHidden":
+        case .isTweetButtonHidden:
             tweetFloatingBtn.isHidden = message.body as? Bool ?? false
         default:
             return

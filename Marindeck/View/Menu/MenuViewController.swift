@@ -2,7 +2,7 @@
 //  MenuViewController.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/03/15.
+//  Created by Rinia on 2021/03/15.
 //
 
 import UIKit

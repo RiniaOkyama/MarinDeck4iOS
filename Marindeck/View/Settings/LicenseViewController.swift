@@ -2,7 +2,7 @@
 //  LicenseViewController.swift
 //  Marindecker
 //
-//  Created by craptone on 2021/03/16.
+//  Created by Rinia on 2021/03/16.
 //
 
 import UIKit

@@ -1,5 +1,5 @@
 //
-// Created by craptone on 2021/07/16.
+// Created by Rinia on 2021/07/16.
 //
 
 
@@ -31,6 +31,19 @@ extension ViewController {
 
     func getUserIcon() -> String {
         return (webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div > img').src") as? String) ?? "https://pbs.twimg.com/media/Ewk-ESrUYAAZYKe?format=jpg&name=medium"
+    }
+    
+    func setStatusBarSpace(height: Int) {
+        let headerHeight = height + 50
+        webView.evaluateJavaScript("""
+document.querySelectorAll(".column-header").forEach(function(item) {
+    item.style.height = "\(headerHeight)px"
+    item.style.maxHeight = "\(headerHeight)px"
+    item.style.paddingTop = "\(height)px"
+})
+""") { _, error in
+            print("setStatusBarSpace", error ?? "成功")
+        }
     }
 
 }

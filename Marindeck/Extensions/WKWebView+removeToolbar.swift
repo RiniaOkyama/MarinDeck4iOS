@@ -2,7 +2,7 @@
 //  WKWebView+removeToolbar.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/04/18.
+//  Created by Rinia on 2021/04/18.
 //
 
 import Foundation
