@@ -59,6 +59,7 @@ html.dark .mdl {
   left: 0 !important;
   width: 100vw !important;
   border-radius: 0 !important;
+  margin-top: 55px;
 }
 .mdl:not(.s-fluid):not(.s-fluid-height):not(.s-short),
 html.dark .mdl:not(.s-fluid):not(.s-fluid-height):not(.s-short) {
@@ -463,4 +464,11 @@ body .mdl-media-prev {
 }
 .mdl-inner {
   top: 0 !important;
+}
+
+
+.column-header {
+    height: 95px;
+    max-height: 95px;
+    padding-top: 45px;
 }
