@@ -529,6 +529,13 @@ extension ViewController: MenuDelegate {
             print("openProfile : ", error ?? "成功")
         }
     }
+    
+    func openColumnAdd() {
+        self.closeMenu()
+        webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
+            print(#function, error ?? "成功")
+        }
+    }
 }
 
 extension ViewController: ImageViewerDelegate {

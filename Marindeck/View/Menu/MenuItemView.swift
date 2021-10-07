@@ -80,17 +80,17 @@ final class MenuItemView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.backgroundColor = .clear
         })
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.backgroundColor = .clear
         })
     }

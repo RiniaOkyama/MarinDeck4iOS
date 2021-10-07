@@ -10,6 +10,7 @@ import UIKit
 protocol MenuDelegate {
     func openSettings()
     func openProfile()
+    func openColumnAdd()
     func reload()
 }
 
@@ -47,12 +48,12 @@ class MenuViewController: UIViewController {
         marinDeckLogoView.tintColor = .labelColor
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
-
+        columnMenu.setTapEvent(action: #selector(columnAddTapped), target: self)
 
     }
     
     @objc func profileTapped() {
-        self.profileMenu.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.profileMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.1, animations: {
             self.profileMenu.backgroundColor = .clear
         })
@@ -60,11 +61,19 @@ class MenuViewController: UIViewController {
     }
     
     @objc func reloadTapped() {
-        self.reloadMenu.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.reloadMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.1, animations: {
             self.reloadMenu.backgroundColor = .clear
         })
         delegate.reload()
+    }
+    
+    @objc func columnAddTapped() {
+        self.columnMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        UIView.animate(withDuration: 0.1, animations: {
+            self.columnMenu.backgroundColor = .clear
+        })
+        delegate.openColumnAdd()
     }
     
     func setUserIcon(url:String){
