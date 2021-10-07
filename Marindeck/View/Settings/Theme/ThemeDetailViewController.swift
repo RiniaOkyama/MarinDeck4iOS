@@ -38,7 +38,7 @@ class ThemeDetailViewController: UIViewController {
         
         iconView.clipsToBounds = true
         iconView.layer.cornerRadius = iconView.frame.width / 2
-        iconView.image = UIImage(named: theme?.icon ?? "") ?? UIImage(named: "Marindeck_logo")
+        iconView.image = UIImage(named: theme?.icon ?? "") ?? Asset.marindeckLogo.image
         titleLabel?.text = theme?.title
         descriptionTextView?.text = theme?.description
 //            iconView.image = theme?.icon
