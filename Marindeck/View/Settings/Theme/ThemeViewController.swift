@@ -69,7 +69,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.applyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         cell.tag = indexPath.row
         cell.delegate = self
-        cell.iconView.image = UIImage(named: theme.icon) ?? UIImage(named: "Marindeck_logo")
+        cell.iconView.image = UIImage(named: theme.icon) ?? Asset.marindeckLogo.image
 
         if applyID == theme.id{
             cell.applyButton.setTitle("適用済", for: .normal)

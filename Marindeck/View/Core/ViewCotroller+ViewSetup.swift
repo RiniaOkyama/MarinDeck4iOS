@@ -26,24 +26,24 @@ extension ViewController {
         tweetFloatingBtn.layer.shadowOpacity = 0.3
         tweetFloatingBtn.layer.shadowRadius = 4
 //        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        tweetFloatingBtn.setImage(UIImage(named: "tweet")!)
+        tweetFloatingBtn.setImage(Asset.tweet.image)
         tweetFloatingBtn.tapped = tweetPressed
 
         let debugAction = NDTweetBtnAction(
-                image: UIImage(systemName: "ladybug")!,
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.debugPressed()
-                })
+            image: UIImage(systemName: "ladybug")!,
+            handler: { (NDTweetBtnAction) -> Void in
+                self.debugPressed()
+            })
         let gifAction = NDTweetBtnAction(
-                image: UIImage(named: "gif")!.withRenderingMode(.alwaysTemplate),
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.openSelectGif()
-                })
+            image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
+            handler: { (NDTweetBtnAction) -> Void in
+                self.openSelectGif()
+            })
         let tweetAction = NDTweetBtnAction(
-                image: UIImage(named: "tweet")!,
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.tweetPressed()
-                })
+            image: Asset.tweet.image,
+            handler: { (NDTweetBtnAction) -> Void in
+                self.tweetPressed()
+            })
 
         tweetFloatingBtn.addAction(action: debugAction)
         tweetFloatingBtn.addAction(action: gifAction)
@@ -139,8 +139,8 @@ extension ViewController {
         let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let iconSpaceItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         iconSpaceItem.width = 8
-        let gifItem = UIBarButtonItem(image: UIImage(named: "gif"), style: .plain, target: self, action: #selector(openSelectGif))
-        let photoItem = UIBarButtonItem(image: UIImage(named: "photo"), style: .plain, target: self, action: #selector(openSelectPhoto))
+        let gifItem = UIBarButtonItem(image: Asset.gif.image, style: .plain, target: self, action: #selector(openSelectGif))
+        let photoItem = UIBarButtonItem(image: Asset.photo.image, style: .plain, target: self, action: #selector(openSelectPhoto))
 
         gifItem.tintColor = .labelColor
         photoItem.tintColor = .labelColor

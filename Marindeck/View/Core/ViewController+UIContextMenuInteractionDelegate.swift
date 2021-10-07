@@ -73,7 +73,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             return ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
-            let tweetAction = UIAction(title: "画像をツイート", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { action in
+            let tweetAction = UIAction(title: "画像をツイート", image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in
                 guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                     return
                 }
