@@ -40,7 +40,11 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
           if (isOpenModal) {
             const mediatable = target.querySelector('.js-mediatable')
             const dismiss = target.querySelector('.js-dismiss')
-            if (mediatable && dismiss) dismiss.click()
+            const isVideo = target.classList.contains("is-video")
+              console.log(isVideo)
+              if !isVideo {
+                  if (mediatable && dismiss) dismiss.click()
+              }
           }
         }
       })
@@ -233,19 +237,20 @@ function SecretMode(){
     while(true){
         await sleep(1000);
         
-        document.querySelectorAll(".js-media-image-link").forEach(function(image){
-          if (endedlist.indexOf(image) >= 0) {
+         document.querySelectorAll(".js-media-image-link").forEach(function(image){
+           if (endedlist.indexOf(image) >= 0) {
               
-          }
-          else{
-//              if (image.classList.includes("js-media-image-link")) {
-                endedlist.push(image);
-                image.addEventListener("click", function(clickedItem){
-                const res = positionElement(clickedItem.x, clickedItem.y);
-                webkit.messageHandlers.imagePreviewer.postMessage(res);
-                });
-//              }
-          }
-        });
+           }
+           else{
+               if (image.parentElement.classList.classList.contains("is-video")) {
+                   return
+               }
+                 endedlist.push(image);
+                 image.addEventListener("click", function(clickedItem){
+                 const res = positionElement(clickedItem.x, clickedItem.y);
+                 webkit.messageHandlers.imagePreviewer.postMessage(res);
+                 });
+           }
+         });
     }
 })();
