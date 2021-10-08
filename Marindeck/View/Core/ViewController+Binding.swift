@@ -43,7 +43,7 @@ document.querySelectorAll(".column-header").forEach(function(item) {
     item.style.paddingTop = "\(height)px"
 })
 """) { _, error in
-            print("setStatusBarSpace", error ?? "成功")
+            print(#function, error ?? "成功")
         }
     }
 

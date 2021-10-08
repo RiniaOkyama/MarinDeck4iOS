@@ -7,44 +7,65 @@
 		<key>GettingStarted (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>16</integer>
 		</dict>
 		<key>GettingStarted (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>17</integer>
 		</dict>
 		<key>GettingStarted (Playground) 3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>19</integer>
 		</dict>
 		<key>GettingStarted (Playground) 4.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>20</integer>
 		</dict>
 		<key>GettingStarted (Playground) 5.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>21</integer>
+		</dict>
+		<key>GettingStarted (Playground) 6.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>GettingStarted (Playground) 7.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
+		<key>GettingStarted (Playground) 8.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>23</integer>
 		</dict>
 		<key>GettingStarted (Playground).xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false />
+			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>13</integer>
 		</dict>
 	</dict>
 </dict>
