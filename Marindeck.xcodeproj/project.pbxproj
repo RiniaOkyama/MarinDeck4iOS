@@ -73,8 +73,6 @@
 		E9EF3FBD26280E2E004729B5 /* MarinDeckExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E9EF3FB826280E2B004729B5 /* MarinDeckExtension.intentdefinition */; };
 		E9EF3FC026280E2E004729B5 /* MarinDeckExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9EF3FB026280E2B004729B5 /* MarinDeckExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E9EFB19C262C069F00F6997A /* moduleraid.js in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB19B262C069F00F6997A /* moduleraid.js */; };
-		E9EFB1AA262C1F5F00F6997A /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1A9262C1F5F00F6997A /* .env */; };
-		E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */ = {isa = PBXBuildFile; fileRef = E9EFB1AD262C1F7A00F6997A /* .env.sample */; };
 		E9EFB1C4262C62DF00F6997A /* WKWebView+removeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */; };
 		E9EFE09B261DAA2A00ABBAC8 /* WKWebView+evalute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */; };
 		E9F0704B2671D21400CA812B /* CustomCSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0704A2671D21400CA812B /* CustomCSSViewController.swift */; };
@@ -179,8 +177,6 @@
 		E9EF3FBB26280E2E004729B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EF3FC126280E2E004729B5 /* MarinDeckExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarinDeckExtensionExtension.entitlements; sourceTree = "<group>"; };
 		E9EFB19B262C069F00F6997A /* moduleraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = moduleraid.js; sourceTree = "<group>"; };
-		E9EFB1A9262C1F5F00F6997A /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
-		E9EFB1AD262C1F7A00F6997A /* .env.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.sample; sourceTree = "<group>"; };
 		E9EFB1C3262C62DF00F6997A /* WKWebView+removeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+removeToolbar.swift"; sourceTree = "<group>"; };
 		E9EFE09A261DAA2A00ABBAC8 /* WKWebView+evalute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+evalute.swift"; sourceTree = "<group>"; };
 		E9F0704A2671D21400CA812B /* CustomCSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCSSViewController.swift; sourceTree = "<group>"; };
@@ -423,8 +419,6 @@
 			children = (
 				E9732AA825ADDDFD0068F632 /* AppDelegate.swift */,
 				E9732AAA25ADDDFD0068F632 /* SceneDelegate.swift */,
-				E9EFB1A9262C1F5F00F6997A /* .env */,
-				E9EFB1AD262C1F7A00F6997A /* .env.sample */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -569,7 +563,6 @@
 				E9DAA1152681BADE00BFE244 /* EditCustomCSSViewController.xib in Resources */,
 				E95CA5D6264E919100AA2305 /* Theme-Dolce_v2.js in Resources */,
 				E9724816264847870044C87E /* Theme-Midnight.js in Resources */,
-				E9EFB1AE262C1F7A00F6997A /* .env.sample in Resources */,
 				E93F570E2643AF1500593DF4 /* ThemeTableViewCell.xib in Resources */,
 				E9147106264B34C8009BC91E /* TermsOfUse.md in Resources */,
 				E9B93617265F2F0100875A59 /* Localizable.strings in Resources */,
@@ -585,7 +578,6 @@
 				E993A31725B2EEAA003DAE3A /* DebugerViewController.xib in Resources */,
 				E9836FE52625AF5300FE711D /* marindeck-css.js in Resources */,
 				E9836FE82625C50D00FE711D /* marindeck.css in Resources */,
-				E9EFB1AA262C1F5F00F6997A /* .env in Resources */,
 				E92CF6F4264B73960001A719 /* Theme-Frostclear.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
