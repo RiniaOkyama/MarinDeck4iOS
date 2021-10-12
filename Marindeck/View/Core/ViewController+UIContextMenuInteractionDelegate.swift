@@ -52,6 +52,10 @@ extension ViewController: WKUIDelegate {
 //    }
 }
 
+struct ContextMenuStruct {
+    var isOpend:Bool = false
+}
+
 extension ViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
@@ -105,6 +109,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             if imgs.isEmpty {
                 return
             }
+            self.contextMenuStruct.isOpend = true
             self.view.addSubview(self.imageView)
             let imageViewer = Optik.imageViewer(
                     withImages: imgs,
@@ -116,14 +121,16 @@ extension ViewController: UIContextMenuInteractionDelegate {
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-//        self.view.addSubview(imageView)
+        self.view.addSubview(imageView)
         return UITargetedPreview(view: imageView)
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willEndFor configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
         
         animator?.addCompletion {
-            self.imageView.removeFromSuperview()
+            if !self.contextMenuStruct.isOpend {
+                self.imageView.removeFromSuperview()
+            }
         }
     }
     
