@@ -42,7 +42,7 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
             const dismiss = target.querySelector('.js-dismiss')
             const isVideo = target.classList.contains("is-video")
               console.log(isVideo)
-              if !isVideo {
+              if (!isVideo) {
                   if (mediatable && dismiss) dismiss.click()
               }
           }
@@ -54,32 +54,32 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
 
 // カラムのスクロール。 Menu開くときにカラムと一緒に動かなくするため。
-const columnScroll = {
-  style: null,
-  init: () => {
-    if (!columnScroll.style) {
-      columnScroll.style = document.createElement('style')
-      document.head.insertAdjacentElement('beforeend', columnScroll.style)
-    }
-    columnScroll.style.textContent = ''
-  },
-  on: () => {
-    columnScroll.init()
-    columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
-  },
-  off: () => {
-    columnScroll.init()
-    columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
-  }
-}
+// const columnScroll = {
+//   style: null,
+//   init: () => {
+//     if (!columnScroll.style) {
+//       columnScroll.style = document.createElement('style')
+//       document.head.insertAdjacentElement('beforeend', columnScroll.style)
+//     }
+//     columnScroll.style.textContent = ''
+//   },
+//   on: () => {
+//     columnScroll.init()
+//     columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
+//   },
+//   off: () => {
+//     columnScroll.init()
+//     columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
+//   }
+// }
 
-document.addEventListener('touchstart', (e) => {
-  if (e.touches[0].clientX <= 8) {
-    columnScroll.off()
-  } else {
-    columnScroll.on()
-  }
-}, { passive: true })
+// document.addEventListener('touchstart', (e) => {
+//   if (e.touches[0].clientX <= 8) {
+//     columnScroll.off()
+//   } else {
+//     columnScroll.on()
+//   }
+// }, { passive: true })
 
 
 function isTweetButtonHidden(bool) {
@@ -193,43 +193,6 @@ function triggerEvent(element, event) {
        return element.fireEvent("on"+event, evt);
    }
 }
-
-//var a = document.getElementByClassName("js-media-image-link")[0];
-//triggerEvent(a, 'mouseover');
-//document.querySelectorAll(".open-modal").forEach(aa => aa.style.display = "none")
-
-webkit.messageHandlers.jsCallbackHandler.postMessage("Message from Javascript");
-
-
-
-
-function SecretMode(){
-    
-    document.querySelector("#container > div > section:nth-child(1) > div > div:nth-child(1) > header > div > div.column-header-title.flex.flex-align--center.flex-wrap--wrap.flex-grow--2 > span.attribution.txt-mute.txt-sub-antialiased.txt-ellipsis.vertical-align--baseline").innerText = "@realgeorgehotz"
-    
-    document.querySelectorAll(".tweet-avatar").forEach(function(avatar){
-        avatar.src = "https://pbs.twimg.com/media/Er2rCrkVoAIRze0?format=png&name=240x240"
-    })
-    document.querySelectorAll(".fullname").forEach(function(item){
-        item.innerText = "Anonymous"
-    })
-    document.querySelectorAll(".username").forEach(function(item){
-        item.innerText = "@secret"
-    })
-    document.querySelectorAll(".other-replies-link").forEach(function(item){
-        item.innerText = "@olvrheldeep"
-    })
-}
-
-
-//(async () => {
-//    await sleep(5000);
-//    SecretMode()
-////    while(true){
-////        await sleep(1000);
-////        SecretMode()
-////    }
-//})();
 
 
 (async () => {

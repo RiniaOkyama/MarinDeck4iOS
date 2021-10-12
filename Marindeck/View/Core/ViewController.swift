@@ -311,6 +311,35 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //            isColumnScroll(false)
             menuView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckView.translatesAutoresizingMaskIntoConstraints = false
+        
+            // FIXME
+            let columnScroll = """
+            const columnScroll = {
+              style: null,
+              init: () => {
+                if (!columnScroll.style) {
+                  columnScroll.style = document.createElement('style')
+                  document.head.insertAdjacentElement('beforeend', columnScroll.style)
+                }
+                columnScroll.style.textContent = ''
+              },
+              on: () => {
+                columnScroll.init()
+                columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
+              },
+              off: () => {
+                columnScroll.init()
+                columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
+              }
+            }
+            
+            """
+            webView.evaluateJavaScript(columnScroll, completionHandler: { _, _ in
+                self.webView.evaluateJavaScript("columnScroll.off()", completionHandler: { (_, error) in
+                    print(#function, error ?? "成功")
+                })
+            })
+        
 
             mainDeckBlurView.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.2, animations: {
@@ -325,6 +354,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //            isColumnScroll(true)
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+            
+            webView.evaluateJavaScript("columnScroll.on()", completionHandler: { (_, error) in
+                print(#function, error ?? "成功")
+            })
 
             if mainDeckView.frame.origin.x > self.menuView.frame.width / 2 {
                 isMenuOpen = true
