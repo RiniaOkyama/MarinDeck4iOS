@@ -1,0 +1,20 @@
+# minimum access control level。[private | fileprivate | internal | public | open]
+min_acl: internal
+
+#実行前に出力先フォルダをクリーン
+clean: true
+
+# ドキュメント出力先フォルダ
+output: docs
+
+# 著者
+author: RiniaOk_yama
+
+# 著者のURL
+author_url: github.com/riniaokyama/marindeck4ios
+
+# ドキュメント化するモジュールの名前
+module: Marindeck
+
+# xcodebuildの引数
+xcodebuild_arguments: [-workspace,Marindeck.xcworkspace,-scheme,Marindeck]
