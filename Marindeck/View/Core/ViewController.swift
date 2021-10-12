@@ -10,6 +10,7 @@ import WebKit
 import SafariServices
 import LocalAuthentication
 
+import Keys
 import Optik
 import GiphyUISDK
 import RealmSwift
@@ -40,7 +41,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
-    private let env = ProcessInfo.processInfo.environment
     private let realm = try! Realm()
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
@@ -75,9 +75,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         setupView()
 
-        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
+//        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
 
         checkBiometrics()
+        
+        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -265,7 +267,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     @objc func openSelectGif() {
         let giphy = GiphyViewController()
-        Giphy.configure(apiKey: env[EnvKeys.GIPHY_API_KEY] ?? "")
         GiphyViewController.trayHeightMultiplier = 0.7
         giphy.shouldLocalizeSearch = true
         giphy.delegate = self
