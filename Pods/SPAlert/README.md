@@ -1,6 +1,6 @@
 # SPAlert
 
-**Popup from Apple Music & Feedback in AppStore**. Contains `Done`, `Heart`, `Error` and other presets. Supports Dark Mode. I tried to recreate Apple's alerts as much as possible. You can find these alerts in the AppStore after feedback and after you add a song to your library in Apple Music. 
+**Popup from Apple Music & Feedback in AppStore**. Contains `Done`, `Heart`, `Error` and other presets. Supports Dark Mode. I tried to recreate Apple's alerts as much as possible. You can find these alerts in the AppStore after feedback and after you add a song to your library in Apple Music. Support `SwiftUI`.
 
 <p float="left">
 <img src="https://github.com/ivanvorobei/SPAlert/blob/main/Assets/Readme/Animatable/Done.gif" width="230">
@@ -25,9 +25,13 @@ You can create more with custom images and [SFSymbols](https://developer.apple.c
 <img src="https://github.com/ivanvorobei/SPAlert/blob/main/Assets/Readme/Miniatures/Error.svg" width="50">
 </p>
 
-If you like the project, don't forget to `put star ★` and follow me on GitHub:
+If you like the project, don't forget to `put star ★`<br>Check out my other libraries:
 
-[![https://github.com/ivanvorobei](https://github.com/ivanvorobei/Readme/blob/main/Buttons/follow-me-ivanvorobei.svg)](https://github.com/ivanvorobei)
+<p float="left">
+    <a href="https://opensource.ivanvorobei.by">
+        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/more-libraries.svg">
+    </a>
+</p>
 
 ## Navigate
 
@@ -41,12 +45,14 @@ If you like the project, don't forget to `put star ★` and follow me on GitHub:
     - [Layout](#layout)
     - [Dismiss by Tap](#dismiss-by-tap)
     - [Haptic](#haptic)
+    - [Shared Configuration](#shared-configuration)
+- [SwiftUI](#swiftui)
 - [Other Projects](#other-projects)
 - [Russian Community](#russian-community)
 
 ## Installation
 
-Ready for use on iOS 11+. Works with Swift 5+. Required Xcode 12.5 and higher.
+Ready for use on iOS 11+. Works with Swift 5+. Required Xcode 12.0 and higher.
 
 <img align="right" src="https://github.com/ivanvorobei/SPAlert/blob/main/Assets/Readme/spm-install-preview.png" width="520"/>
 
@@ -54,7 +60,7 @@ Ready for use on iOS 11+. Works with Swift 5+. Required Xcode 12.5 and higher.
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
-To integrate `SPAlert` into your Xcode project using Xcode 12, specify it in `File > Swift Packages > Add Package Dependency...`:
+To integrate using Xcode 12, specify it in `File > Swift Packages > Add Package Dependency...`:
 
 ```ogdl
 https://github.com/ivanvorobei/SPAlert
@@ -62,7 +68,7 @@ https://github.com/ivanvorobei/SPAlert
 
 ### CocoaPods:
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `SPAlert` into your Xcode project using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 pod 'SPAlert'
@@ -70,7 +76,7 @@ pod 'SPAlert'
 
 ### Manually
 
-If you prefer not to use any of dependency managers, you can integrate `SPAlert` into your project manually. Put `Sources/SPAlert` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
+If you prefer not to use any of dependency managers, you can integrate manually. Put `Sources/SPAlert` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
 ## Quick Start
 
@@ -130,26 +136,77 @@ alertView.present(duration: 1.5, haptic: .success, completion: nil)
 
 You can remove duration and completion, its have default values.
 
+### Shared Configuration
+
+Also you can change some default values for alerts. For example you can change default duration and corner radius for alert with next code:
+
+```swift
+SPAlertView.appearance().duration = 2
+SPAlertView.appearance().cornerRadius = 12
+```
+
+It will apply for all alerts. I recomend set it in app delegate. But you can change it in runtime.
+
+## SwiftUI
+
+Use like system alert only show message tips:
+
+```swift
+Button("Show alert") {
+    showAlert = true
+}.spAlert(isPresent: $showAlert, message: "this is message only")
+```
+
+or show message, title, image and other configuration:
+
+```swift
+Button("Show alert") {
+    showAlert = true
+}.spAlert(isPresent: $showAlert, 
+        title: "Alert title", 
+        message: "Alert message",
+        duration: 2.0, 
+        dismissOnTap: false, 
+        present: .custom(UIImage(systemName: "heart")!), 
+        haptic: .success, 
+        layout: .init(), 
+        completion: {
+            print("Alert is destory")
+        })
+```
+
+## Сontribution
+
+My English is very bad. You can see this once you read the documentation. I would really like to have clean and nice documentation. If you see gramatical errors and can help fix the Readme, please contact me hello@ivanvorobei.by or make a Pull Request. Thank you in advance!
+
 ## Other Projects
 
-#### [SPPermissions](https://github.com/ivanvorobei/SPPermissions)
-Using for request and check state of permissions. Available native UI for request multiple permissions at the same time. Simple integration and usage like 2 lines code.
+I love being helpful. Here I have provided a list of libraries that I keep up to date. For see `video previews` of libraries without install open [opensource.ivanvorobei.by](https://opensource.ivanvorobei.by) website.<br>
+I have libraries with native interface and managing permissions. Also available pack of useful extensions for boost your development process.
 
-#### [SPPerspective](https://github.com/ivanvorobei/SPPerspective)
-Animation of widgets from iOS 14. 3D transform with dynamic shadow. [Video preview](https://ivanvorobei.by/github/spperspective/video-preview). Available deep customisation 3D and shadow. Also you can use static transform without animation.
-
-#### [SPDiffable](https://github.com/ivanvorobei/SPDiffable)
-Simplifies working with animated changes in table and collections. Apple's diffable API required models for each object type. If you want use it in many place, you pass time to implement it and get over duplicates codes. This project help do it elegant with shared models and special cell providers. Support side bar iOS14 and already has native cell providers and views.
-
-#### [SparrowKit](https://github.com/ivanvorobei/SparrowKit)
-Collection of native Swift extensions to boost your development. Support tvOS and watchOS.
-
-#### [SPIndicator](https://github.com/ivanvorobei/SPIndicator)
-Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts and has ready-use animatable icons like `done` and `error`.
+<p float="left">
+    <a href="https://opensource.ivanvorobei.by">
+        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/more-libraries.svg">
+    </a>
+        <a href="https://xcodeshop.ivanvorobei.by">
+        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/xcode-shop.svg">
+    </a>
+</p>
 
 ## Russian Community
 
-В телеграм-канале [Код Воробья](https://sparrowcode.by/telegram) пишу о iOS разработке. Помощь можно найти в [нашем чате](https://sparrowcode.by/telegram/chat).
-Видео-туториалы выклыдываю на [YouTube](https://sparrowcode.by/youtube):
+Подписывайся в телеграмм-канал, если хочешь получать уведомления о новых туториалах.<br>
+Со сложными и непонятными задачами помогут в чате.
 
-[![Tutorials on YouTube](https://cdn.ivanvorobei.by/github/readme/youtube-preview.jpg)](https://sparrowcode.by/youtube)
+<p float="left">
+    <a href="https://tutorials.ivanvorobei.by/telegram/channel">
+        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/open-telegram-channel.svg">
+    </a>
+    <a href="https://tutorials.ivanvorobei.by/telegram/chat">
+        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/russian-community-chat.svg">
+    </a>
+</p>
+
+Видео-туториалы выклыдываю на [YouTube](https://tutorials.ivanvorobei.by/youtube):
+
+[![Tutorials on YouTube](https://cdn.ivanvorobei.by/github/readme/youtube-preview.jpg)](https://tutorials.ivanvorobei.by/youtube)

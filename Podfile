@@ -17,9 +17,15 @@ target 'Marindeck' do
 
   pod "SwiftGen"
 
-
-
-
   # Pods for Marindecker
 
 end
+
+plugin 'cocoapods-keys', {
+    :project => "Marindeck",
+    :keys => [
+        "GiphyApiKey",
+        "DeploygateUsername",
+        "DeploygateSdkApiKey"
+    ]
+}
