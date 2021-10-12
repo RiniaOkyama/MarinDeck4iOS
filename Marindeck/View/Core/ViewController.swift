@@ -20,6 +20,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var swipeStruct = {
         return SwipeStruct()
     }()
+    
+    var contextMenuStruct = {
+        return ContextMenuStruct()
+    }()
 
     var webView: WKWebView!
     public var javaScriptString = ""
