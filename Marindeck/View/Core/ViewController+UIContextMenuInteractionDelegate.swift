@@ -105,7 +105,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             if imgs.isEmpty {
                 return
             }
-//            self.view.addSubview(self.imageView)
+            self.view.addSubview(self.imageView)
             let imageViewer = Optik.imageViewer(
                     withImages: imgs,
                     initialImageDisplayIndex: self.imagePreviewSelectedIndex,

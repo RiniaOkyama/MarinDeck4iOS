@@ -17,8 +17,6 @@ class CustomJSViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     private var customJSs: [CustomJS] = []
     
-    private var _activeTextField: UITextField? = nil // 編集中のTextFieldを保持する変数
-
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
