@@ -17,11 +17,11 @@ import GiphyUISDK
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
-        return SwipeStruct()
+        SwipeStruct()
     }()
-    
+
     var contextMenuStruct = {
-        return ContextMenuStruct()
+        ContextMenuStruct()
     }()
 
     var webView: WKWebView!
@@ -81,13 +81,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
 
         checkBiometrics()
-        
+
         Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.becomeFirstResponder()
+        becomeFirstResponder()
         webView.frame = mainDeckView.bounds
     }
 
@@ -96,7 +96,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             shouldRecognizeSimultaneouslyWith
             otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
-        return true
+        true
     }
 
     @objc func onOrientationDidChange(notification: NSNotification) {
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     override var canBecomeFirstResponder: Bool {
         get {
-            return true
+            true
         }
     }
 
@@ -118,11 +118,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     func setStatusBarStyle(style: UIStatusBarStyle) {
         statusBarStyle = style
-        self.setNeedsStatusBarAppearanceUpdate()
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return statusBarStyle
+        statusBarStyle
     }
 
 
@@ -132,7 +132,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         print("presentationControllerDidDismiss!!!!!!!!!!!!!!")
-        self.imageView.removeFromSuperview()
+        imageView.removeFromSuperview()
     }
 
 
@@ -150,7 +150,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                 let reason = "ロックを解除"
                 let backBlackView = UIView(frame: view.bounds)
                 backBlackView.backgroundColor = .black
-                self.view.addSubview(backBlackView)
+                view.addSubview(backBlackView)
                 context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { (success, evaluateError) in
                     if success {
                         DispatchQueue.main.async { [unowned self] in
@@ -246,7 +246,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         let (ret, error) = webView.evaluateWithError(javaScript: script)
         return ((ret as? String) ?? "", error)
     }
-    
+
     func css2JS(css: String) -> String {
         var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
@@ -261,6 +261,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                      """
         return script
     }
+
     func debugCSS(css: String) {
         let script = css2JS(css: css)
         webView.evaluateJavaScript(script) { object, error in
@@ -315,35 +316,35 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //            isColumnScroll(false)
             menuView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckView.translatesAutoresizingMaskIntoConstraints = false
-        
+
             // FIXME
             let columnScroll = """
-            const columnScroll = {
-              style: null,
-              init: () => {
-                if (!columnScroll.style) {
-                  columnScroll.style = document.createElement('style')
-                  document.head.insertAdjacentElement('beforeend', columnScroll.style)
-                }
-                columnScroll.style.textContent = ''
-              },
-              on: () => {
-                columnScroll.init()
-                columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
-              },
-              off: () => {
-                columnScroll.init()
-                columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
-              }
-            }
-            
-            """
+                               const columnScroll = {
+                                 style: null,
+                                 init: () => {
+                                   if (!columnScroll.style) {
+                                     columnScroll.style = document.createElement('style')
+                                     document.head.insertAdjacentElement('beforeend', columnScroll.style)
+                                   }
+                                   columnScroll.style.textContent = ''
+                                 },
+                                 on: () => {
+                                   columnScroll.init()
+                                   columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
+                                 },
+                                 off: () => {
+                                   columnScroll.init()
+                                   columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
+                                 }
+                               }
+
+                               """
             webView.evaluateJavaScript(columnScroll, completionHandler: { _, _ in
                 self.webView.evaluateJavaScript("columnScroll.off()", completionHandler: { (_, error) in
                     print(#function, error ?? "成功")
                 })
             })
-        
+
 
             mainDeckBlurView.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.2, animations: {
@@ -358,7 +359,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //            isColumnScroll(true)
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
-            
+
             webView.evaluateJavaScript("columnScroll.on()", completionHandler: { (_, error) in
                 print(#function, error ?? "成功")
             })
@@ -560,7 +561,7 @@ extension ViewController: MenuDelegate {
             print("openProfile : ", error ?? "成功")
         }
     }
-    
+
     func openColumnAdd() {
         self.closeMenu()
         webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
