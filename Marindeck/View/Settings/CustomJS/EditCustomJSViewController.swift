@@ -9,7 +9,7 @@ import UIKit
 import Highlightr
 
 class EditCustomJSViewController: UIViewController {
-    private let userDefaults = UserDefaults.standard
+    private lazy var dbQueue = Database.shared.dbQueue
 
     private var index: Int!
     private var customJS: CustomJS!
@@ -43,9 +43,6 @@ class EditCustomJSViewController: UIViewController {
         editorView.addSubview(textView)
 //        view.addSubview(textView)
 
-
-        fetchJS()
-
         textView.text = customJS.js
     }
 
@@ -66,46 +63,22 @@ class EditCustomJSViewController: UIViewController {
         bvc?.tableView.reloadData()
     }
 
-    init(index: Int) {
+    init(customJS: CustomJS) {
         super.init(nibName: nil, bundle: nil)
-
-        self.index = index
-    }
-
-    func fetchCustomJSs() -> [CustomJS] {
-        let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        var retArray: [CustomJS] = []
-        for item in jsonArray {
-            let jsonData = item.data(using: .utf8)!
-            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
-        }
-        return retArray
-    }
-
-    func fetchJS() {
-        customJS = fetchCustomJSs().sorted(by: { $0.created_at > $1.created_at })[self.index]
+        
+        self.customJS = customJS
     }
 
     func updateJS() {
-//        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
         if customJS.js == textView.text {
             return
         }
+        
         customJS.js = textView.text
-//        let jsonData = try! JSONEncoder().encode(customJS)
-//        let jsonString = String(data: jsonData, encoding: .utf8)!
-//        jsonArray[jsonArray.count - self.index - 1] = jsonString
-//        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-
-        let cjss = fetchCustomJSs()
-        let itemindex = cjss.firstIndex(where: { $0.created_at == customJS.created_at })!
-        customJS.created_at = Date()
-
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        let jsonData = try! JSONEncoder().encode(customJS)
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray[itemindex] = jsonString
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
+        
+        try! dbQueue.write { db in
+            try self.customJS.update(db)
+        }
     }
 
     required init?(coder: NSCoder) {

@@ -6,26 +6,24 @@
 //
 
 import UIKit
-import RealmSwift
 
-
-class CustomCSS: Object {
-    @objc dynamic var title: String = ""
-    @objc dynamic var css: String = ""
-    @objc dynamic var created_at: Date = Date()
-}
+//class CustomCSS: Object {
+//    @objc dynamic var title: String = ""
+//    @objc dynamic var css: String = ""
+//    @objc dynamic var created_at: Date = Date()
+//}
 
 class CustomCSSViewController: UIViewController {
-    private let userDefaults = UserDefaults.standard
-    private var realm = try! Realm()
-    private var customCSSs: Results<CustomCSS>!
-    
+    private lazy var dbQueue = Database.shared.dbQueue
+    private var customCSSs: [CustomCSS] = []
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         updateCustomCSSs()
-        
+
         view.backgroundColor = .backgroundColor
 
         tableView.dataSource = self
@@ -35,59 +33,68 @@ class CustomCSSViewController: UIViewController {
         tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
 
-        
+
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let bvc = self.presentingViewController?.presentingViewController as? ViewController
-        bvc?.webView.reload()
+        let bvc = presentingViewController?.presentingViewController as? ViewController
+//        bvc?.webView.reload()
     }
 
     @IBAction func close() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     func updateCustomCSSs() {
-        customCSSs = realm.objects(CustomCSS.self)
-        tableView.reloadData()
+        customCSSs = fetchCustomCSSs().sorted(by: { $0.loadIndex > $1.loadIndex })
+//        tableView.reloadData()
     }
-    
+
+    func fetchCustomCSSs() -> [CustomCSS] {
+        try! dbQueue.read { db in
+            try CustomCSS.fetchAll(db)
+        }
+    }
+
     func createCustomCSS(customCSS: CustomCSS) {
-        try! realm.write({
-            realm.add(customCSS)
-        })
-        tableView.reloadData()
+        try! dbQueue.write { db in
+            try customCSS.insert(db)
+        }
+
+        updateCustomCSSs()
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
-    
+
     func deleteCustomCSS(index: Int) {
         let alert = UIAlertController(
-            title: "\(customCSSs[index].title)を消去",
+                title: "\(customCSSs[index].title)を消去",
                 message: "本当に削除しますか？",
                 preferredStyle: UIAlertController.Style.alert)
         alert.addAction(
                 UIAlertAction(
-                    title: "キャンセル",
-                    style: UIAlertAction.Style.cancel,
-                    handler: nil))
+                        title: "キャンセル",
+                        style: UIAlertAction.Style.cancel,
+                        handler: nil))
         alert.addAction(
                 UIAlertAction(
-                    title: "消去",
-                    style: UIAlertAction.Style.destructive) { _ in
-                    try! self.realm.write({
-                        self.realm.delete(self.customCSSs[index])
-                    })
-                    self.tableView.reloadData()
+                        title: "消去",
+                        style: UIAlertAction.Style.destructive) { _ in
+                            let _ = try! self.dbQueue.write { db in
+                                try self.customCSSs[index].delete(db)
+                            }
+                            self.updateCustomCSSs()
+                            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 }
         )
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    
+
+
     func updateCustomCSSDialog(index: Int) {
         var alertTextField: UITextField?
-        let customCSS = customCSSs[index]
+        var customCSS = customCSSs[index]
 
         let alert = UIAlertController(
                 title: "カスタムCSS名を編集",
@@ -108,16 +115,20 @@ class CustomCSSViewController: UIViewController {
                         title: "変更する",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        try! self.realm.write({
-                            customCSS.created_at = Date()
-                            customCSS.title = text
-                        })
+                        customCSS.updateAt = Date()
+                        customCSS.title = text
+
+                        try! self.dbQueue.write { db in
+                            try customCSS.update(db)
+                        }
+
                         self.updateCustomCSSs()
+                        self.tableView.reloadData()
                     }
                 }
         )
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -125,7 +136,7 @@ class CustomCSSViewController: UIViewController {
 
 extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customCSSs.count + 1
+        customCSSs.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,7 +150,7 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             let customCSS = customCSSs[indexPath.row]
             cell.titleLabel.text = customCSS.title
-            cell.dateLabel.text = customCSS.created_at.offsetFrom()
+            cell.dateLabel.text = customCSS.createAt.offsetFrom()
 
             return cell
         }
@@ -153,7 +164,7 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
 
         let vc = EditCustomCSSViewController(customCSS: customCSSs[indexPath.row])
 //        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -200,8 +211,8 @@ extension CustomCSSViewController: CustomAddCellOutput {
                         title: "作成",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        let customCSS = CustomCSS()
-                        customCSS.title = text
+                        let customCSS = CustomCSS(id: nil, title: text, css: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customCSSs.count), isLoad: true)
+
                         self.createCustomCSS(customCSS: customCSS)
 
                         let vc = EditCustomCSSViewController(customCSS: customCSS)
@@ -211,7 +222,7 @@ extension CustomCSSViewController: CustomAddCellOutput {
                 }
         )
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }

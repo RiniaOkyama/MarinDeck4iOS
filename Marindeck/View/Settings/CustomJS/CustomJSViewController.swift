@@ -7,23 +7,18 @@
 
 import UIKit
 
-struct CustomJS: Codable {
-    var title: String
-    var js: String
-    var created_at: Date
-}
 
 class CustomJSViewController: UIViewController {
-    private let userDefaults = UserDefaults.standard
+    private lazy var dbQueue = Database.shared.dbQueue
     private var customJSs: [CustomJS] = []
-    
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateCustomJSs()
-        
+
         view.backgroundColor = .backgroundColor
 
         tableView.dataSource = self
@@ -32,74 +27,63 @@ class CustomJSViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
+
+        tableView.isEditing = true
+        tableView.allowsSelectionDuringEditing = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let bvc = self.presentingViewController?.presentingViewController as? ViewController
-        bvc?.webView.reload()
+        let bvc = presentingViewController?.presentingViewController as? ViewController
+//        bvc?.webView.reload()
     }
 
     @IBAction func close() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     func updateCustomJSs() {
-        customJSs = fetchCustomJSs().sorted(by: { $0.created_at > $1.created_at })
+        customJSs = fetchCustomJSs().sorted(by: { $0.loadIndex > $1.loadIndex })
     }
 
     func fetchCustomJSs() -> [CustomJS] {
-        let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        var retArray: [CustomJS] = []
-        for item in jsonArray {
-            let jsonData = item.data(using: .utf8)!
-            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
+        try! dbQueue.read { db in
+            try CustomJS.fetchAll(db)
         }
-        return retArray
     }
 
     func createCustomJS(customJS: CustomJS) {
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        let jsonData = try! JSONEncoder().encode(customJS)
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray.append(jsonString)
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
-
+        try! dbQueue.write { db in
+            try customJS.insert(db)
+        }
         updateCustomJSs()
+
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         tableView.endUpdates()
-//        self.tableView.reloadData()
     }
 
     func deleteCustomJS(index: Int) {
-        let cjss = fetchCustomJSs()
-        updateCustomJSs()
-        let itemindex: Int = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
-//        print(itemindexx, index)
-//        let itemindex = index
-        
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        jsonArray.remove(at: itemindex)
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
+
+        let _ = try! dbQueue.write { db in
+            try customJSs[index].delete(db)
+        }
+
         updateCustomJSs()
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
-    
-    func updateCustomJS(index: Int, customJS: CustomJS) {
-        let cjss = fetchCustomJSs()
-        let itemindex = cjss.firstIndex(where: { $0.created_at == customJSs[index].created_at})!
 
-        var jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        let jsonData = try! JSONEncoder().encode(customJS)
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        jsonArray[itemindex] = jsonString
-        userDefaults.set(jsonArray, forKey: UserDefaultsKey.customJSs)
+    func updateCustomJS(index: Int, customJS: CustomJS) {
+
+        try! dbQueue.write { db in
+            try customJS.update(db)
+        }
+
         updateCustomJSs()
         tableView.reloadData()
     }
-    
-    
+
+
     func updateCustomJSDialog(index: Int) {
         var alertTextField: UITextField?
         var customJS = customJSs[index]
@@ -123,15 +107,15 @@ class CustomJSViewController: UIViewController {
                         title: "変更する",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        customJS.created_at = Date()
+                        customJS.createAt = Date()
                         customJS.title = text
                         self.updateCustomJS(index: index, customJS: customJS)
-                        
+
                     }
                 }
         )
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -139,7 +123,7 @@ class CustomJSViewController: UIViewController {
 
 extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customJSs.count + 1
+        customJSs.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,10 +137,28 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             let customJS = customJSs[indexPath.row]
             cell.titleLabel.text = customJS.title
-            cell.dateLabel.text = customJS.created_at.offsetFrom()
+            cell.dateLabel.text = customJS.createAt.offsetFrom()
 
             return cell
         }
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        customJSs.count != indexPath.row
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // TODO: 入れ替え時の処理を実装する（データ制御など）
+    }
+
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+
+    // 編集モード時に左にずれるか。
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false //ずれない。
     }
 
 
@@ -165,9 +167,9 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
 
-        let vc = EditCustomJSViewController(index: indexPath.row)
+        let vc = EditCustomJSViewController(customJS: customJSs[indexPath.row])
 //        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -216,15 +218,16 @@ extension CustomJSViewController: CustomAddCellOutput {
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
                         // FIXME
-                        self.createCustomJS(customJS: CustomJS(title: text, js: "", created_at: Date()))
-                        let vc = EditCustomJSViewController(index: 0)
+                        let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count), isLoad: true)
+                        self.createCustomJS(customJS: cjs)
+                        let vc = EditCustomJSViewController(customJS: cjs)
 //                    vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     }
                 }
         )
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }

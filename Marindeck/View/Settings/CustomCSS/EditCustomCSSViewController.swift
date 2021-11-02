@@ -7,12 +7,12 @@
 
 import UIKit
 import Highlightr
-import RealmSwift
+
 
 class EditCustomCSSViewController: UIViewController {
     var textView: UITextView!
-//    private let realm = try! Realm()
-    private var realm = try! Realm()
+
+    private lazy var dbQueue = Database.shared.dbQueue
     private var customCSS: CustomCSS!
 
     @IBOutlet weak var editorView: UIView!
@@ -67,10 +67,12 @@ class EditCustomCSSViewController: UIViewController {
     
     
     func updateCSS() {
-        try! realm.write({
-            customCSS.css = textView.text
-            customCSS.created_at = Date()
-        })
+        customCSS.css = textView.text
+        
+        try! dbQueue.write { db in
+            try customCSS.update(db)
+        }
+        
     }
     
     required init?(coder: NSCoder) {

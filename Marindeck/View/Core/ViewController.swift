@@ -13,7 +13,6 @@ import LocalAuthentication
 import Keys
 import Optik
 import GiphyUISDK
-import RealmSwift
 
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
@@ -45,7 +44,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     var isMenuOpen = false
     private let userDefaults = UserDefaults.standard
-    private let realm = try! Realm()
+    private lazy var dbQueue = Database.shared.dbQueue
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
 
@@ -165,7 +164,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                             })
                         }
                     } else {
-                        DispatchQueue.main.async { [unowned self] in
+                        DispatchQueue.main.async {
                             let errorLabel = UILabel(frame: backBlackView.bounds)
                             errorLabel.textAlignment = .center
                             errorLabel.text = "認証に失敗しました。"
@@ -455,16 +454,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
 
-    func fetchCustomJSs() -> [CustomJS] {
-        let jsonArray: [String] = userDefaults.array(forKey: UserDefaultsKey.customJSs) as? [String] ?? []
-        var retArray: [CustomJS] = []
-        for item in jsonArray {
-            let jsonData = item.data(using: .utf8)!
-            retArray.append(try! JSONDecoder().decode(CustomJS.self, from: jsonData))
-        }
-        return retArray
-    }
-
     func imagePreviewer(index: Int, urls: [String]) {
         let imgUrls = urls.map({
             url2NomalImg($0)
@@ -532,12 +521,16 @@ extension ViewController: WKNavigationDelegate {
         loadJsFile(forResource: "marindeck")
         loadCSSFile(forResource: "marindeck")
 
-        let cjss = fetchCustomJSs()
+        let cjss = try! dbQueue.read { db in
+            try CustomJS.fetchAll(db)
+        }
         for item in cjss {
             debugJS(script: item.js)
         }
 
-        let csss = realm.objects(CustomCSS.self)
+        let csss = try! dbQueue.read { db in
+            try CustomCSS.fetchAll(db)
+        }
         for item in csss {
             debugCSS(css: item.css)
         }
