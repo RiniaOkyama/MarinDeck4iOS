@@ -1,0 +1,34 @@
+name: Marindeck
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    exactVersion: 5.12.0
+      
+
+options:
+  bundleIdPrefix: marindeck
+  postGenCommand: pod install
+  developmentLanguage: ja
+
+settingGroups:
+  MarindeckBaseSettings:
+    SWIFT_OBJC_BRIDGING_HEADER: Marindeck/Marindeck-Bridging-Header.h
+
+settings:
+  base:
+    MARKETING_VERSION: 2.0.6
+    CURRENT_PROJECT_VERSION: 1
+  config:
+    debug:
+      DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
+
+
+targets:
+  Marindeck:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.1"
+    sources: Marindeck
+    dependencies:
+      - package: GRDB
