@@ -43,7 +43,8 @@ class CustomJSViewController: UIViewController {
     }
 
     func updateCustomJSs() {
-        customJSs = fetchCustomJSs().sorted(by: { $0.loadIndex > $1.loadIndex })
+        customJSs = fetchCustomJSs().sorted(by: { $0.loadIndex < $1.loadIndex })
+        print("customJS: ", customJSs)
     }
 
     func fetchCustomJSs() -> [CustomJS] {
@@ -59,7 +60,7 @@ class CustomJSViewController: UIViewController {
         updateCustomJSs()
 
         tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: customJSs.count - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
     }
 
@@ -73,14 +74,16 @@ class CustomJSViewController: UIViewController {
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
-    func updateCustomJS(index: Int, customJS: CustomJS) {
+    func updateCustomJS(customJS: CustomJS, isReload: Bool = true) {
 
         try! dbQueue.write { db in
             try customJS.update(db)
         }
 
-        updateCustomJSs()
-        tableView.reloadData()
+        if isReload {
+            updateCustomJSs()
+            tableView.reloadData()
+        }
     }
 
 
@@ -109,7 +112,7 @@ class CustomJSViewController: UIViewController {
                     if let text = alertTextField?.text {
                         customJS.createAt = Date()
                         customJS.title = text
-                        self.updateCustomJS(index: index, customJS: customJS)
+                        self.updateCustomJS(customJS: customJS)
 
                     }
                 }
@@ -149,6 +152,31 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // TODO: 入れ替え時の処理を実装する（データ制御など）
+        // 3 -> 5
+        // 1, 2, 3(4), 4(5), 5(3), 6, 7
+//        for index in sourceIndexPath.row..destinationIndexPath.row {
+//            var tmpJs = customJSs[index]
+//            tmpJs.loadIndex -= 1
+//            updateCustomJS(customJS: tmpJs)
+//        }
+//        var tcjs = customJSs[sourceIndexPath.row]
+//        tcjs.loadIndex = Int32(destinationIndexPath.row + 1)
+//        updateCustomJS(customJS: tcjs)
+//
+//        var bcjs = customJSs[destinationIndexPath.row]
+//        bcjs.loadIndex = Int32(sourceIndexPath.row + 1)
+//        updateCustomJS(customJS: bcjs)
+
+        customJSs.move(fromOffsets: IndexSet(integer: sourceIndexPath.row), toOffset: destinationIndexPath.row)
+
+        for i in 1...customJSs.count {
+            var tmpJs = customJSs[i - 1]
+            tmpJs.loadIndex = Int32(i)
+            updateCustomJS(customJS: tmpJs, isReload: false)
+        }
+
+        updateCustomJSs()
+        tableView.reloadData()
     }
 
 
@@ -217,10 +245,9 @@ extension CustomJSViewController: CustomAddCellOutput {
                         title: "作成",
                         style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
-                        // FIXME
-                        let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count), isLoad: true)
+                        let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count + 1), isLoad: true)
                         self.createCustomJS(customJS: cjs)
-                        let vc = EditCustomJSViewController(customJS: cjs)
+                        let vc = EditCustomJSViewController(customJS: self.customJSs.last!)
 //                    vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     }

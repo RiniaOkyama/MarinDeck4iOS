@@ -30,20 +30,20 @@ extension ViewController {
         tweetFloatingBtn.tapped = tweetPressed
 
         let debugAction = NDTweetBtnAction(
-            image: UIImage(systemName: "ladybug")!,
-            handler: { (NDTweetBtnAction) -> Void in
-                self.debugPressed()
-            })
+                image: UIImage(systemName: "ladybug")!,
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.debugPressed()
+                })
         let gifAction = NDTweetBtnAction(
-            image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
-            handler: { (NDTweetBtnAction) -> Void in
-                self.openSelectGif()
-            })
+                image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.openSelectGif()
+                })
         let tweetAction = NDTweetBtnAction(
-            image: Asset.tweet.image,
-            handler: { (NDTweetBtnAction) -> Void in
-                self.tweetPressed()
-            })
+                image: Asset.tweet.image,
+                handler: { (NDTweetBtnAction) -> Void in
+                    self.tweetPressed()
+                })
 
         tweetFloatingBtn.addAction(action: debugAction)
         tweetFloatingBtn.addAction(action: gifAction)
@@ -86,7 +86,7 @@ extension ViewController {
         JSCallbackFlag.allCases.forEach {
             userContentController.add(self, name: $0.rawValue)
         }
-        
+
 
         webConfiguration.userContentController = userContentController
 
@@ -97,7 +97,7 @@ extension ViewController {
         webView.frame.size.width = view.frame.width
 //        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
 //        webView.frame.origin.y = topBackView.frame.height
-        
+
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
@@ -119,14 +119,15 @@ extension ViewController {
         let interaction = UIContextMenuInteraction(delegate: self)
         webView.addInteraction(interaction)
 
-
-        let deckURL = URL(string: "https://tweetdeck.twitter.com")
+        if DebugSettings.isWebViewLoad {
+            let deckURL = URL(string: "https://tweetdeck.twitter.com")
 //        let deckURL = URL(string: " https://mobile.twitter.com/login?hide_message=true&redirect_after_login=https://tweetdeck.twitter.com")
 
-        let myRequest = URLRequest(url: deckURL!)
-        webView.load(myRequest)
+            let myRequest = URLRequest(url: deckURL!)
+            webView.load(myRequest)
+        }
         self.mainDeckView.addSubview(webView)
-        
+
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
