@@ -20,6 +20,9 @@ class EditCustomCSSViewController: UIViewController {
 //    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = customCSS.title
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
         
         let textStorage = CodeAttributedString()
         textStorage.language = "css"

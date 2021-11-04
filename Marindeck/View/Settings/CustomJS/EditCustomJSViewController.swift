@@ -22,6 +22,9 @@ class EditCustomJSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = customJS.title
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
+
         let textStorage = CodeAttributedString()
         textStorage.language = "javascript"
         let layoutManager = NSLayoutManager()

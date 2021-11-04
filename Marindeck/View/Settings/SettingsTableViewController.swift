@@ -22,11 +22,11 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "settings.navigation.title".localized
-        self.navigationController?.navigationBar.barTintColor = .systemBackground
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
+        title = L10n.Settings.Navigation.title
+        navigationController?.navigationBar.barTintColor = .systemBackground
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -45,7 +45,7 @@ class SettingsTableViewController: UITableViewController {
         
         navigationController?.navigationBar.tintColor = .labelColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
-        self.view.backgroundColor = .secondaryBackgroundColor
+        view.backgroundColor = .secondaryBackgroundColor
         titleLabel.forEach({
             $0.textColor = .labelColor
         })
@@ -57,7 +57,7 @@ class SettingsTableViewController: UITableViewController {
     
     
     @objc func onDismiss() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -67,11 +67,11 @@ class SettingsTableViewController: UITableViewController {
     }
     //Headerの高さ
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        60
     }
     //Footerの高さ
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 12
+        12
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

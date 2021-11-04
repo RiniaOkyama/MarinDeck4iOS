@@ -7,11 +7,6 @@
 
 import UIKit
 
-//class CustomCSS: Object {
-//    @objc dynamic var title: String = ""
-//    @objc dynamic var css: String = ""
-//    @objc dynamic var created_at: Date = Date()
-//}
 
 class CustomCSSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
@@ -21,6 +16,8 @@ class CustomCSSViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "CustomCSS"
 
         updateCustomCSSs()
 
@@ -47,8 +44,7 @@ class CustomCSSViewController: UIViewController {
     }
 
     func updateCustomCSSs() {
-        customCSSs = fetchCustomCSSs().sorted(by: { $0.loadIndex > $1.loadIndex })
-//        tableView.reloadData()
+        customCSSs = fetchCustomCSSs().sorted(by: { $0.loadIndex < $1.loadIndex })
     }
 
     func fetchCustomCSSs() -> [CustomCSS] {
@@ -63,7 +59,7 @@ class CustomCSSViewController: UIViewController {
         }
 
         updateCustomCSSs()
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: customCSSs.count - 1, section: 0)], with: .automatic)
     }
 
     func deleteCustomCSS(index: Int) {
@@ -80,11 +76,11 @@ class CustomCSSViewController: UIViewController {
                 UIAlertAction(
                         title: "消去",
                         style: UIAlertAction.Style.destructive) { _ in
-                            let _ = try! self.dbQueue.write { db in
-                                try self.customCSSs[index].delete(db)
-                            }
-                            self.updateCustomCSSs()
-                            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    let _ = try! self.dbQueue.write { db in
+                        try self.customCSSs[index].delete(db)
+                    }
+                    self.updateCustomCSSs()
+                    self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 }
         )
 
@@ -163,8 +159,7 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         let vc = EditCustomCSSViewController(customCSS: customCSSs[indexPath.row])
-//        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -215,9 +210,8 @@ extension CustomCSSViewController: CustomAddCellOutput {
 
                         self.createCustomCSS(customCSS: customCSS)
 
-                        let vc = EditCustomCSSViewController(customCSS: customCSS)
-//                    vc.modalPresentationStyle = .overFullScreen
-                        self.present(vc, animated: true, completion: nil)
+                        let vc = EditCustomCSSViewController(customCSS: self.customCSSs.last!)
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
         )

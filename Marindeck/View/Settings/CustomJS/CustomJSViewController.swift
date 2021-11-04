@@ -17,6 +17,8 @@ class CustomJSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "CustomJS"
+
         updateCustomJSs()
 
         view.backgroundColor = .backgroundColor
@@ -181,8 +183,7 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         let vc = EditCustomJSViewController(customJS: customJSs[indexPath.row])
-//        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -233,8 +234,7 @@ extension CustomJSViewController: CustomAddCellOutput {
                         let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count + 1), isLoad: true)
                         self.createCustomJS(customJS: cjs)
                         let vc = EditCustomJSViewController(customJS: self.customJSs.last!)
-//                    vc.modalPresentationStyle = .overFullScreen
-                        self.present(vc, animated: true, completion: nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
         )
