@@ -20,7 +20,7 @@ class CustomCSSViewController: UIViewController {
         title = "CustomCSS"
 
         updateCustomCSSs()
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
