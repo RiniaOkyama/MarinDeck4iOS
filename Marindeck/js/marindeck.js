@@ -1,13 +1,13 @@
 document.body.style.backgroundColor = "#15202b";
 // select 禁止
-document.documentElement.style.webkitUserSelect='none';
+document.documentElement.style.webkitUserSelect = 'none';
 // menu 禁止
-document.documentElement.style.webkitTouchCallout='none';
+document.documentElement.style.webkitTouchCallout = 'none';
 
 // Zoom禁止
 const viewport = document.querySelector('meta[name=viewport]')
 if (viewport) {
-  viewport.content += ',maximum-scale=1'
+    viewport.content += ',maximum-scale=1'
 }
 
 //const moduleRaid = require('./moduleraid');
@@ -19,35 +19,39 @@ var jq = mR && mR.findFunction('jQuery') && mR.findFunction('jquery:')[0];
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 (async () => {
     await sleep(800);
-    
+
     swiftLog("window onload");
     swiftLog("try didLoad");
-    try{
+    try {
         webkit.messageHandlers.jsCallbackHandler.postMessage("didLoad");
         webkit.messageHandlers.viewDidLoad.postMessage(true);
-    }catch(e){swiftLog("ERROR! viewDidLoad Faild " + String(e));}
-    try{
+    } catch (e) {
+        swiftLog("ERROR! viewDidLoad Faild " + String(e));
+    }
+    try {
         loginStyled();
         swiftLog("login style changed");
-    }catch(e){swiftLog("login load error" + String(e));}
-    
+    } catch (e) {
+        swiftLog("login load error" + String(e));
+    }
+
     // 画像のモーダルを抹殺
     new MutationObserver((records) => {
-      return [...records || []].forEach((record) => {
-        const target = record.target
-        if (target instanceof HTMLElement) {
-          const isOpenModal = target.id === 'open-modal'
-          if (isOpenModal) {
-            const mediatable = target.querySelector('.js-mediatable')
-            const dismiss = target.querySelector('.js-dismiss')
-            const isVideo = target.classList.contains("is-video")
-              console.log(isVideo)
-              if (!isVideo) {
-                  if (mediatable && dismiss) dismiss.click()
-              }
-          }
-        }
-      })
+        return [...records || []].forEach((record) => {
+            const target = record.target
+            if (target instanceof HTMLElement) {
+                const isOpenModal = target.id === 'open-modal'
+                if (isOpenModal) {
+                    const mediatable = target.querySelector('.js-mediatable')
+                    const dismiss = target.querySelector('.js-dismiss')
+                    const isVideo = target.getElementsByTagName('video').length > 0
+                    console.log(isVideo)
+                    if (!isVideo) {
+                        if (mediatable && dismiss) dismiss.click()
+                    }
+                }
+            }
+        })
     }).observe(document.body, {childList: true, subtree: true})
 
 })();
@@ -87,7 +91,7 @@ function isTweetButtonHidden(bool) {
 }
 
 
-function loginStyled(){
+function loginStyled() {
     document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").hidden = true;
     document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").style.backgroundColor = "#252525";
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.app-info.txt-size-variable--18.margin-txxl > div > div > h2").innerText = "MarinDeckへようこそ";
@@ -99,28 +103,28 @@ function loginStyled(){
     document.querySelector("#login-form-title").innerText = "Twitterアカウントでログイン"
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.margin-a--16 > a").innerText = "ログイン";
     document.querySelector("#login-form-title").style.color = "white";
-    
+
     // ログイン透明化
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").style.backgroundColor = "transparent";
     // ログインボーダー
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").style.borderStyle = "none";
     document.querySelector("#login-form-title").style.borderStyle = "none";
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.divider-bar.margin-v--0.margin-h--16").style.display = "none";
-    
+
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal").style.margin = "30% 0px 0px";
     // login btn
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.margin-a--16 > a").style.padding = "13px";
-    
+
     //tweetdeck icon
     document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-chrome.app-masthead.anim.anim-slow.anim-delayed.anim-fade-in > div > h1").remove();
 }
 
-function style_init(){
+function style_init() {
     // FIXME
     document.querySelectorAll(".js-media").forEach(item => {
         item.style.height = "130px";
     });
-    
+
 }
 
 ///////////////////////////////////////
@@ -132,15 +136,16 @@ function addTweetImage(base64, type, name) {
         buffer[i] = bin.charCodeAt(i);
     }
     const imgFile = new File([buffer.buffer], name, {type: type});
-    
-    jq(document).trigger("uiFilesAdded",{files: [imgFile]});
+
+    jq(document).trigger("uiFilesAdded", {files: [imgFile]});
 }
 
-function swiftLog(...msg){
-  webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
+function swiftLog(...msg) {
+    console.log("JS Log:", msg)
+    webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
 }
 
-function openSettings(){
+function openSettings() {
     webkit.messageHandlers.openSettings.postMessage(true);
 }
 
@@ -148,7 +153,7 @@ function touchPointTweetLike(x, y) {
     document.elementFromPoint(x, y).closest(".tweet").getElementsByClassName("tweet-action")[2].click();
 }
 
-function positionElement(x, y){
+function positionElement(x, y) {
     webkit.messageHandlers.jsCallbackHandler.postMessage("CALLED position element");
     const element = document.elementFromPoint(x, y);
     console.log(element);
@@ -158,19 +163,19 @@ function positionElement(x, y){
         console.log(element.classList)
         return
     }
-    
+
     let openImgNum = 0
     let imgUrls = []
-    element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function(item, index){
+    element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function (item, index) {
         const img = item.style.backgroundImage
         if (img === "") {
             imgUrls.push(item.querySelector("img").src);
-        }else {
+        } else {
             imgUrls.push(img);
         }
-        if (item === element){
-          openImgNum = index;
-          swiftLog("openImgNum", index);
+        if (item === element) {
+            openImgNum = index;
+            swiftLog("openImgNum", index);
         }
     })
 
@@ -182,38 +187,63 @@ function positionElement(x, y){
 }
 
 function triggerEvent(element, event) {
-   if (document.createEvent) {
-       // IE以外
-       var evt = document.createEvent("HTMLEvents");
-       evt.initEvent(event, true, true ); // event type, bubbling, cancelable
-       return element.dispatchEvent(evt);
-   } else {
-       // IE
-       var evt = document.createEventObject();
-       return element.fireEvent("on"+event, evt);
-   }
+    if (document.createEvent) {
+        // IE以外
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent(event, true, true); // event type, bubbling, cancelable
+        return element.dispatchEvent(evt);
+    } else {
+        // IE
+        var evt = document.createEventObject();
+        return element.fireEvent("on" + event, evt);
+    }
 }
 
 
 (async () => {
     let endedlist = []
-    while(true){
-        await sleep(1000);
-        
-         document.querySelectorAll(".js-media-image-link").forEach(function(image){
-           if (endedlist.indexOf(image) >= 0) {
-              
-           }
-           else{
-               if (image.parentElement.classList.classList.contains("is-video")) {
-                   return
-               }
-                 endedlist.push(image);
-                 image.addEventListener("click", function(clickedItem){
-                 const res = positionElement(clickedItem.x, clickedItem.y);
-                 webkit.messageHandlers.imagePreviewer.postMessage(res);
-                 });
-           }
-         });
-    }
+
+    new MutationObserver(records => {
+        document.querySelectorAll(".js-media-image-link").forEach(function (image) {
+            if (endedlist.indexOf(image) === -1) {
+                endedlist.push(image);
+
+                if (image.parentElement.classList.contains("is-video")) {
+                    // image.addEventListener("click", function (clickedItem) {
+                    //     swiftLog("isVideo onClick")
+                    // })
+                } else {
+                    image.addEventListener("click", function (clickedItem) {
+                        swiftLog("image onClick")
+                        const res = positionElement(clickedItem.x, clickedItem.y);
+                        webkit.messageHandlers.imagePreviewer.postMessage(res);
+                    });
+                }
+            }
+        });
+    }).observe(document.body, {childList: true, subtree: true})
+
+
+    // while (true) {
+    //     await sleep(1000);
+    //
+    //     document.querySelectorAll(".js-media-image-link").forEach(function (image) {
+    //         if (endedlist.indexOf(image) >= 0) {
+    //
+    //         } else {
+    //             if (image.parentElement.classList.contains("is-video")) {
+    //                 image.addEventListener("click", function (clickedItem) {
+    //                     swiftLog("isVideo onClick")
+    //                 })
+    //             } else {
+    //                 endedlist.push(image);
+    //                 image.addEventListener("click", function (clickedItem) {
+    //                     swiftLog("image onClick")
+    //                     const res = positionElement(clickedItem.x, clickedItem.y);
+    //                     webkit.messageHandlers.imagePreviewer.postMessage(res);
+    //                 });
+    //             }
+    //         }
+    //     });
+    // }
 })();
