@@ -21,8 +21,6 @@ class CustomJSViewController: UIViewController {
 
         updateCustomJSs()
 
-        view.backgroundColor = .backgroundColor
-
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -32,6 +30,13 @@ class CustomJSViewController: UIViewController {
 
         tableView.isEditing = true
         tableView.allowsSelectionDuringEditing = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        view.backgroundColor = .backgroundColor
     }
 
     override func viewWillDisappear(_ animated: Bool) {

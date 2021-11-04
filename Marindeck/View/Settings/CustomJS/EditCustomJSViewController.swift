@@ -11,19 +11,17 @@ import Highlightr
 class EditCustomJSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
 
-    private var index: Int!
     private var customJS: CustomJS!
     var textView: UITextView!
 
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!
 
-//    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = customJS.title
-        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        navigationController?.navigationBar.backgroundColor = .secondaryBackgroundColor
 
         let textStorage = CodeAttributedString()
         textStorage.language = "javascript"
@@ -53,15 +51,12 @@ class EditCustomJSViewController: UIViewController {
         super.viewDidAppear(animated)
 
         textView.becomeFirstResponder()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.editorView.resignFirstResponder()
-//        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         updateJS()
-        let bvc = self.presentingViewController as? CustomJSViewController
+        let bvc = navigationController?.viewControllers.last as? CustomJSViewController
         bvc?.updateCustomJSs()
         bvc?.tableView.reloadData()
     }
@@ -80,7 +75,7 @@ class EditCustomJSViewController: UIViewController {
         customJS.js = textView.text
         
         try! dbQueue.write { db in
-            try self.customJS.update(db)
+            try customJS.update(db)
         }
     }
 
@@ -89,7 +84,7 @@ class EditCustomJSViewController: UIViewController {
     }
 
     @IBAction func close() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
 
         updateJS()
     }

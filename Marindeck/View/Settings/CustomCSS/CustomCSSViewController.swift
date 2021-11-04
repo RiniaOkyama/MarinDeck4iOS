@@ -20,17 +20,20 @@ class CustomCSSViewController: UIViewController {
         title = "CustomCSS"
 
         updateCustomCSSs()
-
-        view.backgroundColor = .backgroundColor
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        view.backgroundColor = .backgroundColor
     }
 
     override func viewWillDisappear(_ animated: Bool) {
