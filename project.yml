@@ -7,7 +7,7 @@ packages:
       
 
 options:
-  bundleIdPrefix: marindeck
+  #bundleIdPrefix: marindeck
   postGenCommand: pod install
   developmentLanguage: ja
 
@@ -30,5 +30,8 @@ targets:
     platform: iOS
     deploymentTarget: "14.1"
     sources: Marindeck
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: marindeck
     dependencies:
       - package: GRDB

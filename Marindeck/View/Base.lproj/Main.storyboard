@@ -178,7 +178,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="wAT-an-moa" kind="modal" id="09q-cn-icc"/>
+                                            <segue destination="wAT-an-moa" kind="push" id="09q-cn-icc"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="1ML-zj-mJx">
@@ -198,7 +198,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gJ7-vG-6a9" kind="modal" id="7nh-vr-vga"/>
+                                            <segue destination="gJ7-vG-6a9" kind="push" id="7nh-vr-vga"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="468-iX-VTS">
@@ -434,22 +434,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLI-DH-Zb3">
-                                <rect key="frame" x="359" y="20.5" width="35" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="KEA-tK-WVS"/>
-                                    <constraint firstAttribute="height" constant="35" id="Nmj-tx-20Z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="close" destination="gJ7-vG-6a9" eventType="touchUpInside" id="FbV-dE-y6c"/>
-                                    <action selector="close" destination="wAT-an-moa" eventType="touchUpInside" id="lGS-H1-wLE"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="esX-y6-dzr">
-                                <rect key="frame" x="0.0" y="59" width="414" height="783"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -458,10 +444,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="esX-y6-dzr" secondAttribute="bottom" id="106-13-axy"/>
-                            <constraint firstItem="esX-y6-dzr" firstAttribute="top" secondItem="TLI-DH-Zb3" secondAttribute="bottom" constant="4" id="G5v-JO-aYu"/>
                             <constraint firstItem="esX-y6-dzr" firstAttribute="trailing" secondItem="ceS-uT-9nk" secondAttribute="trailing" id="La8-is-ZMQ"/>
-                            <constraint firstItem="ceS-uT-9nk" firstAttribute="trailing" secondItem="TLI-DH-Zb3" secondAttribute="trailing" constant="20" id="egM-kL-zP8"/>
-                            <constraint firstItem="TLI-DH-Zb3" firstAttribute="top" secondItem="ceS-uT-9nk" secondAttribute="top" constant="20" id="kpX-q8-h4R"/>
+                            <constraint firstItem="esX-y6-dzr" firstAttribute="top" secondItem="ceS-uT-9nk" secondAttribute="top" id="WD9-JS-eem"/>
                             <constraint firstItem="esX-y6-dzr" firstAttribute="leading" secondItem="ceS-uT-9nk" secondAttribute="leading" id="l4W-S0-21S"/>
                         </constraints>
                     </view>
@@ -482,21 +466,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASY-0s-eC7">
-                                <rect key="frame" x="359" y="20.5" width="35" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="c4g-Co-amG"/>
-                                    <constraint firstAttribute="height" constant="35" id="htA-PH-Swa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="close" destination="wAT-an-moa" eventType="touchUpInside" id="cK2-tZ-2OC"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4nY-Fl-4K1">
-                                <rect key="frame" x="0.0" y="64" width="414" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -505,11 +476,9 @@
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4nY-Fl-4K1" firstAttribute="leading" secondItem="Lq3-aa-n7n" secondAttribute="leading" id="6ld-Ms-oW1"/>
+                            <constraint firstItem="4nY-Fl-4K1" firstAttribute="top" secondItem="Lq3-aa-n7n" secondAttribute="top" id="FR3-9N-YAc"/>
                             <constraint firstAttribute="bottom" secondItem="4nY-Fl-4K1" secondAttribute="bottom" id="WeW-b7-HgB"/>
-                            <constraint firstItem="4nY-Fl-4K1" firstAttribute="top" secondItem="Lq3-aa-n7n" secondAttribute="top" constant="64" id="ew5-ZB-nY7"/>
-                            <constraint firstItem="ASY-0s-eC7" firstAttribute="top" secondItem="Lq3-aa-n7n" secondAttribute="top" constant="20" id="fOQ-Je-TPG"/>
                             <constraint firstItem="Lq3-aa-n7n" firstAttribute="trailing" secondItem="4nY-Fl-4K1" secondAttribute="trailing" id="juw-Qj-ww3"/>
-                            <constraint firstItem="Lq3-aa-n7n" firstAttribute="trailing" secondItem="ASY-0s-eC7" secondAttribute="trailing" constant="20" id="zGw-sT-Rae"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ix8-Fp-lJx"/>
@@ -897,7 +866,6 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
