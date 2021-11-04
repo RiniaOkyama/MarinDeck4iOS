@@ -151,21 +151,6 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        // TODO: 入れ替え時の処理を実装する（データ制御など）
-        // 3 -> 5
-        // 1, 2, 3(4), 4(5), 5(3), 6, 7
-//        for index in sourceIndexPath.row..destinationIndexPath.row {
-//            var tmpJs = customJSs[index]
-//            tmpJs.loadIndex -= 1
-//            updateCustomJS(customJS: tmpJs)
-//        }
-//        var tcjs = customJSs[sourceIndexPath.row]
-//        tcjs.loadIndex = Int32(destinationIndexPath.row + 1)
-//        updateCustomJS(customJS: tcjs)
-//
-//        var bcjs = customJSs[destinationIndexPath.row]
-//        bcjs.loadIndex = Int32(sourceIndexPath.row + 1)
-//        updateCustomJS(customJS: bcjs)
 
         customJSs.move(fromOffsets: IndexSet(integer: sourceIndexPath.row), toOffset: destinationIndexPath.row)
 

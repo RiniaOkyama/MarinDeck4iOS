@@ -3,3 +3,5 @@
 *.ipa
 .idea/
 Marindeck/Application/.env
+Marindeck.xcworkspace
+Marindeck.xcodeproj
