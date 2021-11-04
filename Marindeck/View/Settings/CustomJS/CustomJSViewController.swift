@@ -158,8 +158,8 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-
-        customJSs.move(fromOffsets: IndexSet(integer: sourceIndexPath.row), toOffset: destinationIndexPath.row)
+        let element = customJSs.remove(at: sourceIndexPath.row)
+        customJSs.insert(element, at: destinationIndexPath.row)
 
         for i in 1...customJSs.count {
             var tmpJs = customJSs[i - 1]

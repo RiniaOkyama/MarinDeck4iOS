@@ -36,6 +36,7 @@ class Database {
 
     public lazy var dbQueue: DatabaseQueue = {
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print("DATABASE DIR: \(dir.absoluteString + "database.sqlite")")
         return try! DatabaseQueue(path: dir.absoluteString + "database.sqlite")
     }()
     
