@@ -21,6 +21,21 @@
 
 Check out [hisubway.online/marindeck](https://hisubway.online/marindeck/) and follow us on [twitter.com/HiSubway](https://twitter.com/HiSubway) and [twitter.com/vitomcharm](https://twitter.com/vitomcharm)
 
+
+## Requirements
+
+* iOS14.1+
+* Xcode13
+
+## Installation
+
+```
+$ mint run xcodegen generate
+$ xed .
+```
+
+
+
 ## How to contribute
 
 If you want to contribute to MarinDeck4iOS, you are very welcome
@@ -34,7 +49,7 @@ iOSアプリについてサポートが必要な場合や質問がある場合�
 このリポジトリはiOSアプリのみを扱っています。Android版とは別なので注意してください。
 
 
-
+<!--
 ## DeployGate
 
 開発バージョンを試してみたいですか？ DeployGateでテスターになれます！;)
@@ -42,6 +57,7 @@ iOSアプリについてサポートが必要な場合や質問がある場合�
 Do you want to try the latest version in development of MarinDeck4iOS ? Simple, follow this simple step
 
 [<img src="https://dply.me/mcdh5i/button/large" alt="Try it on your device via DeployGate">](https://dply.me/mcdh5i#install)
+--!>
 
 
 
