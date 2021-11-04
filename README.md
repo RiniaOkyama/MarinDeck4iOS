@@ -2,7 +2,7 @@
 
 # MarinDeck for iOS
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/vitomcharm?style=flat-square)](https://twitter.com/vitomcharm)
+[![Twitter Follow](https://img.shields.io/twitter/follow/vitomcharm?style=flat-square)](https://twitter.com/intent/follow?screen_name=vitomcharm)
 [![Discord](https://img.shields.io/badge/Discord-join-blue)](https://discord.gg/JKsqaxcnCW)
 [![Official](https://img.shields.io/badge/Official%20Site-Visit-blue)](https://hisubway.online/marindeck)
 ![version](https://img.shields.io/badge/version-Alpha-red)
@@ -62,6 +62,7 @@ Do you want to try the latest version in development of MarinDeck4iOS ? Simple, 
 
 
 ## LICENSE
+
 
 検討中
 
