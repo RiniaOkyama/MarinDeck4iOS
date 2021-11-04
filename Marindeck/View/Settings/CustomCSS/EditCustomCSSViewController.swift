@@ -22,7 +22,7 @@ class EditCustomCSSViewController: UIViewController {
         super.viewDidLoad()
 
         title = customCSS.title
-        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        navigationController?.navigationBar.backgroundColor = .secondaryBackgroundColor
         
         let textStorage = CodeAttributedString()
         textStorage.language = "css"
@@ -49,15 +49,12 @@ class EditCustomCSSViewController: UIViewController {
         super.viewDidAppear(animated)
         
         textView.becomeFirstResponder()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.editorView.resignFirstResponder()
-//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         updateCSS()
-        let bvc = self.presentingViewController as? CustomCSSViewController
+        let bvc = navigationController?.viewControllers.last as? CustomCSSViewController
         bvc?.updateCustomCSSs()
         bvc?.tableView.reloadData()
     }
