@@ -27,6 +27,9 @@ class CustomCSSViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: "CustomAddCellTableViewCell", bundle: nil), forCellReuseIdentifier: "addCell")
+
+        tableView.isEditing = true
+        tableView.allowsSelectionDuringEditing = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +94,18 @@ class CustomCSSViewController: UIViewController {
     }
 
 
+    func updateCustomCSS(customCSS: CustomCSS, isReload: Bool = true) {
+        try! dbQueue.write { db in
+            try customCSS.update(db)
+        }
+
+        if isReload {
+            updateCustomCSSs()
+            tableView.reloadData()
+        }
+    }
+
+
     func updateCustomCSSDialog(index: Int) {
         var alertTextField: UITextField?
         var customCSS = customCSSs[index]
@@ -116,13 +131,7 @@ class CustomCSSViewController: UIViewController {
                     if let text = alertTextField?.text {
                         customCSS.updateAt = Date()
                         customCSS.title = text
-
-                        try! self.dbQueue.write { db in
-                            try customCSS.update(db)
-                        }
-
-                        self.updateCustomCSSs()
-                        self.tableView.reloadData()
+                        self.updateCustomCSS(customCSS: customCSS)
                     }
                 }
         )
@@ -153,6 +162,34 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
         }
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        customCSSs.count != indexPath.row
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let element = customCSSs.remove(at: sourceIndexPath.row)
+        customCSSs.insert(element, at: destinationIndexPath.row)
+
+        for i in 1...customCSSs.count {
+            var tmpCss = customCSSs[i - 1]
+            tmpCss.loadIndex = Int32(i)
+            updateCustomCSS(customCSS: tmpCss, isReload: false)
+        }
+
+        updateCustomCSSs()
+        tableView.reloadData()
+    }
+
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+
+    // 編集モード時に左にずれるか。
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false //ずれない。
     }
 
 
