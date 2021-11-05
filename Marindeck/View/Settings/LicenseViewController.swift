@@ -40,7 +40,7 @@ class LicenseViewController: UIViewController {
 
 //        markDownView.backgroundColor = .blue
         let views: [String: Any] = [
-            "view": mdView,
+            "view": mdView!,
             "scrollView": scrollView,
             "markDownView": markDownView
         ]

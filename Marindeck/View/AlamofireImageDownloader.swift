@@ -15,7 +15,7 @@ internal struct AlamofireImageDownloader: Optik.ImageDownloader {
     func downloadImage(from url: URL, completion: @escaping ImageDownloaderCompletion) {
         let URLRequest = Foundation.URLRequest(url: url)
         
-        internalImageDownloader.download(URLRequest) {
+        internalImageDownloader.download(URLRequest, completion:  {
             response in
             
             switch response.result {
@@ -25,7 +25,7 @@ internal struct AlamofireImageDownloader: Optik.ImageDownloader {
                 // Hanlde error
                 return
             }
-        }
+        })
     }
     
 }

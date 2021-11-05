@@ -21,7 +21,7 @@ class ThemeDetailViewController: UIViewController {
             titleLabel?.text = theme?.title
             descriptionTextView?.text = theme?.description
 //            iconView.image = theme?.icon
-            userLabel?.text = "by \(theme?.user)"
+            userLabel?.text = "by \(theme?.user ?? "不明")"
         }
     }
     

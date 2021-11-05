@@ -64,7 +64,7 @@ extension ViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
 
         // FIXME
-        menuVC = self.children[0] as! MenuViewController
+        menuVC = self.children[0] as? MenuViewController
         menuVC.delegate = self
 
         self.view.addSubview(loadingIndicator)

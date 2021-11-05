@@ -45,7 +45,7 @@ class TermsOfUseViewController: UIViewController {
             
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 40
-            let attributes = [NSAttributedString.Key.paragraphStyle : style]
+//            let attributes = [NSAttributedString.Key.paragraphStyle : style]
 //            textView.attributedText = NSAttributedString(string: textView.text,
 //                                           attributes: attributes)
     

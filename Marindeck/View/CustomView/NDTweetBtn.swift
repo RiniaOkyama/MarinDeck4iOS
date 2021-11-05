@@ -127,8 +127,7 @@ public class NDTweetBtn: UIView {
         addSubview(baseButton)
 
         if actions.count == 0 {
-            let btns = [actionBtn0, actionBtn1, actionBtn2]
-                    .forEach {
+            [actionBtn0, actionBtn1, actionBtn2].forEach {
                 $0.isHidden = true
             }
         }

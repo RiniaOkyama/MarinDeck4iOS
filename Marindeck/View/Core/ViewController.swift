@@ -542,11 +542,6 @@ extension ViewController: WKNavigationDelegate {
 
     }
 
-    public func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
-        let vc = UIViewController()
-        return vc
-    }
-
 }
 
 extension ViewController: MenuDelegate {

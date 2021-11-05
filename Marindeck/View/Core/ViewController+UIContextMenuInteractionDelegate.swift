@@ -76,7 +76,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         imageView.image = image
         self.view.addSubview(imageView)
 
-        let previewProvider: () -> UIViewController? = { [unowned self] in
+        let previewProvider: () -> UIViewController? = { [] in
             return ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
