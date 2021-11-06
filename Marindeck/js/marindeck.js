@@ -199,7 +199,6 @@ function triggerEvent(element, event) {
     }
 }
 
-
 (async () => {
     let endedlist = []
 
@@ -247,3 +246,28 @@ function triggerEvent(element, event) {
     //     });
     // }
 })();
+
+
+/** tweet */
+const getClient = (key = null) => TD.controller.clients.getClient(key || TD.storage.accountController.getDefault().privateState.key) || TD.controller.clients.getPreferredClient('twitter')
+
+const getAllAccounts = () => {
+    const accounts = []
+    TD.storage.accountController.getAll().forEach((x) => {
+        if (x.managed) accounts.push({
+            key: x.privateState.key,
+            name: x.state.name,
+            userId: x.state.userId,
+            username: x.state.username,
+            profileImageURL: x.state.profileImageURL,
+        })
+    })
+    return accounts
+}
+
+const postTweet = (text, reply_to_id = null, key = null) => {
+    new Promise((resolve, reject) => {
+        getClient(key).update(text, reply_to_id, null, null, null, resolve, reject)
+    })
+    return "Done"
+}

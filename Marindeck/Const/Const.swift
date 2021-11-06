@@ -14,12 +14,14 @@ struct UserDefaultsKey {
     static let isDebugBtnHidden = "isDebugBtnHidden"
     static let themeID = "themeID"
     static let isUseBiometrics = "isUseBiometrics"
+    static let isNativeTweetModal = "isNativeTweetModal"
     
     static let allKeys = [
         customJSs,
         isDebugBtnHidden,
         themeID,
-        isUseBiometrics
+        isUseBiometrics,
+        isNativeTweetModal
     ]
 }
 

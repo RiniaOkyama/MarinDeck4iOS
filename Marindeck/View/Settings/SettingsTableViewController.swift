@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var themeLabel: UILabel!
     
     @IBOutlet weak var biometricsSwitch: UISwitch!
+    @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
     
     private var dController: UIDocumentInteractionController!
 
@@ -27,14 +28,6 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-//        biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
         
         themeLabel.text = L10n.Settings.Theme.Cell.title
     }
@@ -54,6 +47,8 @@ class SettingsTableViewController: UITableViewController {
         tableView.reloadData()
         
         biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
+        
+        nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal), animated: false)
     }
 
     
@@ -100,6 +95,10 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func setBiometrics() {
         UserDefaults.standard.setValue(biometricsSwitch.isOn, forKey: UserDefaultsKey.isUseBiometrics)
+    }
+    
+    @IBAction func setNativeTweetModal() {
+        UserDefaults.standard.setValue(nativeTweetModalSwitch.isOn, forKey: UserDefaultsKey.isNativeTweetModal)
     }
     
     func presentTheme() {

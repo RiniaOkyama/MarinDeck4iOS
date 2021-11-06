@@ -227,10 +227,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
 
     @objc func tweetPressed() {
-        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
-            print("webViewLog : ", error ?? "成功")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.focusTweetTextArea()
+        if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
+            openNativeTweetModal()
+        } else {
+            webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
+                print("webViewLog : ", error ?? "成功")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.focusTweetTextArea()
+                }
             }
         }
     }
@@ -294,6 +298,30 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+
+    func openNativeTweetModal() {
+        let alert = UIAlertController(
+                title: "Tweet Faster",
+                message: "What's Happening!?",
+                preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField(
+                configurationHandler: {_ in }
+        )
+        alert.addAction(
+                UIAlertAction(
+                        title: "Cancel",
+                        style: UIAlertAction.Style.cancel,
+                        handler: nil))
+        alert.addAction(
+                UIAlertAction(
+                        title: "Tweet",
+                        style: UIAlertAction.Style.default) { _ in
+                    // Insert your code
+                    self.tweet(text: alert.textFields![0].text!)
+                }
+        )
+        present(alert, animated: true, completion: nil)
     }
 
 

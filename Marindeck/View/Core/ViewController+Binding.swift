@@ -5,7 +5,7 @@
 
 extension ViewController {
     func focusTweetTextArea() {
-        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed.hide-detail-view-inline > div.js-app-content.app-content.is-open > div:nth-child(1) > div > div > div > div > div > div.position-rel.compose-text-container.padding-a--10.br--4 > textarea\").focus()") { object, error in
+        webView.evaluateJavaScript("document.querySelector(\".js-compose-text\").focus()") { object, error in
             print("focusTweetTextArea : ", error ?? "成功")
         }
     }
@@ -32,17 +32,23 @@ extension ViewController {
     func getUserIcon() -> String {
         return (webView.evaluate(javaScript: "document.querySelector('body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div > img').src") as? String) ?? "https://pbs.twimg.com/media/Ewk-ESrUYAAZYKe?format=jpg&name=medium"
     }
-    
+
+    func tweet(text: String) {
+        webView.evaluateJavaScript("postTweet('" + text + "')") { object, error in
+            print("tweet : ", error ?? "成功")
+        }
+    }
+
     // FIXME: あとから出てきたheaderに適用されない。
     func setStatusBarSpace(height: Int) {
         let headerHeight = height + 50
         webView.evaluateJavaScript("""
-document.querySelectorAll(".column-header").forEach(function(item) {
-    item.style.height = "\(headerHeight)px"
-    item.style.maxHeight = "\(headerHeight)px"
-    item.style.paddingTop = "\(height)px"
-})
-""") { _, error in
+                                   document.querySelectorAll(".column-header").forEach(function(item) {
+                                       item.style.height = "\(headerHeight)px"
+                                       item.style.maxHeight = "\(headerHeight)px"
+                                       item.style.paddingTop = "\(height)px"
+                                   })
+                                   """) { _, error in
             print(#function, error ?? "成功")
         }
     }
