@@ -524,14 +524,14 @@ extension ViewController: WKNavigationDelegate {
 
         let cjss = try! dbQueue.read { db in
             try CustomJS.fetchAll(db)
-        }
+        }.sorted(by: { $0.loadIndex < $1.loadIndex })
         for item in cjss {
             debugJS(script: item.js)
         }
 
         let csss = try! dbQueue.read { db in
             try CustomCSS.fetchAll(db)
-        }
+        }.sorted(by: { $0.loadIndex < $1.loadIndex })
         for item in csss {
             debugCSS(css: item.css)
         }

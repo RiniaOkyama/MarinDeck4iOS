@@ -30,6 +30,9 @@ Check out [hisubway.online/marindeck](https://hisubway.online/marindeck/) and fo
 ## Installation
 
 ```
+$ brew install mint
+$ mint install yonaskolb/XcodeGen
+
 $ mint run xcodegen generate
 $ xed .
 ```
