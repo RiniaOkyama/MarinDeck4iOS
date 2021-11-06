@@ -40,11 +40,11 @@ fileprivate final class NoInputAccessoryView: NSObject {
 }
 
 // https://qiita.com/mopiemon/items/8d0dd7d678c4dadeadd4s
-var ToolbarHandle: UInt8 = 0
+fileprivate var ToolbarHandle: UInt8 = 0
 
 extension WKWebView{
     func addIndexAccessoryView(toolbar: UIView?) {
-        guard let toolbar = toolbar else {return}
+        guard let toolbar = toolbar else { return }
         objc_setAssociatedObject(self, &ToolbarHandle, toolbar, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         var candidateView: UIView? = nil
         for view in self.scrollView.subviews {
@@ -89,7 +89,7 @@ extension WKWebView{
             superWebView = superWebView?.superview //== WKWebView
         }
         guard let webView = superWebView else { return nil }
-        
+
         let customInputAccessory = objc_getAssociatedObject(webView, &ToolbarHandle)
         return customInputAccessory as? UIView
     }

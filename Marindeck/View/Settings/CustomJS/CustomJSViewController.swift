@@ -181,6 +181,12 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         false //ずれない。
     }
 
+    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if customJSs.count == proposedDestinationIndexPath.row {
+            return sourceIndexPath
+        }
+        return proposedDestinationIndexPath
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if customJSs.count == indexPath.row {

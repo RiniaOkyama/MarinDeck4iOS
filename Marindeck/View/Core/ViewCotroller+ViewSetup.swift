@@ -123,8 +123,9 @@ extension ViewController {
             let deckURL = URL(string: "https://tweetdeck.twitter.com")
 //        let deckURL = URL(string: " https://mobile.twitter.com/login?hide_message=true&redirect_after_login=https://tweetdeck.twitter.com")
 
-            let myRequest = URLRequest(url: deckURL!)
-            webView.load(myRequest)
+            var urlRequest = URLRequest(url: deckURL!)
+            urlRequest.cachePolicy = .returnCacheDataElseLoad // https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/useprotocolcachepolicy
+            webView.load(urlRequest)
         }
         self.mainDeckView.addSubview(webView)
 
