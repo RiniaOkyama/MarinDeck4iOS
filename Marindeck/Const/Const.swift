@@ -15,6 +15,7 @@ struct UserDefaultsKey {
     static let themeID = "themeID"
     static let isUseBiometrics = "isUseBiometrics"
     static let isNativeTweetModal = "isNativeTweetModal"
+    static let isOnBoarding = "isOnBoarding"
     
     static let allKeys = [
         customJSs,

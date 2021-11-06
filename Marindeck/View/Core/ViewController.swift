@@ -89,6 +89,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidAppear(animated)
         becomeFirstResponder()
         webView.frame = mainDeckView.bounds
+        
+        if !userDefaults.bool(forKey: UserDefaultsKey.isOnBoarding) {
+            let onBoardingVC = OnBoardingViewController()
+            onBoardingVC.modalPresentationStyle = .currentContext
+            present(onBoardingVC, animated: false, completion: nil)
+        }
     }
 
     func gestureRecognizer(

@@ -2,7 +2,7 @@
 //  Database.swift
 //  Marindeck
 //
-//  Created by craptone on 2021/10/30.
+//  Created by Rinia on 2021/10/30.
 //
 
 import Foundation

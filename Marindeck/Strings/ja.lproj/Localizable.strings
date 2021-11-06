@@ -3,7 +3,10 @@
 "menu.editColumn.title" = "カラムを編集";
 
 
-// Settings
+// MARK: OnBoarding
+"onBoarding.startMarinDeck.title" = "MarinDeckをはじめる";
+
+// MARK: Settings
 "settings.navigation.title" = "設定";
 "settings.general.header.title" = "一般";
 "settings.customize.header.title" = "カスタマイズ";

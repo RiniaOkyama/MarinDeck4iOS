@@ -26,6 +26,13 @@ internal enum L10n {
     }
   }
 
+  internal enum OnBoarding {
+    internal enum StartMarinDeck {
+      /// MarinDeckをはじめる
+      internal static let title = L10n.tr("Localizable", "onBoarding.startMarinDeck.title")
+    }
+  }
+
   internal enum Settings {
     internal enum Appinfo {
       internal enum Header {

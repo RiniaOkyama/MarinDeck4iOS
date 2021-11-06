@@ -2,6 +2,9 @@
 "menu.reload.title" = "Reload";
 "menu.editColumn.title" = "Edit coloumn";
 
+// OnBoarding
+"onBoarding.startMarinDeck.title" = "Start MarinDeck";
+
 // Settings
 "settings.navigation.title" = "Settings";
 "settings.general.header.title" = "General";
