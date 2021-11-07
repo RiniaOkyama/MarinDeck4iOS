@@ -89,6 +89,7 @@ extension ViewController {
 
 
         webConfiguration.userContentController = userContentController
+        webConfiguration.processPool = WKProcessPool.shared
 
 //        mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)

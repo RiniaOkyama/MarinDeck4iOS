@@ -8,7 +8,7 @@
 import Optik
 import AlamofireImage
 
-internal struct AlamofireImageDownloader: Optik.ImageDownloader {
+struct AlamofireImageDownloader: Optik.ImageDownloader {
     
     private let internalImageDownloader = AlamofireImage.ImageDownloader()
     

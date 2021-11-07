@@ -526,6 +526,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 }
 
 
+extension ViewController: LoginViewControllerOutput {
+    func logined() {
+        webView.reload()
+    }
+    
+}
+
+
 // MARK: - 11 WKWebView WKNavigation delegate
 extension ViewController: WKNavigationDelegate {
     // MARK: - 読み込み設定（リクエスト前）
@@ -537,11 +545,17 @@ extension ViewController: WKNavigationDelegate {
             decisionHandler(.cancel)
             return
         }
-        if host == "tweetdeck.twitter.com" || host == "mobile.twitter.com" {
+        if host == "tweetdeck.twitter.com" {
             decisionHandler(.allow)
 //        }else if host.hasPrefix("t.co") {
 //            decisionHandler(.cancel)
-        } else {
+        } else if host == "mobile.twitter.com" {
+            let vc = LoginViewController()
+            vc.delegate = self
+            let nvc = UINavigationController(rootViewController: vc)
+            present(nvc, animated: true, completion: nil)
+            decisionHandler(.cancel)
+        }else {
             let safariVC = SFSafariViewController(url: url!)
             present(safariVC, animated: true, completion: nil)
 

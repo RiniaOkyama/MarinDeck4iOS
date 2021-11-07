@@ -449,6 +449,7 @@
                         <outletCollection property="titleLabel" destination="9Of-JB-4oA" collectionClass="NSMutableArray" id="QXo-on-l51"/>
                         <outletCollection property="titleLabel" destination="9s8-52-qb7" collectionClass="NSMutableArray" id="9YJ-te-9G7"/>
                         <outletCollection property="titleLabel" destination="fDV-2P-cjM" collectionClass="NSMutableArray" id="UHT-9j-wFe"/>
+                        <outletCollection property="titleLabel" destination="ZV5-dQ-joQ" collectionClass="NSMutableArray" id="Vme-IJ-U85"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Om-ic-6z1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
