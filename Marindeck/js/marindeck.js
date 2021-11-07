@@ -92,39 +92,51 @@ function isTweetButtonHidden(bool) {
 
 
 function loginStyled() {
-    document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").hidden = true;
-    document.querySelector("body > div.js-app-loading.login-container > div.startflow-background.pin-all.anim.anim-slower.anim-fade-in").style.backgroundColor = "#252525";
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.app-info.txt-size-variable--18.margin-txxl > div > div > h2").innerText = "MarinDeckへようこそ";
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.app-info.txt-size-variable--18.margin-txxl > div > div > h2").style.fontSize = "25px"
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.app-info.txt-size-variable--18.margin-txxl > div > div > p").innerText = "廃人への第一歩、そしてその先へ";
-    document.querySelector("body > div.js-app-loading.login-container > footer").hidden = true;
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").style.backgroundColor = "rgb(30,41,55)";
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").border = null;
-    document.querySelector("#login-form-title").innerText = "Twitterアカウントでログイン"
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.margin-a--16 > a").innerText = "ログイン";
+    document.querySelector(".startflow-background").hidden = true;
+    document.querySelector(".startflow-background").style.backgroundColor = "#252525";
+    
+    document.querySelector(".app-info-panel").style.margin = "92px auto";
+    document.querySelector(".login-container").style.minHeight = "0px";
+
+    document.querySelector(".app-info-title").innerText = "MarinDeckへようこそ";
+    document.querySelector(".app-info-title").style.fontSize = "22px"
+    document.querySelector(".app-info-text p").innerText = "廃人への第一歩、そしてその先へ";
+    
+    document.querySelectorAll(".js-startflow-chrome")[1].hidden = true
+    document.querySelector(".js-login-form").style.backgroundColor = "rgb(30,41,55)";
+    document.querySelector(".js-login-form").border = null;
+    
+    document.querySelector("#login-form-title").innerText = "Twitterアカウントでログイン";
+    document.querySelector("#login-form-title").style.fontSize = "16px";
+    document.querySelector(".js-login-form .Button").innerText = "ログイン";
     document.querySelector("#login-form-title").style.color = "white";
 
     // ログイン透明化
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").style.backgroundColor = "transparent";
+    document.querySelector(".js-login-form").style.backgroundColor = "transparent";
     // ログインボーダー
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section").style.borderStyle = "none";
+    document.querySelector(".js-login-form").style.borderStyle = "none";
     document.querySelector("#login-form-title").style.borderStyle = "none";
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.divider-bar.margin-v--0.margin-h--16").style.display = "none";
+    document.querySelector(".divider-bar").style.display = "none";
 
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal").style.margin = "30% 0px 0px";
+    document.querySelector(".js-signin-ui").style.margin = "10% auto";
+    document.querySelector(".js-signin-ui").style.width = "98%";
+
     // login btn
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-content.startflow.anim.anim-slow.anim-fade-in > div > div.js-signin-ui.app-signin-form.pin-top.pin-right.txt-weight-normal > section > div.margin-a--16 > a").style.padding = "13px";
+    document.querySelector(".js-login-form .Button").style.padding = "13px";
 
     //tweetdeck icon
-    document.querySelector("body > div.js-app-loading.login-container > div.js-startflow-chrome.app-masthead.anim.anim-slow.anim-delayed.anim-fade-in > div > h1").remove();
-}
+    document.querySelector(".sprite-logo").remove();
+    
+    document.querySelector(".app-info-text").style.textAlign = "center"
+    document.querySelector(".app-info-text").style.width = "100%"
 
-function style_init() {
-    // FIXME
-    document.querySelectorAll(".js-media").forEach(item => {
-        item.style.height = "130px";
-    });
-
+    document.querySelectorAll(".app-signin-wrap")[1].style.width = null
+    document.querySelector(".js-signin-ui .Button").style.borderRadius = "6px"
+    document.querySelector(".js-signin-ui .Button").style.outline = "none"
+    
+    document.querySelectorAll(".app-signin-wrap")[1].style.width = "100%";
+    
+    isTweetButtonHidden(true)
 }
 
 ///////////////////////////////////////
