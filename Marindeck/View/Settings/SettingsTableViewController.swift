@@ -18,6 +18,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
     
     private var dController: UIDocumentInteractionController!
+    private let dbQueue = Database.shared.dbQueue
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,6 +166,23 @@ class SettingsTableViewController: UITableViewController {
             }
         }
         
+        let cjss = try! dbQueue.read { db in
+            try CustomJS.fetchAll(db)
+        }
+
+        if let jsdata = try? JSONEncoder().encode(cjss) {
+            dict["customJSs"] = String(data: jsdata, encoding: .utf8)
+        }
+        
+        let csss = try! dbQueue.read { db in
+            try CustomCSS.fetchAll(db)
+        }
+
+        if let cssdata = try? JSONEncoder().encode(csss) {
+            dict["customCSSs"] = String(data: cssdata, encoding: .utf8)
+        }
+        
+        
         guard let json = try? JSONSerialization.data(withJSONObject: dict, options: []) else { return }
         let data = String(data: json, encoding: .utf8)!
         
@@ -285,6 +303,22 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
             for (key, value) in dict {
                 if UserDefaultsKey.allKeys.contains(key) {
                     UserDefaults.standard.setValue(value, forKey: key)
+                } else if key == "customJSs" {
+                    guard let dataString = value as? String else { continue }
+                    guard let data = dataString.data(using: .utf8) else { continue }
+                    guard let cjss: [CustomJS] = try? JSONDecoder().decode([CustomJS].self, from: data) else { continue }
+                     
+                    try! dbQueue.write { db in
+                        cjss.forEach { try? $0.insert(db) }
+                    }
+                } else if key == "customCSSs" {
+                    guard let dataString = value as? String else { continue }
+                    guard let data = dataString.data(using: .utf8) else { continue }
+                    guard let cjss: [CustomCSS] = try? JSONDecoder().decode([CustomCSS].self, from: data) else { continue }
+                     
+                    try! dbQueue.write { db in
+                        cjss.forEach { try? $0.insert(db) }
+                    }
                 }
             }
             

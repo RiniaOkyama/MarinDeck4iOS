@@ -10,7 +10,6 @@ import UIKit
 import LocalAuthentication
 
 struct UserDefaultsKey {
-    static let customJSs = "customJSs"
     static let isDebugBtnHidden = "isDebugBtnHidden"
     static let themeID = "themeID"
     static let isUseBiometrics = "isUseBiometrics"
@@ -18,7 +17,6 @@ struct UserDefaultsKey {
     static let isOnBoarding = "isOnBoarding"
     
     static let allKeys = [
-        customJSs,
         isDebugBtnHidden,
         themeID,
         isUseBiometrics,
