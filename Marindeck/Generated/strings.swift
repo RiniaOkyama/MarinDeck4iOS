@@ -40,6 +40,10 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "settings.appinfo.header.title")
       }
     }
+    internal enum Biometrics {
+      /// 生体認証
+      internal static let title = L10n.tr("Localizable", "settings.biometrics.title")
+    }
     internal enum CustomCSS {
       internal enum Cell {
         /// カスタムCSS
@@ -60,7 +64,7 @@ internal enum L10n {
     }
     internal enum Developers {
       internal enum Cell {
-        /// Developers
+        /// 開発者
         internal static let title = L10n.tr("Localizable", "settings.developers.cell.title")
       }
     }
@@ -109,6 +113,14 @@ internal enum L10n {
         /// ログアウト
         internal static let title = L10n.tr("Localizable", "settings.logout.header.title")
       }
+    }
+    internal enum NativePreview {
+      /// ネイティブのプレビューを使用
+      internal static let title = L10n.tr("Localizable", "settings.nativePreview.title")
+    }
+    internal enum NativeTweetModal {
+      /// ネイティブのツイート画面を使用
+      internal static let title = L10n.tr("Localizable", "settings.nativeTweetModal.title")
     }
     internal enum Navigation {
       /// 設定

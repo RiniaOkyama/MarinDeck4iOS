@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 
         isModalInPresentation = true
 
-        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.barTintColor = .label
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))

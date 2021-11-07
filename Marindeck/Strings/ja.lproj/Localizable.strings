@@ -13,6 +13,10 @@
 "settings.appinfo.header.title" = "アプリについて";
 "settings.logout.header.title" = "ログアウト";
 
+"settings.nativePreview.cell.title" = "ネイティブのプレビューを使用";
+"settings.biometrics.cell.title" = "生体認証";
+"settings.nativeTweetModal.cell.title" = "ネイティブのツイート画面を使用";
+
 "settings.customJS.cell.title" = "カスタムJavaScript";
 "settings.customCSS.cell.title" = "カスタムCSS";
 "settings.theme.cell.title" = "テーマ";
@@ -20,7 +24,7 @@
 "settings.termsOfUse.cell.title" = "利用規約";
 "settings.license.cell.title" = "ライセンス";
 "settings.issueEnhancement.cell.title" = "ご意見・ご要望";
-"settings.developers.cell.title" = "Developers";
+"settings.developers.cell.title" = "開発者";
 "settings.donate.cell.title" = "寄付";
 "settings.version.cell.title" = "バージョン";
 

@@ -43,6 +43,8 @@ class SettingsTableViewController: UITableViewController {
 
         titleLabel.forEach({
             $0.textColor = .labelColor
+            print("\($0.text) -> \($0.text?.localized)")
+            $0.text = $0.text?.localized ?? ""
         })
         tableView.reloadData()
         

@@ -12,9 +12,13 @@
 "settings.appinfo.header.title" = "App info";
 "settings.logout.header.title" = "Logout";
 
+"settings.nativePreview.cell.title" = "Use native preview";
+"settings.biometrics.cell.title" = "Biometrics";
+"settings.nativeTweetModal.cell.title" = "Use native tweet modal";
+
 "settings.customJS.cell.title" = "Custom JavaScript";
 "settings.customCSS.cell.title" = "Custom CSS";
-"settings.theme.cell.title" = "Theme";
+"settings.theme.cell.title" = "Themes";
 
 "settings.termsOfUse.cell.title" = "Team of use";
 "settings.license.cell.title" = "License";
