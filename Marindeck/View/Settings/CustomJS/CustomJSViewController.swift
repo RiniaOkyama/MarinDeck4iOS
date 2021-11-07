@@ -145,9 +145,12 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCellTableViewCell
             cell.selectionStyle = .none
+            cell.index = indexPath.row
+            cell.delegate = self
             let customJS = customJSs[indexPath.row]
             cell.titleLabel.text = customJS.title
             cell.dateLabel.text = customJS.createAt.offsetFrom()
+            cell.switchView.isOn = customJS.isLoad
 
             return cell
         }
@@ -216,6 +219,15 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
 
+}
+
+extension CustomJSViewController: CustomCellTableViewCellOutput {
+    func switched(isOn: Bool, index: Int?) {
+        guard let index = index else { return }
+        var customJS = customJSs[index]
+        customJS.isLoad = isOn
+        updateCustomJS(customJS: customJS, isReload: false)
+    }
 }
 
 extension CustomJSViewController: CustomAddCellOutput {

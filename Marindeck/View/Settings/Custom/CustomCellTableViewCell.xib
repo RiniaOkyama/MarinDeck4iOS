@@ -22,31 +22,34 @@
                         <rect key="frame" x="12" y="8" width="494" height="78"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称未設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzX-XG-GGO">
-                                <rect key="frame" x="16" y="12" width="466" height="25.5"/>
+                                <rect key="frame" x="12" y="8" width="470" height="25.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3日前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-dd-YFb">
-                                <rect key="frame" x="12" y="56" width="470" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3日前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-dd-YFb">
+                                <rect key="frame" x="12" y="54" width="470" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmp-4f-Bhk">
                                 <rect key="frame" x="433" y="23.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switched" destination="KGk-i7-Jjw" eventType="valueChanged" id="kWq-Im-7l8"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nmp-4f-Bhk" firstAttribute="centerY" secondItem="s7e-rw-gf0" secondAttribute="centerY" id="Mp4-K1-tzW"/>
-                            <constraint firstAttribute="bottom" secondItem="QZZ-dd-YFb" secondAttribute="bottom" constant="6" id="aDs-r5-g8C"/>
+                            <constraint firstAttribute="bottom" secondItem="QZZ-dd-YFb" secondAttribute="bottom" constant="8" id="aDs-r5-g8C"/>
                             <constraint firstAttribute="trailing" secondItem="QZZ-dd-YFb" secondAttribute="trailing" constant="12" id="f1T-Bv-wkW"/>
-                            <constraint firstItem="kzX-XG-GGO" firstAttribute="leading" secondItem="s7e-rw-gf0" secondAttribute="leading" constant="16" id="gxd-Ig-3WD"/>
+                            <constraint firstItem="kzX-XG-GGO" firstAttribute="leading" secondItem="s7e-rw-gf0" secondAttribute="leading" constant="12" id="gxd-Ig-3WD"/>
                             <constraint firstAttribute="trailing" secondItem="nmp-4f-Bhk" secondAttribute="trailing" constant="12" id="ip9-vf-iux"/>
                             <constraint firstAttribute="trailing" secondItem="kzX-XG-GGO" secondAttribute="trailing" constant="12" id="kLS-2b-5dZ"/>
                             <constraint firstItem="QZZ-dd-YFb" firstAttribute="leading" secondItem="s7e-rw-gf0" secondAttribute="leading" constant="12" id="rw1-v7-Ti4"/>
-                            <constraint firstItem="kzX-XG-GGO" firstAttribute="top" secondItem="s7e-rw-gf0" secondAttribute="top" constant="12" id="tn1-te-jOC"/>
+                            <constraint firstItem="kzX-XG-GGO" firstAttribute="top" secondItem="s7e-rw-gf0" secondAttribute="top" constant="8" id="tn1-te-jOC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -62,6 +65,7 @@
             <connections>
                 <outlet property="backView" destination="s7e-rw-gf0" id="mdM-1v-f8R"/>
                 <outlet property="dateLabel" destination="QZZ-dd-YFb" id="Tmd-qW-ehe"/>
+                <outlet property="switchView" destination="nmp-4f-Bhk" id="vml-mf-9zw"/>
                 <outlet property="titleLabel" destination="kzX-XG-GGO" id="D83-AV-opE"/>
             </connections>
             <point key="canvasLocation" x="178.2608695652174" y="131.25"/>

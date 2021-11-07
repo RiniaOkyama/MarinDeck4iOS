@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol CustomCellTableViewCellOutput {
+    func switched(isOn: Bool, index: Int?)
+}
 
 class CustomCellTableViewCell: UITableViewCell {
+    public var delegate: CustomCellTableViewCellOutput?
+    public var index: Int?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var switchView: UISwitch!
     
     @IBOutlet weak var backView: UIView!
 
@@ -29,6 +35,10 @@ class CustomCellTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    @IBAction func switched() {
+        delegate?.switched(isOn: switchView.isOn, index: index)
     }
     
 }

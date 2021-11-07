@@ -12,9 +12,8 @@ import MobileCoreServices     // ~iOS13
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
-    
-    @IBOutlet weak var themeLabel: UILabel!
-    
+    @IBOutlet weak var logoutLabel: UILabel!
+        
     @IBOutlet weak var biometricsSwitch: UISwitch!
     @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
     
@@ -29,7 +28,13 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
         
-        themeLabel.text = L10n.Settings.Theme.Cell.title
+        titleLabel.forEach({
+            $0.textColor = .labelColor
+            $0.text = $0.text?.localized ?? ""
+        })
+        
+        logoutLabel.text = L10n.Settings.Logout.Cell.title
+        
     }
     
     
@@ -43,8 +48,6 @@ class SettingsTableViewController: UITableViewController {
 
         titleLabel.forEach({
             $0.textColor = .labelColor
-            print("\($0.text) -> \($0.text?.localized)")
-            $0.text = $0.text?.localized ?? ""
         })
         tableView.reloadData()
         
@@ -62,8 +65,23 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textColor = .subLabelColor
+            var headerTitle = ""
+            switch (section) {
+            case 0:
+                headerTitle = L10n.Settings.General.Header.title
+            case 1:
+                headerTitle = L10n.Settings.Customize.Header.title
+            case 2:
+                headerTitle = L10n.Settings.Appinfo.Header.title
+            case 4:
+                headerTitle = L10n.Settings.Logout.Header.title
+            default:
+                break
+            }
+            headerView.textLabel?.text = headerTitle
         }
     }
+    
     //Headerの高さ
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         60
@@ -82,6 +100,8 @@ class SettingsTableViewController: UITableViewController {
             presentTheme()
         case IndexPath(row: 2, section: 2):
             issue()
+        case IndexPath(row: 3, section: 2):
+            break
         case IndexPath(row: 4, section: 2):
             donate()
         case IndexPath(row: 0, section: 3):

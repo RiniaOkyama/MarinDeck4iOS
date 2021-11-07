@@ -155,10 +155,13 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCellTableViewCell
+            cell.index = indexPath.row
             cell.selectionStyle = .none
+            cell.delegate = self
             let customCSS = customCSSs[indexPath.row]
             cell.titleLabel.text = customCSS.title
             cell.dateLabel.text = customCSS.createAt.offsetFrom()
+            cell.switchView.isOn = customCSS.isLoad
 
             return cell
         }
@@ -228,6 +231,16 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
 
+}
+
+
+extension CustomCSSViewController: CustomCellTableViewCellOutput {
+    func switched(isOn: Bool, index: Int?) {
+        guard let index = index else { return }
+        var customCSS = customCSSs[index]
+        customCSS.isLoad = isOn
+        updateCustomCSS(customCSS: customCSS, isReload: false)
+    }
 }
 
 extension CustomCSSViewController: CustomAddCellOutput {

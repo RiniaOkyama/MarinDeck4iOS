@@ -58,7 +58,7 @@ extension ViewController: WKScriptMessageHandler {
 
         case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.performSegue(withIdentifier: "toSettings", sender: nil)
+                self.openSettings()
             }
 
 
