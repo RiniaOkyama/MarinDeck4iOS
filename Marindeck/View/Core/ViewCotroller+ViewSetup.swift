@@ -42,7 +42,7 @@ extension ViewController {
         let tweetAction = NDTweetBtnAction(
                 image: Asset.tweet.image,
                 handler: { (NDTweetBtnAction) -> Void in
-                    self.tweetPressed()
+                    self.openWebViewTweetModal()
                 })
 
         tweetFloatingBtn.addAction(action: debugAction)

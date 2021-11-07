@@ -236,11 +236,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
             openNativeTweetModal()
         } else {
-            webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
-                print("webViewLog : ", error ?? "成功")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.focusTweetTextArea()
-                }
+            openWebViewTweetModal()
+        }
+    }
+    
+    
+    func openWebViewTweetModal() {
+        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
+            print("webViewLog : ", error ?? "成功")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.focusTweetTextArea()
             }
         }
     }
