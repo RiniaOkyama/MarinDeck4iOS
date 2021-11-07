@@ -15,9 +15,14 @@ class OnBoardingViewController: UIViewController {
         super.viewDidLoad()
 
         startMarinDeckButton.setTitle(L10n.OnBoarding.StartMarinDeck.title, for: .normal)
-        
+        startMarinDeckButton.backgroundColor = .tweetButtonColor
+        startMarinDeckButton.setTitleColor(.labelColor, for: .normal)
+        startMarinDeckButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         view.backgroundColor = .backgroundColor
+        
+        startMarinDeckButton.clipsToBounds = true
+        startMarinDeckButton.layer.cornerRadius = 6
     }
     
     @IBAction func start() {
