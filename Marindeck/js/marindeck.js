@@ -223,6 +223,13 @@ function triggerEvent(element, event) {
                     // image.addEventListener("click", function (clickedItem) {
                     //     swiftLog("isVideo onClick")
                     // })
+                    if (image.href.includes("youtube.com")) {
+                        image.addEventListener("click", function (clickedItem) {
+                            const url = clickedItem.target.href
+                            webkit.messageHandlers.openYoutube.postMessage(url);
+                        })
+                    }
+                    
                 } else {
                     image.addEventListener("click", function (clickedItem) {
                         swiftLog("image onClick")

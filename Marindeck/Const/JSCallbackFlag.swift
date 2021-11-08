@@ -13,4 +13,5 @@ enum JSCallbackFlag: String, CaseIterable {
     case openSettings = "openSettings"
     case loadImage = "loadImage"
     case isTweetButtonHidden = "isTweetButtonHidden"
+    case openYoutube = "openYoutube"
 }

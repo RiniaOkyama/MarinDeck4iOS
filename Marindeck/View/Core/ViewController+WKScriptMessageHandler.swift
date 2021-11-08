@@ -79,6 +79,19 @@ extension ViewController: WKScriptMessageHandler {
 
         case .isTweetButtonHidden:
             tweetFloatingBtn.isHidden = message.body as? Bool ?? false
+            
+        case .openYoutube:
+            guard let url = message.body as? String else { return }
+            guard let range = url.range(of: "?v=") else { return }
+            let youtubeId = url[range.upperBound...]
+            
+            if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
+                UIApplication.shared.canOpenURL(youtubeURL) {
+                UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+            } else if let youtubeURL = URL(string: url) {
+                UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+            }
+            
         default:
             return
         }
