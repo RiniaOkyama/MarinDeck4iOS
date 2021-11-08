@@ -4,7 +4,7 @@
 target 'Marindeck' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod "Optik"     # image preview
+  pod "Optik", :git => "https://github.com/RiniaOkyama/Optik"     # image preview
   pod "AlamofireImage"
   pod 'Highlightr' # js highlight
   pod 'markymark'  # markdown kome

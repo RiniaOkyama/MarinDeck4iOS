@@ -29,7 +29,7 @@ DEPENDENCIES:
   - Highlightr
   - Keys (from `Pods/CocoaPodsKeys`)
   - markymark
-  - Optik
+  - Optik (from `https://github.com/RiniaOkyama/Optik`)
   - SPAlert
   - SwiftGen
   - SwiftyMarkdown
@@ -42,7 +42,6 @@ SPEC REPOS:
     - Highlightr
     - libwebp
     - markymark
-    - Optik
     - SPAlert
     - SwiftGen
     - SwiftyMarkdown
@@ -52,6 +51,13 @@ EXTERNAL SOURCES:
     :podspec: https://s3.amazonaws.com/sdk.mobile.giphy.com/SDK/2.1.7/Giphy.podspec
   Keys:
     :path: Pods/CocoaPodsKeys
+  Optik:
+    :git: https://github.com/RiniaOkyama/Optik
+
+CHECKOUT OPTIONS:
+  Optik:
+    :commit: bea6b823f3902b05084f49c721c940a3f8f69c27
+    :git: https://github.com/RiniaOkyama/Optik
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
@@ -67,6 +73,6 @@ SPEC CHECKSUMS:
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftyMarkdown: be01b2905694bd7bfd95330cd43704bfdb978aec
 
-PODFILE CHECKSUM: 891b4c1d9bd0d4530e93da1c7a7ca66a90d281e6
+PODFILE CHECKSUM: 48e4760af6ab3beedcc0b8ce75a2376a193f1af1
 
 COCOAPODS: 1.10.1

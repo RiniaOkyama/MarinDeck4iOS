@@ -2,6 +2,7 @@
 *.zip
 *.ipa
 .idea/
+Pods/
 Marindeck/Application/.env
 Marindeck.xcworkspace
 Marindeck.xcodeproj
