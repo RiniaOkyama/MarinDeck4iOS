@@ -39,10 +39,10 @@ class CustomCSSViewController: UIViewController {
         view.backgroundColor = .backgroundColor
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         let bvc = presentingViewController?.presentingViewController as? ViewController
-//        bvc?.webView.reload()
+        bvc?.webView.reload()
     }
 
     @IBAction func close() {

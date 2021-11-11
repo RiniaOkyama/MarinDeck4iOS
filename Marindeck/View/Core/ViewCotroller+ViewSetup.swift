@@ -11,9 +11,9 @@ import WebKit
 extension ViewController {
 
     func setupView() {
-        self.view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
-        self.bottomBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
-        self.topBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
+        bottomBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
+        topBackView.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
         isBottomBackViewHidden = true
         imageView.center = view.center
         imageView.clipsToBounds = true
@@ -29,27 +29,56 @@ extension ViewController {
         tweetFloatingBtn.setImage(Asset.tweet.image)
         tweetFloatingBtn.tapped = tweetPressed
 
-        let debugAction = NDTweetBtnAction(
-                image: UIImage(systemName: "ladybug")!,
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.debugPressed()
-                })
-        let gifAction = NDTweetBtnAction(
-                image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.openSelectGif()
-                })
-        let tweetAction = NDTweetBtnAction(
-                image: Asset.tweet.image,
-                handler: { (NDTweetBtnAction) -> Void in
-                    self.openWebViewTweetModal()
-                })
+        userDefaults.set(nil, forKey: UserDefaultsKey.actionButtoms)
+        let arr = (userDefaults.array(forKey: UserDefaultsKey.actionButtoms) as? [String])?.prefix(3) ?? [ActionButtons.debug.rawValue, ActionButtons.gif.rawValue, ActionButtons.tweet.rawValue]
+        for item in arr {
+            let actionType = ActionButtons(rawValue: item)
+            let action = NDTweetBtnAction(
+                image: actionType?.getImage() ?? UIImage(),
+                handler: { [unowned self] _ -> Void in
+                    switch actionType {
+                    case .debug:
+                        self.debugPressed()
+                    case .gif:
+                        self.openSelectGif()
+                    case .tweet:
+                        self.openWebViewTweetModal()
+                    case .menu:
+                        self.openMenu()
+                    case .draft:
+                        break // TODO:
+                    case .settings:
+                        self.openSettings()
+                    case .none:
+                        break
+                    }
+                }
+            )
+            tweetFloatingBtn.addAction(action: action)
+        }
 
-        tweetFloatingBtn.addAction(action: debugAction)
-        tweetFloatingBtn.addAction(action: gifAction)
-        tweetFloatingBtn.addAction(action: tweetAction)
 
-        tweetFloatingBtn.isHidden = true
+//        let debugAction = NDTweetBtnAction(
+//                image: UIImage(systemName: "ladybug")!,
+//                handler: { (NDTweetBtnAction) -> Void in
+//                    self.debugPressed()
+//                })
+//        let gifAction = NDTweetBtnAction(
+//                image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
+//                handler: { (NDTweetBtnAction) -> Void in
+//                    self.openSelectGif()
+//                })
+//        let tweetAction = NDTweetBtnAction(
+//                image: Asset.tweet.image,
+//                handler: { (NDTweetBtnAction) -> Void in
+//                    self.openWebViewTweetModal()
+//                })
+
+//        tweetFloatingBtn.addAction(action: debugAction)
+//        tweetFloatingBtn.addAction(action: gifAction)
+//        tweetFloatingBtn.addAction(action: tweetAction)
+
+        tweetFloatingBtn.isHidden = false // FIXME
 
 
         mainDeckView.backgroundColor = .none

@@ -33,3 +33,11 @@
 
 "settings.logout.cell.title" = "ログアウト";
 
+
+// ActionButtons
+"actionButton.debug.title" = "デバッグ";
+"actionButton.gif.title" = "GIF";
+"actionButton.tweet.title" = "ツイート";
+"actionButton.menu.title" = "メニュー";
+"actionButton.draft.title" = "ドラフト";
+"actionButton.settings.title" = "設定";

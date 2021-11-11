@@ -32,3 +32,10 @@
 
 "settings.logout.cell.title" = "logout";
 
+// ActionButtons
+"actionButton.debug.title" = "Debug";
+"actionButton.gif.title" = "GIF";
+"actionButton.tweet.title" = "Tweet";
+"actionButton.menu.title" = "Menu";
+"actionButton.draft.title" = "Draft";
+"actionButton.settings.title" = "Settings";
