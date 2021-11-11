@@ -99,6 +99,8 @@ class SettingsTableViewController: UITableViewController {
         switch indexPath {
         case IndexPath(row: 2, section: 1):
             presentTheme()
+        case IndexPath(row: 3, section: 1):
+            presentActionButton()
         case IndexPath(row: 2, section: 2):
             issue()
         case IndexPath(row: 3, section: 2):
@@ -127,6 +129,11 @@ class SettingsTableViewController: UITableViewController {
     func presentTheme() {
         let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
         vc.viewController = presentingViewController as? ViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func presentActionButton() {
+        let vc = EditActionButtonViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

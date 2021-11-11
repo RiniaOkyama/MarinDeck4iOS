@@ -83,7 +83,7 @@ class DebugerViewController: UIViewController {
         let (_, error) = delegate!.debugJS(script: script)
         
         if error != nil{
-            print(error)
+            print(error!)
             if error!.code == 5{
                 print("asできません。。。")
             }else{

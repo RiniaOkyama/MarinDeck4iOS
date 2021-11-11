@@ -17,7 +17,7 @@ settingGroups:
 
 settings:
   base:
-    MARKETING_VERSION: 0.0.14
+    MARKETING_VERSION: 0.0.16
     CURRENT_PROJECT_VERSION: 1
   config:
     debug:
