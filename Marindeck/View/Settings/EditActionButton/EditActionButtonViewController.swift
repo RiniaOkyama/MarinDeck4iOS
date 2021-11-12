@@ -46,6 +46,7 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        title = L10n.Settings.CustomActonButtons.Cell.title
         navigationController?.navigationBar.backgroundColor = .backgroundColor
         view.backgroundColor = .backgroundColor
     }
@@ -68,7 +69,7 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     }
 
     func saveActions() {
-        UserDefaults.standard.set(selectedActions, forKey: UserDefaultsKey.actionButtoms)
+        UserDefaults.standard.set(selectedActions.map { $0.rawValue }, forKey: UserDefaultsKey.actionButtoms)
     }
 
     func getActions() -> [ActionButtons] {
@@ -87,8 +88,8 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
         items.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        items[row].getTitle()
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: items[row].getTitle(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.labelColor])
     }
     
 

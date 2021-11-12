@@ -85,6 +85,12 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "settings.biometrics.cell.title")
       }
     }
+    internal enum CustomActonButtons {
+      internal enum Cell {
+        /// カスタムアクションボタン
+        internal static let title = L10n.tr("Localizable", "settings.customActonButtons.cell.title")
+      }
+    }
     internal enum CustomCSS {
       internal enum Cell {
         /// カスタムCSS
