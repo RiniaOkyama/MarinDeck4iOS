@@ -372,10 +372,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
     
     func openMenu() {
+        isMenuOpen = true
+        menuView.translatesAutoresizingMaskIntoConstraints = true
+        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+        mainDeckBlurView.isUserInteractionEnabled = true
+
         UIView.animate(withDuration: 0.3, animations: {
             self.menuView.frame.origin.x = 0
             self.mainDeckBlurView.frame.origin.x = self.menuView.frame.width
             self.mainDeckView.frame.origin.x = self.menuView.frame.width
+
+            UIView.animate(withDuration: 0.2, animations: {
+                self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            })
         })
     }
 
