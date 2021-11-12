@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="646" width="414" height="216"/>
                 </pickerView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;􀅴&quot; + " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5A-jB-tE9">
-                    <rect key="frame" x="16" y="622" width="382" height="20"/>
+                    <rect key="frame" x="16" y="622.5" width="382" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
