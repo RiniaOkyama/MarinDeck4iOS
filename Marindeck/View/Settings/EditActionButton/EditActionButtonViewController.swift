@@ -44,11 +44,26 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
 
         title = L10n.Settings.CustomActonButtons.Cell.title
         navigationController?.navigationBar.backgroundColor = .backgroundColor
         view.backgroundColor = .backgroundColor
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        presentingViewController?.endAppearanceTransition()
+    }
+
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
     }
     
     func setInfo(message: String) {
