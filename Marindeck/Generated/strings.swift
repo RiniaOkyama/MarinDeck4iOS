@@ -13,26 +13,38 @@ internal enum L10n {
 
   internal enum ActionButton {
     internal enum Debug {
+      /// デバッグモーダルを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.debug.description")
       /// デバッグ
       internal static let title = L10n.tr("Localizable", "actionButton.debug.title")
     }
     internal enum Draft {
+      /// 下書きを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.draft.description")
       /// ドラフト
       internal static let title = L10n.tr("Localizable", "actionButton.draft.title")
     }
     internal enum Gif {
+      /// GIFを選ぶ
+      internal static let description = L10n.tr("Localizable", "actionButton.gif.description")
       /// GIF
       internal static let title = L10n.tr("Localizable", "actionButton.gif.title")
     }
     internal enum Menu {
+      /// メニューを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.menu.description")
       /// メニュー
       internal static let title = L10n.tr("Localizable", "actionButton.menu.title")
     }
     internal enum Settings {
+      /// 設定を開く
+      internal static let description = L10n.tr("Localizable", "actionButton.settings.description")
       /// 設定
       internal static let title = L10n.tr("Localizable", "actionButton.settings.title")
     }
     internal enum Tweet {
+      /// ツイートモーダルを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.tweet.description")
       /// ツイート
       internal static let title = L10n.tr("Localizable", "actionButton.tweet.title")
     }

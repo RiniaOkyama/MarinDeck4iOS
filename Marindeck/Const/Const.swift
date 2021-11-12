@@ -75,6 +75,23 @@ enum ActionButtons: String {
             return L10n.ActionButton.Settings.title
         }
     }
+    
+    func getDescription() -> String {
+        switch self {
+        case .debug:
+            return L10n.ActionButton.Debug.description
+        case .gif:
+            return L10n.ActionButton.Gif.description
+        case .tweet:
+            return L10n.ActionButton.Tweet.description
+        case .menu:
+            return L10n.ActionButton.Menu.description
+        case .draft:
+            return L10n.ActionButton.Draft.description
+        case .settings:
+            return L10n.ActionButton.Settings.description
+        }
+    }
 }
 
 // Codable?
