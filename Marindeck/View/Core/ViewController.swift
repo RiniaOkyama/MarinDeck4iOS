@@ -89,6 +89,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidAppear(animated)
         becomeFirstResponder()
         webView.frame = mainDeckView.bounds
+        setupTweetBtn()
         
         if !userDefaults.bool(forKey: UserDefaultsKey.isOnBoarding) {
             let onBoardingVC = OnBoardingViewController()

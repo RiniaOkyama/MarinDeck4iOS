@@ -40,8 +40,9 @@ class SettingsTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
-        
+
         navigationController?.navigationBar.tintColor = .labelColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
@@ -57,8 +58,20 @@ class SettingsTableViewController: UITableViewController {
         nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal), animated: false)
     }
 
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        presentingViewController?.endAppearanceTransition()
+    }
+
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+
     @objc func onDismiss() {
         dismiss(animated: true, completion: nil)
     }

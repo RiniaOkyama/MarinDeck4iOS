@@ -29,54 +29,7 @@ extension ViewController {
         tweetFloatingBtn.setImage(Asset.tweet.image)
         tweetFloatingBtn.tapped = tweetPressed
 
-        userDefaults.set(nil, forKey: UserDefaultsKey.actionButtoms)
-        let arr = (userDefaults.array(forKey: UserDefaultsKey.actionButtoms) as? [String])?.prefix(3) ?? [ActionButtons.debug.rawValue, ActionButtons.gif.rawValue, ActionButtons.tweet.rawValue]
-        for item in arr {
-            let actionType = ActionButtons(rawValue: item)
-            let action = NDTweetBtnAction(
-                image: actionType?.getImage() ?? UIImage(),
-                handler: { [unowned self] _ -> Void in
-                    switch actionType {
-                    case .debug:
-                        self.debugPressed()
-                    case .gif:
-                        self.openSelectGif()
-                    case .tweet:
-                        self.openWebViewTweetModal()
-                    case .menu:
-                        self.openMenu()
-                    case .draft:
-                        break // TODO:
-                    case .settings:
-                        self.openSettings()
-                    case .none:
-                        break
-                    }
-                }
-            )
-            tweetFloatingBtn.addAction(action: action)
-        }
-
-
-//        let debugAction = NDTweetBtnAction(
-//                image: UIImage(systemName: "ladybug")!,
-//                handler: { (NDTweetBtnAction) -> Void in
-//                    self.debugPressed()
-//                })
-//        let gifAction = NDTweetBtnAction(
-//                image: Asset.gif.image.withRenderingMode(.alwaysTemplate),
-//                handler: { (NDTweetBtnAction) -> Void in
-//                    self.openSelectGif()
-//                })
-//        let tweetAction = NDTweetBtnAction(
-//                image: Asset.tweet.image,
-//                handler: { (NDTweetBtnAction) -> Void in
-//                    self.openWebViewTweetModal()
-//                })
-
-//        tweetFloatingBtn.addAction(action: debugAction)
-//        tweetFloatingBtn.addAction(action: gifAction)
-//        tweetFloatingBtn.addAction(action: tweetAction)
+        setupTweetBtn()
 
         tweetFloatingBtn.isHidden = false // FIXME
 
@@ -105,6 +58,36 @@ extension ViewController {
         self.view.addSubview(mainDeckBlurView)
 
         setupWebViewToolBar()
+    }
+
+    func setupTweetBtn() {
+        tweetFloatingBtn.removeAllActions()
+        let arr = (userDefaults.array(forKey: UserDefaultsKey.actionButtoms) as? [String])?.prefix(3) ?? [ActionButtons.debug.rawValue, ActionButtons.gif.rawValue, ActionButtons.tweet.rawValue]
+        for item in arr {
+            let actionType = ActionButtons(rawValue: item)
+            let action = NDTweetBtnAction(
+                    image: actionType?.getImage() ?? UIImage(),
+                    handler: { [unowned self] _ -> Void in
+                        switch actionType {
+                        case .debug:
+                            self.debugPressed()
+                        case .gif:
+                            self.openSelectGif()
+                        case .tweet:
+                            self.openWebViewTweetModal()
+                        case .menu:
+                            self.openMenu()
+                        case .draft:
+                            break // TODO:
+                        case .settings:
+                            self.openSettings()
+                        case .none:
+                            break
+                        }
+                    }
+            )
+            tweetFloatingBtn.addAction(action: action)
+        }
     }
 
     func setupWebView() {
