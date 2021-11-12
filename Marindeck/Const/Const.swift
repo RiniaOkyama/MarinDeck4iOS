@@ -51,9 +51,9 @@ enum ActionButtons: String {
         case .tweet:
             return Asset.tweet.image
         case .menu:
-            return Asset.tweet.image
+            return UIImage(systemName: "line.horizontal.3.decrease")!
         case .draft:
-            return Asset.tweet.image
+            return UIImage(systemName: "pencil.and.outline")!
         case .settings:
             return UIImage(systemName: "gearshape")!
         }
