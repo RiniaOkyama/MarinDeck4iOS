@@ -11,6 +11,45 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum ActionButton {
+    internal enum Debug {
+      /// デバッグモーダルを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.debug.description")
+      /// デバッグ
+      internal static let title = L10n.tr("Localizable", "actionButton.debug.title")
+    }
+    internal enum Draft {
+      /// 下書きを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.draft.description")
+      /// ドラフト
+      internal static let title = L10n.tr("Localizable", "actionButton.draft.title")
+    }
+    internal enum Gif {
+      /// GIFを選ぶ
+      internal static let description = L10n.tr("Localizable", "actionButton.gif.description")
+      /// GIF
+      internal static let title = L10n.tr("Localizable", "actionButton.gif.title")
+    }
+    internal enum Menu {
+      /// メニューを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.menu.description")
+      /// メニュー
+      internal static let title = L10n.tr("Localizable", "actionButton.menu.title")
+    }
+    internal enum Settings {
+      /// 設定を開く
+      internal static let description = L10n.tr("Localizable", "actionButton.settings.description")
+      /// 設定
+      internal static let title = L10n.tr("Localizable", "actionButton.settings.title")
+    }
+    internal enum Tweet {
+      /// ツイートモーダルを開く
+      internal static let description = L10n.tr("Localizable", "actionButton.tweet.description")
+      /// ツイート
+      internal static let title = L10n.tr("Localizable", "actionButton.tweet.title")
+    }
+  }
+
   internal enum Menu {
     internal enum EditColumn {
       /// カラムを編集
@@ -41,8 +80,16 @@ internal enum L10n {
       }
     }
     internal enum Biometrics {
-      /// 生体認証
-      internal static let title = L10n.tr("Localizable", "settings.biometrics.title")
+      internal enum Cell {
+        /// 生体認証
+        internal static let title = L10n.tr("Localizable", "settings.biometrics.cell.title")
+      }
+    }
+    internal enum CustomActonButtons {
+      internal enum Cell {
+        /// カスタムアクションボタン
+        internal static let title = L10n.tr("Localizable", "settings.customActonButtons.cell.title")
+      }
     }
     internal enum CustomCSS {
       internal enum Cell {
@@ -115,12 +162,16 @@ internal enum L10n {
       }
     }
     internal enum NativePreview {
-      /// ネイティブのプレビューを使用
-      internal static let title = L10n.tr("Localizable", "settings.nativePreview.title")
+      internal enum Cell {
+        /// ネイティブのプレビューを使用
+        internal static let title = L10n.tr("Localizable", "settings.nativePreview.cell.title")
+      }
     }
     internal enum NativeTweetModal {
-      /// ネイティブのツイート画面を使用
-      internal static let title = L10n.tr("Localizable", "settings.nativeTweetModal.title")
+      internal enum Cell {
+        /// ネイティブのツイート画面を使用
+        internal static let title = L10n.tr("Localizable", "settings.nativeTweetModal.cell.title")
+      }
     }
     internal enum Navigation {
       /// 設定

@@ -15,12 +15,14 @@ struct UserDefaultsKey {
     static let isUseBiometrics = "isUseBiometrics"
     static let isNativeTweetModal = "isNativeTweetModal"
     static let isOnBoarding = "isOnBoarding"
-    
+    static let actionButtoms = "actionButtoms"
+
     static let allKeys = [
         isDebugBtnHidden,
         themeID,
         isUseBiometrics,
-        isNativeTweetModal
+        isNativeTweetModal,
+        actionButtoms
     ]
 }
 
@@ -29,6 +31,67 @@ struct EnvKeys {
     static let GIPHY_API_KEY = "GIPHY_API_KEY"
     static let DEPLOYGATE_SDK_API_KEY = "DEPLOYGATE_SDK_API_KEY"
     static let DEPLOYGATE_SDK_USERNAME = "DEPLOYGATE_SDK_USERNAME"
+}
+
+struct ActionItem {
+    var title: String
+    var icon: UIImage
+
+}
+
+enum ActionButtons: String {
+    case debug = "debug", gif = "gif", tweet = "tweet", menu = "menu", draft = "draft", settings = "settings"
+
+    func getImage() -> UIImage {
+        switch self {
+        case .debug:
+            return UIImage(systemName: "ladybug")!
+        case .gif:
+            return Asset.gif.image.withRenderingMode(.alwaysTemplate)
+        case .tweet:
+            return Asset.tweet.image
+        case .menu:
+            return UIImage(systemName: "line.horizontal.3.decrease")!
+        case .draft:
+            return UIImage(systemName: "pencil.and.outline")!
+        case .settings:
+            return UIImage(systemName: "gearshape")!
+        }
+    }
+    
+    func getTitle() -> String {
+        switch self {
+        case .debug:
+            return L10n.ActionButton.Debug.title
+        case .gif:
+            return L10n.ActionButton.Gif.title
+        case .tweet:
+            return L10n.ActionButton.Tweet.title
+        case .menu:
+            return L10n.ActionButton.Menu.title
+        case .draft:
+            return L10n.ActionButton.Draft.title
+        case .settings:
+            return L10n.ActionButton.Settings.title
+        }
+    }
+    
+    func getDescription() -> String {
+        switch self {
+        case .debug:
+            return L10n.ActionButton.Debug.description
+        case .gif:
+            return L10n.ActionButton.Gif.description
+        case .tweet:
+            return L10n.ActionButton.Tweet.description
+        case .menu:
+            return L10n.ActionButton.Menu.description
+        case .draft:
+            return L10n.ActionButton.Draft.description
+        case .settings:
+            return L10n.ActionButton.Settings.description
+        }
+    }
 }
 
 // Codable?
@@ -41,18 +104,18 @@ struct Theme{
 
     var js: String // テーマのJS。テーマに関係ないjsは含まないこと。
     var css: String // テーマのCSS。
-    
+
 //    var backgroundColor: String = UIColor.systemBackground.toHexString()
 //    var secondaryBackgroundColor: String = UIColor.secondarySystemBackground.toHexString()
 //    var labelColor: String = UIColor.label.toHexString()
 //    var subLabelColor: String = UIColor.secondaryLabel.toHexString()
 //    var tweetButtonColor: String = ""
-    
+
     var backgroundColor: UIColor = .systemBackground
     var secondaryBackgroundColor: UIColor = .secondarySystemBackground
     var labelColor: UIColor = .label
     var subLabelColor: UIColor = .secondaryLabel
-    
+
     var topBarColor: UIColor = #colorLiteral(red: 0.08278211206, green: 0.123489894, blue: 0.1700443327, alpha: 1)
     var statusBarColor: UIStatusBarStyle = .lightContent
     var tweetButtonColor: UIColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
@@ -75,7 +138,7 @@ let themes = [
     Theme(title: "Wumpus", id: "2",
           description: "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです",
           user: "hakunagi", icon: "", js: "", css: ""),
-    
+
     Theme(title: "Frostclear", id: "3", user: "Midra", icon: "Frostclear-icon", js: getFile2Text("Theme-Frostclear"), css: "",
           backgroundColor: UIColor(hex: "1a1a1a"),
           secondaryBackgroundColor: UIColor(hex: "242424"),
@@ -83,7 +146,7 @@ let themes = [
           subLabelColor: .lightGray,
           tweetButtonColor: UIColor(hex: "242424")
     ),
-    
+
     Theme(title: "Dolce", id: "4",
           description: "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです",
           user: "L1n4r1A a.k.a. るなち✿(人柱)",

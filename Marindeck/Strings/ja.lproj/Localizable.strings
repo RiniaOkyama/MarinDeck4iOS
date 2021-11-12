@@ -20,6 +20,7 @@
 "settings.customJS.cell.title" = "カスタムJavaScript";
 "settings.customCSS.cell.title" = "カスタムCSS";
 "settings.theme.cell.title" = "テーマ";
+"settings.customActonButtons.cell.title" = "カスタムアクションボタン";
 
 "settings.termsOfUse.cell.title" = "利用規約";
 "settings.license.cell.title" = "ライセンス";
@@ -33,3 +34,18 @@
 
 "settings.logout.cell.title" = "ログアウト";
 
+
+// MARK: ActionButtons
+"actionButton.debug.title" = "デバッグ";
+"actionButton.gif.title" = "GIF";
+"actionButton.tweet.title" = "ツイート";
+"actionButton.menu.title" = "メニュー";
+"actionButton.draft.title" = "ドラフト";
+"actionButton.settings.title" = "設定";
+
+"actionButton.debug.description" = "デバッグモーダルを開く";
+"actionButton.gif.description" = "GIFを選ぶ";
+"actionButton.tweet.description" = "ツイートモーダルを開く";
+"actionButton.menu.description" = "メニューを開く";
+"actionButton.draft.description" = "下書きを開く";
+"actionButton.settings.description" = "設定を開く";

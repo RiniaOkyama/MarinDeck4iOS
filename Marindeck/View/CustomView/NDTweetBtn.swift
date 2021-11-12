@@ -57,7 +57,10 @@ public class NDTweetBtnAction {
 @available(iOS 13.0, *)
 @IBDesignable
 public class NDTweetBtn: UIView {
-    private var isPressing = false {
+
+    public var isLock = false
+
+    public var isPressing = false {
         didSet {
             AudioServicesPlaySystemSound(1519)
             if isPressing {
@@ -134,6 +137,7 @@ public class NDTweetBtn: UIView {
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isLock { return }
 //        baseButton.imageView.frame.size = CGSize(width: 20, height: 20)
         baseButton.imageView.center = baseButton.center
 
@@ -152,6 +156,8 @@ public class NDTweetBtn: UIView {
     }
     
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isLock { return }
+
         if !isPressing {
             let touch = touches.first!
             let location = touch.location(in: self.baseButton)
@@ -163,6 +169,8 @@ public class NDTweetBtn: UIView {
         }
     }
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isLock { return }
+
         if isPressing {
             isPressing = !isPressing
         }else {
@@ -207,12 +215,21 @@ public class NDTweetBtn: UIView {
         }
     }
 
+    public func removeAllActions() {
+        actions = []
+//        [actionBtn0, actionBtn1, actionBtn2].forEach {
+//            $0.isHidden = true
+//        }
+    }
+
     @objc func onActionBtnPressed(sender: UITapGestureRecognizer) {
         actions[safe: sender.view!.tag]?.handler(actions[sender.view!.tag])
         isPressing = false
     }
 
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {
+        if isLock { return }
+
         if sender.state == .began {
             isPressing = !isPressing
             isInBaseBtn = true
@@ -295,6 +312,8 @@ public class NDTweetBtn: UIView {
     }
 
     private func onRelease() {
+        if isLock { return }
+
         baseButton.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         baseButton.setImage(baseBtnImg ?? UIImage())
         baseButton.imageView.tintColor = .white
@@ -334,6 +353,8 @@ public class NDTweetBtn: UIView {
     }
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if isLock { return nil }
+
         if !isPressing { return super.hitTest(point, with: event) }
         let convertedactionBtn0: CGPoint = self.actionBtn0.convert(point, from: self)
         let convertedactionBtn1: CGPoint = self.actionBtn1.convert(point, from: self)

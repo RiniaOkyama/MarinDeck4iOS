@@ -40,8 +40,9 @@ class SettingsTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
-        
+
         navigationController?.navigationBar.tintColor = .labelColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
@@ -57,8 +58,20 @@ class SettingsTableViewController: UITableViewController {
         nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal), animated: false)
     }
 
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        presentingViewController?.endAppearanceTransition()
+    }
+
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+
     @objc func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
@@ -99,6 +112,8 @@ class SettingsTableViewController: UITableViewController {
         switch indexPath {
         case IndexPath(row: 2, section: 1):
             presentTheme()
+        case IndexPath(row: 3, section: 1):
+            presentActionButton()
         case IndexPath(row: 2, section: 2):
             issue()
         case IndexPath(row: 3, section: 2):
@@ -127,6 +142,11 @@ class SettingsTableViewController: UITableViewController {
     func presentTheme() {
         let vc = storyboard?.instantiateViewController(identifier: "Theme") as! ThemeViewController
         vc.viewController = presentingViewController as? ViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func presentActionButton() {
+        let vc = EditActionButtonViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

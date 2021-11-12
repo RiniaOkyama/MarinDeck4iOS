@@ -2,10 +2,10 @@
 "menu.reload.title" = "Reload";
 "menu.editColumn.title" = "Edit coloumn";
 
-// OnBoarding
+// MARK: OnBoarding
 "onBoarding.startMarinDeck.title" = "Start MarinDeck";
 
-// Settings
+// MARK: Settings
 "settings.navigation.title" = "Settings";
 "settings.general.header.title" = "General";
 "settings.customize.header.title" = "Customize";
@@ -19,6 +19,7 @@
 "settings.customJS.cell.title" = "Custom JavaScript";
 "settings.customCSS.cell.title" = "Custom CSS";
 "settings.theme.cell.title" = "Themes";
+"settings.customActonButtons.cell.title" = "Custom action buttons";
 
 "settings.termsOfUse.cell.title" = "Team of use";
 "settings.license.cell.title" = "License";
@@ -32,3 +33,17 @@
 
 "settings.logout.cell.title" = "logout";
 
+// MARK: ActionButtons
+"actionButton.debug.title" = "Debug";
+"actionButton.gif.title" = "GIF";
+"actionButton.tweet.title" = "Tweet";
+"actionButton.menu.title" = "Menu";
+"actionButton.draft.title" = "Draft";
+"actionButton.settings.title" = "Settings";
+
+"actionButton.debug.description" = "Open the debug modal.";
+"actionButton.gif.description" = "Select GIF";
+"actionButton.tweet.description" = "Open the tweet modal";
+"actionButton.menu.description" = "Open the menu";
+"actionButton.draft.description" = "Open a draft";
+"actionButton.settings.description" = "Open Settings";
