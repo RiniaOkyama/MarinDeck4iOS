@@ -17,6 +17,7 @@ settingGroups:
 
 settings:
   base:
+    DEVELOPMENT_TEAM: 726VR75V6L
     MARKETING_VERSION: 0.0.14
     CURRENT_PROJECT_VERSION: 1
   config:
@@ -32,6 +33,7 @@ targets:
     sources: Marindeck
     settings:
       base:
+        DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
     dependencies:
       - package: GRDB
