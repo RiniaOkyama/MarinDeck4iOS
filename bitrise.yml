@@ -1,0 +1,109 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: ios
+trigger_map:
+- push_branch: "*"
+  workflow: primary
+- pull_request_source_branch: "*"
+  workflow: primary
+workflows:
+  deploy:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - script@1:
+        title: Do anything with Script step
+    - certificate-and-profile-installer@1: {}
+    - recreate-user-schemes@1:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+    - cocoapods-install@2: {}
+    - xcode-test@4:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+    - xcode-archive@4:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+        - distribution_method: "$BITRISE_DISTRIBUTION_METHOD"
+    - deploy-to-bitrise-io@2: {}
+    - cache-push@2: {}
+  primary:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - script@1:
+        title: Do anything with Script step
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+    - cocoapod-key@2:
+        inputs:
+        - keys: "\n\n"
+    - xcodegen@0: {}
+    - certificate-and-profile-installer@1: {}
+    - recreate-user-schemes@1:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+    - xcode-archive@4:
+        inputs:
+        - project_path: Marindeck.xcworkspace
+    - deploy-to-bitrise-io@2: {}
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            echo hey!
+            echo $BITRISE_IPA_PATH
+            echo $BITRISE_DEPLOY_DIR
+    - deploygate--upload-app-bitrise-step@1:
+        inputs:
+        - owner_name: RiniaOk_yama
+        - app_path: "$BITRISE_IPA_PATH"
+        - visibility: public
+        - api_key: "$DEPLOYGATE_KEY"
+    - cache-push@2:
+        inputs:
+        - cache_paths: |-
+            $GEM_CACHE_PATH -> ./.ruby-version
+            vendor/bundle -> Gemfile.lock
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.0.x
+    machine_type_id: g2.4core
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: Marindeck.xcworkspace
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: Marindeck
+  - opts:
+      is_expand: false
+    BITRISE_DISTRIBUTION_METHOD: ad-hoc
+  - opts:
+      is_expand: false
+    GiphyApiKey: abc
+  - opts:
+      is_expand: false
+    DeploygateUsername: def
+  - DeploygateSdkApiKey: efg
+    opts:
+      is_expand: false
