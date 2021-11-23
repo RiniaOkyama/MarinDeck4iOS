@@ -58,7 +58,6 @@ struct ContextMenuStruct {
 
 extension ViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        print(#function)
         let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
         if imgurl.1.count == 0 {
             return nil
@@ -75,10 +74,10 @@ extension ViewController: UIContextMenuInteractionDelegate {
         }
         
         imageView.image = image
-        self.view.addSubview(imageView)
+        view.addSubview(imageView)
 
         let previewProvider: () -> UIViewController? = { [] in
-            return ImageHapticPreviewViewController(image: image)
+            ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
             let tweetAction = UIAction(title: "画像をツイート", image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in
@@ -102,7 +101,6 @@ extension ViewController: UIContextMenuInteractionDelegate {
 
 
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        print(#function)
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
             let imgs = self.imagePreviewImageStrings.compactMap({
@@ -123,13 +121,11 @@ extension ViewController: UIContextMenuInteractionDelegate {
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        print(#function)
-        self.view.addSubview(imageView)
+        view.addSubview(imageView)
         return UITargetedPreview(view: imageView)
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willEndFor configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
-        print(#function)
         animator?.addCompletion {
             if !self.contextMenuStruct.isOpend {
                 self.imageView.removeFromSuperview()

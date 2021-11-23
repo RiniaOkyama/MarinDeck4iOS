@@ -393,7 +393,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
     func setBlurView() {
-        blurView.frame = self.view.frame
+        blurView.frame = view.frame
         view.addSubview(blurView)
     }
 
@@ -450,7 +450,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         )
 
         imageView.image = imgs[index]
-        self.view.addSubview(imageView)
+        view.addSubview(imageView)
 //            imageViewer.presentationController?.delegate = self
         present(imageViewer, animated: true, completion: nil)
     }
@@ -535,14 +535,14 @@ extension ViewController: MenuDelegate {
     }
 
     func openProfile() {
-        self.closeMenu()
+        closeMenu()
         webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
             print("openProfile : ", error ?? "成功")
         }
     }
 
     func openColumnAdd() {
-        self.closeMenu()
+        closeMenu()
         webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
             print(#function, error ?? "成功")
         }
@@ -552,7 +552,7 @@ extension ViewController: MenuDelegate {
 extension ViewController: ImageViewerDelegate {
 
     func transitionImageView(for index: Int) -> UIImageView {
-        return imageView!
+        imageView!
     }
 
     func imageViewerDidDisplayImage(at index: Int) {
@@ -620,7 +620,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                 return
             }
-            self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
+            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
                 print("photoselected : ", error ?? "成功")
             }
             dismiss(animated: true, completion: nil)
@@ -633,17 +633,17 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                 return
             }
-            self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
+            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
                 print("photoselected : ", error ?? "成功")
             }
         } else {
             print("Error")
         }
 
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
