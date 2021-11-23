@@ -377,6 +377,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         mainDeckView.translatesAutoresizingMaskIntoConstraints = true
         mainDeckBlurView.isUserInteractionEnabled = true
 
+        menuVC.setUserIcon(url: getUserIcon())
+        let (name, id) = getUserNameID()
+        menuVC.setUserNameID(name: name, id: id)
+
         UIView.animate(withDuration: 0.3, animations: {
             self.menuView.frame.origin.x = 0
             self.mainDeckBlurView.frame.origin.x = self.menuView.frame.width

@@ -102,6 +102,7 @@ extension ViewController {
 
         webConfiguration.userContentController = userContentController
         webConfiguration.processPool = WKProcessPool.shared
+        webConfiguration.allowsInlineMediaPlayback = true
 
 //        mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)

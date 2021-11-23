@@ -15,7 +15,6 @@ let mR = moduleRaid();
 // Grab TweetDeck's jQuery from webpack
 var jq = mR && mR.findFunction('jQuery') && mR.findFunction('jquery:')[0];
 
-// ロード後に走るので、検証したい場合はwindow.onload等を使えください。
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 (async () => {
     await sleep(800);
@@ -48,6 +47,24 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
                     console.log(isVideo)
                     if (!isVideo) {
                         if (mediatable && dismiss) dismiss.click()
+                    }
+                }
+
+                const video = target.querySelector("video")
+                if (video !== null) {
+                    const isGif = video.classList.contains("js-media-gif")
+                    if (isGif) {
+                        // video.removeAttribute("loop")
+                        video.setAttribute("controls", "")
+                        video.setAttribute("playsinline", "")
+                        video.setAttribute("webkit-playsinline", "")
+                        const cl = video.classList.value
+                        video.classList.value = "-"
+                        window.setTimeout(function () {
+                            video.classList.value = cl
+                        }, 1);
+                        // video.setAttribute("autoplay", "")
+                        // video.removeAttribute("autoplay")
                     }
                 }
             }
@@ -94,18 +111,18 @@ function isTweetButtonHidden(bool) {
 function loginStyled() {
     document.querySelector(".startflow-background").hidden = true;
     document.querySelector(".startflow-background").style.backgroundColor = "#252525";
-    
+
     document.querySelector(".app-info-panel").style.margin = "92px auto";
     document.querySelector(".login-container").style.minHeight = "0px";
 
     document.querySelector(".app-info-title").innerText = "MarinDeckへようこそ";
     document.querySelector(".app-info-title").style.fontSize = "22px"
     document.querySelector(".app-info-text p").innerText = "廃人への第一歩、そしてその先へ";
-    
+
     document.querySelectorAll(".js-startflow-chrome")[1].hidden = true
     document.querySelector(".js-login-form").style.backgroundColor = "rgb(30,41,55)";
     document.querySelector(".js-login-form").border = null;
-    
+
     document.querySelector("#login-form-title").innerText = "Twitterアカウントでログイン";
     document.querySelector("#login-form-title").style.fontSize = "16px";
     document.querySelector(".js-login-form .Button").innerText = "ログイン";
@@ -126,16 +143,16 @@ function loginStyled() {
 
     //tweetdeck icon
     document.querySelector(".sprite-logo").remove();
-    
+
     document.querySelector(".app-info-text").style.textAlign = "center"
     document.querySelector(".app-info-text").style.width = "100%"
 
     document.querySelectorAll(".app-signin-wrap")[1].style.width = null
     document.querySelector(".js-signin-ui .Button").style.borderRadius = "6px"
     document.querySelector(".js-signin-ui .Button").style.outline = "none"
-    
+
     document.querySelectorAll(".app-signin-wrap")[1].style.width = "100%";
-    
+
     isTweetButtonHidden(true)
 }
 
@@ -229,7 +246,7 @@ function triggerEvent(element, event) {
                             webkit.messageHandlers.openYoutube.postMessage(url);
                         })
                     }
-                    
+
                 } else {
                     image.addEventListener("click", function (clickedItem) {
                         swiftLog("image onClick")
