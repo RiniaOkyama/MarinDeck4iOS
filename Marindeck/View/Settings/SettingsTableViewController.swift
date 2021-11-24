@@ -119,7 +119,7 @@ class SettingsTableViewController: UITableViewController {
         case IndexPath(row: 3, section: 1):
             presentActionButton()
         case IndexPath(row: 0, section: 2):
-            teamOfUse()
+            termsOfUse()
         case IndexPath(row: 1, section: 2):
             license()
         case IndexPath(row: 2, section: 2):
@@ -156,12 +156,13 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func teamOfUse() {
-        let path = Bundle.main.path(forResource: "TeamOfUse", ofType: "md")!
+    func termsOfUse() {
+        let path = Bundle.main.path(forResource: "TermsOfUse", ofType: "md")!
         let url = URL(fileURLWithPath: path)
         let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
 
         let vc = SimpleMarkDownViewerViewController(markdown: markdown)
+        vc.title = L10n.Settings.TermsOfUse.Cell.title
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -171,6 +172,7 @@ class SettingsTableViewController: UITableViewController {
         let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
 
         let vc = SimpleMarkDownViewerViewController(markdown: markdown)
+        vc.title = L10n.Settings.License.Cell.title
         navigationController?.pushViewController(vc, animated: true)
     }
     
