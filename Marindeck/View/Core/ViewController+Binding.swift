@@ -51,6 +51,15 @@ extension ViewController {
                                    """) { _, error in
             print(#function, error ?? "成功")
         }
+        webView.evaluateJavaScript("""
+                                   document.querySelectorAll(".js-detail-header").forEach(function(item) {
+                                       item.style.height = "\(headerHeight)px"
+                                       item.style.maxHeight = "\(headerHeight)px"
+                                       item.style.paddingTop = "\(height)px"
+                                   })
+                                   """) { _, error in
+            print(#function, error ?? "成功")
+        }
     }
 
 }
