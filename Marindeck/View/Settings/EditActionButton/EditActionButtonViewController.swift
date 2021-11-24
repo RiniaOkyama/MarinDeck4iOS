@@ -74,7 +74,9 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     
     func updateActions() {
         tweetBtn.removeAllActions()
-        selectedActions.forEach {
+        var _selectedActions = self.selectedActions
+        _selectedActions.swapAt(0, 2)
+        _selectedActions.forEach {
             let action = NDTweetBtnAction(
                     image: $0.getImage(),
                     handler: { _ in }
@@ -84,13 +86,16 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     }
 
     func saveActions() {
-        UserDefaults.standard.set(selectedActions.map { $0.rawValue }, forKey: UserDefaultsKey.actionButtoms)
+        var _selectedActions = self.selectedActions
+        _selectedActions.swapAt(0, 2)
+        UserDefaults.standard.set(_selectedActions.map { $0.rawValue }, forKey: UserDefaultsKey.actionButtoms)
     }
 
     func getActions() -> [ActionButtons] {
-        guard let ab = UserDefaults.standard.array(forKey: UserDefaultsKey.actionButtoms) as? [String] else {
+        guard var ab = UserDefaults.standard.array(forKey: UserDefaultsKey.actionButtoms) as? [String] else {
             return [.debug, .settings, .tweet]
         }
+        ab.swapAt(0, 2)
         return ab.compactMap{ ActionButtons(rawValue: $0) }
         
     }
