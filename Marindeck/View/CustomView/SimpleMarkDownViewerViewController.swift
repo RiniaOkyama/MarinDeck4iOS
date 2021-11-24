@@ -22,7 +22,10 @@ final class SimpleMarkDownViewerViewController: UIViewController {
         view.backgroundColor = .secondaryBackgroundColor
 
         let subbg = "#\(UIColor.backgroundColor.toHexString())"
-        markdownView.load(markdown: markdown, css: "body {color:#\(UIColor.labelColor.toHexString());}\n pre{background: \(subbg)} \n .hljs{background-color: \(subbg)}")
+        let sublb = "#\(UIColor.subLabelColor.toHexString())"
+        let lb = "#\(UIColor.labelColor.toHexString())"
+        
+        markdownView.load(markdown: markdown, css: "body {color:#\(UIColor.labelColor.toHexString());}\n pre{background: \(subbg)} \n .hljs{background-color: \(subbg); color:\(sublb)} \n .hljs-keyword{color:\(lb)}")
         markdownView.frame = view.bounds
         markdownView.webView?.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 94, right: 0)
         view.addSubview(markdownView)

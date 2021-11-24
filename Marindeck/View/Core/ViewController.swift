@@ -496,9 +496,8 @@ extension ViewController: WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        loadJsFile(forResource: "mtdeck")
         loadJsFile(forResource: "moduleraid")
-        loadJsFile(forResource: "marindeck-css")
+//        loadJsFile(forResource: "marindeck-css")
         loadJsFile(forResource: "marindeck")
         loadCSSFile(forResource: "marindeck")
 

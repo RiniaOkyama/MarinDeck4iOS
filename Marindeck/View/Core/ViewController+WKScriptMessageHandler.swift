@@ -39,7 +39,10 @@ extension ViewController: WKScriptMessageHandler {
 
             webView.frame = mainDeckView.bounds
             
-            setStatusBarSpace(height: Int(UIApplication.shared.statusBarFrame.height))
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+            
+            setStatusBarSpace(height: Int(statusBarHeight))
 
             menuVC.setUserIcon(url: getUserIcon())
 
