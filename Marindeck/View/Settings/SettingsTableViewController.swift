@@ -17,6 +17,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var biometricsSwitch: UISwitch!
     @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
     
+    @IBOutlet weak var appVersionLabel: UILabel!
+    
     private var dController: UIDocumentInteractionController!
     private let dbQueue = Database.shared.dbQueue
 
@@ -33,6 +35,8 @@ class SettingsTableViewController: UITableViewController {
             $0.textColor = .labelColor
             $0.text = $0.text?.localized ?? ""
         })
+        
+        appVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
         logoutLabel.text = L10n.Settings.Logout.Cell.title
         

@@ -342,6 +342,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="PUx-no-roA"/>
                     <connections>
+                        <outlet property="appVersionLabel" destination="D4j-X5-38m" id="L3r-LL-wjC"/>
                         <outlet property="biometricsSwitch" destination="8u2-kh-1Td" id="vdJ-CC-f2w"/>
                         <outlet property="logoutLabel" destination="wpG-r7-2s6" id="SWM-Ln-zjY"/>
                         <outlet property="nativeTweetModalSwitch" destination="Jnn-bs-CMr" id="4bE-C9-ZE5"/>
