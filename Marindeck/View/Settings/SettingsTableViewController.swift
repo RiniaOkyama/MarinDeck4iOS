@@ -17,6 +17,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var biometricsSwitch: UISwitch!
     @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
     
+    @IBOutlet weak var appVersionLabel: UILabel!
+    
     private var dController: UIDocumentInteractionController!
     private let dbQueue = Database.shared.dbQueue
 
@@ -33,6 +35,8 @@ class SettingsTableViewController: UITableViewController {
             $0.textColor = .labelColor
             $0.text = $0.text?.localized ?? ""
         })
+        
+        appVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
         logoutLabel.text = L10n.Settings.Logout.Cell.title
         
@@ -114,12 +118,14 @@ class SettingsTableViewController: UITableViewController {
             presentTheme()
         case IndexPath(row: 3, section: 1):
             presentActionButton()
+        case IndexPath(row: 0, section: 2):
+            teamOfUse()
+        case IndexPath(row: 1, section: 2):
+            license()
         case IndexPath(row: 2, section: 2):
             issue()
         case IndexPath(row: 3, section: 2):
             break
-        case IndexPath(row: 4, section: 2):
-            donate()
         case IndexPath(row: 0, section: 3):
             importSettings()
         case IndexPath(row: 1, section: 3):
@@ -150,15 +156,36 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func donate() {
-        if let url = URL(string: "http://fantia.jp/hisubway") {
-            UIApplication.shared.open(url)
-        }
+    func teamOfUse() {
+        let path = Bundle.main.path(forResource: "TeamOfUse", ofType: "md")!
+        let url = URL(fileURLWithPath: path)
+        let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
+
+        let vc = SimpleMarkDownViewerViewController(markdown: markdown)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func license() {
+        let path = Bundle.main.path(forResource: "license", ofType: "md")!
+        let url = URL(fileURLWithPath: path)
+        let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
+
+        let vc = SimpleMarkDownViewerViewController(markdown: markdown)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func issue() {
-        if let url = URL(string: "https://discord.gg/JKsqaxcnCW") {
-            UIApplication.shared.open(url)
+        openURL(url: "https://discord.gg/JKsqaxcnCW")
+    }
+    
+    func openURL(url urlString: String) {
+        if let url = URL(string: urlString) {
+            let alert = UIAlertController(title: "URLを開きますか？", message: urlString, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "開く", style: .default, handler: { _ in
+                UIApplication.shared.open(url)
+            }))
+            alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
     

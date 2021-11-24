@@ -38,6 +38,7 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func reloadColor() {
         navigationController?.navigationBar.tintColor = .labelColor
+        navigationController?.navigationBar.backgroundColor = .secondaryBackgroundColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
         view.backgroundColor = .secondaryBackgroundColor
         tableView.backgroundColor = .secondaryBackgroundColor

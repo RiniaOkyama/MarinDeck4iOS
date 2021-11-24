@@ -4,6 +4,9 @@ packages:
   GRDB:
     url: https://github.com/groue/GRDB.swift
     exactVersion: 5.12.0
+  MarkdownView:
+    url: https://github.com/hirossan4049/MarkdownView
+    revision: 753be391e6d3640161ca21f49a57c306aaebaf3a
       
 
 options:
@@ -38,3 +41,4 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
     dependencies:
       - package: GRDB
+      - package: MarkdownView

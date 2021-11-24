@@ -5,8 +5,6 @@ project_type: ios
 trigger_map:
 - push_branch: "*"
   workflow: primary
-- pull_request_source_branch: "*"
-  workflow: primary
 workflows:
   deploy:
     steps:
@@ -38,46 +36,58 @@ workflows:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@6: {}
     - cache-pull@2: {}
-    - script@1:
-        title: Do anything with Script step
-        inputs:
-        - content: |-
-            #!/usr/bin/env bash
-            # fail if any commands fails
-            set -e
-            # debug log
-            set -x
-
     - cocoapod-key@2:
         inputs:
         - keys: "\n\n"
     - xcodegen@0: {}
-    - certificate-and-profile-installer@1: {}
-    - recreate-user-schemes@1:
+    - ios-auto-provision-appstoreconnect@2:
         inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
+        - distribution_type: ad-hoc
+    - certificate-and-profile-installer@1: {}
     - xcode-archive@4:
         inputs:
-        - project_path: Marindeck.xcworkspace
-    - deploy-to-bitrise-io@2: {}
-    - script@1:
-        inputs:
-        - content: |-
-            #!/usr/bin/env bash
-            # fail if any commands fails
-            set -e
-            # debug log
-            set -x
-
-            echo hey!
-            echo $BITRISE_IPA_PATH
-            echo $BITRISE_DEPLOY_DIR
+        - scheme: Marindeck
+        - distribution_method: ad-hoc
+        - verbose_log: 'yes'
+        - project_path: "$BITRISE_SOURCE_DIR/Marindeck.xcworkspace"
     - deploygate--upload-app-bitrise-step@1:
         inputs:
         - owner_name: RiniaOk_yama
         - app_path: "$BITRISE_IPA_PATH"
         - visibility: public
+        - release_note: |-
+            $BITRISE_PULL_REQUEST
+
+            $BITRISE_GIT_MESSAGE
+
+
+            bitriseによる自動アップデート。
+        - distribution_key: 7bde246206a41886a45929f51e70525f3248c22b
         - api_key: "$DEPLOYGATE_KEY"
+        is_always_run: true
+    - script@1:
+        inputs:
+        - content: |+
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON
+            # fileurl=(`echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON | jq ".results .file"`)
+            version=(`echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON | jq ".results .revision"`)
+            version=v$version
+
+            echo $version
+
+
+            curl \
+            -H "Content-Type: multipart/form-data" \
+            -F 'payload_json={"content": "'$version' update!"}' \
+            -F "file1=@$BITRISE_IPA_PATH" \
+            $DISCORD_WEBHOOK_URL
+
     - cache-push@2:
         inputs:
         - cache_paths: |-
@@ -98,12 +108,3 @@ app:
   - opts:
       is_expand: false
     BITRISE_DISTRIBUTION_METHOD: ad-hoc
-  - opts:
-      is_expand: false
-    GiphyApiKey: abc
-  - opts:
-      is_expand: false
-    DeploygateUsername: def
-  - DeploygateSdkApiKey: efg
-    opts:
-      is_expand: false
