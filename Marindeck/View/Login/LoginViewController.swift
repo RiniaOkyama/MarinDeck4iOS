@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .label
 
         let myURL = URL(string: url)
         let request = URLRequest(url: myURL!)
