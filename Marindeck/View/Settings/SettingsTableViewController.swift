@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController {
         
     @IBOutlet weak var biometricsSwitch: UISwitch!
     @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
+    @IBOutlet weak var marginSafeAreaSwitch: UISwitch!
     
     @IBOutlet weak var appVersionLabel: UILabel!
     
@@ -60,6 +61,8 @@ class SettingsTableViewController: UITableViewController {
         biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
         
         nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal), animated: false)
+        
+        marginSafeAreaSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.marginSafeArea), animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -143,6 +146,10 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func setNativeTweetModal() {
         UserDefaults.standard.setValue(nativeTweetModalSwitch.isOn, forKey: UserDefaultsKey.isNativeTweetModal)
+    }
+    
+    @IBAction func setMarginSafeArea() {
+        UserDefaults.standard.setValue(marginSafeAreaSwitch.isOn, forKey: UserDefaultsKey.marginSafeArea)
     }
     
     func presentTheme() {
