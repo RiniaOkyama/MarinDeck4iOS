@@ -13,6 +13,10 @@ class EditCustomJSViewController: UIViewController {
 
     private var customJS: CustomJS!
     var textView: UITextView!
+    
+    private lazy var editorViewConstraint:NSLayoutConstraint = {
+        NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+    }()
 
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!
@@ -42,9 +46,16 @@ class EditCustomJSViewController: UIViewController {
         textView.textColor = UIColor(white: 0.8, alpha: 1.0)
         textView.inputAccessoryView = toolbar
         editorView.addSubview(textView)
-//        view.addSubview(textView)
-
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        textView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        textView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.view.addConstraint(editorViewConstraint)
+        
         textView.text = customJS.js
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +76,30 @@ class EditCustomJSViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.customJS = customJS
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardHeight = notification.keyboardHeight,
+              let keyboardAnimationDuration = notification.keybaordAnimationDuration,
+              let KeyboardAnimationCurve = notification.keyboardAnimationCurve
+        else { return }
+        
+        self.textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = false
+        UIView.animate(withDuration: keyboardAnimationDuration,
+                       delay: 0,
+                       options: UIView.AnimationOptions(rawValue: KeyboardAnimationCurve)) {
+//            self.textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyboardHeight).isActive = true
+            self.view.removeConstraint(self.editorViewConstraint)
+            self.editorViewConstraint.constant = -keyboardHeight
+            self.view.addConstraint(self.editorViewConstraint)
+            
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.removeConstraint(self.editorViewConstraint)
+        self.editorViewConstraint.constant = 0
+        self.view.addConstraint(self.editorViewConstraint)
     }
 
     func updateJS() {
