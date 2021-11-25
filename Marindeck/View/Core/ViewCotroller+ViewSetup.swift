@@ -31,9 +31,9 @@ extension ViewController {
 
         setupTweetBtn()
 
-        tweetFloatingBtn.isHidden = false // FIXME
+        tweetFloatingBtn.isHidden = false
 
-
+        mainDeckView.isHidden = true
         mainDeckView.backgroundColor = .none
 
         mainDeckBlurView = UIView(frame: CGRect(origin: .zero, size: view.bounds.size))
