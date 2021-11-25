@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCustomCSSViewController" customModule="Marindeck" customModuleProvider="target">
             <connections>
                 <outlet property="editorView" destination="wE6-gy-Rdv" id="4Lp-mw-BJw"/>
+                <outlet property="toolbar" destination="btb-DV-mXo" id="I36-V9-YOG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,13 +29,26 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wE6-gy-Rdv" secondAttribute="bottom" id="GQJ-lF-GEU"/>
                 <constraint firstItem="wE6-gy-Rdv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VOK-Cn-gWt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wE6-gy-Rdv" secondAttribute="bottom" id="gMr-iM-JZM"/>
                 <constraint firstItem="wE6-gy-Rdv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jui-34-b0S"/>
                 <constraint firstItem="wE6-gy-Rdv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rLg-QI-8E4"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="btb-DV-mXo">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="HXx-L1-jif"/>
+                <barButtonItem title="Done" id="B9M-KY-acJ">
+                    <connections>
+                        <action selector="keyboardDonePressed:" destination="-1" id="Cx1-4b-0CR"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+            <point key="canvasLocation" x="138" y="-254"/>
+        </toolbar>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
