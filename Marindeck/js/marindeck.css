@@ -454,24 +454,6 @@ body .mdl-media-prev {
 .Icon {
   box-sizing: content-box !important;
 }
-.mdl-header-title {
-  display: none !important;
-}
-.mdl-header {
-  min-height: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-}
-.mdl-inner {
-  top: 0 !important;
-}
-
-
-.column-header {
-    height: 95px;
-    max-height: 95px;
-    padding-top: 45px;
-}
 
 a {
   -webkit-user-drag: none;
