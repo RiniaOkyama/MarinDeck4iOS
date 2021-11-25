@@ -34,15 +34,14 @@ extension ViewController: WKScriptMessageHandler {
 
             setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false
-            // webViewの制約設定時、AutoresizingMaskによって自動生成される制約と競合するため、自動生成をやめる
-            webView.translatesAutoresizingMaskIntoConstraints = false
 
             webView.frame = mainDeckView.bounds
             
-            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-            
-            setStatusBarSpace(height: Int(statusBarHeight))
+            if !userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
+                let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+                setStatusBarSpace(height: Int(statusBarHeight))
+            }
 
             menuVC.setUserIcon(url: getUserIcon())
 
@@ -56,8 +55,11 @@ extension ViewController: WKScriptMessageHandler {
             print("IMGPOS!!!: ", imgpos)
 //            imageView.center = view.center
 //            imageView.frame.origin.y = view.frame.origin.y
-
-            imageView.frame = CGRect(x: Int(imgpos[0]), y: Int(imgpos[1]), width: Int(imgpos[2]), height: Int(imgpos[3]))
+            var y = Int(imgpos[1])
+            if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
+                y += Int(view.safeAreaInsets.top)
+            }
+            imageView.frame = CGRect(x: Int(imgpos[0]), y: y, width: Int(imgpos[2]), height: Int(imgpos[3]))
 
         case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

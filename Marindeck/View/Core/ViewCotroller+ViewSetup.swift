@@ -31,9 +31,9 @@ extension ViewController {
 
         setupTweetBtn()
 
-        tweetFloatingBtn.isHidden = false // FIXME
+        tweetFloatingBtn.isHidden = false
 
-
+        mainDeckView.isHidden = true
         mainDeckView.backgroundColor = .none
 
         mainDeckBlurView = UIView(frame: CGRect(origin: .zero, size: view.bounds.size))
@@ -99,18 +99,17 @@ extension ViewController {
             userContentController.add(self, name: $0.rawValue)
         }
 
-
         webConfiguration.userContentController = userContentController
         webConfiguration.processPool = WKProcessPool.shared
         webConfiguration.allowsInlineMediaPlayback = true
 
-//        mainDeckView.backgroundColor = .red
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
 
-        // あほくさ
-        webView.frame.size.width = view.frame.width
+//        webView.frame.size.width = view.frame.width
 //        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
 //        webView.frame.origin.y = topBackView.frame.height
+//        webView.frame = view.safeAreaLayoutGuide.layoutFrame
+        
 
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -144,7 +143,11 @@ extension ViewController {
         self.mainDeckView.addSubview(webView)
 
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        }else {
+            webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        }
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         webView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }

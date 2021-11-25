@@ -16,13 +16,15 @@ struct UserDefaultsKey {
     static let isNativeTweetModal = "isNativeTweetModal"
     static let isOnBoarding = "isOnBoarding"
     static let actionButtoms = "actionButtoms"
+    static let marginSafeArea = "marginSafeArea"
 
     static let allKeys = [
         isDebugBtnHidden,
         themeID,
         isUseBiometrics,
         isNativeTweetModal,
-        actionButtoms
+        actionButtoms,
+        marginSafeArea
     ]
 }
 
