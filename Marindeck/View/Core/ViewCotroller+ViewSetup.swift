@@ -78,7 +78,7 @@ extension ViewController {
                         case .menu:
                             self.openMenu()
                         case .draft:
-                            break // TODO:
+                            self.openDraft()
                         case .settings:
                             self.openSettings()
                         case .none:
