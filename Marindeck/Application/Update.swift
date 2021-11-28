@@ -10,7 +10,7 @@ import Foundation
 class Update {
     static let shared = Update()
     
-    public let appId = "985746746" //1558663979
+    public let appId = "1558663979"
     
     func checkForUpdate(completion: @escaping (_ update: Bool) -> ()) {
         guard let url = URL(string: "https://itunes.apple.com/jp/lookup?id=\(appId)") else {
