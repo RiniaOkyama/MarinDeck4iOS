@@ -35,6 +35,11 @@
 
 "settings.logout.cell.title" = "logout";
 
+"settings.checkUpdate.checkingForUpdates.title" = "Checking for updates.";
+"settings.checkUpdate.existUpdate.title" = "There will be an update.";
+"settings.checkUpdate.latest.title" = "latest.";
+
+
 // MARK: ActionButtons
 "actionButton.debug.title" = "Debug";
 "actionButton.gif.title" = "GIF";
@@ -49,3 +54,18 @@
 "actionButton.menu.description" = "Open the menu";
 "actionButton.draft.description" = "Open a draft";
 "actionButton.settings.description" = "Open Settings";
+
+
+
+// MARK: Alert
+"alert.OK.title" = "OK";
+"alert.close.title" = "Close";
+"alert.open.title" = "Open";
+"alert.update.title" = "Update";
+"alert.cancel.title" = "Cancel";
+
+"alert.openUrl.title" = "Open URL?";
+"alert.logoutMessage.title" = "";
+
+"alert.importedSettings.title" = "Imported the configuration.";
+"alert.recommendRestartApp.title" = "We recommend restarting the application.";
