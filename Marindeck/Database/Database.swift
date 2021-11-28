@@ -31,10 +31,15 @@ struct CustomCSS: Codable, FetchableRecord, PersistableRecord {
     var isLoad: Bool
 }
 
+struct Draft: Codable, FetchableRecord, PersistableRecord {
+    var id: Int64?
+    var text: String
+}
+
 class Database {
     static let shared = Database()
 
-    public lazy var dbQueue: DatabaseQueue = {
+    public private(set) lazy var dbQueue: DatabaseQueue = {
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print("DATABASE DIR: \(dir.absoluteString + "database.sqlite")")
         return try! DatabaseQueue(path: dir.absoluteString + "database.sqlite")
@@ -54,7 +59,8 @@ class Database {
                 t.column("loadIndex", .integer).notNull()
                 t.column("isLoad", .boolean).notNull()
             }
-            
+        }
+        try? dbQueue.write { db in
             // CustomCSS
             try db.create(table: "customcss") { t in
                 t.autoIncrementedPrimaryKey("id")
@@ -64,6 +70,13 @@ class Database {
                 t.column("updateAt", .date).notNull()
                 t.column("loadIndex", .integer).notNull()
                 t.column("isLoad", .boolean).notNull()
+            }
+        }
+        try? dbQueue.write { db in
+            // Draft
+            try db.create(table: "draft") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("text", .text).notNull()
             }
         }
     }

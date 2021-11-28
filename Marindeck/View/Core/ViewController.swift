@@ -13,6 +13,7 @@ import LocalAuthentication
 import Keys
 import Optik
 import GiphyUISDK
+import SwiftUI
 
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
@@ -312,28 +313,67 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        self.navigationController?.pushViewController(vc!, animated: true)
     }
 
-    func openNativeTweetModal() {
+    // ネイティブのツイートモーダルを表示
+    func openNativeTweetModal(tweetText: String = "") {
         let alert = UIAlertController(
                 title: "Tweet Faster",
                 message: "What's Happening!?",
-                preferredStyle: UIAlertController.Style.alert)
+                preferredStyle: .alert)
         alert.addTextField(
                 configurationHandler: {_ in }
         )
+        alert.textFields?[0].text = tweetText
         alert.addAction(
                 UIAlertAction(
                         title: "Cancel",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+                        style: UIAlertAction.Style.cancel) { [weak self] _ in
+                    let text = alert.textFields![0].text!
+                    if text == "" { return }
+                    self?.openIfDraftAlert(text: text)
+                }
+        )
         alert.addAction(
                 UIAlertAction(
                         title: "Tweet",
-                        style: UIAlertAction.Style.default) { _ in
-                    // Insert your code
-                    self.tweet(text: alert.textFields![0].text!)
+                        style: UIAlertAction.Style.default) { [weak self] _ in
+                    self?.tweet(text: alert.textFields![0].text!)
                 }
         )
         present(alert, animated: true, completion: nil)
+    }
+    
+    func openIfDraftAlert(text: String) {
+        let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+            self?.saveDraft(text: text)
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // 下書きを保存
+    func saveDraft(text: String) {
+        let df = Draft(id: nil, text: text)
+        try! dbQueue.write{ db in
+            try df.insert(db)
+        }
+    }
+    
+
+    func openDraft() {
+        let drafts = try! dbQueue.read { db in
+            try Draft.fetchAll(db)
+        }
+        let vc = UIHostingController(rootView: DraftView(selected: { [weak self] index in
+            self?.openNativeTweetModal(tweetText: drafts[index].text)
+            
+            let _ = try! self?.dbQueue.write { db in
+                try drafts[index].delete(db)
+            }
+        }, drafts: drafts))
+        present(vc, animated: true, completion: nil)
     }
 
 
