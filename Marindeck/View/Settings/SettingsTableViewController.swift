@@ -128,7 +128,7 @@ class SettingsTableViewController: UITableViewController {
         case IndexPath(row: 2, section: 2):
             issue()
         case IndexPath(row: 3, section: 2):
-            break
+            developers()
         case IndexPath(row: 0, section: 3):
             importSettings()
         case IndexPath(row: 1, section: 3):
@@ -185,6 +185,10 @@ class SettingsTableViewController: UITableViewController {
     
     func issue() {
         openURL(url: "https://discord.gg/JKsqaxcnCW")
+    }
+    
+    func developers() {
+        openURL(url: "https://hisubway.online/articles/mddeveloper/")
     }
     
     func openURL(url urlString: String) {
@@ -265,12 +269,12 @@ class SettingsTableViewController: UITableViewController {
             URLSession.shared.reset {}
             UserDefaults.standard.synchronize()
             let dataStore = WKWebsiteDataStore.default()
-            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
                 dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
+                
+                let bvc = self?.presentingViewController as? ViewController
+                bvc?.webView.reload()
             }
-            
-            let bvc = self.presentingViewController as? ViewController
-            bvc?.webView.reload()
         })
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
             (action: UIAlertAction!) -> Void in
