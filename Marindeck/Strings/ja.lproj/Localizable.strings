@@ -29,6 +29,7 @@
 "settings.developers.cell.title" = "開発者";
 "settings.donate.cell.title" = "寄付";
 "settings.version.cell.title" = "バージョン";
+"settings.checkUpdate.cell.title" = "更新を確認";
 
 "settings.importSettings.cell.title" = "設定をインポート";
 "settings.exportSettings.cell.title" = "設定をエクスポート";
