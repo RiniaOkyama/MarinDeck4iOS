@@ -28,6 +28,7 @@
 "settings.developers.cell.title" = "Developers";
 "settings.donate.cell.title" = "Donate";
 "settings.version.cell.title" = "Version";
+"settings.checkUpdate.cell.title" = "Check update";
 
 "settings.importSettings.cell.title" = "Import settings";
 "settings.exportSettings.cell.title" = "Export settings";

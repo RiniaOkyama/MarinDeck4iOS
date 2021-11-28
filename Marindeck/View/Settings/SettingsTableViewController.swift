@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
+import StoreKit
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
@@ -113,9 +114,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // CustomJSはStoryboardの方から遷移操作してます。
-        
+                
         switch indexPath {
         case IndexPath(row: 2, section: 1):
             presentTheme()
@@ -129,6 +128,8 @@ class SettingsTableViewController: UITableViewController {
             issue()
         case IndexPath(row: 3, section: 2):
             developers()
+        case IndexPath(row: 5, section: 2):
+            checkUpdate()
         case IndexPath(row: 0, section: 3):
             importSettings()
         case IndexPath(row: 1, section: 3):
@@ -189,6 +190,38 @@ class SettingsTableViewController: UITableViewController {
     
     func developers() {
         openURL(url: "https://hisubway.online/articles/mddeveloper/")
+    }
+    
+    func checkUpdate() {
+        DispatchQueue.main.async {
+            let loadingAlert: UIAlertController = .init(title: nil, message: "更新を確認中", preferredStyle: .alert)
+            let indicator = UIActivityIndicatorView(style: .medium)
+            indicator.center = CGPoint(x: 25, y: 30)
+            loadingAlert.view.addSubview(indicator)
+            
+            indicator.startAnimating()
+            self.present(loadingAlert, animated: true, completion: nil)
+        
+            Update.shared.checkForUpdate { [weak self] update in
+                let alert = UIAlertController(title: update ? "アップデートがあります" : "最新です。", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
+                if update {
+                    alert.addAction(UIAlertAction(title: "更新", style: .default, handler: { _ in
+                        DispatchQueue.main.async {
+                            let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Update.shared.appId)")!
+                            UIApplication.shared.open(url)
+                        }
+                    }))
+                }
+                DispatchQueue.main.async {
+                    loadingAlert.dismiss(animated: true) {
+                        self?.present(alert, animated: true, completion: nil)
+                    }
+                }
+                
+            }
+        }
     }
     
     func openURL(url urlString: String) {
