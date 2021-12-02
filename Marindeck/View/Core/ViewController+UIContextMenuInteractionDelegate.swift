@@ -139,7 +139,8 @@ extension ViewController: UIContextMenuInteractionDelegate {
             return
         }
         let alertView = SPAlertView(title: "保存しました", preset: .done)
-        alertView.present(duration: 0.7)
+        alertView.duration = 0.3
+        alertView.present()
     }
 
 }
