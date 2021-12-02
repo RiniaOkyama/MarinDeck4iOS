@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        DeployGateSDK
 //            .sharedInstance()
 //            .launchApplication(withAuthor: keys.deploygateUsername, key: keys.deploygateSdkApiKey)
-        
+        UserDefaults.standard.register(defaults: [UserDefaultsKey.marginSafeArea: true])
         Database.shared.setup()
         
         return true
