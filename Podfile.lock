@@ -3,7 +3,7 @@ PODS:
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
   - Highlightr (2.1.0)
-  - Keys (1.0.0)
+  - Keys (1.0.1)
   - Optik (0.4.0)
   - SPAlert (3.5.1)
   - SwiftGen (6.5.1)
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
-  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
   SPAlert: a6f7fd1e56b5a798327af2d67abebc60985774d7
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
