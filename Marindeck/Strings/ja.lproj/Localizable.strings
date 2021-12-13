@@ -36,6 +36,9 @@
 
 "settings.logout.cell.title" = "ログアウト";
 
+"settings.checkUpdate.checkingForUpdates.title" = "更新を確認";
+"settings.checkUpdate.existUpdate.title" = "更新があります";
+"settings.checkUpdate.latest.title" = "最新です";
 
 // MARK: ActionButtons
 "actionButton.debug.title" = "デバッグ";
@@ -51,3 +54,18 @@
 "actionButton.menu.description" = "メニューを開く";
 "actionButton.draft.description" = "下書きを開く";
 "actionButton.settings.description" = "設定を開く";
+
+
+
+// MARK: Alert
+"alert.OK.title" = "OK";
+"alert.close.title" = "閉じる";
+"alert.open.title" = "開く";
+"alert.update.title" = "更新";
+"alert.cancel.title" = "キャンセル";
+
+"alert.openUrl.title" = "URLを開きますか？";
+"alert.logoutMessage.title" = "先にいってしまうでござるか";
+
+"alert.importedSettings.title" = "設定をインポートしました。";
+"alert.recommendRestartApp.title" = "アプリ再起動をおすすめします。";

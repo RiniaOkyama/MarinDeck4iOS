@@ -152,6 +152,8 @@ function loginStyled() {
     document.querySelector(".js-signin-ui .Button").style.outline = "none"
 
     document.querySelectorAll(".app-signin-wrap")[1].style.width = "100%";
+    
+    document.querySelector(".startflow-link").removeAttribute("target");
 
     isTweetButtonHidden(true)
 }

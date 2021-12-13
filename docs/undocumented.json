@@ -85,6 +85,34 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Application/Update.swift",
+      "line": 10,
+      "symbol": "Update",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Application/Update.swift",
+      "line": 11,
+      "symbol": "Update.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Application/Update.swift",
+      "line": 13,
+      "symbol": "Update.appId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Application/Update.swift",
+      "line": 15,
+      "symbol": "Update.checkForUpdate(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
       "line": 12,
       "symbol": "UserDefaultsKey",
@@ -135,245 +163,252 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 20,
+      "line": 19,
+      "symbol": "UserDefaultsKey.marginSafeArea",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
+      "line": 21,
       "symbol": "UserDefaultsKey.allKeys",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 30,
+      "line": 32,
       "symbol": "EnvKeys",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 31,
+      "line": 33,
       "symbol": "EnvKeys.GIPHY_API_KEY",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 32,
+      "line": 34,
       "symbol": "EnvKeys.DEPLOYGATE_SDK_API_KEY",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 33,
+      "line": 35,
       "symbol": "EnvKeys.DEPLOYGATE_SDK_USERNAME",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 36,
+      "line": 38,
       "symbol": "ActionItem",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 37,
+      "line": 39,
       "symbol": "ActionItem.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 38,
+      "line": 40,
       "symbol": "ActionItem.icon",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 42,
+      "line": 44,
       "symbol": "ActionButtons",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.debug",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.draft",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.gif",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.menu",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.settings",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "ActionButtons.tweet",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 45,
+      "line": 47,
       "symbol": "ActionButtons.getImage()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 62,
+      "line": 64,
       "symbol": "ActionButtons.getTitle()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 79,
+      "line": 81,
       "symbol": "ActionButtons.getDescription()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 98,
+      "line": 100,
       "symbol": "Theme",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 99,
+      "line": 101,
       "symbol": "Theme.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 100,
+      "line": 102,
       "symbol": "Theme.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 101,
+      "line": 103,
       "symbol": "Theme.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 102,
+      "line": 104,
       "symbol": "Theme.user",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 103,
+      "line": 105,
       "symbol": "Theme.icon",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 105,
+      "line": 107,
       "symbol": "Theme.js",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 106,
+      "line": 108,
       "symbol": "Theme.css",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 114,
+      "line": 116,
       "symbol": "Theme.backgroundColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 115,
+      "line": 117,
       "symbol": "Theme.secondaryBackgroundColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 116,
+      "line": 118,
       "symbol": "Theme.labelColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 117,
+      "line": 119,
       "symbol": "Theme.subLabelColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 119,
+      "line": 121,
       "symbol": "Theme.topBarColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 120,
+      "line": 122,
       "symbol": "Theme.statusBarColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 121,
+      "line": 123,
       "symbol": "Theme.tweetButtonColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 124,
+      "line": 126,
       "symbol": "themes",
       "symbol_kind": "source.lang.swift.decl.var.global",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Const/Const.swift",
-      "line": 164,
+      "line": 166,
       "symbol": "fetchTheme()",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
@@ -570,27 +605,48 @@
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
       "line": 34,
+      "symbol": "Draft",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
+      "line": 35,
+      "symbol": "Draft.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
+      "line": 36,
+      "symbol": "Draft.text",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
+      "line": 39,
       "symbol": "Database",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
-      "line": 35,
+      "line": 40,
       "symbol": "Database.shared",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
-      "line": 37,
+      "line": 42,
       "symbol": "Database.dbQueue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Database/Database.swift",
-      "line": 44,
+      "line": 49,
       "symbol": "Database.setup()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -669,6 +725,27 @@
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Extensions/Error+.swift",
       "line": 12,
       "symbol": "Error.info",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Extensions/Notification+Keyboard.swift",
+      "line": 15,
+      "symbol": "Notification.keyboardHeight",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Extensions/Notification+Keyboard.swift",
+      "line": 20,
+      "symbol": "Notification.keybaordAnimationDuration",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Extensions/Notification+Keyboard.swift",
+      "line": 25,
+      "symbol": "Notification.keyboardAnimationCurve",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1074,328 +1151,447 @@
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 53,
-      "symbol": "L10n.Menu",
+      "symbol": "L10n.Alert",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 54,
-      "symbol": "L10n.Menu.EditColumn",
+      "symbol": "L10n.Alert.Ok",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 58,
-      "symbol": "L10n.Menu.Profile",
+      "symbol": "L10n.Alert.Cancel",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 62,
-      "symbol": "L10n.Menu.Reload",
+      "symbol": "L10n.Alert.Close",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 68,
-      "symbol": "L10n.OnBoarding",
+      "line": 66,
+      "symbol": "L10n.Alert.ImportedSettings",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 69,
-      "symbol": "L10n.OnBoarding.StartMarinDeck",
+      "line": 70,
+      "symbol": "L10n.Alert.LogoutMessage",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 75,
-      "symbol": "L10n.Settings",
+      "line": 74,
+      "symbol": "L10n.Alert.Open",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 76,
-      "symbol": "L10n.Settings.Appinfo",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 77,
-      "symbol": "L10n.Settings.Appinfo.Header",
+      "line": 78,
+      "symbol": "L10n.Alert.OpenUrl",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 82,
-      "symbol": "L10n.Settings.Biometrics",
+      "symbol": "L10n.Alert.RecommendRestartApp",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 83,
-      "symbol": "L10n.Settings.Biometrics.Cell",
+      "line": 86,
+      "symbol": "L10n.Alert.Update",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 88,
-      "symbol": "L10n.Settings.CustomActonButtons",
+      "line": 92,
+      "symbol": "L10n.Menu",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 89,
-      "symbol": "L10n.Settings.CustomActonButtons.Cell",
+      "line": 93,
+      "symbol": "L10n.Menu.EditColumn",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 94,
-      "symbol": "L10n.Settings.CustomCSS",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 95,
-      "symbol": "L10n.Settings.CustomCSS.Cell",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 100,
-      "symbol": "L10n.Settings.CustomJS",
+      "line": 97,
+      "symbol": "L10n.Menu.Profile",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 101,
-      "symbol": "L10n.Settings.CustomJS.Cell",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 106,
-      "symbol": "L10n.Settings.Customize",
+      "symbol": "L10n.Menu.Reload",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 107,
-      "symbol": "L10n.Settings.Customize.Header",
+      "symbol": "L10n.OnBoarding",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 112,
-      "symbol": "L10n.Settings.Developers",
+      "line": 108,
+      "symbol": "L10n.OnBoarding.StartMarinDeck",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 113,
-      "symbol": "L10n.Settings.Developers.Cell",
+      "line": 114,
+      "symbol": "L10n.Settings",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 118,
-      "symbol": "L10n.Settings.Donate",
+      "line": 115,
+      "symbol": "L10n.Settings.Appinfo",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 119,
-      "symbol": "L10n.Settings.Donate.Cell",
+      "line": 116,
+      "symbol": "L10n.Settings.Appinfo.Header",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 124,
-      "symbol": "L10n.Settings.ExportSettings",
+      "line": 121,
+      "symbol": "L10n.Settings.Biometrics",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 125,
-      "symbol": "L10n.Settings.ExportSettings.Cell",
+      "line": 122,
+      "symbol": "L10n.Settings.Biometrics.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 130,
-      "symbol": "L10n.Settings.General",
+      "line": 127,
+      "symbol": "L10n.Settings.CheckUpdate",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 131,
-      "symbol": "L10n.Settings.General.Header",
+      "line": 128,
+      "symbol": "L10n.Settings.CheckUpdate.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 132,
+      "symbol": "L10n.Settings.CheckUpdate.CheckingForUpdates",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 136,
-      "symbol": "L10n.Settings.ImportSettings",
+      "symbol": "L10n.Settings.CheckUpdate.ExistUpdate",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 137,
-      "symbol": "L10n.Settings.ImportSettings.Cell",
+      "line": 140,
+      "symbol": "L10n.Settings.CheckUpdate.Latest",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 142,
-      "symbol": "L10n.Settings.IssueEnhancement",
+      "line": 145,
+      "symbol": "L10n.Settings.CustomActonButtons",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 143,
-      "symbol": "L10n.Settings.IssueEnhancement.Cell",
+      "line": 146,
+      "symbol": "L10n.Settings.CustomActonButtons.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 148,
-      "symbol": "L10n.Settings.License",
+      "line": 151,
+      "symbol": "L10n.Settings.CustomCSS",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 149,
-      "symbol": "L10n.Settings.License.Cell",
+      "line": 152,
+      "symbol": "L10n.Settings.CustomCSS.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 154,
-      "symbol": "L10n.Settings.Logout",
+      "line": 157,
+      "symbol": "L10n.Settings.CustomJS",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 155,
-      "symbol": "L10n.Settings.Logout.Cell",
+      "line": 158,
+      "symbol": "L10n.Settings.CustomJS.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 159,
-      "symbol": "L10n.Settings.Logout.Header",
+      "line": 163,
+      "symbol": "L10n.Settings.Customize",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 164,
-      "symbol": "L10n.Settings.NativePreview",
+      "symbol": "L10n.Settings.Customize.Header",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 165,
-      "symbol": "L10n.Settings.NativePreview.Cell",
+      "line": 169,
+      "symbol": "L10n.Settings.Developers",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 170,
-      "symbol": "L10n.Settings.NativeTweetModal",
+      "symbol": "L10n.Settings.Developers.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 171,
-      "symbol": "L10n.Settings.NativeTweetModal.Cell",
+      "line": 175,
+      "symbol": "L10n.Settings.Donate",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 176,
-      "symbol": "L10n.Settings.Navigation",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 180,
-      "symbol": "L10n.Settings.TermsOfUse",
+      "symbol": "L10n.Settings.Donate.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 181,
-      "symbol": "L10n.Settings.TermsOfUse.Cell",
+      "symbol": "L10n.Settings.ExportSettings",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 186,
-      "symbol": "L10n.Settings.Theme",
+      "line": 182,
+      "symbol": "L10n.Settings.ExportSettings.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 187,
-      "symbol": "L10n.Settings.Theme.Cell",
+      "symbol": "L10n.Settings.General",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
-      "line": 192,
-      "symbol": "L10n.Settings.Version",
+      "line": 188,
+      "symbol": "L10n.Settings.General.Header",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
       "line": 193,
+      "symbol": "L10n.Settings.ImportSettings",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 194,
+      "symbol": "L10n.Settings.ImportSettings.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 199,
+      "symbol": "L10n.Settings.IssueEnhancement",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 200,
+      "symbol": "L10n.Settings.IssueEnhancement.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 205,
+      "symbol": "L10n.Settings.License",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 206,
+      "symbol": "L10n.Settings.License.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 211,
+      "symbol": "L10n.Settings.Logout",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 212,
+      "symbol": "L10n.Settings.Logout.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 216,
+      "symbol": "L10n.Settings.Logout.Header",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 221,
+      "symbol": "L10n.Settings.MarginSafeArea",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 222,
+      "symbol": "L10n.Settings.MarginSafeArea.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 227,
+      "symbol": "L10n.Settings.NativePreview",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 228,
+      "symbol": "L10n.Settings.NativePreview.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 233,
+      "symbol": "L10n.Settings.NativeTweetModal",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 234,
+      "symbol": "L10n.Settings.NativeTweetModal.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 239,
+      "symbol": "L10n.Settings.Navigation",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 243,
+      "symbol": "L10n.Settings.TermsOfUse",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 244,
+      "symbol": "L10n.Settings.TermsOfUse.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 249,
+      "symbol": "L10n.Settings.Theme",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 250,
+      "symbol": "L10n.Settings.Theme.Cell",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 255,
+      "symbol": "L10n.Settings.Version",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/Generated/strings.swift",
+      "line": 256,
       "symbol": "L10n.Settings.Version.Cell",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
@@ -1598,154 +1794,154 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 19,
+      "line": 20,
       "symbol": "ViewController.swipeStruct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 23,
+      "line": 24,
       "symbol": "ViewController.contextMenuStruct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 27,
+      "line": 28,
       "symbol": "ViewController.webView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 28,
+      "line": 29,
       "symbol": "ViewController.javaScriptString",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 29,
+      "line": 30,
       "symbol": "ViewController.mainDeckView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 30,
+      "line": 31,
       "symbol": "ViewController.bottomBackView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 31,
+      "line": 32,
       "symbol": "ViewController.bottomBackViewConstraint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 32,
+      "line": 33,
       "symbol": "ViewController.topBackView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 33,
+      "line": 34,
       "symbol": "ViewController.tweetFloatingBtn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 34,
+      "line": 35,
       "symbol": "ViewController.menuView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 35,
+      "line": 36,
       "symbol": "ViewController.menuVC",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 37,
+      "line": 38,
       "symbol": "ViewController.imageView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 38,
+      "line": 39,
       "symbol": "ViewController.blurView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 43,
+      "line": 44,
       "symbol": "ViewController.mainDeckBlurView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 45,
+      "line": 46,
       "symbol": "ViewController.isMenuOpen",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 46,
+      "line": 47,
       "symbol": "ViewController.userDefaults",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 48,
+      "line": 49,
       "symbol": "ViewController.isMainDeckViewLock",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 49,
+      "line": 50,
       "symbol": "ViewController.picker",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 51,
+      "line": 52,
       "symbol": "ViewController.imagePreviewSelectedIndex",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 52,
+      "line": 53,
       "symbol": "ViewController.imagePreviewImageStrings",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 54,
+      "line": 55,
       "symbol": "ViewController.loadingIndicator",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -1759,364 +1955,385 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 63,
+      "line": 64,
       "symbol": "ViewController.isBottomBackViewHidden",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 76,
+      "line": 77,
       "symbol": "ViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 88,
+      "line": 89,
       "symbol": "ViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 101,
+      "line": 102,
       "symbol": "ViewController.gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 109,
+      "line": 110,
       "symbol": "ViewController.onOrientationDidChange(notification:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 116,
+      "line": 117,
       "symbol": "ViewController.canBecomeFirstResponder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 124,
+      "line": 125,
       "symbol": "ViewController.statusBarStyle",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 126,
+      "line": 127,
       "symbol": "ViewController.setStatusBarStyle(style:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 131,
+      "line": 132,
       "symbol": "ViewController.preferredStatusBarStyle",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 136,
+      "line": 137,
       "symbol": "ViewController.dismissKeyboard()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 140,
+      "line": 141,
       "symbol": "ViewController.presentationControllerDidDismiss(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 150,
+      "line": 151,
       "symbol": "ViewController.checkBiometrics()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 195,
+      "line": 196,
       "symbol": "ViewController.loadCSSFile(forResource:ofType:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 219,
+      "line": 220,
       "symbol": "ViewController.loadJsFile(forResource:ofType:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 236,
+      "line": 237,
       "symbol": "ViewController.tweetPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 245,
+      "line": 246,
       "symbol": "ViewController.openWebViewTweetModal()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 254,
+      "line": 255,
       "symbol": "ViewController.debugPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 261,
+      "line": 262,
       "symbol": "ViewController.debugJS(script:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 266,
+      "line": 267,
       "symbol": "ViewController.css2JS(css:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 281,
+      "line": 282,
       "symbol": "ViewController.debugCSS(css:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 288,
+      "line": 289,
       "symbol": "ViewController.openSelectGif()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 299,
+      "line": 300,
       "symbol": "ViewController.openSelectPhoto()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 307,
+      "line": 308,
       "symbol": "ViewController.openSettings()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 315,
-      "symbol": "ViewController.openNativeTweetModal()",
+      "line": 317,
+      "symbol": "ViewController.openNativeTweetModal(tweetText:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 340,
-      "symbol": "ViewController.getPositionElements(x:y:)",
+      "line": 345,
+      "symbol": "ViewController.openIfDraftAlert(text:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
       "line": 357,
+      "symbol": "ViewController.saveDraft(text:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
+      "line": 365,
+      "symbol": "ViewController.openDraft()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
+      "line": 380,
+      "symbol": "ViewController.getPositionElements(x:y:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
+      "line": 397,
       "symbol": "ViewController.closeMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 374,
+      "line": 414,
       "symbol": "ViewController.openMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 395,
+      "line": 435,
       "symbol": "ViewController.setBlurView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 400,
+      "line": 440,
       "symbol": "ViewController.removeBlurView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 404,
+      "line": 444,
       "symbol": "ViewController.dismissfetcher(animated:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 408,
+      "line": 448,
       "symbol": "ViewController.url2SmallImg(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 414,
+      "line": 454,
       "symbol": "ViewController.url2NomalImg(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 424,
+      "line": 464,
       "symbol": "ViewController.imagePreviewer(index:urls:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 461,
+      "line": 501,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 462,
+      "line": 502,
       "symbol": "ViewController.logined()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 470,
+      "line": 510,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 472,
+      "line": 512,
       "symbol": "ViewController.webView(_:decidePolicyFor:decisionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 498,
+      "line": 538,
       "symbol": "ViewController.webView(_:didFinish:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 530,
+      "line": 571,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 531,
+      "line": 572,
       "symbol": "ViewController.reload()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 536,
+      "line": 577,
       "symbol": "ViewController.openProfile()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 543,
+      "line": 584,
       "symbol": "ViewController.openColumnAdd()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 551,
+      "line": 592,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 566,
+      "line": 607,
       "symbol": "url2UIImage(url:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 581,
+      "line": 622,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 582,
+      "line": 623,
       "symbol": "ViewController.didSearch(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 586,
+      "line": 627,
       "symbol": "ViewController.didSelectMedia(giphyViewController:media:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 608,
+      "line": 649,
       "symbol": "ViewController.didDismiss(controller:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 614,
+      "line": 655,
       "symbol": "ViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 616,
+      "line": 657,
       "symbol": "ViewController.imagePickerController(_:didFinishPickingMediaWithInfo:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 629,
+      "line": 670,
       "symbol": "ViewController.imagePickerController(_:didFinishPickingMediaWithInfo:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewController.swift",
-      "line": 645,
+      "line": 686,
       "symbol": "ViewController.imagePickerControllerDidCancel(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2144,7 +2361,7 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Core/ViewCotroller+ViewSetup.swift",
-      "line": 152,
+      "line": 155,
       "symbol": "ViewController.setupWebViewToolBar()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2836,6 +3053,55 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 11,
+      "symbol": "DraftView",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 12,
+      "symbol": "DraftView.presentationMode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 14,
+      "symbol": "DraftView.selectedCompletion",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 15,
+      "symbol": "DraftView.selected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 16,
+      "symbol": "DraftView.drafts",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 18,
+      "symbol": "DraftView.init(selected:drafts:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Other/DraftViewController.swift",
+      "line": 43,
+      "symbol": "DraftView_Previews",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/Custom/CustomAddCellTableViewCell.swift",
       "line": 10,
       "symbol": "CustomAddCellOutput",
@@ -3173,63 +3439,84 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 18,
+      "line": 22,
       "symbol": "EditCustomCSSViewController.editorView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 21,
+      "line": 23,
+      "symbol": "EditCustomCSSViewController.toolbar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
+      "line": 25,
       "symbol": "EditCustomCSSViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 48,
+      "line": 61,
       "symbol": "EditCustomCSSViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 54,
+      "line": 67,
       "symbol": "EditCustomCSSViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 62,
+      "line": 75,
       "symbol": "EditCustomCSSViewController.init(customCSS:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 69,
+      "line": 81,
+      "symbol": "EditCustomCSSViewController.keyboardWillShow(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
+      "line": 99,
+      "symbol": "EditCustomCSSViewController.keyboardWillHide(notification:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
+      "line": 106,
       "symbol": "EditCustomCSSViewController.updateCSS()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 78,
+      "line": 115,
       "symbol": "EditCustomCSSViewController.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 82,
+      "line": 119,
       "symbol": "EditCustomCSSViewController.close()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomCSS/EditCustomCSSViewController.swift",
-      "line": 88,
+      "line": 125,
       "symbol": "EditCustomCSSViewController.keyboardDonePressed(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3432,70 +3719,84 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 17,
+      "line": 21,
       "symbol": "EditCustomJSViewController.editorView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 18,
+      "line": 22,
       "symbol": "EditCustomJSViewController.toolbar",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 20,
+      "line": 24,
       "symbol": "EditCustomJSViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 50,
+      "line": 61,
       "symbol": "EditCustomJSViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 56,
+      "line": 67,
       "symbol": "EditCustomJSViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 64,
+      "line": 75,
       "symbol": "EditCustomJSViewController.init(customJS:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 70,
+      "line": 81,
+      "symbol": "EditCustomJSViewController.keyboardWillShow(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
+      "line": 99,
+      "symbol": "EditCustomJSViewController.keyboardWillHide(notification:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
+      "line": 105,
       "symbol": "EditCustomJSViewController.updateJS()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 82,
+      "line": 117,
       "symbol": "EditCustomJSViewController.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 86,
+      "line": 121,
       "symbol": "EditCustomJSViewController.close()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/CustomJS/EditCustomJSViewController.swift",
-      "line": 92,
+      "line": 127,
       "symbol": "EditCustomJSViewController.keyboardDonePressed(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3621,35 +3922,35 @@
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 13,
+      "line": 14,
       "symbol": "SettingsTableViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 14,
+      "line": 15,
       "symbol": "SettingsTableViewController.titleLabel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 15,
+      "line": 16,
       "symbol": "SettingsTableViewController.logoutLabel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "SettingsTableViewController.biometricsSwitch",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "SettingsTableViewController.nativeTweetModalSwitch",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -3657,174 +3958,202 @@
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
       "line": 20,
+      "symbol": "SettingsTableViewController.marginSafeAreaSwitch",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
+      "line": 22,
       "symbol": "SettingsTableViewController.appVersionLabel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 25,
+      "line": 27,
       "symbol": "SettingsTableViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 46,
+      "line": 48,
       "symbol": "SettingsTableViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 65,
+      "line": 69,
       "symbol": "SettingsTableViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 72,
+      "line": 76,
       "symbol": "SettingsTableViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 79,
+      "line": 83,
       "symbol": "SettingsTableViewController.onDismiss()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 83,
+      "line": 87,
       "symbol": "SettingsTableViewController.tableView(_:willDisplayHeaderView:forSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 104,
+      "line": 108,
       "symbol": "SettingsTableViewController.tableView(_:heightForHeaderInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 108,
+      "line": 112,
       "symbol": "SettingsTableViewController.tableView(_:heightForFooterInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 112,
+      "line": 116,
       "symbol": "SettingsTableViewController.tableView(_:didSelectRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 140,
+      "line": 144,
       "symbol": "SettingsTableViewController.setBiometrics()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 144,
+      "line": 148,
       "symbol": "SettingsTableViewController.setNativeTweetModal()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 148,
+      "line": 152,
+      "symbol": "SettingsTableViewController.setMarginSafeArea()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
+      "line": 156,
       "symbol": "SettingsTableViewController.presentTheme()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 154,
+      "line": 162,
       "symbol": "SettingsTableViewController.presentActionButton()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 159,
+      "line": 167,
       "symbol": "SettingsTableViewController.termsOfUse()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 169,
+      "line": 177,
       "symbol": "SettingsTableViewController.license()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 179,
+      "line": 187,
       "symbol": "SettingsTableViewController.issue()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 183,
+      "line": 191,
+      "symbol": "SettingsTableViewController.developers()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
+      "line": 195,
+      "symbol": "SettingsTableViewController.checkUpdate()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
+      "line": 227,
       "symbol": "SettingsTableViewController.openURL(url:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 194,
+      "line": 238,
       "symbol": "SettingsTableViewController.importSettings()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 208,
+      "line": 252,
       "symbol": "SettingsTableViewController.exportSettings()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 252,
+      "line": 296,
       "symbol": "SettingsTableViewController.logout()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 281,
+      "line": 325,
       "symbol": "SettingsTableViewController.tableView(_:cellForRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 343,
+      "line": 387,
       "symbol": "SettingsTableViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 345,
+      "line": 389,
       "symbol": "SettingsTableViewController.documentPicker(_:didPickDocumentsAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/craptone/Documents/craptone/pg/swift/nowProject/MarinDeck/Marindeck/View/Settings/SettingsTableViewController.swift",
-      "line": 385,
+      "line": 429,
       "symbol": "SettingsTableViewController.documentPickerWasCancelled(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

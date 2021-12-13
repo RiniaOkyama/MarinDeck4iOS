@@ -50,6 +50,45 @@ internal enum L10n {
     }
   }
 
+  internal enum Alert {
+    internal enum Ok {
+      /// OK
+      internal static let title = L10n.tr("Localizable", "alert.OK.title")
+    }
+    internal enum Cancel {
+      /// キャンセル
+      internal static let title = L10n.tr("Localizable", "alert.cancel.title")
+    }
+    internal enum Close {
+      /// 閉じる
+      internal static let title = L10n.tr("Localizable", "alert.close.title")
+    }
+    internal enum ImportedSettings {
+      /// 設定をインポートしました。
+      internal static let title = L10n.tr("Localizable", "alert.importedSettings.title")
+    }
+    internal enum LogoutMessage {
+      /// 先にいってしまうでござるか
+      internal static let title = L10n.tr("Localizable", "alert.logoutMessage.title")
+    }
+    internal enum Open {
+      /// 開く
+      internal static let title = L10n.tr("Localizable", "alert.open.title")
+    }
+    internal enum OpenUrl {
+      /// URLを開きますか？
+      internal static let title = L10n.tr("Localizable", "alert.openUrl.title")
+    }
+    internal enum RecommendRestartApp {
+      /// アプリ再起動をおすすめします。
+      internal static let title = L10n.tr("Localizable", "alert.recommendRestartApp.title")
+    }
+    internal enum Update {
+      /// 更新
+      internal static let title = L10n.tr("Localizable", "alert.update.title")
+    }
+  }
+
   internal enum Menu {
     internal enum EditColumn {
       /// カラムを編集
@@ -83,6 +122,24 @@ internal enum L10n {
       internal enum Cell {
         /// 生体認証
         internal static let title = L10n.tr("Localizable", "settings.biometrics.cell.title")
+      }
+    }
+    internal enum CheckUpdate {
+      internal enum Cell {
+        /// 更新を確認
+        internal static let title = L10n.tr("Localizable", "settings.checkUpdate.cell.title")
+      }
+      internal enum CheckingForUpdates {
+        /// 更新を確認
+        internal static let title = L10n.tr("Localizable", "settings.checkUpdate.checkingForUpdates.title")
+      }
+      internal enum ExistUpdate {
+        /// 更新があります
+        internal static let title = L10n.tr("Localizable", "settings.checkUpdate.existUpdate.title")
+      }
+      internal enum Latest {
+        /// 最新です
+        internal static let title = L10n.tr("Localizable", "settings.checkUpdate.latest.title")
       }
     }
     internal enum CustomActonButtons {
@@ -159,6 +216,12 @@ internal enum L10n {
       internal enum Header {
         /// ログアウト
         internal static let title = L10n.tr("Localizable", "settings.logout.header.title")
+      }
+    }
+    internal enum MarginSafeArea {
+      internal enum Cell {
+        /// SafeAreaを考慮する
+        internal static let title = L10n.tr("Localizable", "settings.marginSafeArea.cell.title")
       }
     }
     internal enum NativePreview {

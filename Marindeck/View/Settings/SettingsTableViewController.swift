@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
-import StoreKit
+
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet var titleLabel: [UILabel] = []
@@ -194,7 +194,7 @@ class SettingsTableViewController: UITableViewController {
     
     func checkUpdate() {
         DispatchQueue.main.async {
-            let loadingAlert: UIAlertController = .init(title: nil, message: "更新を確認中", preferredStyle: .alert)
+            let loadingAlert: UIAlertController = .init(title: nil, message: L10n.Settings.CheckUpdate.CheckingForUpdates.title, preferredStyle: .alert)
             let indicator = UIActivityIndicatorView(style: .medium)
             indicator.center = CGPoint(x: 25, y: 30)
             loadingAlert.view.addSubview(indicator)
@@ -203,11 +203,11 @@ class SettingsTableViewController: UITableViewController {
             self.present(loadingAlert, animated: true, completion: nil)
         
             Update.shared.checkForUpdate { [weak self] update in
-                let alert = UIAlertController(title: update ? "アップデートがあります" : "最新です。", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: update ? L10n.Settings.CheckUpdate.ExistUpdate.title : L10n.Settings.CheckUpdate.Latest.title, message: nil, preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: L10n.Alert.Close.title, style: .cancel, handler: nil))
                 if update {
-                    alert.addAction(UIAlertAction(title: "更新", style: .default, handler: { _ in
+                    alert.addAction(UIAlertAction(title: L10n.Alert.Update.title, style: .default, handler: { _ in
                         DispatchQueue.main.async {
                             let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Update.shared.appId)")!
                             UIApplication.shared.open(url)
@@ -226,11 +226,11 @@ class SettingsTableViewController: UITableViewController {
     
     func openURL(url urlString: String) {
         if let url = URL(string: urlString) {
-            let alert = UIAlertController(title: "URLを開きますか？", message: urlString, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "開く", style: .default, handler: { _ in
+            let alert = UIAlertController(title: L10n.Alert.OpenUrl.title, message: urlString, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: L10n.Alert.Open.title, style: .default, handler: { _ in
                 UIApplication.shared.open(url)
             }))
-            alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: L10n.Alert.Close.title, style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
@@ -294,9 +294,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func logout() {
-        let alert: UIAlertController = UIAlertController(title: "ログアウト", message: "先にいってしまうでござるか", preferredStyle:  .alert)
+        let alert: UIAlertController = UIAlertController(title: L10n.Settings.Logout.Cell.title, message: L10n.Alert.LogoutMessage.title, preferredStyle:  .alert)
 
-        let defaultAction: UIAlertAction = UIAlertAction(title: "ログアウト", style: .destructive, handler:{
+        let defaultAction: UIAlertAction = UIAlertAction(title: L10n.Settings.Logout.Cell.title, style: .destructive, handler:{
             (action: UIAlertAction!) -> Void in
             
             URLSession.shared.reset {}
@@ -309,7 +309,7 @@ class SettingsTableViewController: UITableViewController {
                 bvc?.webView.reload()
             }
         })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
+        let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Cancel.title, style: .cancel, handler:{
             (action: UIAlertAction!) -> Void in
             alert.dismiss(animated: true, completion: nil)
         })
@@ -415,8 +415,8 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
                 }
             }
             
-            let alert: UIAlertController = UIAlertController(title: "設定をインポートしました。", message: "アプリ再起動をおすすめします。", preferredStyle:  .alert)
-            let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler:{
+            let alert: UIAlertController = UIAlertController(title: L10n.Alert.ImportedSettings.title, message: L10n.Alert.RecommendRestartApp.title, preferredStyle:  .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Ok.title, style: .cancel, handler:{
                 (action: UIAlertAction!) -> Void in
                 alert.dismiss(animated: true, completion: nil)
             })

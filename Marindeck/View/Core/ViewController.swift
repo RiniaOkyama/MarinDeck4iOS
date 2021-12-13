@@ -42,6 +42,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return blurView
     }()
     var mainDeckBlurView: UIView!
+    var notchLogoImageView: UIImageView!
 
     var isMenuOpen = false
     let userDefaults = UserDefaults.standard
@@ -83,7 +84,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         checkBiometrics()
 
-        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
+        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey())
     }
 
     override func viewDidAppear(_ animated: Bool) {

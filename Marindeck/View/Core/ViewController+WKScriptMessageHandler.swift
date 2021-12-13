@@ -42,6 +42,7 @@ extension ViewController: WKScriptMessageHandler {
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
                 setStatusBarSpace(height: Int(statusBarHeight))
             }
+            notchLogoSetup()
 
             menuVC.setUserIcon(url: getUserIcon())
 

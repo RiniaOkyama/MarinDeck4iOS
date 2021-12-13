@@ -7,6 +7,10 @@ packages:
   MarkdownView:
     url: https://github.com/hirossan4049/MarkdownView
     revision: 753be391e6d3640161ca21f49a57c306aaebaf3a
+  GiphyUISDK:
+    url: https://github.com/Giphy/giphy-ios-sdk
+    exactVersion: 2.1.16
+
       
 
 options:
@@ -42,3 +46,4 @@ targets:
     dependencies:
       - package: GRDB
       - package: MarkdownView
+      - package: GiphyUISDK
