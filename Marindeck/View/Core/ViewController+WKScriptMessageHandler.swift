@@ -27,13 +27,21 @@ extension ViewController: WKScriptMessageHandler {
             self.view.backgroundColor = .backgroundColor
             self.webView.backgroundColor = .backgroundColor
             self.bottomBackView.backgroundColor = .backgroundColor
-            self.topBackView.backgroundColor = .topBarColor
+//            self.topBackView.backgroundColor = .topBarColor
             self.menuVC.loadViewIfNeeded()
             self.menuVC.viewDidLoad()
             self.setupWebViewToolBar()
 
-            setStatusBarStyle(style: fetchTheme().statusBarColor)
 //            self.bottomBackView.isHidden = false
+            getTheme { [weak self] theme in
+                if theme == .light {
+                    self?.topBackView.backgroundColor = .lightTopBarColor
+                    self?.setStatusBarStyle(style: fetchTheme().lightStatusBarColor)
+                }else {
+                    self?.topBackView.backgroundColor = .darkTopBarColor
+                    self?.setStatusBarStyle(style: fetchTheme().darkStatusBarColor)
+                }
+            }
 
             webView.frame = mainDeckView.bounds
             
