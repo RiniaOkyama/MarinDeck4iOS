@@ -118,17 +118,21 @@ struct Theme{
     var labelColor: UIColor = .label
     var subLabelColor: UIColor = .secondaryLabel
 
-    var topBarColor: UIColor = #colorLiteral(red: 0.08278211206, green: 0.123489894, blue: 0.1700443327, alpha: 1)
-    var statusBarColor: UIStatusBarStyle = .lightContent
+    var lightTopBarColor: UIColor = #colorLiteral(red: 0.08278211206, green: 0.123489894, blue: 0.1700443327, alpha: 1)
+    var darkTopBarColor: UIColor?
+    var lightStatusBarColor: UIStatusBarStyle = .darkContent
+    var darkStatusBarColor: UIStatusBarStyle = .lightContent
     var tweetButtonColor: UIColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
 }
 
 let themes = [
-    Theme(title: "デフォルト", id: "0", description: "デフォルトでず。", user: "TweetDeck", icon: "", js: "", css: "",
+    Theme(title: "デフォルト", id: "0", description: "TweetDeckデフォルトのテーマです。", user: "TweetDeck", icon: "", js: "", css: "",
           backgroundColor: UIColor(hex: "15202b"),
           secondaryBackgroundColor: UIColor(hex: "0d131a"),
           labelColor: .white,
-          subLabelColor: .lightGray
+          subLabelColor: .lightGray,
+          lightTopBarColor: .white,
+          darkTopBarColor: UIColor(hex: "15202b")
       ),
     Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "", js: getFile2Text("Theme-Midnight"), css: "",
           backgroundColor: .black,
@@ -158,7 +162,8 @@ let themes = [
           secondaryBackgroundColor: #colorLiteral(red: 0.9643818736, green: 0.9560024142, blue: 0.8829116225, alpha: 1),
           labelColor: UIColor(hex: "714116"),
           subLabelColor: UIColor(hex: "714116"),
-          topBarColor: #colorLiteral(red: 0.8769347072, green: 0.4038944244, blue: 0.4008696377, alpha: 1),
+          lightTopBarColor: #colorLiteral(red: 0.8769347072, green: 0.4038944244, blue: 0.4008696377, alpha: 1),
+          darkStatusBarColor: .darkContent,
           tweetButtonColor: UIColor(hex: "242424")
     ),
 ]

@@ -61,5 +61,15 @@ extension ViewController {
             print(#function, error ?? "成功")
         }
     }
+    
+    func getTheme(completion: @escaping (_ theme: TD.Settings.Theme?) -> ()) {
+        webView.evaluateJavaScript("TD.settings.getTheme()") { value, error in
+            completion(.init(rawValue: value as? String ?? ""))
+        }
+    }
+    
+    func setTheme(theme: TD.Settings.Theme) {
+        webView.evaluateJavaScript("TD.settings.setTheme(\(theme.rawValue)", completionHandler: nil)
+    }
 
 }

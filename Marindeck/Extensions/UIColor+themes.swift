@@ -14,7 +14,8 @@ extension UIColor{
     static var labelColor: UIColor { get { fetchTheme().labelColor } }
     static var subLabelColor: UIColor { get { fetchTheme().subLabelColor } }
     static var tweetButtonColor: UIColor { get { fetchTheme().tweetButtonColor } }
-    static var topBarColor: UIColor { get { fetchTheme().topBarColor } }
+    static var lightTopBarColor: UIColor { get { fetchTheme().lightTopBarColor } }
+    static var darkTopBarColor: UIColor { get { fetchTheme().darkTopBarColor ?? fetchTheme().lightTopBarColor } }
 
 
     static func ldColor(light:UIColor, dark:UIColor) -> UIColor {
