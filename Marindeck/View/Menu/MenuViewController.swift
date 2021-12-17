@@ -50,6 +50,9 @@ class MenuViewController: UIViewController {
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
         columnMenu.setTapEvent(action: #selector(columnAddTapped), target: self)
 
+        profileMenu.title = L10n.Menu.Profile.title
+        reloadMenu.title = L10n.Menu.Reload.title
+        columnMenu.title = L10n.Menu.AddColumn.title
     }
     
     @objc func profileTapped() {

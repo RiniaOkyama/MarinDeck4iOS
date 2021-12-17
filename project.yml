@@ -16,7 +16,7 @@ packages:
 options:
   #bundleIdPrefix: marindeck
   postGenCommand: pod install
-  developmentLanguage: ja
+  developmentLanguage: en
 
 settingGroups:
   MarindeckBaseSettings:
@@ -25,8 +25,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.0.17
-    CURRENT_PROJECT_VERSION: 0.0.17
+    MARKETING_VERSION: 0.0.19
+    CURRENT_PROJECT_VERSION: 0.0.19
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"

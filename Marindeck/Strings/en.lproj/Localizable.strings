@@ -1,6 +1,13 @@
+// MARK: Menu
 "menu.profile.title" = "Profile";
 "menu.reload.title" = "Reload";
-"menu.editColumn.title" = "Edit coloumn";
+"menu.addColumn.title" = "Add column";
+
+// MARK: ContextMenu(Image)
+"contextMenu.tweetImage.title" = "Tweet image";
+"contextMenu.like.title" = "Like";
+"contextMenu.saveImage.title" = "Save image";
+"contextMenu.saved.title" = "Saved";
 
 // MARK: OnBoarding
 "onBoarding.startMarinDeck.title" = "Start MarinDeck";
@@ -54,8 +61,6 @@
 "actionButton.menu.description" = "Open the menu";
 "actionButton.draft.description" = "Open a draft";
 "actionButton.settings.description" = "Open Settings";
-
-
 
 // MARK: Alert
 "alert.OK.title" = "OK";

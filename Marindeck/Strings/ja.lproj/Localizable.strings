@@ -1,7 +1,13 @@
+// MARK: Menu
 "menu.profile.title" = "プロフィール";
 "menu.reload.title" = "リロード";
-"menu.editColumn.title" = "カラムを編集";
+"menu.addColumn.title" = "カラムを追加";
 
+// MARK: ContextMenu(Image)
+"contextMenu.tweetImage.title" = "画像をツイート";
+"contextMenu.like.title" = "いいね";
+"contextMenu.saveImage.title" = "画像を保存";
+"contextMenu.saved.title" = "保存しました";
 
 // MARK: OnBoarding
 "onBoarding.startMarinDeck.title" = "MarinDeckをはじめる";
