@@ -80,7 +80,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             ImageHapticPreviewViewController(image: image)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
-            let tweetAction = UIAction(title: "画像をツイート", image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in
+            let tweetAction = UIAction(title: L10n.ContextMenu.TweetImage.title, image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in
                 guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                     return
                 }
@@ -89,10 +89,10 @@ extension ViewController: UIContextMenuInteractionDelegate {
                 }
 
             }
-            let likeAction = UIAction(title: "いいね", image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
+            let likeAction = UIAction(title: L10n.ContextMenu.Like.title, image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
                 self.positionTweetLike(x: Int(location.x), y: Int(location.y))
             }
-            let saveAction = UIAction(title: "画像を保存", image: UIImage(systemName: "square.and.arrow.down")) { action in
+            let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { action in
                 UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
             }
             return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])
@@ -138,7 +138,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         guard error == nil else {
             return
         }
-        let alertView = SPAlertView(title: "保存しました", preset: .done)
+        let alertView = SPAlertView(title: L10n.ContextMenu.Saved.title, preset: .done)
         alertView.duration = 0.3
         alertView.present()
     }

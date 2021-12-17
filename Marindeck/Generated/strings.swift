@@ -89,10 +89,29 @@ internal enum L10n {
     }
   }
 
+  internal enum ContextMenu {
+    internal enum Like {
+      /// いいね
+      internal static let title = L10n.tr("Localizable", "contextMenu.like.title")
+    }
+    internal enum SaveImage {
+      /// 画像を保存
+      internal static let title = L10n.tr("Localizable", "contextMenu.saveImage.title")
+    }
+    internal enum Saved {
+      /// 保存しました
+      internal static let title = L10n.tr("Localizable", "contextMenu.saved.title")
+    }
+    internal enum TweetImage {
+      /// 画像をツイート
+      internal static let title = L10n.tr("Localizable", "contextMenu.tweetImage.title")
+    }
+  }
+
   internal enum Menu {
-    internal enum EditColumn {
-      /// カラムを編集
-      internal static let title = L10n.tr("Localizable", "menu.editColumn.title")
+    internal enum AddColumn {
+      /// カラムを追加
+      internal static let title = L10n.tr("Localizable", "menu.addColumn.title")
     }
     internal enum Profile {
       /// プロフィール
