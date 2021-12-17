@@ -18,6 +18,10 @@ internal enum L10n {
       /// デバッグ
       internal static let title = L10n.tr("Localizable", "actionButton.debug.title")
     }
+    internal enum Description {
+      /// ツイートボタンを長押ししたときに出てくるアクションボタンを設定できます。
+      internal static let title = L10n.tr("Localizable", "actionButton.description.title")
+    }
     internal enum Draft {
       /// 下書きを開く
       internal static let description = L10n.tr("Localizable", "actionButton.draft.description")

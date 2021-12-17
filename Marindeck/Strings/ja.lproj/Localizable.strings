@@ -60,6 +60,7 @@
 "actionButton.menu.description" = "メニューを開く";
 "actionButton.draft.description" = "下書きを開く";
 "actionButton.settings.description" = "設定を開く";
+"actionButton.description.title" = "ツイートボタンを長押ししたときに出てくるアクションボタンを設定できます。";
 
 
 

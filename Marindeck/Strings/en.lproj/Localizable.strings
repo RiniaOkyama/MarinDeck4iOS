@@ -61,6 +61,7 @@
 "actionButton.menu.description" = "Open the menu";
 "actionButton.draft.description" = "Open a draft";
 "actionButton.settings.description" = "Open Settings";
+"actionButton.description.title" = "Set the action button to be displayed when you press and hold the tweet button.";
 
 // MARK: Alert
 "alert.OK.title" = "OK";
