@@ -456,7 +456,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         var r = url2SmallImg(str)
         if let index = r.range(of: "&name")?.lowerBound {
             r = String(r[...index]) // + "name=orig"
-            return r
+            return r.replacingOccurrences(of: "format=jpg", with: "format=png")
         }
         return ""
     }

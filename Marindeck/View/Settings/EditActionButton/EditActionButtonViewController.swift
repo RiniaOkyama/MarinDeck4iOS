@@ -32,7 +32,7 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
         infoLabel.layer.cornerRadius = 4
         infoLabel.padding = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        setInfo(message: "ツイートボタンを長押ししたときに出てくるアクションボタンを設定できます。")
+        setInfo(message: L10n.ActionButton.Description.title)
 
         selectedActions = getActions()
         pickerView.selectRow(items.firstIndex(of: selectedActions[0]) ?? 0, inComponent: 0, animated: false)
