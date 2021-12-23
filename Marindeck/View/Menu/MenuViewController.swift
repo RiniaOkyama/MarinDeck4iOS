@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var reloadMenu: MenuItemView!
     @IBOutlet weak var columnMenu: MenuItemView!
     
-    @IBOutlet weak var marinDeckLogoView: UIImageView!
+//    @IBOutlet weak var marinDeckLogoView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,8 @@ class MenuViewController: UIViewController {
             $0?.titleLabel.textColor = .labelColor
         })
         settingsButton.tintColor = .labelColor
-        marinDeckLogoView.image =  marinDeckLogoView.image?.withRenderingMode(.alwaysTemplate)
-        marinDeckLogoView.tintColor = .labelColor
+//        marinDeckLogoView.image =  marinDeckLogoView.image?.withRenderingMode(.alwaysTemplate)
+//        marinDeckLogoView.tintColor = .labelColor
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
         columnMenu.setTapEvent(action: #selector(columnAddTapped), target: self)
