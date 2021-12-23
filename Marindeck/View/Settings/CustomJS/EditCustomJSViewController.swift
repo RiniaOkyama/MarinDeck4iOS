@@ -14,8 +14,8 @@ class EditCustomJSViewController: UIViewController {
     private var customJS: CustomJS!
     var textView: UITextView!
     
-    private lazy var editorViewConstraint:NSLayoutConstraint = {
-        NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+    private lazy var editorViewConstraint: NSLayoutConstraint = {
+        NSLayoutConstraint(item: textView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
     }()
 
     @IBOutlet weak var editorView: UIView!

@@ -15,8 +15,8 @@ class EditCustomCSSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
     private var customCSS: CustomCSS!
     
-    private lazy var editorViewConstraint:NSLayoutConstraint = {
-        NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+    private lazy var editorViewConstraint: NSLayoutConstraint = {
+        NSLayoutConstraint(item: textView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
     }()
 
     @IBOutlet weak var editorView: UIView!
