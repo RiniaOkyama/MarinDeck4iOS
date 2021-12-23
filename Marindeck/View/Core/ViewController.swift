@@ -73,6 +73,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             }
         }
     }
+    
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            .init(title: L10n.ActionButton.Tweet.title, action: #selector(self.tweetPressed), input: "n", modifierFlags: [.command])
+        ]
+    }
 
 
     override func viewDidLoad() {
