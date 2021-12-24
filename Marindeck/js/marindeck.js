@@ -195,26 +195,37 @@ function positionElement(x, y) {
         return
     }
 
-    let openImgNum = 0
     let imgUrls = []
+    let selectIndex = 0
+    let positions = []
     element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function (item, index) {
+        if (item === element) {
+            selectIndex = index
+        }
         const img = item.style.backgroundImage
         if (img === "") {
             imgUrls.push(item.querySelector("img").src);
         } else {
             imgUrls.push(img);
         }
-        if (item === element) {
-            openImgNum = index;
-            swiftLog("openImgNum", index);
-        }
+        
+        const rect = item.getBoundingClientRect()
+        positions.push([rect.left, rect.top, rect.width, rect.height])
     })
 
-    var rect = element.getBoundingClientRect();
-    console.log(rect);
-    webkit.messageHandlers.imageViewPos.postMessage([rect.left, rect.top, rect.width, rect.height]);
+//    var rect = element.getBoundingClientRect();
+//    console.log(rect);
+/* Ex
+        ([
+         [left, right, width, height],
+         [left, right, width, height],
+         [left, right, width, height]
+        ], selectIndex)
+ */
+//    webkit.messageHandlers.imageViewPos.postMessage([rect.left, rect.top, rect.width, rect.height]);
+    webkit.messageHandlers.imageViewPos.postMessage(positions)
     // webkit.messageHandlers.imagePreviewer.postMessage(imgUrls);
-    return [openImgNum, imgUrls]
+    return [selectIndex, imgUrls]
 }
 
 function triggerEvent(element, event) {

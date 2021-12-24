@@ -58,17 +58,14 @@ extension ViewController: WKScriptMessageHandler {
             print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
 
         case .imageViewPos:
-            guard let imgpos = message.body as? [Float] else {
+            guard let imgpos = message.body as? [[Float]] else {
                 return
             }
             print("IMGPOS!!!: ", imgpos)
+            imagePreviewImagePositions = imgpos
 //            imageView.center = view.center
 //            imageView.frame.origin.y = view.frame.origin.y
-            var y = Int(imgpos[1])
-            if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
-                y += Int(view.safeAreaInsets.top)
-            }
-            imageView.frame = CGRect(x: Int(imgpos[0]), y: y, width: Int(imgpos[2]), height: Int(imgpos[3]))
+            setPreviewImagePosition()
 
         case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

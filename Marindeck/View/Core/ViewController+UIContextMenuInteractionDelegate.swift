@@ -69,7 +69,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
 
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
-
+        
         var image: UIImage? = nil
         
         let vc = ImageHapticPreviewViewController(image: image)
@@ -88,7 +88,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             }
         }
 
-
+        setPreviewImagePosition()
 
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
             let tweetAction = UIAction(title: L10n.ContextMenu.TweetImage.title, image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in

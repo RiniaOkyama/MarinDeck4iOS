@@ -52,6 +52,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     var imagePreviewSelectedIndex = 0
     var imagePreviewImageStrings: [String] = []
+    var imagePreviewImagePositions: [[Float]] = []
 
     lazy var loadingIndicator: UIActivityIndicatorView = {
         let ActivityIndicator = UIActivityIndicatorView()
@@ -469,6 +470,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
 
     func imagePreviewer(index: Int, urls: [String]) {
+        imagePreviewSelectedIndex = index
+        
         let imgUrls = urls.map({
             url2NomalImg($0)
         })
@@ -492,11 +495,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
         let imageViewer = Optik.imageViewer(
                 withImages: imgs,
-                initialImageDisplayIndex: index,
+                initialImageDisplayIndex: imagePreviewSelectedIndex,
                 delegate: self
         )
 
-        imageView.image = imgs[index]
+        imageView.image = imgs[imagePreviewSelectedIndex]
+        setPreviewImagePosition()
         view.addSubview(imageView)
 //            imageViewer.presentationController?.delegate = self
         present(imageViewer, animated: true, completion: nil)
@@ -603,10 +607,25 @@ extension ViewController: ImageViewerDelegate {
     }
 
     func imageViewerDidDisplayImage(at index: Int) {
-//        currentLocalImageIndex = index
+        imagePreviewSelectedIndex = index
+        setPreviewImagePosition()
         print("imageVIewerDidDisplafmeifimageeee")
     }
-
+    
+    
+    func setPreviewImagePosition() {
+        var y = Int(imagePreviewImagePositions[imagePreviewSelectedIndex][1])
+        if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
+            y += Int(view.safeAreaInsets.top)
+        }
+        imageView.frame = CGRect(
+            x: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][0]),
+            y: y,
+            width: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][2]),
+            height: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][3])
+        )
+    }
+    
 }
 
 
