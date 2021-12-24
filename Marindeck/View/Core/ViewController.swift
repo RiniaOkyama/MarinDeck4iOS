@@ -528,6 +528,14 @@ extension ViewController: WKNavigationDelegate {
             decisionHandler(.cancel)
             return
         }
+
+        if ((url?.absoluteString.contains("twitter.com/i/cards")) ?? false) ||
+            (url?.absoluteString.contains("youtube.com/embed") ?? false)
+        {
+            decisionHandler(.cancel)
+            return
+        }
+        
         if host == "tweetdeck.twitter.com" {
             decisionHandler(.allow)
 //        }else if host.hasPrefix("t.co") {
