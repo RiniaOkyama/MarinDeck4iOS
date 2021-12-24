@@ -10,9 +10,17 @@ import AVFoundation
 
 class ImageHapticPreviewViewController: UIViewController {
     private let imageView = UIImageView()
-    init(image: UIImage) {
+    
+    public var image: UIImage? = nil {
+        didSet {
+            preferredContentSize = image?.size ?? CGSize(width: 100, height: 100)
+            imageView.image = image
+        }
+    }
+    
+    init(image: UIImage?) {
         super.init(nibName: nil, bundle: nil)
-        preferredContentSize = image.size
+        preferredContentSize = image?.size ?? CGSize(width: 100, height: 100) // FXIME
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.image = image

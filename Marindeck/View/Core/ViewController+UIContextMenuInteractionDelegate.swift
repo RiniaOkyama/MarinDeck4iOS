@@ -69,19 +69,30 @@ extension ViewController: UIContextMenuInteractionDelegate {
 
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
-        guard let image = url2UIImage(url: imgurl.1[imgurl.0]) else {
-            return nil
-        }
         
-        imageView.image = image
-        view.addSubview(imageView)
+        var image: UIImage? = nil
+        
+        let vc = ImageHapticPreviewViewController(image: image)
 
-        let previewProvider: () -> UIViewController? = { [] in
-            ImageHapticPreviewViewController(image: image)
+        let previewProvider: () -> ImageHapticPreviewViewController? = { [] in
+            vc
         }
+
+        DispatchQueue.global().async {
+            image = url2UIImage(url: imgurl.1[imgurl.0])
+            
+            DispatchQueue.main.async {
+                self.imageView.image = image
+                self.view.addSubview(self.imageView)
+                vc.image = image
+            }
+        }
+
+        setPreviewImagePosition()
+
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { suggestedActions in
             let tweetAction = UIAction(title: L10n.ContextMenu.TweetImage.title, image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { action in
-                guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
+                guard let base64img = image?.pngData()?.base64EncodedString(options: []) else {
                     return
                 }
                 self.webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
@@ -93,6 +104,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
                 self.positionTweetLike(x: Int(location.x), y: Int(location.y))
             }
             let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { action in
+                guard let image = image else { return }
                 UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
             }
             return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])

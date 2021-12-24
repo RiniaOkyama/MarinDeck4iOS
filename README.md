@@ -58,3 +58,7 @@ iOSアプリについてサポートが必要な場合や質問がある場合�
 検討中
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_large)
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/8d044c1cd4748a131128ebc168fdf720962a5f95.svg "Repobeats analytics image")
