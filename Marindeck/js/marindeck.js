@@ -201,6 +201,18 @@ function positionElement(x, y) {
     element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function (item, index) {
         if (item === element) {
             selectIndex = index
+            
+//            const obj = item.querySelector("img")
+//           
+//            var cvs = document.createElement('canvas');
+//            cvs.width  = obj.width;
+//            cvs.height = obj.height;
+//            var ctx = cvs.getContext('2d');
+//            ctx.drawImage(obj, 0, 0);
+//           
+//            const data = cvs.toDataURL("image/png");
+//            webkit.messageHandlers.selectedImageBase64.postMessage(data);
+            
         }
         const img = item.style.backgroundImage
         if (img === "") {

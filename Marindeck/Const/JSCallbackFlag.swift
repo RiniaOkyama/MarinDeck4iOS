@@ -12,6 +12,7 @@ enum JSCallbackFlag: String, CaseIterable {
     case viewDidLoad = "viewDidLoad"
     case openSettings = "openSettings"
     case loadImage = "loadImage"
+    case selectedImageBase64 = "selectedImageBase64"
     case isTweetButtonHidden = "isTweetButtonHidden"
     case openYoutube = "openYoutube"
 }
