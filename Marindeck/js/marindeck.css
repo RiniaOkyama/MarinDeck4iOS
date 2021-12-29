@@ -59,7 +59,6 @@ html.dark .mdl {
   left: 0 !important;
   width: 100vw !important;
   border-radius: 0 !important;
-  margin-top: 55px;
 }
 .mdl:not(.s-fluid):not(.s-fluid-height):not(.s-short),
 html.dark .mdl:not(.s-fluid):not(.s-fluid-height):not(.s-short) {
