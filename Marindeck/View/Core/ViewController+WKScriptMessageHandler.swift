@@ -87,6 +87,14 @@ extension ViewController: WKScriptMessageHandler {
             guard let index = valueStrings[0] as? Int else { return }
             guard let urls = valueStrings[1] as? [String] else { return }
             self.imagePreviewer(index: index, urls: urls)
+            
+        case .selectedImageBase64:
+            break
+//            guard let base64 = message.body as? String else { return }
+//            let imageData = NSData(base64Encoded: base64, options: .ignoreUnknownCharacters)
+//            let iv = UIImageView(frame: view.bounds)
+//            iv.image = UIImage(data: imageData! as Data)
+//            view.addSubview(iv)
 
         case .isTweetButtonHidden:
             tweetFloatingBtn.isHidden = message.body as? Bool ?? false
