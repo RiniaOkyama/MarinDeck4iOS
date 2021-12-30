@@ -457,3 +457,62 @@ body .mdl-media-prev {
 a {
   -webkit-user-drag: none;
 }
+
+/* プロフィール */
+/*.s-profile .prf-header {*/
+/*    text-align: left;*/
+/*    height: 132px !important;*/
+/*    min-height: 0;*/
+/*}*/
+/*.s-profile .prf-img {*/
+/*    display: inline;*/
+/*}*/
+/*.s-profile .prf-img img {*/
+/*    margin-top: 82px !important;*/
+/*    width: 64px;*/
+/*    height: 64px;*/
+/*}*/
+/**/
+/*.s-profile .fullname {*/
+/*    font-size: 18px!important;*/
+/*    margin-top: -12px;*/
+/*    color: #38444d;*/
+/*    text-shadow: none;*/
+/*}*/
+/*.s-profile .username {*/
+/*    font-size: 13px!important;*/
+/*    color: #3d5466;*/
+/*    text-shadow: none;*/
+/*    height: 13px;*/
+/*    margin-top: -8px;*/
+/*}*/
+/*.s-profile .prf-bio {*/
+/*    margin-top: 10px!important;*/
+/*    color: #38444d;*/
+/*    text-shadow: none;*/
+/*}*/
+/*.s-profile .js-show-tip {*/
+/*    color: #38444d;*/
+/*    text-shadow: none;*/
+/*}*/
+/*.s-profile .margin-a-auto {*/
+/*    margin: 0 16px;*/
+/*}*/
+/*.s-profile .prf-actions {*/
+/*    margin-top: 92px !important;*/
+/*}*/
+
+.mdl-column-med {
+    height: 200px!important;
+}
+.mdl-inner {
+    padding: 0 0 16px 0 !important;
+}
+.mdl-buttonbar {
+    padding: 6px 32px;
+}
+
+/* FIXME: 多分どこかでバグる。 */
+.mdl .width--300 {
+    width: auto!important;
+}
