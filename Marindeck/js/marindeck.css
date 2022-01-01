@@ -502,9 +502,10 @@ a {
 /*    margin-top: 92px !important;*/
 /*}*/
 
-.mdl-column-med {
-    height: 200px!important;
-}
+/*.mdl-column-med {*/
+/*    height: 200px!important;*/
+/*}*/
+
 .mdl-inner {
     padding: 0 0 16px 0 !important;
 }
