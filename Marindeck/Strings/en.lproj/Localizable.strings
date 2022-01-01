@@ -28,6 +28,7 @@
 "settings.customCSS.cell.title" = "Custom CSS";
 "settings.theme.cell.title" = "Themes";
 "settings.customActonButtons.cell.title" = "Custom action buttons";
+"settings.icon.cell.title" = "Icons";
 
 "settings.termsOfUse.cell.title" = "Team of use";
 "settings.license.cell.title" = "License";
