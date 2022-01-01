@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>RainbowIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>RainbowIcon</string>
+				</array>
+			</dict>
+			<key>BlackIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>BlackIcon</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
 	<key>CFBundleDisplayName</key>

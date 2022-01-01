@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
+import class SwiftUI.UIHostingController
 
 
 class SettingsTableViewController: UITableViewController {
@@ -120,6 +121,8 @@ class SettingsTableViewController: UITableViewController {
             presentTheme()
         case IndexPath(row: 3, section: 1):
             presentActionButton()
+        case IndexPath(row: 4, section: 1):
+            presentIcon()
         case IndexPath(row: 0, section: 2):
             termsOfUse()
         case IndexPath(row: 1, section: 2):
@@ -162,6 +165,13 @@ class SettingsTableViewController: UITableViewController {
     func presentActionButton() {
         let vc = EditActionButtonViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func presentIcon() {
+        let vc = UIHostingController(rootView: IconSettingsView())
+        vc.title = "アイコン"
+        navigationController?.pushViewController(vc, animated: true)
+//        present(vc, animated: true, completion: nil)
     }
     
     func termsOfUse() {

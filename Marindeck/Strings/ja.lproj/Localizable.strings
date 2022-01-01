@@ -28,6 +28,7 @@
 "settings.customCSS.cell.title" = "カスタムCSS";
 "settings.theme.cell.title" = "テーマ";
 "settings.customActonButtons.cell.title" = "カスタムアクションボタン";
+"settings.icon.cell.title" = "アイコン";
 
 "settings.termsOfUse.cell.title" = "利用規約";
 "settings.license.cell.title" = "ライセンス";
