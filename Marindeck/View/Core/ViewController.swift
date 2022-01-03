@@ -622,7 +622,7 @@ extension ViewController: ImageViewerDelegate {
     
     
     func setPreviewImagePosition() {
-        var y = Int(imagePreviewImagePositions[imagePreviewSelectedIndex][1])
+        var y = Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 1] ?? 0)
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
             y += Int(view.safeAreaInsets.top)
         }
