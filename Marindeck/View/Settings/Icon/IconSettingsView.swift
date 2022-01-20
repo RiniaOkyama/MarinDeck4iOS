@@ -57,7 +57,9 @@ struct IconSettingsView: View {
         //TODO:  NavigatonViewのタイトルを設定しても表示されない
 //        NavigationView {
             List {
-                ForEach(icons, id: \.self) { icon in                IconSettingsListItem(icon: icon, isSelected: alternateIconName == icon.iconFlag )
+                ForEach(icons, id: \.self) { icon in
+                    IconSettingsListItem(icon: icon, isSelected: alternateIconName == icon.iconFlag )
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             UIApplication.shared.setAlternateIconName(icon.iconFlag, completionHandler: nil)
                             updateIconName()

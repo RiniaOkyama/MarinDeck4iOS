@@ -6,7 +6,7 @@ import Foundation
 
 struct DebugSettings {
     #if DEBUG
-    static let isWebViewLoad = false
+    static let isWebViewLoad = true
     #else
     static let isWebViewLoad = true
     #endif

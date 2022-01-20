@@ -622,15 +622,15 @@ extension ViewController: ImageViewerDelegate {
     
     
     func setPreviewImagePosition() {
-        var y = Int(imagePreviewImagePositions[imagePreviewSelectedIndex][1])
+        var y = Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 1] ?? 0)
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
             y += Int(view.safeAreaInsets.top)
         }
         imageView.frame = CGRect(
-            x: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][0]),
+            x: Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 0] ?? 0),
             y: y,
-            width: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][2]),
-            height: Int(imagePreviewImagePositions[imagePreviewSelectedIndex][3])
+            width: Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 2] ?? 0),
+            height: Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 3] ?? 0)
         )
     }
     

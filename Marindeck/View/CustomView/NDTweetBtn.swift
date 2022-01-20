@@ -9,11 +9,11 @@
 import UIKit
 import AudioToolbox
 
-fileprivate extension Array {
-    subscript(safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
+//fileprivate extension Array {
+//    subscript(safe index: Index) -> Element? {
+//        return indices.contains(index) ? self[index] : nil
+//    }
+//}
 
 @available(iOS 13.0, *)
 public class NDActionButton: UIView {
