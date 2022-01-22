@@ -117,7 +117,7 @@ function loginStyled() {
 
     document.querySelector(".app-info-title").innerText = "MarinDeckへようこそ";
     document.querySelector(".app-info-title").style.fontSize = "22px"
-    document.querySelector(".app-info-text p").innerText = "廃人への第一歩、そしてその先へ";
+    document.querySelector(".app-info-text p").innerText = "";
 
     document.querySelectorAll(".js-startflow-chrome")[1].hidden = true
     document.querySelector(".js-login-form").style.backgroundColor = "rgb(30,41,55)";

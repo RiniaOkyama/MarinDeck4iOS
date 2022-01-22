@@ -73,7 +73,7 @@
 "alert.cancel.title" = "キャンセル";
 
 "alert.openUrl.title" = "URLを開きますか？";
-"alert.logoutMessage.title" = "先にいってしまうでござるか";
+"alert.logoutMessage.title" = "ログアウトしますか？";
 
 "alert.importedSettings.title" = "設定をインポートしました。";
 "alert.recommendRestartApp.title" = "アプリ再起動をおすすめします。";
