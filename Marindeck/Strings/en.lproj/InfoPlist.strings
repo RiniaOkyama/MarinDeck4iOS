@@ -1,0 +1,10 @@
+/* 
+  infoPlist.strings
+  Marindeck
+
+  Created by a on 2022/01/22.
+  
+*/
+NSCameraUsageDescription = "Use the camera to post images";
+NSFaceIDUsageDescription = "Used to lock the application";
+NSPhotoLibraryAddUsageDescription = "Save the posted image";
