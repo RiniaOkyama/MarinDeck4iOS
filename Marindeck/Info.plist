@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en_US</string>
+	<string>ja_JP</string>
 	<key>CFBundleDisplayName</key>
 	<string>MarinDeck</string>
 	<key>CFBundleExecutable</key>
@@ -56,11 +56,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>カメラを使用します。</string>
+	<string>画像を投稿するためにカメラを使用します。</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>アプリのロックに使用します。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>画像を保存します。</string>
+	<string>投稿された画像を保存します。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
