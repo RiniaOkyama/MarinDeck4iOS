@@ -1,5 +1,5 @@
 //
-//  ViewController+UIContextMenuInteractionDelegate.swift
+//  ViewController+ContextMenu.swift
 //  Marindeck
 //
 //  Created by Rinia on 2021/05/08.

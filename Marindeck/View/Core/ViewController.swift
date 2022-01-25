@@ -147,7 +147,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        print("presentationControllerDidDismiss!!!!!!!!!!!!!!")
         imageView.removeFromSuperview()
     }
 
@@ -156,6 +155,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //             scrollView.pinchGestureRecognizer?.isEnabled = false
 //    }
 
+    // 生体認証
     func checkBiometrics() {
         let isUseBiometrics = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics)
         if isUseBiometrics {
@@ -200,7 +200,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-
+    // CSSファイルをロード
     func loadCSSFile(forResource: String, ofType: String = "css") {
         guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
             print("failed load style.css")
@@ -224,7 +224,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-
+    // JSファイルをロード
     func loadJsFile(forResource: String, ofType: String = "js") {
         guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
             print("ERROR")
@@ -241,7 +241,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-
+    // ツイートボタンタップ痔の動作
     @objc func tweetPressed() {
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
             openNativeTweetModal()
@@ -250,7 +250,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
     
-    
+    // TweetDeckのツイートモーダルに遷移
     func openWebViewTweetModal() {
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
             print("webViewLog : ", error ?? "成功")
@@ -260,18 +260,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
+    // デバッグボタンタップ時の動作
     @objc func debugPressed() {
         let vc = DebugerViewController()
         vc.delegate = self
         present(vc, animated: true, completion: nil)
     }
 
+    // FIXME: evaluteWithErrorは使用しない実装に変更
+    // JS デバッグ
     @discardableResult
     func debugJS(script: String) -> (String, Error?) {
         let (ret, error) = webView.evaluateWithError(javaScript: script)
         return ((ret as? String) ?? "", error)
     }
 
+    // CSSをjsに変換
     func css2JS(css: String) -> String {
         var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
@@ -287,6 +291,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return script
     }
 
+    // CSS デバッグ
     func debugCSS(css: String) {
         let script = css2JS(css: css)
         webView.evaluateJavaScript(script) { object, error in
@@ -294,6 +299,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
+    // GIF選択画面に遷移
     @objc func openSelectGif() {
         let giphy = GiphyViewController()
         GiphyViewController.trayHeightMultiplier = 0.7
@@ -305,6 +311,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         present(giphy, animated: true, completion: nil)
     }
 
+    // 画像を選択
     @objc func openSelectPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = false
@@ -313,6 +320,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         present(imagePickerController, animated: true, completion: nil)
     }
 
+    // 設定を開く
     func openSettings() {
 //        self.performSegue(withIdentifier: "toSettings", sender: nil)
         let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
@@ -349,7 +357,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         )
         present(alert, animated: true, completion: nil)
     }
-    
+
+    // 下書きに保存するかどうかのアラート
     func openIfDraftAlert(text: String) {
         let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
         
@@ -369,7 +378,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
     
-
+    // ツイート下書きに遷移
     func openDraft() {
         let drafts = try! dbQueue.read { db in
             try Draft.fetchAll(db)
@@ -385,6 +394,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
 
+    // x, yに画像があれば取ってくる
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
         guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
             return (0, [])
@@ -401,7 +411,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return (index, imgUrls)
     }
 
-
+    // Menuを閉じる
     func closeMenu() {
         isMenuOpen = false
         menuView.translatesAutoresizingMaskIntoConstraints = false
@@ -418,7 +428,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             self.menuView.frame.origin.x = -self.menuView.frame.width
         })
     }
-    
+
+    // Menuを開く
     func openMenu() {
         isMenuOpen = true
         menuView.translatesAutoresizingMaskIntoConstraints = true
@@ -440,11 +451,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         })
     }
 
+    // ブラーをつける（Menu開いたときのDeckのブラー）
     func setBlurView() {
         blurView.frame = view.frame
         view.addSubview(blurView)
     }
 
+    // ブラーを消す（Menu開いたときのDeckのブラー）
     func removeBlurView() {
         blurView.removeFromSuperview()
     }

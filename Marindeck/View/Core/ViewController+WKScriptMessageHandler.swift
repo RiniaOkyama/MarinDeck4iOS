@@ -12,25 +12,24 @@ import WebKit
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // FIXME
-        
         switch JSCallbackFlag(rawValue: message.name) {
                 // MARK: WKWebView Didload
         case .viewDidLoad:
-            self.loadingIndicator.stopAnimating()
+            loadingIndicator.stopAnimating()
             if !isMainDeckViewLock {
-                self.tweetFloatingBtn.isHidden = false
-                self.mainDeckView.isHidden = false
+                tweetFloatingBtn.isHidden = false
+                mainDeckView.isHidden = false
             }
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
 
-            self.view.backgroundColor = .backgroundColor
-            self.webView.backgroundColor = .backgroundColor
-            self.bottomBackView.backgroundColor = .backgroundColor
+            view.backgroundColor = .backgroundColor
+            webView.backgroundColor = .backgroundColor
+            bottomBackView.backgroundColor = .backgroundColor
 //            self.topBackView.backgroundColor = .topBarColor
-            self.menuVC.loadViewIfNeeded()
-            self.menuVC.viewDidLoad()
-            self.setupWebViewToolBar()
+            menuVC.loadViewIfNeeded()
+            menuVC.viewDidLoad()
+            setupWebViewToolBar()
 
 //            self.bottomBackView.isHidden = false
             getTheme { [weak self] theme in
