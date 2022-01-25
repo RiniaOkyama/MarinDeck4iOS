@@ -100,12 +100,12 @@ extension ViewController: UIContextMenuInteractionDelegate {
                 }
 
             }
-            let likeAction = UIAction(title: L10n.ContextMenu.Like.title, image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
-                self.positionTweetLike(x: Int(location.x), y: Int(location.y))
+            let likeAction = UIAction(title: L10n.ContextMenu.Like.title, image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { [weak self] action in
+                self?.td.actions.positionTweetLike(x: Int(location.x), y: Int(location.y))
             }
-            let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { action in
+            let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { [weak self] action in
                 guard let image = image else { return }
-                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil);
             }
             return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])
         }

@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }()
 
     var webView: WKWebView!
+    public let td = TD.shared
     public var javaScriptString = ""
     @IBOutlet weak var mainDeckView: UIView!
     @IBOutlet weak var bottomBackView: UIView!
@@ -200,47 +201,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-    // CSSファイルをロード
-    func loadCSSFile(forResource: String, ofType: String = "css") {
-        guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
-            print("failed load style.css")
-            return
-        }
-        let mtFile = FileHandle(forReadingAtPath: mtPath)!
-        let mtContentData = mtFile.readDataToEndOfFile()
-        let css = String(data: mtContentData, encoding: .utf8)!
-        mtFile.closeFile()
-        var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
-        deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
-        deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
-        let script = """
-                     const h = document.documentElement;
-                     const s = document.createElement('style');
-                     s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-                     h.insertAdjacentElement('beforeend', s)
-                     """
-        webView.evaluateJavaScript(script) { object, error in
-            print("stylecss : ", error ?? "成功")
-        }
-    }
-
-    // JSファイルをロード
-    func loadJsFile(forResource: String, ofType: String = "js") {
-        guard let mtPath = Bundle.main.path(forResource: forResource, ofType: ofType) else {
-            print("ERROR")
-            return
-        }
-        let mtFile = FileHandle(forReadingAtPath: mtPath)!
-        let mtContentData = mtFile.readDataToEndOfFile()
-        let mtContentString = String(data: mtContentData, encoding: .utf8)!
-        mtFile.closeFile()
-
-        let mtScript = mtContentString
-        webView.evaluateJavaScript(mtScript) { object, error in
-            print("webViewLog : ", error ?? "成功")
-        }
-    }
-
     // ツイートボタンタップ痔の動作
     @objc func tweetPressed() {
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
@@ -255,7 +215,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
             print("webViewLog : ", error ?? "成功")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.focusTweetTextArea()
+                self.td.actions.focusTweetTextArea()
             }
         }
     }
@@ -352,7 +312,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
                 UIAlertAction(
                         title: "Tweet",
                         style: UIAlertAction.Style.default) { [weak self] _ in
-                    self?.tweet(text: alert.textFields![0].text!)
+                            self?.td.actions.tweet(text: alert.textFields![0].text!)
                 }
         )
         present(alert, animated: true, completion: nil)
@@ -436,9 +396,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         mainDeckView.translatesAutoresizingMaskIntoConstraints = true
         mainDeckBlurView.isUserInteractionEnabled = true
 
-        menuVC.setUserIcon(url: getUserIcon())
-        let (name, id) = getUserNameID()
-        menuVC.setUserNameID(name: name, id: id)
+        td.account.getAccount { [weak self] account in
+            self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
+            self?.menuVC.setUserNameID(name: account.name ?? "", id: account.userId ?? "")
+        }
 
         UIView.animate(withDuration: 0.3, animations: {
             self.menuView.frame.origin.x = 0
@@ -568,11 +529,11 @@ extension ViewController: WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        loadJsFile(forResource: "moduleraid")
+        webView.loadJsFile(forResource: "moduleraid")
 //        loadJsFile(forResource: "marindeck-css")
-        loadJsFile(forResource: "msecdeck.bundle")
-        loadJsFile(forResource: "marindeck")
-        loadCSSFile(forResource: "marindeck")
+        webView.loadJsFile(forResource: "msecdeck.bundle")
+        webView.loadJsFile(forResource: "marindeck")
+        webView.loadCSSFile(forResource: "marindeck")
 
         let cjss = try! dbQueue.read { db in
             try CustomJS.fetchAll(db)

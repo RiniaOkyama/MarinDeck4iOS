@@ -141,6 +141,7 @@ extension ViewController {
             webView.load(urlRequest)
         }
         self.mainDeckView.addSubview(webView)
+        td.webView = webView
 
         webView.translatesAutoresizingMaskIntoConstraints = false
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {

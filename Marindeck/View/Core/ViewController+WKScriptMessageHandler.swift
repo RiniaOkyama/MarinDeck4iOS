@@ -51,7 +51,9 @@ extension ViewController: WKScriptMessageHandler {
             }
             notchLogoSetup()
 
-            menuVC.setUserIcon(url: getUserIcon())
+            td.account.getAccount { [weak self] account in
+                self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
+            }
 
         case .jsCallbackHandler:
             print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")

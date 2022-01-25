@@ -21,6 +21,7 @@ final class TD: TDBase {
 
     public let account: AccountController = .init()
     public let settings: Settings = .init()
+    public let actions: ActionsController = .init()
 
     override var webView: WKWebView? {
         get { super.webView }
@@ -29,10 +30,12 @@ final class TD: TDBase {
             
             account.webView = value
             settings.webView = value
+            actions.webView = value
         }
     }
 
     class Settings: TDBase {}
     class AccountController: TDBase {}
+    class ActionsController: TDBase {}
 }
 

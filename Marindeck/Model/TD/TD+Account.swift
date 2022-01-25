@@ -21,8 +21,8 @@ extension TD.AccountController {
 
     func getAccount(completion: @escaping (_ account: Account) -> ()) {
         webView?.evaluateJavaScript("TD.storage.accountController.getDefault().state") {(obj, error) in
-            guard let dict = obj as? [String: String] else { return }
-            completion(Account(name: dict["name"], profileImageUrl: dict["profileImageURL"], userId: dict["username"], username: dict["username"]))
+            guard let dict = obj as? [String: Any] else { return }
+            completion(Account(name: dict["name"] as? String, profileImageUrl: dict["profileImageURL"] as? String, userId: dict["username"] as? String, username: dict["username"] as? String))
         }
     }
     
