@@ -32,7 +32,7 @@ extension ViewController: WKScriptMessageHandler {
             setupWebViewToolBar()
 
 //            self.bottomBackView.isHidden = false
-            getTheme { [weak self] theme in
+            td.settings.getTheme { [weak self] theme in
                 if theme == .light {
                     self?.topBackView.backgroundColor = .lightTopBarColor
                     self?.setStatusBarStyle(style: fetchTheme().lightStatusBarColor)
@@ -47,7 +47,7 @@ extension ViewController: WKScriptMessageHandler {
             if !userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-                setStatusBarSpace(height: Int(statusBarHeight))
+                td.actions.setStatusBarSpace(height: Int(statusBarHeight))
             }
             notchLogoSetup()
 
