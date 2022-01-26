@@ -58,5 +58,10 @@ extension TD.ActionsController {
             print(#function, error ?? "成功")
         }
     }
+
+    // MARK: Blob
+    func setBlob(url: String, base64: String, mimeType: String) {
+        webView?.evaluateJavaScript("MD4iOS.Blob.set(\(url), \(base64), \(mimeType)")
+    }
 }
 

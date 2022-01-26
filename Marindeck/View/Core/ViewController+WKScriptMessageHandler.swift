@@ -82,12 +82,22 @@ extension ViewController: WKScriptMessageHandler {
 //            url2UIImage(url: url2NomalImg(url))
             break
 
+        case .fetchImage:
+            guard let imageUrl = message.body as? String else { return }
+            DispatchQueue(label: "fetchImage.async").async {
+                let url: URL = URL(string: imageUrl)!
+                guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.sync {
+                    self.td.actions.setBlob(url: imageUrl, base64: data.base64EncodedString(options: []), mimeType: data.mimeType)
+                }
+            }
+
 
         case .imagePreviewer:
             guard let valueStrings = message.body as? [Any] else { return }
             guard let index = valueStrings[0] as? Int else { return }
             guard let urls = valueStrings[1] as? [String] else { return }
-            self.imagePreviewer(index: index, urls: urls)
+            imagePreviewer(index: index, urls: urls)
             
         case .selectedImageBase64:
             break
