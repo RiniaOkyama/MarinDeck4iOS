@@ -22,8 +22,11 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal static let blackIcon = ImageAsset(name: "BlackIcon")
+  internal static let defaultIcon = ImageAsset(name: "DefaultIcon")
   internal static let marinDeckWithTextDark = ImageAsset(name: "MarinDeckWithText-dark")
   internal static let marindeckLogo = ImageAsset(name: "Marindeck_logo")
+  internal static let rainbowIcon = ImageAsset(name: "RainbowIcon")
   internal static let dolceIcon = ImageAsset(name: "Dolce-icon")
   internal static let frostclearIcon = ImageAsset(name: "Frostclear-icon")
   internal static let gif = ImageAsset(name: "gif")
