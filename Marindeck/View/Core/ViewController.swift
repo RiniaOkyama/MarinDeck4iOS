@@ -11,9 +11,6 @@ import SafariServices
 
 import Keys
 import Optik
-import GiphyUISDK
-import SwiftUI
-
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
@@ -46,7 +43,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     var isMenuOpen = false
     let userDefaults = UserDefaults.standard
-    private lazy var dbQueue = Database.shared.dbQueue
+    private(set) lazy var dbQueue = Database.shared.dbQueue
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
 
@@ -90,8 +87,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 //        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
 
         checkBiometrics()
-
-        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -176,13 +171,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-    // デバッグボタンタップ時の動作
-    @objc func debugPressed() {
-        let vc = DebugerViewController()
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
-    }
-
     // FIXME: evaluteWithErrorは使用しない実装に変更
     // JS デバッグ
     @discardableResult
@@ -215,76 +203,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-    // GIF選択画面に遷移
-    @objc func openSelectGif() {
-        let giphy = GiphyViewController()
-        GiphyViewController.trayHeightMultiplier = 0.7
-        giphy.shouldLocalizeSearch = true
-        giphy.delegate = self
-        giphy.dimBackground = true
-        giphy.modalPresentationStyle = .overCurrentContext
-
-        present(giphy, animated: true, completion: nil)
-    }
-
-    // 画像を選択
-    @objc func openSelectPhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = false
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
-
-    // 設定を開く
-    func openSettings() {
-//        self.performSegue(withIdentifier: "toSettings", sender: nil)
-        let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-
-    // ネイティブのツイートモーダルを表示
-    func openNativeTweetModal(tweetText: String = "") {
-        let alert = UIAlertController(
-                title: "Tweet Faster",
-                message: "What's Happening!?",
-                preferredStyle: .alert)
-        alert.addTextField(
-                configurationHandler: {_ in }
-        )
-        alert.textFields?[0].text = tweetText
-        alert.addAction(
-                UIAlertAction(
-                        title: "Cancel",
-                        style: UIAlertAction.Style.cancel) { [weak self] _ in
-                    let text = alert.textFields![0].text!
-                    if text == "" { return }
-                    self?.openIfDraftAlert(text: text)
-                }
-        )
-        alert.addAction(
-                UIAlertAction(
-                        title: "Tweet",
-                        style: UIAlertAction.Style.default) { [weak self] _ in
-                            self?.td.actions.tweet(text: alert.textFields![0].text!)
-                }
-        )
-        present(alert, animated: true, completion: nil)
-    }
-
-    // 下書きに保存するかどうかのアラート
-    func openIfDraftAlert(text: String) {
-        let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
-            self?.saveDraft(text: text)
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
     
     // 下書きを保存
     func saveDraft(text: String) {
@@ -293,22 +211,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             try df.insert(db)
         }
     }
-    
-    // ツイート下書きに遷移
-    func openDraft() {
-        let drafts = try! dbQueue.read { db in
-            try Draft.fetchAll(db)
-        }
-        let vc = UIHostingController(rootView: DraftView(selected: { [weak self] index in
-            self?.openNativeTweetModal(tweetText: drafts[index].text)
-            
-            let _ = try! self?.dbQueue.write { db in
-                try drafts[index].delete(db)
-            }
-        }, drafts: drafts))
-        present(vc, animated: true, completion: nil)
-    }
-
 
     // x, yに画像があれば取ってくる
     func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
@@ -446,77 +348,6 @@ extension ViewController: LoginViewControllerOutput {
     
 }
 
-
-// MARK: - 11 WKWebView WKNavigation delegate
-extension ViewController: WKNavigationDelegate {
-    // MARK: - 読み込み設定（リクエスト前）
-    func webView(_ webView: WKWebView,
-                 decidePolicyFor navigationAction: WKNavigationAction,
-                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url
-        guard let host = url?.host else {
-            decisionHandler(.cancel)
-            return
-        }
-
-        if ((url?.absoluteString.contains("twitter.com/i/cards")) ?? false) ||
-            (url?.absoluteString.contains("youtube.com/embed") ?? false)
-        {
-            decisionHandler(.cancel)
-            return
-        }
-        
-        if host == "tweetdeck.twitter.com" {
-            decisionHandler(.allow)
-//        }else if host.hasPrefix("t.co") {
-//            decisionHandler(.cancel)
-        } else if host == "mobile.twitter.com" {
-            let vc = LoginViewController()
-            vc.delegate = self
-            let nvc = UINavigationController(rootViewController: vc)
-            present(nvc, animated: true, completion: nil)
-            decisionHandler(.cancel)
-        }else {
-            let safariVC = SFSafariViewController(url: url!)
-            present(safariVC, animated: true, completion: nil)
-
-            decisionHandler(.cancel)
-        }
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.loadJsFile(forResource: "moduleraid")
-//        loadJsFile(forResource: "marindeck-css")
-        webView.loadJsFile(forResource: "msecdeck.bundle")
-        webView.loadJsFile(forResource: "marindeck")
-        webView.loadCSSFile(forResource: "marindeck")
-
-        let cjss = try! dbQueue.read { db in
-            try CustomJS.fetchAll(db)
-        }
-            .filter { $0.isLoad }
-            .sorted(by: { $0.loadIndex < $1.loadIndex })
-        for item in cjss {
-            debugJS(script: item.js)
-        }
-
-        let csss = try! dbQueue.read { db in
-            try CustomCSS.fetchAll(db)
-        }
-            .filter { $0.isLoad }
-            .sorted(by: { $0.loadIndex < $1.loadIndex })
-        for item in csss {
-            debugCSS(css: item.css)
-        }
-
-
-        let theme = fetchTheme()
-        debugJS(script: theme.js)
-
-    }
-
-}
-
 extension ViewController: MenuDelegate {
     func reload() {
         webView.reload()
@@ -579,74 +410,4 @@ func url2UIImage(url: String) -> UIImage? {
         print("Error : \(err.localizedDescription)")
     }
     return nil
-}
-
-
-extension ViewController: GiphyDelegate {
-    func didSearch(for term: String) {
-        print("your user made a search! ", term)
-    }
-
-    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia) {
-        giphyViewController.dismiss(animated: true, completion: { [weak self] in
-//            print(media.url(rendition: .original, fileType: .gif))
-            self?.loadingIndicator.startAnimating()
-            self?.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            DispatchQueue(label: "tweetgifload.async").async {
-                let url: URL = URL(string: media.url(rendition: .original, fileType: .gif)!)!
-                //Now use image to create into NSData format
-                let imageData: NSData = NSData.init(contentsOf: url)!
-                let data = imageData.base64EncodedString(options: [])
-                DispatchQueue.main.sync {
-                    self?.webView.evaluateJavaScript("addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { object, error in
-                        print("gifLoad : ", error ?? "成功")
-                        self?.loadingIndicator.stopAnimating()
-                        self?.mainDeckBlurView.backgroundColor = .clear
-                    }
-                }
-            }
-        })
-        GPHCache.shared.clear()
-    }
-
-    func didDismiss(controller: GiphyViewController?) {
-        GPHCache.shared.clear()
-    }
-}
-
-
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        print("\(info)")
-        if let image = info[.originalImage] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
-                return
-            }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
-                print("photoselected : ", error ?? "成功")
-            }
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-
-        if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
-                return
-            }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
-                print("photoselected : ", error ?? "成功")
-            }
-        } else {
-            print("Error")
-        }
-
-        dismiss(animated: true, completion: nil)
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
 }
