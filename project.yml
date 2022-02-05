@@ -15,7 +15,7 @@ packages:
 
 options:
   #bundleIdPrefix: marindeck
-  postGenCommand: pod install
+  postGenCommand: rbenv exec pod install
   developmentLanguage: en
 
 settingGroups:
@@ -25,8 +25,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.0.24
-    CURRENT_PROJECT_VERSION: 0.0.24
+    MARKETING_VERSION: 0.0.26
+    CURRENT_PROJECT_VERSION: 0.0.26
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
@@ -43,6 +43,21 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
+    dependencies:
+      - package: GRDB
+      - package: MarkdownView
+      - package: GiphyUISDK
+
+  Marindeck-dev:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.1"
+    sources: Marindeck
+    scheme: {}
+    settings:
+      base:
+        DEVELOPMENT_TEAM: 726VR75V6L
+        PRODUCT_BUNDLE_IDENTIFIER: marindeck.dev
     dependencies:
       - package: GRDB
       - package: MarkdownView

@@ -313,10 +313,15 @@ class SettingsTableViewController: UITableViewController {
             UserDefaults.standard.synchronize()
             let dataStore = WKWebsiteDataStore.default()
             dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
+                print("+===========================+++")
+                print(records)
+                
+                print("+===========================+++")
                 dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
                 
                 let bvc = self?.presentingViewController as? ViewController
                 bvc?.webView.reload()
+                self?.navigationController?.dismiss(animated: true, completion: nil)
             }
         })
         let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Cancel.title, style: .cancel, handler:{
