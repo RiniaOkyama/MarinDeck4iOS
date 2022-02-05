@@ -7,6 +7,7 @@
 
 import UIKit
 import Keys
+import GiphyUISDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            .launchApplication(withAuthor: keys.deploygateUsername, key: keys.deploygateSdkApiKey)
         UserDefaults.standard.register(defaults: [UserDefaultsKey.marginSafeArea: true])
         Database.shared.setup()
+        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
+        
+        #if DEBUG
+        Test()
+        #endif
         
         return true
     }

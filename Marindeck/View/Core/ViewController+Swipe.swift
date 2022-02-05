@@ -155,9 +155,11 @@ extension ViewController {
                 self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             })
 
-            menuVC.setUserIcon(url: getUserIcon())
-            let (name, id) = getUserNameID()
-            menuVC.setUserNameID(name: name, id: id)
+            td.account.getAccount { [weak self] account in
+                self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
+                self?.menuVC.setUserNameID(name: account.name ?? "", id: account.userId ?? "")
+            }
+            
         } else if (sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
             print("cancel or end or fail")
 //            isColumnScroll(true)

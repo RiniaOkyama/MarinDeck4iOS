@@ -12,28 +12,27 @@ import WebKit
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // FIXME
-        
         switch JSCallbackFlag(rawValue: message.name) {
                 // MARK: WKWebView Didload
         case .viewDidLoad:
-            self.loadingIndicator.stopAnimating()
+            loadingIndicator.stopAnimating()
             if !isMainDeckViewLock {
-                self.tweetFloatingBtn.isHidden = false
-                self.mainDeckView.isHidden = false
+                tweetFloatingBtn.isHidden = false
+                mainDeckView.isHidden = false
             }
 //            self.mainDeckView.addSubview(webView)
 //            self.view.addSubview(mainDeckBlurView)
 
-            self.view.backgroundColor = .backgroundColor
-            self.webView.backgroundColor = .backgroundColor
-            self.bottomBackView.backgroundColor = .backgroundColor
+            view.backgroundColor = .backgroundColor
+            webView.backgroundColor = .backgroundColor
+            bottomBackView.backgroundColor = .backgroundColor
 //            self.topBackView.backgroundColor = .topBarColor
-            self.menuVC.loadViewIfNeeded()
-            self.menuVC.viewDidLoad()
-            self.setupWebViewToolBar()
+            menuVC.loadViewIfNeeded()
+            menuVC.viewDidLoad()
+            setupWebViewToolBar()
 
 //            self.bottomBackView.isHidden = false
-            getTheme { [weak self] theme in
+            td.settings.getTheme { [weak self] theme in
                 if theme == .light {
                     self?.topBackView.backgroundColor = .lightTopBarColor
                     self?.setStatusBarStyle(style: fetchTheme().lightStatusBarColor)
@@ -48,11 +47,13 @@ extension ViewController: WKScriptMessageHandler {
             if !userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-                setStatusBarSpace(height: Int(statusBarHeight))
+                td.actions.setStatusBarSpace(height: Int(statusBarHeight))
             }
             notchLogoSetup()
 
-            menuVC.setUserIcon(url: getUserIcon())
+            td.account.getAccount { [weak self] account in
+                self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
+            }
 
         case .jsCallbackHandler:
             print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
@@ -81,12 +82,22 @@ extension ViewController: WKScriptMessageHandler {
 //            url2UIImage(url: url2NomalImg(url))
             break
 
+        case .fetchImage:
+            guard let imageUrl = message.body as? String else { return }
+            DispatchQueue(label: "fetchImage.async").async {
+                let url: URL = URL(string: imageUrl)!
+                guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.sync {
+                    self.td.actions.setBlob(url: imageUrl, base64: data.base64EncodedString(options: []), mimeType: data.mimeType)
+                }
+            }
+
 
         case .imagePreviewer:
             guard let valueStrings = message.body as? [Any] else { return }
             guard let index = valueStrings[0] as? Int else { return }
             guard let urls = valueStrings[1] as? [String] else { return }
-            self.imagePreviewer(index: index, urls: urls)
+            imagePreviewer(index: index, urls: urls)
             
         case .selectedImageBase64:
             break

@@ -1,5 +1,5 @@
 //
-//  ViewController+UIContextMenuInteractionDelegate.swift
+//  ViewController+ContextMenu.swift
 //  Marindeck
 //
 //  Created by Rinia on 2021/05/08.
@@ -79,7 +79,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         }
 
         DispatchQueue.global().async {
-            image = url2UIImage(url: imgurl.1[imgurl.0])
+            image = UIImage(url: imgurl.1[imgurl.0])
             
             DispatchQueue.main.async {
                 self.imageView.image = image
@@ -100,12 +100,12 @@ extension ViewController: UIContextMenuInteractionDelegate {
                 }
 
             }
-            let likeAction = UIAction(title: L10n.ContextMenu.Like.title, image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { action in
-                self.positionTweetLike(x: Int(location.x), y: Int(location.y))
+            let likeAction = UIAction(title: L10n.ContextMenu.Like.title, image: UIImage(systemName: "heart.fill")!.withRenderingMode(.alwaysTemplate)) { [weak self] action in
+                self?.td.actions.positionTweetLike(x: Int(location.x), y: Int(location.y))
             }
-            let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { action in
+            let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title, image: UIImage(systemName: "square.and.arrow.down")) { [weak self] action in
                 guard let image = image else { return }
-                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil);
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil);
             }
             return UIMenu(title: "", children: [tweetAction, likeAction, saveAction])
         }
@@ -116,7 +116,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
             let imgs = self.imagePreviewImageStrings.compactMap({
-                url2UIImage(url: $0)
+                UIImage(url: $0)
             })
             if imgs.isEmpty {
                 return

@@ -79,10 +79,18 @@ class Database {
                 t.column("text", .text).notNull()
             }
         }
+        
+        try? dbQueue.write { db in
+            // RetemoJS
+            try db.create(table: "remotejsdata") { t in
+                t.autoIncrementedPrimaryKey("_id")
+                t.column("id", .text).notNull()
+                t.column("title", .text).notNull()
+                t.column("version", .integer).notNull()
+                t.column("jsUrl", .text).notNull()
+                t.column("js", .text)
+            }
+        }
     }
 
 }
-//
-//class CustomJSs {
-//
-//}

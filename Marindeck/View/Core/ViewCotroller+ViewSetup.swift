@@ -8,7 +8,14 @@
 import UIKit
 import WebKit
 
-extension ViewController {
+protocol ViewSetup {
+    func setupView()
+    func setupTweetBtn()
+    func setupWebViewToolBar()
+    func notchLogoSetup()
+}
+
+extension ViewController: ViewSetup {
 
     func setupView() {
         view.backgroundColor = #colorLiteral(red: 0.08181380481, green: 0.1257319152, blue: 0.1685300171, alpha: 1)
@@ -141,6 +148,7 @@ extension ViewController {
             webView.load(urlRequest)
         }
         self.mainDeckView.addSubview(webView)
+        td.webView = webView
 
         webView.translatesAutoresizingMaskIntoConstraints = false
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {

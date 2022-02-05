@@ -72,7 +72,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "alert.importedSettings.title")
     }
     internal enum LogoutMessage {
-      /// 先にいってしまうでござるか
+      /// ログアウトしますか？
       internal static let title = L10n.tr("Localizable", "alert.logoutMessage.title")
     }
     internal enum Open {
@@ -211,6 +211,12 @@ internal enum L10n {
       internal enum Header {
         /// 一般
         internal static let title = L10n.tr("Localizable", "settings.general.header.title")
+      }
+    }
+    internal enum Icon {
+      internal enum Cell {
+        /// アイコン
+        internal static let title = L10n.tr("Localizable", "settings.icon.cell.title")
       }
     }
     internal enum ImportSettings {
