@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.shared.setup()
         Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
         
+        #if DEBUG
+        Test()
+        #endif
+        
         return true
     }
 

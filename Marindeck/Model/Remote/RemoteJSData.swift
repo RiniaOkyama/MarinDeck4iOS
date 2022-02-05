@@ -7,9 +7,10 @@
 import GRDB
 
 struct RemoteJSData: Codable, FetchableRecord, PersistableRecord {
+    let _id: Int64?
     let id: String
     let title: String
-    let version: Int
-    let jsUrl: String
+    var version: Int
+    var jsUrl: String
     var js: String?
 }

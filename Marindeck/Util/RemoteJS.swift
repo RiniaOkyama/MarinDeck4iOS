@@ -17,31 +17,24 @@ class RemoteJS {
     private var savedRemoteJSs: [RemoteJSData]?
     
     func update(completion: @escaping() -> ()) {
-        let queue = DispatchQueue.global(qos: .background)
-        let semaphore = DispatchSemaphore(value: 10)
-        
+        fetchDb()
         fetch { [weak self] remoteJSs in
             guard let self = self else { return }
             self.remoteJSs = remoteJSs
-            
+        
             for remoteJS in remoteJSs ?? [] {
                 if !self.isLatest(latest: remoteJS) {
-                    queue.async {
-                        self.fetchJS(remoteJS: remoteJS) { result in
-                            semaphore.signal()
-                        }
-                        semaphore.wait()
-                    }
+                    let result = self.fetchJS(remoteJS: remoteJS)
+                    self.saveDb(remoteJS: result)
                 }
-                
             }
-            
+            self.fetchDb()
             completion()
         }
     }
     
     func getJs(id: RemoteJSDataId) -> String? {
-        remoteJSs?.filter { $0.id == id.rawValue }[safe: 0]?.js
+        savedRemoteJSs?.filter { $0.id == id.rawValue }[safe: 0]?.js
     }
     
     
@@ -71,20 +64,41 @@ class RemoteJS {
         }
     }
     
-    private func fetchJS(remoteJS: RemoteJSData, completion: @escaping(RemoteJSData) -> ()) {
-        AF.request(remoteJS.jsUrl).response { response in
-            guard let data = response.data else { return }
+    private func saveDb(remoteJS: RemoteJSData) {
+        if let rjs = savedRemoteJSs?.filter({ $0.id == remoteJS.id })[safe: 0] {
+            var saverjs = rjs
+            saverjs.version = remoteJS.version
+            saverjs.jsUrl = remoteJS.jsUrl
+            saverjs.js = remoteJS.js
+            try! dbQueue.write { db in
+                try saverjs.update(db)
+            }
+        } else {
+            try! dbQueue.write { db in
+                try remoteJS.insert(db)
+            }
+        }
+    }
+    
+    private func fetchJS(remoteJS: RemoteJSData) -> RemoteJSData {
+        print(#function)
+        let semaphore = DispatchSemaphore(value: 0)
+        let queue = DispatchQueue.global(qos: .utility)
+        var result = remoteJS
+        AF.request(remoteJS.jsUrl).response(queue: queue) { response in
+            print(response)
+            guard let data = response.data else {
+                semaphore.signal()
+                return
+            }
             var tmpRemoteJS = remoteJS
             tmpRemoteJS.js = String(data: data, encoding: .utf8)
-            completion(tmpRemoteJS)
+            result = tmpRemoteJS
+            semaphore.signal()
         }
-        
+        semaphore.wait()
+        return result
     }
 
     
-}
-
-func aa() {
-    let remoteJs = RemoteJS.shared
-    remoteJs.getJs(id: .navigationTab)
 }

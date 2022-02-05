@@ -71,6 +71,11 @@ extension ViewController: WKNavigationDelegate {
 
         let theme = fetchTheme()
         debugJS(script: theme.js)
+        
+        let rjs = RemoteJS.shared
+        rjs.update { [weak self] () in
+            self?.debugJS(script: rjs.getJs(id: .navigationTab) ?? "")
+        }
 
     }
 
