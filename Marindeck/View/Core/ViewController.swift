@@ -318,7 +318,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
 
         let imgs = imgUrls.compactMap({
-            url2UIImage(url: $0)
+            UIImage(url: $0)
         })
 
         if imgs.isEmpty {
@@ -394,20 +394,4 @@ extension ViewController: ImageViewerDelegate {
         )
     }
     
-}
-
-
-// FIXME
-func url2UIImage(url: String) -> UIImage? {
-    let url = URL(string: url)
-    if url == nil {
-        return nil
-    }
-    do {
-        let data = try Data(contentsOf: url!)
-        return UIImage(data: data)
-    } catch let err {
-        print("Error : \(err.localizedDescription)")
-    }
-    return nil
 }

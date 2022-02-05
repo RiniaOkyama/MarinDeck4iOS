@@ -79,7 +79,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         }
 
         DispatchQueue.global().async {
-            image = url2UIImage(url: imgurl.1[imgurl.0])
+            image = UIImage(url: imgurl.1[imgurl.0])
             
             DispatchQueue.main.async {
                 self.imageView.image = image
@@ -116,7 +116,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
             let imgs = self.imagePreviewImageStrings.compactMap({
-                url2UIImage(url: $0)
+                UIImage(url: $0)
             })
             if imgs.isEmpty {
                 return
