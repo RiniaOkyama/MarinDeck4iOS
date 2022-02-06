@@ -58,6 +58,7 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck.dev
+        INFOPLIST_FILE: MarinDeck/Info-dev.plist
     dependencies:
       - package: GRDB
       - package: MarkdownView
