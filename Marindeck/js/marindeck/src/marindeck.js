@@ -176,10 +176,6 @@ function swiftLog(...msg) {
     webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
 }
 
-function openSettings() {
-    webkit.messageHandlers.openSettings.postMessage(true);
-}
-
 function touchPointTweetLike(x, y) {
     document.elementFromPoint(x, y).closest(".tweet").getElementsByClassName("tweet-action")[2].click();
 }
@@ -326,7 +322,7 @@ const getAllAccounts = () => {
     return accounts
 }
 
-const postTweet = (text, reply_to_id = null, key = null) => {
+export const postTweet = (text, reply_to_id = null, key = null) => {
     new Promise((resolve, reject) => {
         getClient(key).update(text, reply_to_id, null, null, null, resolve, reject)
     })
