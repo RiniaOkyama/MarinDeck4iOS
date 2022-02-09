@@ -7,13 +7,12 @@ const { resolve } = require('path')
 export default defineConfig({
   build: {
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'src/main.ts')
-      },
+      input: 'src/main.ts',
       output: {
-        entryFileNames: '[name].js',
-      },
+          entryFileNames: 'marindeck.js'
+      }
     },
+    outDir: '../Marindeck/js'
   },
 
   // plugins: [
