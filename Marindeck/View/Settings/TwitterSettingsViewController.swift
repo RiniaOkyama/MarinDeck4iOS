@@ -15,6 +15,14 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
     public var url = "https://mobile.twitter.com/settings"
 
     var webView: WKWebView!
+    lazy var dismissButton: UIButton = {
+       let btn = UIButton()
+        let cf = UIImage.SymbolConfiguration(pointSize: 28, weight: .medium, scale: .default)
+        btn.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: cf), for: .normal)
+        btn.tintColor = .label
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
     
     private var disposeBag = DisposeBag()
 
@@ -29,13 +37,18 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isModalInPresentation = true
-
-        navigationController?.navigationBar.barTintColor = .label
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
-        navigationController?.navigationBar.tintColor = .label
+        view.addSubview(dismissButton)
+        
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
+            dismissButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12),
+            dismissButton.widthAnchor.constraint(equalToConstant: 28),
+            dismissButton.heightAnchor.constraint(equalToConstant: 28)
+        ])
+        
+        dismissButton.addTarget(self, action: #selector(onDismiss), for: .touchUpInside)
+        
+        view.bringSubviewToFront(webView)
 
         let myURL = URL(string: url)
         let request = URLRequest(url: myURL!)
