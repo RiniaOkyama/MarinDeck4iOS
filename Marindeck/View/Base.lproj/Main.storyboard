@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -147,7 +147,7 @@
                                 <rect key="frame" x="12" y="218" width="256" height="509"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="21c-6I-ALx">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="164"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="220"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47l-ux-vNe" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="256" height="52"/>
@@ -179,6 +179,17 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="カラムの追加"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="rectangle.stack.fill" catalog="system"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecm-OG-a3r" customClass="MenuItemView" customModule="Marindeck" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="168" width="256" height="52"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="Cj5-zc-2S9"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Twitterの設定"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="rectangle.stack.fill" catalog="system"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -226,6 +237,7 @@
                         <outlet property="profileMenu" destination="47l-ux-vNe" id="R7N-Rx-qZa"/>
                         <outlet property="reloadMenu" destination="KGg-ez-ShH" id="l1R-pu-OTi"/>
                         <outlet property="settingsButton" destination="nyB-cX-Xhh" id="xBE-gv-x0s"/>
+                        <outlet property="twitterSettingsMenu" destination="ecm-OG-a3r" id="YCk-nt-gIf"/>
                         <outlet property="userIconImageView" destination="H9N-or-ZyM" id="3kN-fk-HkY"/>
                     </connections>
                 </viewController>

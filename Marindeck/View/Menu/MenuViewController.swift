@@ -25,6 +25,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var profileMenu: MenuItemView!
     @IBOutlet weak var reloadMenu: MenuItemView!
     @IBOutlet weak var columnMenu: MenuItemView!
+    @IBOutlet weak var twitterSettingsMenu: MenuItemView!
     
 //    @IBOutlet weak var marinDeckLogoView: UIImageView!
 
@@ -39,7 +40,7 @@ class MenuViewController: UIViewController {
         userIconImageView.clipsToBounds = true
         userIconImageView.layer.cornerRadius = 30
         
-        [profileMenu, reloadMenu, columnMenu].forEach({
+        [profileMenu, reloadMenu, columnMenu, twitterSettingsMenu].forEach({
             $0?.iconView.tintColor = .labelColor
             $0?.titleLabel.textColor = .labelColor
         })
@@ -49,6 +50,7 @@ class MenuViewController: UIViewController {
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
         columnMenu.setTapEvent(action: #selector(columnAddTapped), target: self)
+        twitterSettingsMenu.setTapEvent(action: #selector(twitterSettingsTapped), target: self)
 
         profileMenu.title = L10n.Menu.Profile.title
         reloadMenu.title = L10n.Menu.Reload.title
@@ -77,6 +79,11 @@ class MenuViewController: UIViewController {
             self.columnMenu.backgroundColor = .clear
         })
         delegate.openColumnAdd()
+    }
+    
+    @objc func twitterSettingsTapped() {
+        let vc = TwitterSettingsViewController()
+        present(vc, animated: true, completion: nil)
     }
     
     func setUserIcon(url:String){
