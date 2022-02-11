@@ -7,11 +7,16 @@
 
 import UIKit
 import WebKit
+import RxWebKit
+import RxSwift
+import RxCocoa
 
 class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     public var url = "https://mobile.twitter.com/settings"
 
     var webView: WKWebView!
+    
+    private var disposeBag = DisposeBag()
 
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -60,30 +65,18 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
             config.userContentController.add(rulesList)
             self.webView.load(request)
         }
+        
+        webView.rx.url
+            .subscribe(onNext: {
+                if !($0?.path.contains("/settings") ?? true) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
 
     @objc func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
-
-
-    func webView(_ webView: WKWebView,
-                 decidePolicyFor navigationAction: WKNavigationAction,
-                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url
-        guard let host = url?.host else {
-            decisionHandler(.cancel)
-            return
-        }
-        
-        if host == "tweetdeck.twitter.com" || url?.lastPathComponent == "home" {
-            decisionHandler(.cancel)
-            dismiss(animated: true, completion: nil)
-            return
-        }
-
-        decisionHandler(.allow)
-    }
-
 }
