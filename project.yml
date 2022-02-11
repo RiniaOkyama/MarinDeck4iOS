@@ -55,6 +55,9 @@ targets:
       - package: GiphyUISDK
       - package: RxWebKit
       - package: RxSwift
+    preBuildScripts:
+      - path: ./scripts/swiftlint.sh
+        name: Run SwiftLint
 
   Marindeck-dev:
     type: application
