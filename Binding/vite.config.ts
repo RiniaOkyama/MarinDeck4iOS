@@ -5,6 +5,9 @@ const { resolve } = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild: {
+    minify: false
+  },
   build: {
     rollupOptions: {
       input: 'src/main.ts',
@@ -14,7 +17,6 @@ export default defineConfig({
     },
     outDir: '../Marindeck/js'
   },
-
   // plugins: [
   //   reactRefresh(),
   //   copy({
