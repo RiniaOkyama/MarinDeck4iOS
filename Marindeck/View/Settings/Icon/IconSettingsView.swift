@@ -16,7 +16,7 @@ struct Icon: Hashable {
 struct IconSettingsListItem: View {
     let icon: Icon
     let isSelected: Bool
-    
+
     var body: some View {
         HStack {
             Image(icon.iconName)
@@ -38,24 +38,24 @@ struct IconSettingsListItem: View {
 
 struct IconSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    init(){
+
+    init() {
         UITableView.appearance().backgroundColor = .secondaryBackgroundColor
     }
-    
-//    @State private var icons = ["DefaultIcon": "白","BlackIcon": "黒","RainbowIcon": "ゲーミング"]
+
+    //    @State private var icons = ["DefaultIcon": "白","BlackIcon": "黒","RainbowIcon": "ゲーミング"]
     let icons: [Icon] = [
         .init(iconName: "DefaultIcon", iconTitle: "白", iconFlag: nil),
         .init(iconName: "BlackIcon", iconTitle: "黒", iconFlag: "BlackIcon"),
         .init(iconName: "RainbowIcon", iconTitle: "ゲーミング", iconFlag: "RainbowIcon")
     ]
-    
+
     @State private var alternateIconName = UIApplication.shared.alternateIconName
-    
+
     var body: some View {
         ZStack {
-        //TODO:  NavigatonViewのタイトルを設定しても表示されない
-//        NavigationView {
+            // TODO:  NavigatonViewのタイトルを設定しても表示されない
+            //        NavigationView {
             List {
                 ForEach(icons, id: \.self) { icon in
                     IconSettingsListItem(icon: icon, isSelected: alternateIconName == icon.iconFlag )
@@ -66,20 +66,19 @@ struct IconSettingsView: View {
                         }
                         .listRowBackground(Color(UIColor.secondaryBackgroundColor))
                 }
-        }
+            }
             .onAppear {
                 updateIconName()
             }
-//        }
-//        .navigationBarTitle(Text("Users"))
-            }
+            //        }
+            //        .navigationBarTitle(Text("Users"))
+        }
     }
-    
+
     func updateIconName() {
         alternateIconName = UIApplication.shared.alternateIconName
     }
 }
-
 
 struct IconSettingsView_Previews: PreviewProvider {
     static var previews: some View {

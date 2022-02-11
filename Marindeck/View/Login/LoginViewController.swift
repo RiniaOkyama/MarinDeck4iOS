@@ -40,7 +40,6 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         let myURL = URL(string: url)
         let request = URLRequest(url: myURL!)
 
-
         let jsonString = """
                          [{
                            "trigger": {
@@ -67,11 +66,9 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         }
     }
 
-
     @objc func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
-
 
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     public convenience init(url: String) {
-        guard let url = URL(string: url) else{
+        guard let url = URL(string: url) else {
             self.init()
             return
         }

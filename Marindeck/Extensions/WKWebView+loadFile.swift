@@ -28,7 +28,7 @@ extension WKWebView {
                      s.insertAdjacentHTML('beforeend', "\(deletecomment)");
                      h.insertAdjacentElement('beforeend', s)
                      """
-        self.evaluateJavaScript(script) { object, error in
+        self.evaluateJavaScript(script) { _, error in
             print("stylecss : ", error ?? "成功")
         }
     }
@@ -45,7 +45,7 @@ extension WKWebView {
         mtFile.closeFile()
 
         let mtScript = mtContentString
-        self.evaluateJavaScript(mtScript) { object, error in
+        self.evaluateJavaScript(mtScript) { _, error in
             print("webViewLog : ", error ?? "成功")
         }
     }

@@ -14,12 +14,16 @@ struct Provider: IntentTimelineProvider {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(for configuration: ConfigurationIntent,
+                     in context: Context,
+                     completion: @escaping (SimpleEntry) -> Void) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: ConfigurationIntent,
+                     in context: Context,
+                     completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -43,17 +47,17 @@ struct SimpleEntry: TimelineEntry {
 struct TrendView: View {
     @Binding var title: String
     @Binding var ranking: String
-    
+
     var body: some View {
         HStack {
-//            ZStack {
-//                Circle()
-//                    .fill(Color.clear)
-//                    .frame(width: 30, height: 30)
-//                Text(ranking)
-//                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//            }
-                
+            //            ZStack {
+            //                Circle()
+            //                    .fill(Color.clear)
+            //                    .frame(width: 30, height: 30)
+            //                Text(ranking)
+            //                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            //            }
+
             Text(title)
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
@@ -63,9 +67,9 @@ struct TrendView: View {
     }
 }
 
-struct MarinDeckExtensionEntryView : View {
+struct MarinDeckExtensionEntryView: View {
     var entry: Provider.Entry
-    
+
     @State var title1st: String = "#ゲットしよう15種のお菓子"
     @State var title2nd: String = "#本当に人間ですか"
     @State var title3rd: String = "御園座初日"
@@ -73,39 +77,39 @@ struct MarinDeckExtensionEntryView : View {
     var body: some View {
         ZStack {
             Color(red: 0.08, green: 0.12, blue: 0.16)
-                 .edgesIgnoringSafeArea(.all)
-            
+                .edgesIgnoringSafeArea(.all)
+
             HStack {
                 VStack(alignment: .leading, spacing: 15.0) {
-//                    HStack {
-////                        ZStack {
-////                            Circle()
-////                                .fill(Color.yellow)
-////                                .frame(width: 30, height: 30)
-////                            Text("1")
-////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-////
-////                        }
-//
-//                        Text("からあげクン誕生日おめでとう")
-//                            .foregroundColor(.white)
-//                            .fontWeight(.semibold)
-//                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-//                    }
-//
-//                    HStack {
-////                        ZStack {
-////                            Circle()
-////                                .fill(Color.gray)
-////                                .frame(width: 30, height: 30)
-////                            Text("2")
-////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-////                        }
-//
-//                        Text("あんスタSSスタンプラリー")
-//                            .foregroundColor(.white)
-//                            .fontWeight(.semibold)
-//                    }
+                    //                    HStack {
+                    ////                        ZStack {
+                    ////                            Circle()
+                    ////                                .fill(Color.yellow)
+                    ////                                .frame(width: 30, height: 30)
+                    ////                            Text("1")
+                    ////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    ////
+                    ////                        }
+                    //
+                    //                        Text("からあげクン誕生日おめでとう")
+                    //                            .foregroundColor(.white)
+                    //                            .fontWeight(.semibold)
+                    //                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                    //                    }
+                    //
+                    //                    HStack {
+                    ////                        ZStack {
+                    ////                            Circle()
+                    ////                                .fill(Color.gray)
+                    ////                                .frame(width: 30, height: 30)
+                    ////                            Text("2")
+                    ////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    ////                        }
+                    //
+                    //                        Text("あんスタSSスタンプラリー")
+                    //                            .foregroundColor(.white)
+                    //                            .fontWeight(.semibold)
+                    //                    }
                     TrendView(title: $title1st, ranking: $title3rd)
                     TrendView(title: $title2nd, ranking: $title3rd)
                     TrendView(title: $title3rd, ranking: $title3rd)
@@ -116,7 +120,7 @@ struct MarinDeckExtensionEntryView : View {
             .padding(10)
         }
     }
-    
+
 }
 
 @main

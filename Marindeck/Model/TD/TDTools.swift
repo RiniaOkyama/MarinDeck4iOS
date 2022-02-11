@@ -8,7 +8,7 @@
 import Foundation
 
 class TDTools {
-    
+
     static func url2SmallImg(_ str: String) -> String {
         var r = str.replacingOccurrences(of: "url(\"", with: "")
         r = r.replacingOccurrences(of: "\")", with: "")

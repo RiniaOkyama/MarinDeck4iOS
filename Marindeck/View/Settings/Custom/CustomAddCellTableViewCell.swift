@@ -13,21 +13,21 @@ protocol CustomAddCellOutput {
 
 class CustomAddCellTableViewCell: UITableViewCell {
     public var delegate: CustomAddCellOutput!
-    
+
     @IBOutlet weak var backView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.backgroundColor = .backgroundColor
         backView.layer.cornerRadius = 8
         backView.backgroundColor = .secondaryBackgroundColor
-        
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.create))
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.create))
         backView.addGestureRecognizer(gesture)
-        
+
     }
-    
+
     @objc func create() {
         delegate?.create()
     }
@@ -36,7 +36,5 @@ class CustomAddCellTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 
-    
 }
