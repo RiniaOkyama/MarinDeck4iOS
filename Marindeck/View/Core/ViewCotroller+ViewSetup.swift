@@ -77,7 +77,7 @@ extension ViewController: ViewSetup {
                     handler: { [unowned self] _ -> Void in
                         switch actionType {
                         case .debug:
-                            self.debugPressed()
+                            self.openDebugModal()
                         case .gif:
                             self.openSelectGif()
                         case .tweet:

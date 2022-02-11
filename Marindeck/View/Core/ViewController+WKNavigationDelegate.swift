@@ -56,7 +56,7 @@ extension ViewController: WKNavigationDelegate {
             .filter { $0.isLoad }
             .sorted(by: { $0.loadIndex < $1.loadIndex })
         for item in cjss {
-            debugJS(script: item.js)
+            webView.inject(js: item.js)
         }
 
         let csss = try! dbQueue.read { db in
@@ -65,16 +65,16 @@ extension ViewController: WKNavigationDelegate {
             .filter { $0.isLoad }
             .sorted(by: { $0.loadIndex < $1.loadIndex })
         for item in csss {
-            debugCSS(css: item.css)
+            webView.inject(css: item.css)
         }
 
 
         let theme = fetchTheme()
-        debugJS(script: theme.js)
+        webView.inject(js: theme.js)
         
         let rjs = RemoteJS.shared
         rjs.update { [weak self] () in
-            self?.debugJS(script: rjs.getJs(id: .navigationTab) ?? "")
+            self?.webView.inject(js: rjs.getJs(id: .navigationTab) ?? "")
         }
 
     }
