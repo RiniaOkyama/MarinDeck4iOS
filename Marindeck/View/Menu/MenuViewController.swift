@@ -83,8 +83,7 @@ class MenuViewController: UIViewController {
     
     @objc func twitterSettingsTapped() {
         let vc = TwitterSettingsViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
     
     func setUserIcon(url:String){
