@@ -10,6 +10,12 @@ packages:
   GiphyUISDK:
     url: https://github.com/Giphy/giphy-ios-sdk
     exactVersion: 2.1.16
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift.git
+    exactVersion: 6.5.0
+  RxWebKit:
+    url: https://github.com/RxSwiftCommunity/RxWebKit
+    exactVersion: 2.0.1
 
       
 
@@ -47,6 +53,8 @@ targets:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift
 
   Marindeck-dev:
     type: application
