@@ -28,30 +28,28 @@ extension ViewController {
         }
 
         let touchevent = touches.first!
-//        let view = touchevent.view!
+        //        let view = touchevent.view!
         let old = touchevent.previousLocation(in: self.view)
         let new = touchevent.location(in: self.view)
 
         let move_x = new.x - old.x
-//        let move_y = new.y - old.y
+        //        let move_y = new.y - old.y
 
-
-//        if swipeStruct.isFirstTouch{
-//            print(move_x, move_y)
-//            swipeStruct.isMenuCloseRight = abs(move_x) > abs(move_y)
-//            swipeStruct.isFirstTouch = false
-//            
-//            if swipeStruct.isMenuCloseRight{
-//                UIView.animate(withDuration: 0.2, animations: {
-//                    self.mainDeckBlurView.backgroundColor = .none
-//                })
-//            }else{
-//                return
-//            }
-//        }
-//        
-//        if !swipeStruct.isMenuCloseRight{return}
-
+        //        if swipeStruct.isFirstTouch{
+        //            print(move_x, move_y)
+        //            swipeStruct.isMenuCloseRight = abs(move_x) > abs(move_y)
+        //            swipeStruct.isFirstTouch = false
+        //
+        //            if swipeStruct.isMenuCloseRight{
+        //                UIView.animate(withDuration: 0.2, animations: {
+        //                    self.mainDeckBlurView.backgroundColor = .none
+        //                })
+        //            }else{
+        //                return
+        //            }
+        //        }
+        //
+        //        if !swipeStruct.isMenuCloseRight{return}
 
         if self.menuView.frame.origin.x > 0 && 0 < move_x {
 
@@ -61,7 +59,6 @@ extension ViewController {
             self.menuView.center.x += move_x
         }
 
-
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +67,7 @@ extension ViewController {
             return
         }
         swipeStruct.isMoving = false
-        
+
         if mainDeckView.frame.origin.x > self.menuView.frame.width / 2 {
             isMenuOpen = true
             UIView.animate(withDuration: 0.3, animations: {
@@ -88,8 +85,8 @@ extension ViewController {
             mainDeckBlurView.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.3, animations: {
                 self.mainDeckBlurView.backgroundColor = .none
-//                    self.topBackBlurView.backgroundColor = .none
-//                    self.bottomBackBlurView.backgroundColor = .none
+                //                    self.topBackBlurView.backgroundColor = .none
+                //                    self.bottomBackBlurView.backgroundColor = .none
 
                 self.mainDeckBlurView.frame.origin.x = 0
                 self.mainDeckView.frame.origin.x = 0
@@ -100,7 +97,7 @@ extension ViewController {
             })
         }
     }
-    
+
     // MARK: Menu open
     @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
         let move: CGPoint = sender.translation(in: view)
@@ -115,9 +112,9 @@ extension ViewController {
 
         self.view.layoutIfNeeded()
 
-        if (sender.state == .began) {
+        if sender.state == .began {
             print("began")
-//            isColumnScroll(false)
+            //            isColumnScroll(false)
             menuView.translatesAutoresizingMaskIntoConstraints = false
             mainDeckView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -149,7 +146,6 @@ extension ViewController {
                 })
             })
 
-
             mainDeckBlurView.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.2, animations: {
                 self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -159,10 +155,10 @@ extension ViewController {
                 self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
                 self?.menuVC.setUserNameID(name: account.name ?? "", id: account.userId ?? "")
             }
-            
-        } else if (sender.state == .ended || sender.state == .cancelled || sender.state == .failed) {
+
+        } else if sender.state == .ended || sender.state == .cancelled || sender.state == .failed {
             print("cancel or end or fail")
-//            isColumnScroll(true)
+            //            isColumnScroll(true)
             menuView.translatesAutoresizingMaskIntoConstraints = true
             mainDeckView.translatesAutoresizingMaskIntoConstraints = true
 
@@ -177,8 +173,8 @@ extension ViewController {
                 mainDeckBlurView.isUserInteractionEnabled = false
                 UIView.animate(withDuration: 0.3, animations: {
                     self.mainDeckBlurView.backgroundColor = .none
-//                    self.topBackBlurView.backgroundColor = .none
-//                    self.bottomBackBlurView.backgroundColor = .none
+                    //                    self.topBackBlurView.backgroundColor = .none
+                    //                    self.bottomBackBlurView.backgroundColor = .none
 
                     self.mainDeckBlurView.frame.origin.x = 0
                     self.mainDeckView.frame.origin.x = 0

@@ -9,7 +9,7 @@ import Foundation
 import WebKit
 
 extension WKWebView {
-    
+
     // FIXME: evaluteWithErrorは使用しない実装に変更
     // JS デバッグ
     @discardableResult
@@ -37,7 +37,7 @@ extension WKWebView {
     // CSS デバッグ
     func inject(css: String) {
         let script = WKWebView.css2JS(css: css)
-        evaluateJavaScript(script) { object, error in
+        evaluateJavaScript(script) { _, error in
             print("stylecss : ", error ?? "成功")
         }
     }

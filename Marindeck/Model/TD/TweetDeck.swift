@@ -11,7 +11,6 @@
 import Foundation
 import WebKit
 
-
 class TDBase {
     weak var webView: WKWebView?
 }
@@ -27,7 +26,7 @@ final class TD: TDBase {
         get { super.webView }
         set(value) {
             super.webView = value
-            
+
             account.webView = value
             settings.webView = value
             actions.webView = value
@@ -38,4 +37,3 @@ final class TD: TDBase {
     class AccountController: TDBase {}
     class ActionsController: TDBase {}
 }
-

@@ -16,14 +16,14 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
 
     var webView: WKWebView!
     lazy var dismissButton: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         let cf = UIImage.SymbolConfiguration(pointSize: 28, weight: .medium, scale: .default)
         btn.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: cf), for: .normal)
         btn.tintColor = .label
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    
+
     private var disposeBag = DisposeBag()
 
     override func loadView() {
@@ -38,21 +38,20 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
         super.viewDidLoad()
 
         view.addSubview(dismissButton)
-        
+
         NSLayoutConstraint.activate([
             dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
             dismissButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
             dismissButton.heightAnchor.constraint(equalToConstant: 28)
         ])
-        
+
         dismissButton.addTarget(self, action: #selector(onDismiss), for: .touchUpInside)
-        
+
         view.bringSubviewToFront(webView)
 
         let myURL = URL(string: url)
         let request = URLRequest(url: myURL!)
-
 
         let jsonString = """
                          [{
@@ -78,7 +77,7 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
             config.userContentController.add(rulesList)
             self.webView.load(request)
         }
-        
+
         webView.rx.url
             .subscribe(onNext: {
                 if !($0?.path.contains("/settings") ?? true) {
@@ -87,7 +86,6 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
             })
             .disposed(by: disposeBag)
     }
-
 
     @objc func onDismiss() {
         dismiss(animated: true, completion: nil)

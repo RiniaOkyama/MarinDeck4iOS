@@ -29,10 +29,10 @@ extension ViewController: ViewControllerAction {
 
         return (index, imgUrls)
     }
-    
+
     // TweetDeckのツイートモーダルに遷移
     func openWebViewTweetModal() {
-        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
+        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { _, error in
             print("webViewLog : ", error ?? "成功")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.td.actions.focusTweetTextArea()

@@ -9,7 +9,6 @@ import Foundation
 import class UIKit.UIView
 import class UIKit.UIColor
 
-
 protocol MenuAction {
     func closeMenu()
     func openMenu()
@@ -23,14 +22,14 @@ extension ViewController: MenuDelegate {
 
     func openProfile() {
         closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
+        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { _, error in
             print("openProfile : ", error ?? "成功")
         }
     }
 
     func openColumnAdd() {
         closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
+        webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { _, error in
             print(#function, error ?? "成功")
         }
     }

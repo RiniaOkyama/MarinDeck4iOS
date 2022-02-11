@@ -10,11 +10,11 @@ import UIKit
 extension Date {
 
     func offsetFrom() -> String {
-        if yearsFrom()   > 0 { return "\(yearsFrom())年前"   }
-        if monthsFrom()  > 0 { return "\(monthsFrom())ヶ月前"  }
-        if weeksFrom()   > 0 { return "\(weeksFrom())週間前"   }
-        if daysFrom()    > 0 { return "\(daysFrom())日前"    }
-        if hoursFrom()   > 0 { return "\(hoursFrom())時間前"   }
+        if yearsFrom() > 0 { return "\(yearsFrom())年前" }
+        if monthsFrom() > 0 { return "\(monthsFrom())ヶ月前" }
+        if weeksFrom() > 0 { return "\(weeksFrom())週間前" }
+        if daysFrom() > 0 { return "\(daysFrom())日前" }
+        if hoursFrom() > 0 { return "\(hoursFrom())時間前" }
         if minutesFrom() > 0 { return "\(minutesFrom())分前" }
         if secondsFrom() > 0 { return "\(secondsFrom())秒前" }
         return ""

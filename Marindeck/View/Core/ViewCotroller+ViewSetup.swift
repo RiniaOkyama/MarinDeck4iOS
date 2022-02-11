@@ -27,12 +27,12 @@ extension ViewController: ViewSetup {
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleAspectFill
 
-//        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
+        //        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
         tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
         tweetFloatingBtn.layer.shadowOpacity = 0.3
         tweetFloatingBtn.layer.shadowRadius = 4
-//        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        //        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         tweetFloatingBtn.setImage(Asset.tweet.image)
         tweetFloatingBtn.tapped = tweetPressed
 
@@ -47,8 +47,8 @@ extension ViewController: ViewSetup {
         mainDeckBlurView.backgroundColor = .none
         mainDeckBlurView.isUserInteractionEnabled = false
 
-//        menuView.translatesAutoresizingMaskIntoConstraints = true
-//        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
+        //        menuView.translatesAutoresizingMaskIntoConstraints = true
+        //        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
 
         NotificationCenter.default.addObserver(self, selector: #selector(onOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
 
@@ -58,7 +58,6 @@ extension ViewController: ViewSetup {
 
         self.view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
-
 
         setupWebView()
 
@@ -73,25 +72,25 @@ extension ViewController: ViewSetup {
         for item in arr {
             let actionType = ActionButtons(rawValue: item)
             let action = NDTweetBtnAction(
-                    image: actionType?.getImage() ?? UIImage(),
-                    handler: { [unowned self] _ -> Void in
-                        switch actionType {
-                        case .debug:
-                            self.openDebugModal()
-                        case .gif:
-                            self.openSelectGif()
-                        case .tweet:
-                            self.openWebViewTweetModal()
-                        case .menu:
-                            self.openMenu()
-                        case .draft:
-                            self.openDraft()
-                        case .settings:
-                            self.openSettings()
-                        case .none:
-                            break
-                        }
+                image: actionType?.getImage() ?? UIImage(),
+                handler: { [unowned self] _ -> Void in
+                    switch actionType {
+                    case .debug:
+                        self.openDebugModal()
+                    case .gif:
+                        self.openSelectGif()
+                    case .tweet:
+                        self.openWebViewTweetModal()
+                    case .menu:
+                        self.openMenu()
+                    case .draft:
+                        self.openDraft()
+                    case .settings:
+                        self.openSettings()
+                    case .none:
+                        break
                     }
+                }
             )
             tweetFloatingBtn.addAction(action: action)
         }
@@ -112,23 +111,22 @@ extension ViewController: ViewSetup {
 
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
 
-//        webView.frame.size.width = view.frame.width
-//        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
-//        webView.frame.origin.y = topBackView.frame.height
-//        webView.frame = view.safeAreaLayoutGuide.layoutFrame
-        
+        //        webView.frame.size.width = view.frame.width
+        //        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
+        //        webView.frame.origin.y = topBackView.frame.height
+        //        webView.frame = view.safeAreaLayoutGuide.layoutFrame
 
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
-//        webView.scrollView.delegate = self
+        //        webView.scrollView.delegate = self
 
-//        self.mainDeckView.addSubview(webView)
-//        webView.anchorAll(equalTo: mainDeckView)
+        //        self.mainDeckView.addSubview(webView)
+        //        webView.anchorAll(equalTo: mainDeckView)
         webView.isOpaque = false
-//        webView.allowsLinkPreview = false
-//        webView.navigationDelegate = self
+        //        webView.allowsLinkPreview = false
+        //        webView.navigationDelegate = self
 
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panTop))
         edgePan.edges = .left
@@ -141,7 +139,7 @@ extension ViewController: ViewSetup {
 
         if DebugSettings.isWebViewLoad {
             let deckURL = URL(string: "https://tweetdeck.twitter.com")
-//        let deckURL = URL(string: " https://mobile.twitter.com/login?hide_message=true&redirect_after_login=https://tweetdeck.twitter.com")
+            //        let deckURL = URL(string: " https://mobile.twitter.com/login?hide_message=true&redirect_after_login=https://tweetdeck.twitter.com")
 
             var urlRequest = URLRequest(url: deckURL!)
             urlRequest.cachePolicy = .returnCacheDataElseLoad // https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/useprotocolcachepolicy
@@ -153,7 +151,7 @@ extension ViewController: ViewSetup {
         webView.translatesAutoresizingMaskIntoConstraints = false
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
             webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        }else {
+        } else {
             webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         }
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -179,16 +177,16 @@ extension ViewController: ViewSetup {
 
         webView.addIndexAccessoryView(toolbar: toolbar)
     }
-    
+
     func notchLogoSetup() {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
         let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
 
-        if(statusBarHeight >= 44.0){
+        if statusBarHeight >= 44.0 {
             notchLogoImageView = UIImageView(image: Asset.iconWhite.image)
             notchLogoImageView.contentMode = .scaleAspectFit
             view.addSubview(notchLogoImageView)
-            
+
             notchLogoImageView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 notchLogoImageView.topAnchor.constraint(equalTo: view.topAnchor),

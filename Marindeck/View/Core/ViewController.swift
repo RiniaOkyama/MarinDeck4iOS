@@ -71,13 +71,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             }
         }
     }
-    
+
     override var keyCommands: [UIKeyCommand]? {
         [
             .init(title: L10n.ActionButton.Tweet.title, action: #selector(tweetPressed), input: "n", modifierFlags: [.command])
         ]
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +90,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         becomeFirstResponder()
         webView.frame = mainDeckView.bounds
         setupTweetBtn()
-        
+
         if !userDefaults.bool(forKey: UserDefaultsKey.isOnBoarding) {
             let onBoardingVC = OnBoardingViewController()
             onBoardingVC.modalPresentationStyle = .currentContext
@@ -100,8 +99,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
     func gestureRecognizer(
-            _ gestureRecognizer: UIGestureRecognizer,
-            shouldRecognizeSimultaneouslyWith
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith
             otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
         true
@@ -132,7 +131,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         statusBarStyle
     }
 
-
     @objc func dismissKeyboard() {
         webView.resignFirstResponder()
     }
@@ -149,11 +147,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             openWebViewTweetModal()
         }
     }
-    
+
     // 下書きを保存
     func saveDraft(text: String) {
         let df = Draft(id: nil, text: text)
-        try! dbQueue.write{ db in
+        try! dbQueue.write { db in
             try df.insert(db)
         }
     }
@@ -178,7 +176,7 @@ extension ViewController: LoginViewControllerOutput {
     func logined() {
         webView.reload()
     }
-    
+
 }
 
 extension ViewController: ImageViewerDelegate {
@@ -191,8 +189,7 @@ extension ViewController: ImageViewerDelegate {
         imagePreviewSelectedIndex = index
         setPreviewImagePosition()
     }
-    
-    
+
     func setPreviewImagePosition() {
         var y = Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 1] ?? 0)
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
@@ -205,5 +202,5 @@ extension ViewController: ImageViewerDelegate {
             height: Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 3] ?? 0)
         )
     }
-    
+
 }

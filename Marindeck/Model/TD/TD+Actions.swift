@@ -8,14 +8,14 @@
 extension TD.ActionsController {
     // ツイート画面のTextViewにフォーカスする
     func focusTweetTextArea() {
-        webView?.evaluateJavaScript("document.querySelector(\".js-compose-text\").focus()") { object, error in
+        webView?.evaluateJavaScript("document.querySelector(\".js-compose-text\").focus()") { _, error in
             print("focusTweetTextArea : ", error ?? "成功")
         }
     }
 
     // 座標の位置にあるツイートをいいね
     func positionTweetLike(x: Int, y: Int) {
-        webView?.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { object, error in
+        webView?.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { _, error in
             print("touchPointTweetLike : ", error ?? "成功")
         })
     }
@@ -23,14 +23,14 @@ extension TD.ActionsController {
     // カラムスクロールの制御（正常に動作しません。）
     func isColumnScroll(_ bool: Bool) {
         let isScroll = bool ? "on" : "off"
-        webView?.evaluateJavaScript("columnScroll.\(isScroll)()") { object, error in
+        webView?.evaluateJavaScript("columnScroll.\(isScroll)()") { _, error in
             print("webViewLog : ", error ?? "成功")
         }
     }
 
     // ツイート
     func tweet(text: String) {
-        webView?.evaluateJavaScript("postTweet('" + text + "')") { object, error in
+        webView?.evaluateJavaScript("postTweet('" + text + "')") { _, error in
             print("tweet : ", error ?? "成功")
         }
     }
@@ -64,4 +64,3 @@ extension TD.ActionsController {
         webView?.evaluateJavaScript("MD4iOS.Blob.set(\(url), \(base64), \(mimeType)")
     }
 }
-

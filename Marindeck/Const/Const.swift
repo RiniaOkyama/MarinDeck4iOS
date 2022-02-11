@@ -28,7 +28,6 @@ struct UserDefaultsKey {
     ]
 }
 
-
 struct EnvKeys {
     static let GIPHY_API_KEY = "GIPHY_API_KEY"
     static let DEPLOYGATE_SDK_API_KEY = "DEPLOYGATE_SDK_API_KEY"
@@ -60,7 +59,7 @@ enum ActionButtons: String {
             return UIImage(systemName: "gearshape")!
         }
     }
-    
+
     func getTitle() -> String {
         switch self {
         case .debug:
@@ -77,7 +76,7 @@ enum ActionButtons: String {
             return L10n.ActionButton.Settings.title
         }
     }
-    
+
     func getDescription() -> String {
         switch self {
         case .debug:
@@ -97,7 +96,7 @@ enum ActionButtons: String {
 }
 
 // Codable?
-struct Theme{
+struct Theme {
     var title: String // テーマ名
     var id: String // かさらないように。一度変更したら変更しないでください。
     var description: String = "" // テーマの説明
@@ -107,11 +106,11 @@ struct Theme{
     var js: String // テーマのJS。テーマに関係ないjsは含まないこと。
     var css: String // テーマのCSS。
 
-//    var backgroundColor: String = UIColor.systemBackground.toHexString()
-//    var secondaryBackgroundColor: String = UIColor.secondarySystemBackground.toHexString()
-//    var labelColor: String = UIColor.label.toHexString()
-//    var subLabelColor: String = UIColor.secondaryLabel.toHexString()
-//    var tweetButtonColor: String = ""
+    //    var backgroundColor: String = UIColor.systemBackground.toHexString()
+    //    var secondaryBackgroundColor: String = UIColor.secondarySystemBackground.toHexString()
+    //    var labelColor: String = UIColor.label.toHexString()
+    //    var subLabelColor: String = UIColor.secondaryLabel.toHexString()
+    //    var tweetButtonColor: String = ""
 
     var backgroundColor: UIColor = .systemBackground
     var secondaryBackgroundColor: UIColor = .secondarySystemBackground
@@ -133,7 +132,7 @@ let themes = [
           subLabelColor: .lightGray,
           lightTopBarColor: .white,
           darkTopBarColor: UIColor(hex: "15202b")
-      ),
+    ),
     Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "", js: getFile2Text("Theme-Midnight"), css: "",
           backgroundColor: .black,
           secondaryBackgroundColor: UIColor(hex: "242424"),
@@ -165,20 +164,19 @@ let themes = [
           lightTopBarColor: #colorLiteral(red: 0.8769347072, green: 0.4038944244, blue: 0.4008696377, alpha: 1),
           darkStatusBarColor: .darkContent,
           tweetButtonColor: UIColor(hex: "242424")
-    ),
+    )
 ]
 
-func fetchTheme() -> Theme{
+func fetchTheme() -> Theme {
     let userDefaults = UserDefaults.standard
-    if let themeID = userDefaults.string(forKey: UserDefaultsKey.themeID){
+    if let themeID = userDefaults.string(forKey: UserDefaultsKey.themeID) {
         return themes.filter({ $0.id == themeID })[0]
-    }else {
+    } else {
         return themes[0]
     }
 }
 
-
-fileprivate func getFile2Text(_ forResource: String, ofType: String = "js") -> String{
+private func getFile2Text(_ forResource: String, ofType: String = "js") -> String {
     if let filepath = Bundle.main.path(forResource: forResource, ofType: ofType) {
         do {
             let contents = try String(contentsOfFile: filepath)
@@ -193,37 +191,36 @@ fileprivate func getFile2Text(_ forResource: String, ofType: String = "js") -> S
     }
 }
 
-
 /// 生体認証が利用可能かどうか
 func canUseBiometrics() -> Bool {
 
-        let context = LAContext()
-        var error: NSError? = nil
+    let context = LAContext()
+    var error: NSError?
 
-        let result = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+    let result = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
 
-        guard !result else { return true }
+    guard !result else { return true }
 
-        if let error = error {
-            // iOS11以降とそれ以前ではErrorのコード名が異なるため、場合分け
-            if #available(iOS 11.0, *) {
-                switch error.code {
-                case LAError.biometryNotEnrolled.rawValue, LAError.biometryLockout.rawValue:
-                    return true
-                default:
-                    return false
-                }
-            } else {
-                switch error.code {
-                case LAError.touchIDNotEnrolled.rawValue, LAError.touchIDLockout.rawValue:
-                    return true
-                default:
-                    return false
-                }
+    if let error = error {
+        // iOS11以降とそれ以前ではErrorのコード名が異なるため、場合分け
+        if #available(iOS 11.0, *) {
+            switch error.code {
+            case LAError.biometryNotEnrolled.rawValue, LAError.biometryLockout.rawValue:
+                return true
+            default:
+                return false
+            }
+        } else {
+            switch error.code {
+            case LAError.touchIDNotEnrolled.rawValue, LAError.touchIDLockout.rawValue:
+                return true
+            default:
+                return false
             }
         }
-        return false
     }
+    return false
+}
 
 /// 生体認証を実行する
 func doBiometricsAuthentication() {
