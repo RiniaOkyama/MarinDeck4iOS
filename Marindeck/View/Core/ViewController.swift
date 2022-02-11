@@ -83,9 +83,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         super.viewDidLoad()
 
         setupView()
-
-//        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
-
         checkBiometrics()
     }
 
@@ -123,7 +120,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
 
-
     // MARK: StatusbarColor
     private (set) var statusBarStyle: UIStatusBarStyle = .default
 
@@ -145,13 +141,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         imageView.removeFromSuperview()
     }
 
-
-//    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-//             scrollView.pinchGestureRecognizer?.isEnabled = false
-//    }
-
-
-
     // ツイートボタンタップ痔の動作
     @objc func tweetPressed() {
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
@@ -161,113 +150,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         }
     }
     
-    // TweetDeckのツイートモーダルに遷移
-    func openWebViewTweetModal() {
-        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
-            print("webViewLog : ", error ?? "成功")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.td.actions.focusTweetTextArea()
-            }
-        }
-    }
-
-    // FIXME: evaluteWithErrorは使用しない実装に変更
-    // JS デバッグ
-    @discardableResult
-    func debugJS(script: String) -> (String, Error?) {
-        let (ret, error) = webView.evaluateWithError(javaScript: script)
-        return ((ret as? String) ?? "", error)
-    }
-
-    // CSSをjsに変換
-    func css2JS(css: String) -> String {
-        var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
-        deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
-        deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
-        let script = """
-                     (() => {
-                     const h = document.documentElement;
-                     const s = document.createElement('style');
-                     s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-                     h.insertAdjacentElement('beforeend', s);
-                     })();
-                     """
-        return script
-    }
-
-    // CSS デバッグ
-    func debugCSS(css: String) {
-        let script = css2JS(css: css)
-        webView.evaluateJavaScript(script) { object, error in
-            print("stylecss : ", error ?? "成功")
-        }
-    }
-
-    
     // 下書きを保存
     func saveDraft(text: String) {
         let df = Draft(id: nil, text: text)
         try! dbQueue.write{ db in
             try df.insert(db)
         }
-    }
-
-    // x, yに画像があれば取ってくる
-    func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
-        guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
-            return (0, [])
-        }
-        let valueStrings = value as! [Any]
-        let index = valueStrings[0] as! Int
-        let urls = valueStrings[1] as! [String]
-
-        let imgUrls = urls.map({
-            url2NomalImg($0)
-        })
-        print("getPositionElements", index, imgUrls)
-
-        return (index, imgUrls)
-    }
-
-    // Menuを閉じる
-    func closeMenu() {
-        isMenuOpen = false
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        mainDeckView.translatesAutoresizingMaskIntoConstraints = false
-        mainDeckBlurView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.2, animations: {
-            self.mainDeckBlurView.backgroundColor = .none
-
-            self.mainDeckBlurView.frame.origin.x = 0
-            self.mainDeckView.frame.origin.x = 0
-            self.bottomBackView.frame.origin.x = 0
-            self.topBackView.frame.origin.x = 0
-
-            self.menuView.frame.origin.x = -self.menuView.frame.width
-        })
-    }
-
-    // Menuを開く
-    func openMenu() {
-        isMenuOpen = true
-        menuView.translatesAutoresizingMaskIntoConstraints = true
-        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
-        mainDeckBlurView.isUserInteractionEnabled = true
-
-        td.account.getAccount { [weak self] account in
-            self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
-            self?.menuVC.setUserNameID(name: account.name ?? "", id: account.userId ?? "")
-        }
-
-        UIView.animate(withDuration: 0.3, animations: {
-            self.menuView.frame.origin.x = 0
-            self.mainDeckBlurView.frame.origin.x = self.menuView.frame.width
-            self.mainDeckView.frame.origin.x = self.menuView.frame.width
-
-            UIView.animate(withDuration: 0.2, animations: {
-                self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            })
-        })
     }
 
     // ブラーをつける（Menu開いたときのDeckのブラー）
@@ -284,89 +172,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     func dismissfetcher(animated: Any, completion: Any) {
         imageView.removeFromSuperview()
     }
-
-    func url2SmallImg(_ str: String) -> String {
-        var r = str.replacingOccurrences(of: "url(\"", with: "")
-        r = r.replacingOccurrences(of: "\")", with: "")
-        return r
-    }
-
-    func url2NomalImg(_ str: String) -> String {
-        var r = url2SmallImg(str)
-        if let index = r.range(of: "&name")?.lowerBound {
-            r = String(r[...index]) // + "name=orig"
-            return r.replacingOccurrences(of: "format=jpg", with: "format=png")
-        }
-        return ""
-    }
-
-
-    func imagePreviewer(index: Int, urls: [String]) {
-        imagePreviewSelectedIndex = index
-        
-        let imgUrls = urls.map({
-            url2NomalImg($0)
-        })
-        print("parsed", imgUrls)
-
-        if imgUrls.count == 0 {
-            return
-        }
-        if imgUrls[0] == "" {
-            print("imgUrl is nil")
-            return
-        }
-
-        let imgs = imgUrls.compactMap({
-            UIImage(url: $0)
-        })
-
-        if imgs.isEmpty {
-            return
-        }
-
-        let imageViewer = Optik.imageViewer(
-                withImages: imgs,
-                initialImageDisplayIndex: imagePreviewSelectedIndex,
-                delegate: self
-        )
-
-        imageView.image = imgs[imagePreviewSelectedIndex]
-        setPreviewImagePosition()
-        view.addSubview(imageView)
-//            imageViewer.presentationController?.delegate = self
-        present(imageViewer, animated: true, completion: nil)
-    }
-
 }
-
 
 extension ViewController: LoginViewControllerOutput {
     func logined() {
         webView.reload()
     }
     
-}
-
-extension ViewController: MenuDelegate {
-    func reload() {
-        webView.reload()
-        closeMenu()
-    }
-
-    func openProfile() {
-        closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
-            print("openProfile : ", error ?? "成功")
-        }
-    }
-
-    func openColumnAdd() {
-        closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
-            print(#function, error ?? "成功")
-        }
-    }
 }
 
 extension ViewController: ImageViewerDelegate {

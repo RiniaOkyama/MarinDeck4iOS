@@ -7,10 +7,22 @@
 
 import UIKit
 import GiphyUISDK
+import Optik
 import class SwiftUI.UIHostingController
 
 
-extension ViewController {
+protocol Transition {
+    func openSelectGif()
+    func openSelectPhoto()
+    func openSettings()
+    func openNativeTweetModal(tweetText: String)
+    func openIfDraftAlert(text: String)
+    func openDraft()
+    func openDebugModal()
+    func imagePreviewer(index: Int, urls: [String])
+}
+
+extension ViewController: Transition {
     // GIF選択画面に遷移
     @objc func openSelectGif() {
         let giphy = GiphyViewController()
@@ -98,9 +110,46 @@ extension ViewController {
     }
     
     // デバッグボタンタップ時の動作
-    @objc func debugPressed() {
+    @objc func openDebugModal() {
         let vc = DebugerViewController()
         vc.delegate = self
         present(vc, animated: true, completion: nil)
+    }
+    
+    func imagePreviewer(index: Int, urls: [String]) {
+        imagePreviewSelectedIndex = index
+        
+        let imgUrls = urls.map({
+            TDTools.url2NomalImg($0)
+        })
+        print("parsed", imgUrls)
+
+        if imgUrls.count == 0 {
+            return
+        }
+        if imgUrls[0] == "" {
+            print("imgUrl is nil")
+            return
+        }
+
+        let imgs = imgUrls.compactMap({
+            UIImage(url: $0)
+        })
+
+        if imgs.isEmpty {
+            return
+        }
+
+        let imageViewer = Optik.imageViewer(
+                withImages: imgs,
+                initialImageDisplayIndex: imagePreviewSelectedIndex,
+                delegate: self
+        )
+
+        imageView.image = imgs[imagePreviewSelectedIndex]
+        setPreviewImagePosition()
+        view.addSubview(imageView)
+//            imageViewer.presentationController?.delegate = self
+        present(imageViewer, animated: true, completion: nil)
     }
 }

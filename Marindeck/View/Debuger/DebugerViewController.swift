@@ -7,11 +7,11 @@
 
 import UIKit
 import Highlightr
-//HighlightView
+import WebKit
 
 class DebugerViewController: UIViewController {
     // FIXME
-    var delegate: ViewController?
+    weak var delegate: ViewController?
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var segmentCtrl: UISegmentedControl!
     
@@ -79,8 +79,8 @@ class DebugerViewController: UIViewController {
     }
     
     @IBAction func run(){
-        let script = segmentCtrl.selectedSegmentIndex == 0 ? textView.text! : delegate!.css2JS(css: textView.text!)
-        let (_, error) = delegate!.debugJS(script: script)
+        let script = segmentCtrl.selectedSegmentIndex == 0 ? textView.text! : WKWebView.css2JS(css: textView.text!)
+        let (_, error) = delegate!.webView.inject(js: script)
         
         if error != nil{
             print(error!)
