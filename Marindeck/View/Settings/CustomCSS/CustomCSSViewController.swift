@@ -11,7 +11,7 @@ class CustomCSSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
     private var customCSSs: [CustomCSS] = []
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet public weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +145,8 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if customCSSs.count == indexPath.row {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! CustomAddCellTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell",
+                                                     for: indexPath) as! CustomAddCellTableViewCell
             cell.selectionStyle = .none
             cell.delegate = self
             return cell
@@ -181,7 +182,8 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
 
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .none
     }
 
@@ -190,7 +192,9 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         false // ずれない。
     }
 
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    public func tableView(_ tableView: UITableView,
+                          targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                          toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if customCSSs.count == proposedDestinationIndexPath.row {
             return sourceIndexPath
         }
@@ -206,7 +210,9 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         if customCSSs.count == indexPath.row {
             return nil
         }
@@ -215,7 +221,10 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
                 self.updateCustomCSSDialog(index: indexPath.row)
             }
 
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { _ in
+            let delete = UIAction(title: "Delete",
+                                  image: UIImage(systemName: "trash"),
+                                  identifier: nil,
+                                  attributes: .destructive) { _ in
                 print("indexPath is ", indexPath)
                 self.deleteCustomCSS(index: indexPath.row)
             }
@@ -258,7 +267,13 @@ extension CustomCSSViewController: CustomAddCellOutput {
                 title: "作成",
                 style: UIAlertAction.Style.default) { _ in
                 if let text = alertTextField?.text {
-                    let customCSS = CustomCSS(id: nil, title: text, css: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customCSSs.count), isLoad: true)
+                    let customCSS = CustomCSS(id: nil,
+                                              title: text,
+                                              css: "",
+                                              createAt: Date(),
+                                              updateAt: Date(),
+                                              loadIndex: Int32(self.customCSSs.count),
+                                              isLoad: true)
 
                     self.createCustomCSS(customCSS: customCSS)
 

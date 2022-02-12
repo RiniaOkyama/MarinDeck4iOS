@@ -81,35 +81,6 @@ struct MarinDeckExtensionEntryView: View {
 
             HStack {
                 VStack(alignment: .leading, spacing: 15.0) {
-                    //                    HStack {
-                    ////                        ZStack {
-                    ////                            Circle()
-                    ////                                .fill(Color.yellow)
-                    ////                                .frame(width: 30, height: 30)
-                    ////                            Text("1")
-                    ////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    ////
-                    ////                        }
-                    //
-                    //                        Text("からあげクン誕生日おめでとう")
-                    //                            .foregroundColor(.white)
-                    //                            .fontWeight(.semibold)
-                    //                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                    //                    }
-                    //
-                    //                    HStack {
-                    ////                        ZStack {
-                    ////                            Circle()
-                    ////                                .fill(Color.gray)
-                    ////                                .frame(width: 30, height: 30)
-                    ////                            Text("2")
-                    ////                                .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    ////                        }
-                    //
-                    //                        Text("あんスタSSスタンプラリー")
-                    //                            .foregroundColor(.white)
-                    //                            .fontWeight(.semibold)
-                    //                    }
                     TrendView(title: $title1st, ranking: $title3rd)
                     TrendView(title: $title2nd, ranking: $title3rd)
                     TrendView(title: $title3rd, ranking: $title3rd)

@@ -45,7 +45,7 @@ extension ViewController: WKScriptMessageHandler {
             webView.frame = mainDeckView.bounds
 
             if !userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
-                let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+                let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
                 td.actions.setStatusBarSpace(height: Int(statusBarHeight))
             }
@@ -87,7 +87,9 @@ extension ViewController: WKScriptMessageHandler {
                 let url: URL = URL(string: imageUrl)!
                 guard let data = try? Data(contentsOf: url) else { return }
                 DispatchQueue.main.sync {
-                    self.td.actions.setBlob(url: imageUrl, base64: data.base64EncodedString(options: []), mimeType: data.mimeType)
+                    self.td.actions.setBlob(url: imageUrl,
+                                            base64: data.base64EncodedString(options: []),
+                                            mimeType: data.mimeType)
                 }
             }
 

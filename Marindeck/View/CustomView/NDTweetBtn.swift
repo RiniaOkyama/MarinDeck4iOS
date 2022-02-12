@@ -72,7 +72,7 @@ public class NDTweetBtn: UIView {
 
     public lazy var baseButton: NDActionButton = {
         let view = NDActionButton(frame: bounds)
-        view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.backgroundColor = .init(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.onLongPressed))
         longPress.minimumPressDuration = 0.3
         view.addGestureRecognizer(longPress)
@@ -87,7 +87,7 @@ public class NDTweetBtn: UIView {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 90
         view.frame.origin.y -= 90
-        view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.backgroundColor = .init(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         view.tag = 1
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
         view.addGestureRecognizer(ges)
@@ -98,7 +98,7 @@ public class NDTweetBtn: UIView {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 120
         view.frame.origin.y -= 10
-        view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.backgroundColor = .init(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         view.tag = 2
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
         view.addGestureRecognizer(ges)
@@ -109,7 +109,7 @@ public class NDTweetBtn: UIView {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 0
         view.frame.origin.y -= 130
-        view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.backgroundColor = .init(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         view.tag = 0
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
         view.addGestureRecognizer(ges)
@@ -221,12 +221,14 @@ public class NDTweetBtn: UIView {
         //        }
     }
 
-    @objc func onActionBtnPressed(sender: UITapGestureRecognizer) {
+    @objc
+    func onActionBtnPressed(sender: UITapGestureRecognizer) {
         actions[safe: sender.view!.tag]?.handler(actions[sender.view!.tag])
         isPressing = false
     }
 
-    @objc func onLongPressed(sender: UILongPressGestureRecognizer) {
+    @objc
+    func onLongPressed(sender: UILongPressGestureRecognizer) {
         if isLock { return }
 
         if sender.state == .began {
@@ -313,7 +315,10 @@ public class NDTweetBtn: UIView {
     private func onRelease() {
         if isLock { return }
 
-        baseButton.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        baseButton.backgroundColor = .init(red: 0.16,
+                                           green: 0.62,
+                                           blue: 0.95,
+                                           alpha: 1)
         baseButton.setImage(baseBtnImg ?? UIImage())
         baseButton.imageView.tintColor = .white
         baseButton.imageView.frame.size = CGSize(width: 30, height: 30)
@@ -348,7 +353,10 @@ public class NDTweetBtn: UIView {
     }
 
     private func cgRect2AboutRect(_ rect: CGRect) -> CGRect {
-        return CGRect(x: rect.origin.x - 40, y: rect.origin.y - 40, width: rect.size.width + 40, height: rect.size.height + 40)
+        return CGRect(x: rect.origin.x - 40,
+                      y: rect.origin.y - 40,
+                      width: rect.size.width + 40,
+                      height: rect.size.height + 40)
     }
 
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

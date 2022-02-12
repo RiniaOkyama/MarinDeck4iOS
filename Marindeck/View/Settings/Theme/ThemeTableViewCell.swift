@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ThemeTableViewCellDelegate {
+protocol ThemeTableViewCellDelegate: AnyObject {
     func apply(tag: Int)
 }
 

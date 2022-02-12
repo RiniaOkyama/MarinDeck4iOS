@@ -28,8 +28,10 @@ class Update {
 
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                guard let storeVersion = ((jsonData?["results"] as? [Any])?.first as? [String: Any])?["version"] as? String,
-                      let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
+                guard let storeVersion = ((jsonData?["results"] as? [Any])?
+                                            .first as? [String: Any])?["version"] as? String,
+                      let appVersion = Bundle.main
+                        .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
                     completion(false)
                     return
                 }

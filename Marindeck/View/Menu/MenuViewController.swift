@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MenuDelegate {
+protocol MenuDelegate: AnyObject {
     func openSettings()
     func openProfile()
     func openColumnAdd()
@@ -57,7 +57,8 @@ class MenuViewController: UIViewController {
         columnMenu.title = L10n.Menu.AddColumn.title
     }
 
-    @objc func profileTapped() {
+    @objc
+    func profileTapped() {
         self.profileMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.1, animations: {
             self.profileMenu.backgroundColor = .clear
@@ -65,7 +66,8 @@ class MenuViewController: UIViewController {
         delegate.openProfile()
     }
 
-    @objc func reloadTapped() {
+    @objc
+    func reloadTapped() {
         self.reloadMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.1, animations: {
             self.reloadMenu.backgroundColor = .clear
@@ -73,7 +75,8 @@ class MenuViewController: UIViewController {
         delegate.reload()
     }
 
-    @objc func columnAddTapped() {
+    @objc
+    func columnAddTapped() {
         self.columnMenu.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.1, animations: {
             self.columnMenu.backgroundColor = .clear
@@ -81,7 +84,8 @@ class MenuViewController: UIViewController {
         delegate.openColumnAdd()
     }
 
-    @objc func twitterSettingsTapped() {
+    @objc
+    func twitterSettingsTapped() {
         let vc = TwitterSettingsViewController()
         present(vc, animated: true, completion: nil)
     }

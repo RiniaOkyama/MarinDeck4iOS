@@ -50,7 +50,10 @@ extension ViewController: ViewSetup {
         //        menuView.translatesAutoresizingMaskIntoConstraints = true
         //        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
 
-        NotificationCenter.default.addObserver(self, selector: #selector(onOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onOrientationDidChange(notification:)),
+                                               name: UIDevice.orientationDidChangeNotification,
+                                               object: nil)
 
         // FIXME
         menuVC = self.children[0] as? MenuViewController
@@ -68,7 +71,8 @@ extension ViewController: ViewSetup {
 
     func setupTweetBtn() {
         tweetFloatingBtn.removeAllActions()
-        let arr = (userDefaults.array(forKey: UserDefaultsKey.actionButtoms) as? [String])?.prefix(3) ?? [ActionButtons.debug.rawValue, ActionButtons.gif.rawValue, ActionButtons.tweet.rawValue]
+        let arr = (userDefaults.array(forKey: UserDefaultsKey.actionButtoms) as? [String])?.prefix(3)
+            ?? [ActionButtons.debug.rawValue, ActionButtons.gif.rawValue, ActionButtons.tweet.rawValue]
         for item in arr {
             let actionType = ActionButtons(rawValue: item)
             let action = NDTweetBtnAction(
@@ -164,8 +168,14 @@ extension ViewController: ViewSetup {
         let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let iconSpaceItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         iconSpaceItem.width = 8
-        let gifItem = UIBarButtonItem(image: Asset.gif.image, style: .plain, target: self, action: #selector(openSelectGif))
-        let photoItem = UIBarButtonItem(image: Asset.photo.image, style: .plain, target: self, action: #selector(openSelectPhoto))
+        let gifItem = UIBarButtonItem(image: Asset.gif.image,
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(openSelectGif))
+        let photoItem = UIBarButtonItem(image: Asset.photo.image,
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(openSelectPhoto))
 
         gifItem.tintColor = .labelColor
         photoItem.tintColor = .labelColor
@@ -179,7 +189,7 @@ extension ViewController: ViewSetup {
     }
 
     func notchLogoSetup() {
-        let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
 
         if statusBarHeight >= 44.0 {

@@ -87,7 +87,8 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
             .disposed(by: disposeBag)
     }
 
-    @objc func onDismiss() {
+    @objc
+    func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
 }

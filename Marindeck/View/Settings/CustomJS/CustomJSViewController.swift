@@ -135,7 +135,8 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if customJSs.count == indexPath.row {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! CustomAddCellTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell",
+                                                     for: indexPath) as! CustomAddCellTableViewCell
             cell.selectionStyle = .none
             cell.delegate = self
             return cell
@@ -171,7 +172,8 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
 
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .none
     }
 
@@ -180,7 +182,9 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         false // ずれない。
     }
 
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    public func tableView(_ tableView: UITableView,
+                          targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                          toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if customJSs.count == proposedDestinationIndexPath.row {
             return sourceIndexPath
         }
@@ -196,7 +200,9 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         if customJSs.count == indexPath.row {
             return nil
         }
@@ -205,7 +211,10 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
                 self.updateCustomJSDialog(index: indexPath.row)
             }
 
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { _ in
+            let delete = UIAction(title: "Delete",
+                                  image: UIImage(systemName: "trash"),
+                                  identifier: nil,
+                                  attributes: .destructive) { _ in
                 print("indexPath is ", indexPath)
                 self.deleteCustomJS(index: indexPath.row)
             }
@@ -249,7 +258,12 @@ extension CustomJSViewController: CustomAddCellOutput {
                 title: "作成",
                 style: UIAlertAction.Style.default) { _ in
                 if let text = alertTextField?.text {
-                    let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count + 1), isLoad: true)
+                    let cjs = CustomJS(title: text,
+                                       js: "",
+                                       createAt: Date(),
+                                       updateAt: Date(),
+                                       loadIndex: Int32(self.customJSs.count + 1),
+                                       isLoad: true)
                     self.createCustomJS(customJS: cjs)
                     let vc = EditCustomJSViewController(customJS: self.customJSs.last!)
                     self.navigationController?.pushViewController(vc, animated: true)

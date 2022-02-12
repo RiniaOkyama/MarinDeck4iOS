@@ -19,7 +19,8 @@ extension ViewController {
                 let backBlackView = UIView(frame: view.bounds)
                 backBlackView.backgroundColor = .black
                 view.addSubview(backBlackView)
-                context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { (success, evaluateError) in
+                context.evaluatePolicy(.deviceOwnerAuthentication,
+                                       localizedReason: reason) { (success, evaluateError) in
                     if success {
                         DispatchQueue.main.async { [unowned self] in
                             self.isMainDeckViewLock = false

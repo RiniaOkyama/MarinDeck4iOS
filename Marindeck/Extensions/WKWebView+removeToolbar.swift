@@ -73,7 +73,9 @@ extension WKWebView {
     }
 
     func classWithCustomAccessoryView(targetView: UIView) -> AnyClass? {
-        guard let _ = targetView.superclass else { return nil }
+        if targetView.superclass == nil {
+            return nil
+        }
         let customInputAccessoryViewClassName = "_CustomInputAccessoryView"
         var newClass: AnyClass? = NSClassFromString(customInputAccessoryViewClassName)
 
@@ -94,7 +96,8 @@ extension WKWebView {
         return newClass
     }
 
-    @objc func getCustomInputAccessoryView() -> UIView? {
+    @objc
+    func getCustomInputAccessoryView() -> UIView? {
         var superWebView: UIView? = self
         while (superWebView != nil) && !(superWebView is WKWebView) {
             superWebView = superWebView?.superview // == WKWebView

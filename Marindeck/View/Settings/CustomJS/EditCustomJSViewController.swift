@@ -15,7 +15,13 @@ class EditCustomJSViewController: UIViewController {
     var textView: UITextView!
 
     private lazy var editorViewConstraint: NSLayoutConstraint = {
-        NSLayoutConstraint(item: textView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        NSLayoutConstraint(item: textView!,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: view,
+                           attribute: .bottom,
+                           multiplier: 1,
+                           constant: 0)
     }()
 
     @IBOutlet weak var editorView: UIView!
@@ -43,7 +49,7 @@ class EditCustomJSViewController: UIViewController {
         textView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         textView.autocorrectionType = UITextAutocorrectionType.no
         textView.autocapitalizationType = UITextAutocapitalizationType.none
-        textView.textColor = UIColor(white: 0.8, alpha: 1.0)
+        textView.textColor = .init(white: 0.8, alpha: 1.0)
         textView.inputAccessoryView = toolbar
         editorView.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,8 +60,14 @@ class EditCustomJSViewController: UIViewController {
 
         textView.text = customJS.js
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +90,8 @@ class EditCustomJSViewController: UIViewController {
         self.customJS = customJS
     }
 
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
         guard let keyboardHeight = notification.keyboardHeight,
               let keyboardAnimationDuration = notification.keybaordAnimationDuration,
               let KeyboardAnimationCurve = notification.keyboardAnimationCurve
@@ -96,7 +109,8 @@ class EditCustomJSViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
         self.view.removeConstraint(self.editorViewConstraint)
         self.editorViewConstraint.constant = 0
         self.view.addConstraint(self.editorViewConstraint)
