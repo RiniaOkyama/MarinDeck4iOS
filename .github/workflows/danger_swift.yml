@@ -2,6 +2,54 @@ name: Danger Swift
 
 on: [pull_request]
 
+  # jobs:
+  #   Danger:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v2
+  #       - name: Danger
+  #         uses: 417-72KI/danger-swiftlint@v5
+  #         env:
+  #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #jobs:
+  #  build:
+  #    runs-on: ubuntu-latest
+  #    name: "Run Danger"
+  #    steps:
+  #      - uses: actions/checkout@v1
+  #      - name: Danger
+  #        uses: docker://ghcr.io/danger/danger-swift-with-swiftlint:3.12.3
+  #        with:
+  #            args: --failOnErrors --no-publish-check
+  #        env:
+  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-- name: GitHub Action for Danger-Swift + SwiftLint
-  uses: 417-72KI/danger-swiftlint@v5
+jobs:
+  danger:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.5'
+    - name: Setup gems
+      run: gem install bundler danger danger-swiftlint
+    - name: Run Danger
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # デフォルトの JSON のパスを取得
+        event_path=${{ github.event_path }}
+
+        if [ $GITHUB_EVENT_NAME = "pull_request_review" ]; then
+          echo "Override event json file for pull_request_review event."
+
+          # 読み込む JSON のパスを書き換え
+          event_path="event.json"
+          # jq コマンドを使って加工した JSON を↑で置き換えたパスに出力する
+          cat ${{ github.event_path }} | jq '. |= .+ {"number": .pull_request.number}' > $event_path 
+        fi
+
+        # イベントのパスとイベント名を明示的に指定して Danger を走らせる
+        GITHUB_EVENT_PATH=$event_path GITHUB_EVENT_NAME=pull_request danger
