@@ -35,7 +35,7 @@ end
 
 plugin 'cocoapods-keys', {
     :projects => "Marindeck",
-    :target => ["Marindeck", "Marindeck-dev"],
+    :target => ["Marindeck-dev", "Marindeck"],
     :keys => [
         "GiphyApiKey",
         "DeploygateUsername",

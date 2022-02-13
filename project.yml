@@ -49,6 +49,7 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
+        DISPLAY_APPNAME: MarinDeck
     dependencies:
       - package: GRDB
       - package: MarkdownView
@@ -69,8 +70,10 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck.dev
-        INFOPLIST_FILE: MarinDeck/Info-dev.plist
+        DISPLAY_APPNAME: MD-dev
     dependencies:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift
