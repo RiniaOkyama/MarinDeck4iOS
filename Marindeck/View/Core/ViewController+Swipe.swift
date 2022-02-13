@@ -99,7 +99,8 @@ extension ViewController {
     }
 
     // MARK: Menu open
-    @objc func panTop(sender: UIScreenEdgePanGestureRecognizer) {
+    @objc
+    func panTop(sender: UIScreenEdgePanGestureRecognizer) {
         let move: CGPoint = sender.translation(in: view)
 
         if self.menuView.frame.origin.x > 0 && 0 < move.x {

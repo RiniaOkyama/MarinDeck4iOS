@@ -13,43 +13,6 @@ import SPAlert
 
 // MARK: - WKWebView ui delegate
 extension ViewController: WKUIDelegate {
-    // delegate
-    //    func webView(_ webView: WKWebView, contextMenuConfigurationForElement elementInfo: WKContextMenuElementInfo, completionHandler: @escaping (UIContextMenuConfiguration?) -> Void) {
-    //        guard let url = elementInfo.linkURL?.absoluteString else {
-    //            completionHandler(nil)
-    //            return
-    //        }
-    //        print(url)
-    //        if url == "https://tweetdeck.twitter.com/#" {
-    //            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
-    //            completionHandler(configuration)
-    //            return
-    //        }
-    //        // FIXME
-    //        else if url.hasPrefix("https://twitter.com/") {
-    ////            completionHandler(nil)
-    //            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
-    //            completionHandler(configuration)
-    //            return
-    //        }
-    //
-    //        else if url.hasPrefix("https://t.co/") {
-    //            let imageTweet = UIAction(title: "写真をツイート（できん）", image: UIImage(named: "tweet")!.withRenderingMode(.alwaysTemplate)) { _ in print("Send to Friend") }
-    //            let imageSave = UIAction(title: "写真を保存（できん）", image: UIImage(systemName: "square.and.arrow.down")) { _ in print("Send to Friend") }
-    //
-    ////            let previewProvider: () -> SFSafariViewController? = { [unowned self] in
-    ////                    return SFSafariViewController(url: elementInfo.linkURL!)
-    ////                }
-    //
-    //            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-    //              UIMenu(title: "", children: [imageTweet, imageSave])
-    //            }
-    //            completionHandler(configuration)
-    //        }else {
-    //            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil)
-    //            completionHandler(configuration)
-    //        }
-    //    }
 }
 
 struct ContextMenuStruct {
@@ -57,7 +20,8 @@ struct ContextMenuStruct {
 }
 
 extension ViewController: UIContextMenuInteractionDelegate {
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                                configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let imgurl = getPositionElements(x: Int(location.x), y: Int(location.y))
         if imgurl.1.count == 0 {
             return nil
@@ -141,7 +105,8 @@ extension ViewController: UIContextMenuInteractionDelegate {
     }
 
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+                                previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration
+    ) -> UITargetedPreview? {
         view.addSubview(imageView)
         return UITargetedPreview(view: imageView)
     }
@@ -156,8 +121,10 @@ extension ViewController: UIContextMenuInteractionDelegate {
         }
     }
 
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?,
-                     contextInfo: UnsafeRawPointer) {
+    @objc
+    func image(_ image: UIImage,
+               didFinishSavingWithError error: Error?,
+               contextInfo: UnsafeRawPointer) {
         guard error == nil else {
             return
         }

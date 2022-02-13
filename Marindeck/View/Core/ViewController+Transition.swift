@@ -23,7 +23,8 @@ protocol Transition {
 
 extension ViewController: Transition {
     // GIF選択画面に遷移
-    @objc func openSelectGif() {
+    @objc
+    func openSelectGif() {
         let giphy = GiphyViewController()
         GiphyViewController.trayHeightMultiplier = 0.7
         giphy.shouldLocalizeSearch = true
@@ -35,7 +36,8 @@ extension ViewController: Transition {
     }
 
     // 画像を選択
-    @objc func openSelectPhoto() {
+    @objc
+    func openSelectPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
@@ -109,7 +111,8 @@ extension ViewController: Transition {
     }
 
     // デバッグボタンタップ時の動作
-    @objc func openDebugModal() {
+    @objc
+    func openDebugModal() {
         let vc = DebugerViewController()
         vc.delegate = self
         present(vc, animated: true, completion: nil)

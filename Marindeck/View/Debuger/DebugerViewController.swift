@@ -9,8 +9,7 @@ import UIKit
 import Highlightr
 import WebKit
 
-class DebugerViewController: UIViewController {
-    // FIXME
+final class DebugerViewController: UIViewController {
     weak var delegate: ViewController?
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var segmentCtrl: UISegmentedControl!
@@ -42,25 +41,38 @@ class DebugerViewController: UIViewController {
 
         textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShowNotification),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHideNotification),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
-    @objc func keyboardWillShowNotification(_ notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+    @objc
+    func keyboardWillShowNotification(_ notification: Notification) {
+        if let keyboardSize = (notification
+                                .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
-    @objc func keyboardWillHideNotification(_ notification: Notification) {
+
+    @objc
+    func keyboardWillHideNotification(_ notification: Notification) {
         textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
     }
 
     func errorAlert(_ string: String) {
-        let alert: UIAlertController = UIAlertController(title: "実行エラー", message: string, preferredStyle: UIAlertController.Style.alert)
-        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {
-            (_: UIAlertAction!) -> Void in
-            print("OK")
-        })
+        let alert: UIAlertController = UIAlertController(title: "実行エラー",
+                                                         message: string,
+                                                         preferredStyle: UIAlertController.Style.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK",
+                                                         style: UIAlertAction.Style.default,
+                                                         handler: { _ in
+                                                            print("OK")
+                                                         })
         alert.addAction(defaultAction)
 
         present(alert, animated: true, completion: nil)

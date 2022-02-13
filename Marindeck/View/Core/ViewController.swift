@@ -106,7 +106,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         true
     }
 
-    @objc func onOrientationDidChange(notification: NSNotification) {
+    @objc
+    func onOrientationDidChange(notification: NSNotification) {
         // FIXME
         mainDeckView.bounds = view.bounds
         webView.frame = mainDeckView.bounds
@@ -131,7 +132,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         statusBarStyle
     }
 
-    @objc func dismissKeyboard() {
+    @objc
+    func dismissKeyboard() {
         webView.resignFirstResponder()
     }
 
@@ -140,7 +142,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
     // ツイートボタンタップ痔の動作
-    @objc func tweetPressed() {
+    @objc
+    func tweetPressed() {
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
             openNativeTweetModal()
         } else {

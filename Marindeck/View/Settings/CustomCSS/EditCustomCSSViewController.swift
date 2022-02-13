@@ -8,18 +8,24 @@
 import UIKit
 import Highlightr
 
-class EditCustomCSSViewController: UIViewController {
+final class EditCustomCSSViewController: UIViewController {
     var textView: UITextView!
 
     private lazy var dbQueue = Database.shared.dbQueue
     private var customCSS: CustomCSS!
 
     private lazy var editorViewConstraint: NSLayoutConstraint = {
-        NSLayoutConstraint(item: textView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        NSLayoutConstraint(item: textView!,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: view,
+                           attribute: .bottom,
+                           multiplier: 1,
+                           constant: 0)
     }()
 
-    @IBOutlet weak var editorView: UIView!
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet private weak var editorView: UIView!
+    @IBOutlet private weak var toolbar: UIToolbar!
     //    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +38,8 @@ class EditCustomCSSViewController: UIViewController {
         let layoutManager = NSLayoutManager()
         textStorage.addLayoutManager(layoutManager)
 
-        let textContainer = NSTextContainer(size: CGSize(width: view.bounds.size.width, height: .greatestFiniteMagnitude))
+        let textContainer = NSTextContainer(size: CGSize(width: view.bounds.size.width,
+                                                         height: .greatestFiniteMagnitude))
         layoutManager.addTextContainer(textContainer)
 
         textView = UITextView(frame: editorView.bounds, textContainer: textContainer)
@@ -40,7 +47,7 @@ class EditCustomCSSViewController: UIViewController {
         textView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         textView.autocorrectionType = UITextAutocorrectionType.no
         textView.autocapitalizationType = UITextAutocapitalizationType.none
-        textView.textColor = UIColor(white: 0.8, alpha: 1.0)
+        textView.textColor = .init(white: 0.8, alpha: 1.0)
         textView.inputAccessoryView = toolbar
         editorView.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +60,14 @@ class EditCustomCSSViewController: UIViewController {
 
         textView.text = customCSS.css
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -77,7 +90,8 @@ class EditCustomCSSViewController: UIViewController {
         self.customCSS = customCSS
     }
 
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
         guard let keyboardHeight = notification.keyboardHeight,
               let keyboardAnimationDuration = notification.keybaordAnimationDuration,
               let KeyboardAnimationCurve = notification.keyboardAnimationCurve
@@ -87,7 +101,6 @@ class EditCustomCSSViewController: UIViewController {
         UIView.animate(withDuration: keyboardAnimationDuration,
                        delay: 0,
                        options: UIView.AnimationOptions(rawValue: KeyboardAnimationCurve)) {
-            //            self.textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyboardHeight).isActive = true
             self.view.removeConstraint(self.editorViewConstraint)
             self.editorViewConstraint.constant = -keyboardHeight
             self.view.addConstraint(self.editorViewConstraint)
@@ -95,7 +108,8 @@ class EditCustomCSSViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
         self.view.removeConstraint(self.editorViewConstraint)
         self.editorViewConstraint.constant = 0
         self.view.addConstraint(self.editorViewConstraint)

@@ -121,7 +121,7 @@ struct Theme {
     var darkTopBarColor: UIColor?
     var lightStatusBarColor: UIStatusBarStyle = .darkContent
     var darkStatusBarColor: UIStatusBarStyle = .lightContent
-    var tweetButtonColor: UIColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+    var tweetButtonColor: UIColor = .init(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
 }
 
 let themes = [
@@ -133,7 +133,8 @@ let themes = [
           lightTopBarColor: .white,
           darkTopBarColor: UIColor(hex: "15202b")
     ),
-    Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "", js: getFile2Text("Theme-Midnight"), css: "",
+    Theme(title: "Midnight", id: "1", description: "Midra", user: "Midra", icon: "",
+          js: getFile2Text("Theme-Midnight"), css: "",
           backgroundColor: .black,
           secondaryBackgroundColor: UIColor(hex: "242424"),
           labelColor: .white,
@@ -144,7 +145,8 @@ let themes = [
           description: "デスクトップ版Discordをモチーフにしたテーマです。明るすぎず暗すぎないDiscordのダークテーマが好きな方におすすめです",
           user: "hakunagi", icon: "", js: "", css: ""),
 
-    Theme(title: "Frostclear", id: "3", user: "Midra", icon: "Frostclear-icon", js: getFile2Text("Theme-Frostclear"), css: "",
+    Theme(title: "Frostclear", id: "3", user: "Midra", icon: "Frostclear-icon",
+          js: getFile2Text("Theme-Frostclear"), css: "",
           backgroundColor: UIColor(hex: "1a1a1a"),
           secondaryBackgroundColor: UIColor(hex: "242424"),
           labelColor: .white,

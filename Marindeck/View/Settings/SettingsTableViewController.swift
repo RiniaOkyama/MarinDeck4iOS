@@ -12,14 +12,14 @@ import MobileCoreServices     // ~iOS13
 import class SwiftUI.UIHostingController
 
 class SettingsTableViewController: UITableViewController {
-    @IBOutlet var titleLabel: [UILabel] = []
-    @IBOutlet weak var logoutLabel: UILabel!
+    @IBOutlet private var titleLabel: [UILabel] = []
+    @IBOutlet private weak var logoutLabel: UILabel!
 
-    @IBOutlet weak var biometricsSwitch: UISwitch!
-    @IBOutlet weak var nativeTweetModalSwitch: UISwitch!
-    @IBOutlet weak var marginSafeAreaSwitch: UISwitch!
+    @IBOutlet private weak var biometricsSwitch: UISwitch!
+    @IBOutlet private weak var nativeTweetModalSwitch: UISwitch!
+    @IBOutlet private weak var marginSafeAreaSwitch: UISwitch!
 
-    @IBOutlet weak var appVersionLabel: UILabel!
+    @IBOutlet private weak var appVersionLabel: UILabel!
 
     private var dController: UIDocumentInteractionController!
     private let dbQueue = Database.shared.dbQueue
@@ -31,7 +31,10 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(self.onDismiss))
 
         titleLabel.forEach({
             $0.textColor = .labelColor
@@ -60,7 +63,8 @@ class SettingsTableViewController: UITableViewController {
 
         biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
 
-        nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal), animated: false)
+        nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal),
+                                     animated: false)
 
         marginSafeAreaSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.marginSafeArea), animated: false)
     }
@@ -78,7 +82,8 @@ class SettingsTableViewController: UITableViewController {
         presentingViewController?.endAppearanceTransition()
     }
 
-    @objc func onDismiss() {
+    @objc
+    func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -201,7 +206,9 @@ class SettingsTableViewController: UITableViewController {
 
     func checkUpdate() {
         DispatchQueue.main.async {
-            let loadingAlert: UIAlertController = .init(title: nil, message: L10n.Settings.CheckUpdate.CheckingForUpdates.title, preferredStyle: .alert)
+            let loadingAlert: UIAlertController = .init(title: nil,
+                                                        message: L10n.Settings.CheckUpdate.CheckingForUpdates.title,
+                                                        preferredStyle: .alert)
             let indicator = UIActivityIndicatorView(style: .medium)
             indicator.center = CGPoint(x: 25, y: 30)
             loadingAlert.view.addSubview(indicator)
@@ -210,7 +217,11 @@ class SettingsTableViewController: UITableViewController {
             self.present(loadingAlert, animated: true, completion: nil)
 
             Update.shared.checkForUpdate { [weak self] update in
-                let alert = UIAlertController(title: update ? L10n.Settings.CheckUpdate.ExistUpdate.title : L10n.Settings.CheckUpdate.Latest.title, message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: update
+                                                ? L10n.Settings.CheckUpdate.ExistUpdate.title
+                                                : L10n.Settings.CheckUpdate.Latest.title,
+                                              message: nil,
+                                              preferredStyle: .alert)
 
                 alert.addAction(UIAlertAction(title: L10n.Alert.Close.title, style: .cancel, handler: nil))
                 if update {
@@ -300,30 +311,36 @@ class SettingsTableViewController: UITableViewController {
     }
 
     func logout() {
-        let alert: UIAlertController = UIAlertController(title: L10n.Settings.Logout.Cell.title, message: L10n.Alert.LogoutMessage.title, preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: L10n.Settings.Logout.Cell.title,
+                                                         message: L10n.Alert.LogoutMessage.title,
+                                                         preferredStyle: .alert)
 
-        let defaultAction: UIAlertAction = UIAlertAction(title: L10n.Settings.Logout.Cell.title, style: .destructive, handler: {
-            (_: UIAlertAction!) -> Void in
+        let defaultAction: UIAlertAction = UIAlertAction(
+            title: L10n.Settings.Logout.Cell.title,
+            style: .destructive,
+            handler: { (_: UIAlertAction!) -> Void in
+                URLSession.shared.reset {}
+                UserDefaults.standard.synchronize()
+                let dataStore = WKWebsiteDataStore.default()
+                dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
+                    print("+===========================+++")
+                    print(records)
 
-            URLSession.shared.reset {}
-            UserDefaults.standard.synchronize()
-            let dataStore = WKWebsiteDataStore.default()
-            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
-                print("+===========================+++")
-                print(records)
+                    print("+===========================+++")
+                    dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
+                                         for: records,
+                                         completionHandler: {})
 
-                print("+===========================+++")
-                dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records, completionHandler: {})
-
-                let bvc = self?.presentingViewController as? ViewController
-                bvc?.webView.reload()
-                self?.navigationController?.dismiss(animated: true, completion: nil)
-            }
-        })
-        let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Cancel.title, style: .cancel, handler: {
-            (_: UIAlertAction!) -> Void in
-            alert.dismiss(animated: true, completion: nil)
-        })
+                    let bvc = self?.presentingViewController as? ViewController
+                    bvc?.webView.reload()
+                    self?.navigationController?.dismiss(animated: true, completion: nil)
+                }
+            })
+        let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Cancel.title,
+                                                        style: .cancel,
+                                                        handler: { _ -> Void in
+                                                            alert.dismiss(animated: true, completion: nil)
+                                                        })
 
         alert.addAction(cancelAction)
         alert.addAction(defaultAction)
@@ -401,14 +418,16 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
 
             let fileData = try! Data(contentsOf: filePath)
 
-            let dict: [String: Any] = try! JSONSerialization.jsonObject(with: fileData, options: []) as? [String: Any] ?? [:]
+            let dict: [String: Any] = try! JSONSerialization.jsonObject(with: fileData,
+                                                                        options: []) as? [String: Any] ?? [:]
             for (key, value) in dict {
                 if UserDefaultsKey.allKeys.contains(key) {
                     UserDefaults.standard.setValue(value, forKey: key)
                 } else if key == "customJSs" {
                     guard let dataString = value as? String else { continue }
                     guard let data = dataString.data(using: .utf8) else { continue }
-                    guard let cjss: [CustomJS] = try? JSONDecoder().decode([CustomJS].self, from: data) else { continue }
+                    guard let cjss: [CustomJS] = try? JSONDecoder().decode([CustomJS].self,
+                                                                           from: data) else { continue }
 
                     try! dbQueue.write { db in
                         cjss.forEach { try? $0.insert(db) }
@@ -416,7 +435,8 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
                 } else if key == "customCSSs" {
                     guard let dataString = value as? String else { continue }
                     guard let data = dataString.data(using: .utf8) else { continue }
-                    guard let cjss: [CustomCSS] = try? JSONDecoder().decode([CustomCSS].self, from: data) else { continue }
+                    guard let cjss: [CustomCSS] = try? JSONDecoder().decode([CustomCSS].self,
+                                                                            from: data) else { continue }
 
                     try! dbQueue.write { db in
                         cjss.forEach { try? $0.insert(db) }
@@ -424,11 +444,14 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
                 }
             }
 
-            let alert: UIAlertController = UIAlertController(title: L10n.Alert.ImportedSettings.title, message: L10n.Alert.RecommendRestartApp.title, preferredStyle: .alert)
-            let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Ok.title, style: .cancel, handler: {
-                (_: UIAlertAction!) -> Void in
-                alert.dismiss(animated: true, completion: nil)
-            })
+            let alert: UIAlertController = UIAlertController(title: L10n.Alert.ImportedSettings.title,
+                                                             message: L10n.Alert.RecommendRestartApp.title,
+                                                             preferredStyle: .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: L10n.Alert.Ok.title,
+                                                            style: .cancel,
+                                                            handler: { _ in
+                                                                alert.dismiss(animated: true, completion: nil)
+                                                            })
 
             alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
