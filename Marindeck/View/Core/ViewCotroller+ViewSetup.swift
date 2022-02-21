@@ -176,13 +176,17 @@ extension ViewController: ViewSetup {
                                         style: .plain,
                                         target: self,
                                         action: #selector(openSelectPhoto))
+        let scheduleItem = UIBarButtonItem(image: UIImage(systemName: "clock")?.withTintColor(.labelColor, renderingMode: .alwaysOriginal),
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(presentDatePicker))
 
         gifItem.tintColor = .labelColor
         photoItem.tintColor = .labelColor
         doneItem.tintColor = .labelColor
         toolbar.backgroundColor = .backgroundColor
         toolbar.barTintColor = .backgroundColor
-        toolbar.setItems([photoItem, iconSpaceItem, gifItem, flexibleSpaceItem, doneItem], animated: false)
+        toolbar.setItems([photoItem, iconSpaceItem, gifItem, iconSpaceItem, scheduleItem, flexibleSpaceItem, doneItem], animated: false)
         toolbar.sizeToFit()
 
         webView.addIndexAccessoryView(toolbar: toolbar)
