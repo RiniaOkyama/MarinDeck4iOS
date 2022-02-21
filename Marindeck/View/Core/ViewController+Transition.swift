@@ -19,6 +19,7 @@ protocol Transition {
     func openDraft()
     func openDebugModal()
     func imagePreviewer(index: Int, urls: [String])
+    func presentDatePicker()
 }
 
 extension ViewController: Transition {
@@ -153,5 +154,20 @@ extension ViewController: Transition {
         view.addSubview(imageView)
         //            imageViewer.presentationController?.delegate = self
         present(imageViewer, animated: true, completion: nil)
+    }
+    
+    @objc func presentDatePicker() {
+        let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
+        let datePickerVc = DatePickerViewController(mode: UIDatePicker.Mode.dateAndTime)
+        datePickerVc.datePicker.date = Date()
+        datePickerVc.datePicker.minimumDate = Date()
+        // TODO: MaxiumDate
+//        datePickerVc.datePicker.maximumDate = Date()
+        alert.setContentViewController(vc: datePickerVc)
+        alert.addAction(.init(title: L10n.Alert.Cancel.title, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: L10n.Alert.Ok.title, style: .default, handler: { [weak self] _ in
+            self?.td.actions.setSchedule(date: datePickerVc.datePicker.date)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
