@@ -19,6 +19,7 @@ protocol Transition {
     func openDraft()
     func openDebugModal()
     func imagePreviewer(index: Int, urls: [String])
+    func presentDatePicker()
 }
 
 extension ViewController: Transition {
@@ -158,25 +159,15 @@ extension ViewController: Transition {
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
         let datePickerVc = DatePickerViewController(mode: UIDatePicker.Mode.dateAndTime)
-        datePickerVc.datePicker.date = (Calendar.current as NSCalendar).date(bySettingHour: 7, minute: 0, second: 0, of: Date(), options: .matchFirst) ?? Date()
+        datePickerVc.datePicker.date = Date()
+        datePickerVc.datePicker.minimumDate = Date()
+        // TODO: MaxiumDate
+//        datePickerVc.datePicker.maximumDate = Date()
         alert.setContentViewController(vc: datePickerVc)
-        alert.addAction(.init(title: "キャンセル", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+        alert.addAction(.init(title: L10n.Alert.Cancel.title, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: L10n.Alert.Ok.title, style: .default, handler: { [weak self] _ in
             self?.td.actions.setSchedule(date: datePickerVc.datePicker.date)
         }))
         present(alert, animated: true, completion: nil)
-        
     }
 }
-
-extension UIAlertController {
-   func setContentViewController(vc: UIViewController, height: CGFloat? = nil) {
-     setValue(vc, forKey: "contentViewController")
-       vc.preferredContentSize.width = 300
-       
-     if let height = height {
-       vc.preferredContentSize.height = height
-       preferredContentSize.height = height
-     }
-   }
- }
