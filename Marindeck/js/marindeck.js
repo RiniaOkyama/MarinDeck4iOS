@@ -332,3 +332,7 @@ const postTweet = (text, reply_to_id = null, key = null) => {
     })
     return "Done"
 }
+
+const updateSchedule = (Y, M, D, h, m) => {
+  return jq('.js-docked-compose').parent().trigger('uiComposeScheduleDate', {date: new Date(Y, M-1, D, h, m, 0, 0)})
+}

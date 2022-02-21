@@ -4,6 +4,7 @@
 //
 //  Created by a on 2022/01/25.
 //
+import Foundation
 
 extension TD.ActionsController {
     // ツイート画面のTextViewにフォーカスする
@@ -62,5 +63,18 @@ extension TD.ActionsController {
     // MARK: Blob
     func setBlob(url: String, base64: String, mimeType: String) {
         webView?.evaluateJavaScript("MD4iOS.Blob.set(\(url), \(base64), \(mimeType)")
+    }
+    
+    func setSchedule(date: Date) {
+        let calendar = Calendar.current
+        let Y = calendar.component(.year, from: date)
+        let M = calendar.component(.month, from: date)
+        let D = calendar.component(.day, from: date)
+        let h = calendar.component(.hour, from: date)
+        let m = calendar.component(.minute, from: date)
+        
+        webView?.evaluateJavaScript("updateSchedule(\(Y), \(M), \(D), \(h), \(m))") { _, error in
+            print(#function, error ?? "成功")
+        }
     }
 }
