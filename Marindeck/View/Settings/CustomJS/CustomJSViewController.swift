@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class CustomJSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
     private var customJSs: [CustomJS] = []
@@ -73,7 +72,7 @@ class CustomJSViewController: UIViewController {
 
     func deleteCustomJS(index: Int) {
 
-        let _ = try! dbQueue.write { db in
+        _ = try! dbQueue.write { db in
             try customJSs[index].delete(db)
         }
 
@@ -93,43 +92,41 @@ class CustomJSViewController: UIViewController {
         }
     }
 
-
     func updateCustomJSDialog(index: Int) {
         var alertTextField: UITextField?
         var customJS = customJSs[index]
 
         let alert = UIAlertController(
-                title: "カスタムJS名を編集",
-                message: "",
-                preferredStyle: UIAlertController.Style.alert)
+            title: "カスタムJS名を編集",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
-                configurationHandler: { (textField: UITextField!) in
-                    textField.text = customJS.title
-                    alertTextField = textField
-                })
+            configurationHandler: { (textField: UITextField!) in
+                textField.text = customJS.title
+                alertTextField = textField
+            })
         alert.addAction(
-                UIAlertAction(
-                        title: "キャンセル",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
         alert.addAction(
-                UIAlertAction(
-                        title: "変更する",
-                        style: UIAlertAction.Style.default) { _ in
-                    if let text = alertTextField?.text {
-                        customJS.createAt = Date()
-                        customJS.title = text
-                        self.updateCustomJS(customJS: customJS)
+            UIAlertAction(
+                title: "変更する",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    customJS.createAt = Date()
+                    customJS.title = text
+                    self.updateCustomJS(customJS: customJS)
 
-                    }
                 }
+            }
         )
 
         present(alert, animated: true, completion: nil)
     }
 
 }
-
 
 extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,7 +135,8 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if customJSs.count == indexPath.row {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! CustomAddCellTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell",
+                                                     for: indexPath) as! CustomAddCellTableViewCell
             cell.selectionStyle = .none
             cell.delegate = self
             return cell
@@ -174,17 +172,19 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
 
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .none
     }
 
     // 編集モード時に左にずれるか。
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        false //ずれない。
+        false // ずれない。
     }
 
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    public func tableView(_ tableView: UITableView,
+                          targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                          toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if customJSs.count == proposedDestinationIndexPath.row {
             return sourceIndexPath
         }
@@ -200,16 +200,21 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         if customJSs.count == indexPath.row {
             return nil
         }
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { action in
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { _ in
                 self.updateCustomJSDialog(index: indexPath.row)
             }
 
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { action in
+            let delete = UIAction(title: "Delete",
+                                  image: UIImage(systemName: "trash"),
+                                  identifier: nil,
+                                  attributes: .destructive) { _ in
                 print("indexPath is ", indexPath)
                 self.deleteCustomJS(index: indexPath.row)
             }
@@ -217,7 +222,6 @@ extension CustomJSViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return configuration
     }
-
 
 }
 
@@ -236,30 +240,35 @@ extension CustomJSViewController: CustomAddCellOutput {
         var alertTextField: UITextField?
 
         let alert = UIAlertController(
-                title: "カスタムJSを作成",
-                message: "作成するカスタムJSにタイトルを付けてください",
-                preferredStyle: UIAlertController.Style.alert)
+            title: "カスタムJSを作成",
+            message: "作成するカスタムJSにタイトルを付けてください",
+            preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
-                configurationHandler: { (textField: UITextField!) in
-                    alertTextField = textField
-//                 textField.text = self.label1.text
-                })
+            configurationHandler: { (textField: UITextField!) in
+                alertTextField = textField
+                //                 textField.text = self.label1.text
+            })
         alert.addAction(
-                UIAlertAction(
-                        title: "キャンセル",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
         alert.addAction(
-                UIAlertAction(
-                        title: "作成",
-                        style: UIAlertAction.Style.default) { _ in
-                    if let text = alertTextField?.text {
-                        let cjs = CustomJS(title: text, js: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customJSs.count + 1), isLoad: true)
-                        self.createCustomJS(customJS: cjs)
-                        let vc = EditCustomJSViewController(customJS: self.customJSs.last!)
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
+            UIAlertAction(
+                title: "作成",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    let cjs = CustomJS(title: text,
+                                       js: "",
+                                       createAt: Date(),
+                                       updateAt: Date(),
+                                       loadIndex: Int32(self.customJSs.count + 1),
+                                       isLoad: true)
+                    self.createCustomJS(customJS: cjs)
+                    let vc = EditCustomJSViewController(customJS: self.customJSs.last!)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
+            }
         )
 
         present(alert, animated: true, completion: nil)

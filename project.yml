@@ -10,6 +10,12 @@ packages:
   GiphyUISDK:
     url: https://github.com/Giphy/giphy-ios-sdk
     exactVersion: 2.1.16
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift.git
+    exactVersion: 6.5.0
+  RxWebKit:
+    url: https://github.com/RxSwiftCommunity/RxWebKit
+    exactVersion: 2.0.1
 
       
 
@@ -43,10 +49,16 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
+        DISPLAY_APPNAME: MarinDeck
     dependencies:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift
+    preBuildScripts:
+      - path: ./scripts/swiftlint.sh
+        name: Run SwiftLint
 
   Marindeck-dev:
     type: application
@@ -58,8 +70,10 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck.dev
-        INFOPLIST_FILE: MarinDeck/Info-dev.plist
+        DISPLAY_APPNAME: MD-dev
     dependencies:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift

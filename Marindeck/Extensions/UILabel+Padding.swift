@@ -18,7 +18,10 @@ extension UILabel {
         }
         set {
             if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.padding, newValue as UIEdgeInsets?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self,
+                                         &AssociatedKeys.padding,
+                                         newValue as UIEdgeInsets?,
+                                         objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
@@ -48,8 +51,8 @@ extension UILabel {
         }
 
         let newSize = text.boundingRect(with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
-                options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                attributes: [NSAttributedString.Key.font: self.font!], context: nil)
+                                        options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                        attributes: [NSAttributedString.Key.font: self.font!], context: nil)
 
         contentSize.height = ceil(newSize.size.height) + insetsHeight
         contentSize.width = ceil(newSize.size.width) + insetsWidth

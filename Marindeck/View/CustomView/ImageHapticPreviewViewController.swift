@@ -10,14 +10,14 @@ import AVFoundation
 
 class ImageHapticPreviewViewController: UIViewController {
     private let imageView = UIImageView()
-    
-    public var image: UIImage? = nil {
+
+    public var image: UIImage? {
         didSet {
             preferredContentSize = image?.size ?? CGSize(width: 100, height: 100)
             imageView.image = image
         }
     }
-    
+
     init(image: UIImage?) {
         super.init(nibName: nil, bundle: nil)
         preferredContentSize = image?.size ?? CGSize(width: 100, height: 100) // FXIME
@@ -26,7 +26,7 @@ class ImageHapticPreviewViewController: UIViewController {
         imageView.image = image
         view = imageView
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

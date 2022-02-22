@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 extension Notification {
 
     // キーボードの高さ

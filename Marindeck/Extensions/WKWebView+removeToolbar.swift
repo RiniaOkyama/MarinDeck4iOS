@@ -19,7 +19,9 @@ extension WKWebView {
         let noInputAccessoryViewClassName = "\(superclass)_NoInputAccessoryView"
         var newClass: AnyClass? = NSClassFromString(noInputAccessoryViewClassName)
 
-        if newClass == nil, let targetClass = object_getClass(target), let classNameCString = noInputAccessoryViewClassName.cString(using: .ascii) {
+        if newClass == nil,
+           let targetClass = object_getClass(target),
+           let classNameCString = noInputAccessoryViewClassName.cString(using: .ascii) {
             newClass = objc_allocateClassPair(targetClass, classNameCString, 0)
 
             if let newClass = newClass {
@@ -27,10 +29,16 @@ extension WKWebView {
             }
         }
 
-        guard let noInputAccessoryClass = newClass, let originalMethod = class_getInstanceMethod(NoInputAccessoryView.self, #selector(getter: NoInputAccessoryView.inputAccessoryView)) else {
+        guard let noInputAccessoryClass = newClass,
+              let originalMethod = class_getInstanceMethod(
+                NoInputAccessoryView.self,
+                #selector(getter: NoInputAccessoryView.inputAccessoryView)) else {
             return
         }
-        class_addMethod(noInputAccessoryClass.self, #selector(getter: NoInputAccessoryView.inputAccessoryView), method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+        class_addMethod(noInputAccessoryClass.self,
+                        #selector(getter: NoInputAccessoryView.inputAccessoryView),
+                        method_getImplementation(originalMethod),
+                        method_getTypeEncoding(originalMethod))
         object_setClass(target, noInputAccessoryClass)
     }
 }
@@ -40,16 +48,19 @@ fileprivate final class NoInputAccessoryView: NSObject {
 }
 
 // https://qiita.com/mopiemon/items/8d0dd7d678c4dadeadd4s
-fileprivate var ToolbarHandle: UInt8 = 0
+private var ToolbarHandle: UInt8 = 0
 
-extension WKWebView{
+extension WKWebView {
     func addIndexAccessoryView(toolbar: UIView?) {
         guard let toolbar = toolbar else { return }
-        objc_setAssociatedObject(self, &ToolbarHandle, toolbar, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        var candidateView: UIView? = nil
+        objc_setAssociatedObject(self,
+                                 &ToolbarHandle,
+                                 toolbar,
+                                 objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        var candidateView: UIView?
         for view in self.scrollView.subviews {
             let description: String = String(describing: type(of: view))
-            if description.hasPrefix("WKContent"){
+            if description.hasPrefix("WKContent") {
                 candidateView = view
                 break
             }
@@ -62,7 +73,9 @@ extension WKWebView{
     }
 
     func classWithCustomAccessoryView(targetView: UIView) -> AnyClass? {
-        guard let _ = targetView.superclass else { return nil }
+        if targetView.superclass == nil {
+            return nil
+        }
         let customInputAccessoryViewClassName = "_CustomInputAccessoryView"
         var newClass: AnyClass? = NSClassFromString(customInputAccessoryViewClassName)
 
@@ -75,18 +88,19 @@ extension WKWebView{
         let newMethod = class_getInstanceMethod(WKWebView.self, #selector(WKWebView.getCustomInputAccessoryView))
 
         class_addMethod(newClass.self,
-            #selector(getter: WKWebView.inputAccessoryView),
-            method_getImplementation(newMethod!),
-            method_getTypeEncoding(newMethod!)
+                        #selector(getter: WKWebView.inputAccessoryView),
+                        method_getImplementation(newMethod!),
+                        method_getTypeEncoding(newMethod!)
         )
         objc_registerClassPair(newClass!)
         return newClass
     }
 
-    @objc func getCustomInputAccessoryView() -> UIView? {
+    @objc
+    func getCustomInputAccessoryView() -> UIView? {
         var superWebView: UIView? = self
         while (superWebView != nil) && !(superWebView is WKWebView) {
-            superWebView = superWebView?.superview //== WKWebView
+            superWebView = superWebView?.superview // == WKWebView
         }
         guard let webView = superWebView else { return nil }
 
