@@ -77,4 +77,8 @@ extension TD.ActionsController {
             print(#function, error ?? "成功")
         }
     }
+    
+    func openTDSettings() {
+        webView?.evaluateJavaScript("document.querySelector(\".js-app-settings\").click();document.querySelector(\"[data-action='globalSettings']\").click()")
+    }
 }
