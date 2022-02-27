@@ -9,6 +9,7 @@ export default defineConfig({
     minify: false
   },
   build: {
+    minify: false,
     rollupOptions: {
       input: 'src/main.ts',
       output: {

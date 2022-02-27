@@ -59,6 +59,8 @@ targets:
     preBuildScripts:
       - path: ./scripts/swiftlint.sh
         name: Run SwiftLint
+      - path: ./scripts/vite.sh
+        name: Build Vite
 
   Marindeck-dev:
     type: application

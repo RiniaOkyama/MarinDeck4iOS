@@ -1,11 +1,11 @@
-interface Window {
-    webkit?: any;
-}
+// interface Window {
+//     webkit?: any;
+// }
 
-declare var window: Window;
+// declare var window: Window;
 
 
 
-export function openSettings() {
-    window.webkit.messageHandlers.openSettings.postMessage(true)
-}
+// export function openSettings() {
+//     window.webkit.messageHandlers.openSettings.postMessage(true)
+// }
