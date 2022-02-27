@@ -160,24 +160,10 @@ function loginStyled() {
 
 ///////////////////////////////////////
 
-function addTweetImage(base64, type, name) {
-    var bin = atob(base64.replace(/^.*,/, '')); // decode base64
-    var buffer = new Uint8Array(bin.length); // to binary data
-    for (var i = 0; i < bin.length; i++) {
-        buffer[i] = bin.charCodeAt(i);
-    }
-    const imgFile = new File([buffer.buffer], name, {type: type});
-
-    jq(document).trigger("uiFilesAdded", {files: [imgFile]});
-}
 
 function swiftLog(...msg) {
     console.log("JS Log:", msg)
     webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
-}
-
-function touchPointTweetLike(x, y) {
-    document.elementFromPoint(x, y).closest(".tweet").getElementsByClassName("tweet-action")[2].click();
 }
 
 function positionElement(x, y) {
@@ -236,31 +222,15 @@ function positionElement(x, y) {
     return [selectIndex, imgUrls]
 }
 
-function triggerEvent(element, event) {
-    if (document.createEvent) {
-        // IE以外
-        var evt = document.createEvent("HTMLEvents");
-        evt.initEvent(event, true, true); // event type, bubbling, cancelable
-        return element.dispatchEvent(evt);
-    } else {
-        // IE
-        var evt = document.createEventObject();
-        return element.fireEvent("on" + event, evt);
-    }
-}
-
 (async () => {
     let endedlist = []
 
-    new MutationObserver(records => {
+    new MutationObserver( _ => {
         document.querySelectorAll(".js-media-image-link").forEach(function (image) {
             if (endedlist.indexOf(image) === -1) {
                 endedlist.push(image);
 
                 if (image.parentElement.classList.contains("is-video")) {
-                    // image.addEventListener("click", function (clickedItem) {
-                    //     swiftLog("isVideo onClick")
-                    // })
                     if (image.href.includes("youtube.com")) {
                         image.addEventListener("click", function (clickedItem) {
                             const url = clickedItem.target.href
@@ -278,30 +248,6 @@ function triggerEvent(element, event) {
             }
         });
     }).observe(document.body, {childList: true, subtree: true})
-
-
-    // while (true) {
-    //     await sleep(1000);
-    //
-    //     document.querySelectorAll(".js-media-image-link").forEach(function (image) {
-    //         if (endedlist.indexOf(image) >= 0) {
-    //
-    //         } else {
-    //             if (image.parentElement.classList.contains("is-video")) {
-    //                 image.addEventListener("click", function (clickedItem) {
-    //                     swiftLog("isVideo onClick")
-    //                 })
-    //             } else {
-    //                 endedlist.push(image);
-    //                 image.addEventListener("click", function (clickedItem) {
-    //                     swiftLog("image onClick")
-    //                     const res = positionElement(clickedItem.x, clickedItem.y);
-    //                     webkit.messageHandlers.imagePreviewer.postMessage(res);
-    //                 });
-    //             }
-    //         }
-    //     });
-    // }
 })();
 
 

@@ -14,7 +14,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                 return
             }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
+            webView.evaluateJavaScript("window.MarinDeckInputs.addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
                 print("photoselected : ", error ?? "成功")
             }
             dismiss(animated: true, completion: nil)
@@ -27,7 +27,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
                 return
             }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
+            webView.evaluateJavaScript("window.MarinDeckInputs.addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
                 print("photoselected : ", error ?? "成功")
             }
         } else {

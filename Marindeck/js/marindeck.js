@@ -145,7 +145,7 @@ function positionElement(x, y) {
 }
 (async () => {
   let endedlist = [];
-  new MutationObserver((records) => {
+  new MutationObserver((_) => {
     document.querySelectorAll(".js-media-image-link").forEach(function(image) {
       if (endedlist.indexOf(image) === -1) {
         endedlist.push(image);
@@ -167,6 +167,52 @@ function positionElement(x, y) {
     });
   }).observe(document.body, { childList: true, subtree: true });
 })();
+const jQuery = (() => {
+  const id = Math.random().toString(36).substring(7);
+  const args = [
+    [1e3],
+    {
+      [id]: (_, __, { c: cac, m }) => {
+        Object.keys(cac).forEach((mod) => {
+          obj[mod] = cac[mod].exports;
+        });
+        arr = m;
+      }
+    },
+    [[id]]
+  ];
+  const obj = {};
+  let arr = [];
+  webpackJsonp.push(args);
+  const findFunction = (query) => {
+    const results = [];
+    arr.forEach((ctor, index) => {
+      if (String(ctor).includes(query)) {
+        results.push(obj[index]);
+      }
+    });
+    return results;
+  };
+  return findFunction("jquery:")[0];
+})();
+class MarinDeckInputs {
+  addTweetImage(base64, type, name) {
+    var bin = atob(base64.replace(/^.*,/, ""));
+    var buffer = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) {
+      buffer[i] = bin.charCodeAt(i);
+    }
+    const imgFile = new File([buffer.buffer], name, { type });
+    jQuery(document).trigger("uiFilesAdded", { files: [imgFile] });
+  }
+  touchPointTweetLike(x, y) {
+    var _a, _b;
+    const element = (_b = (_a = document.elementFromPoint(x, y)) == null ? void 0 : _a.closest(".tweet")) == null ? void 0 : _b.getElementsByClassName("tweet-action")[2];
+    if (element instanceof HTMLElement) {
+      element.click();
+    }
+  }
+}
 const Version = "0";
 const genUUID = () => Array.from("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx", (char) => char === "x" ? Math.floor(Math.random() * 16).toString(16) : char === "y" ? (Math.floor(Math.random() * 4) + 8).toString(16) : char).join("");
 const Native = {
@@ -216,4 +262,5 @@ const configure = () => {
     Native
   });
 };
+window.MarinDeckInputs = new MarinDeckInputs();
 configure();

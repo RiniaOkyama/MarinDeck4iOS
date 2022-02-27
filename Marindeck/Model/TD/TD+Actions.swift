@@ -16,7 +16,7 @@ extension TD.ActionsController {
 
     // 座標の位置にあるツイートをいいね
     func positionTweetLike(x: Int, y: Int) {
-        webView?.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { _, error in
+        webView?.evaluateJavaScript("window.MarinDeckInputs.touchPointTweetLike(\(x), \(y))", completionHandler: { _, error in
             print("touchPointTweetLike : ", error ?? "成功")
         })
     }
