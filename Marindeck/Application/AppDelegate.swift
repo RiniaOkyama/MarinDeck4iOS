@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        DeployGateSDK
         //            .sharedInstance()
         //            .launchApplication(withAuthor: keys.deploygateUsername, key: keys.deploygateSdkApiKey)
-        UserDefaults.standard.register(defaults: [UserDefaultsKey.marginSafeArea: true])
+        UserDefaults.standard.register(defaults: [.marginSafeArea: true])
         Database.shared.setup()
         Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
 

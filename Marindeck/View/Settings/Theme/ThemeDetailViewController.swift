@@ -80,7 +80,7 @@ class ThemeDetailViewController: UIViewController {
 
     @IBAction func apply() {
         if isApplied { return }
-        UserDefaults.standard.setValue( theme?.id, forKey: UserDefaultsKey.themeID)
+        UserDefaults.standard.set( theme?.id, forKey: .themeID)
         viewController.webView.reload()
         reload()
     }

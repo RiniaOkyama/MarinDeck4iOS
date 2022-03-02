@@ -83,6 +83,15 @@ extension ViewController: Transition {
         )
         present(alert, animated: true, completion: nil)
     }
+    
+    func openTwitterAppTweetModal() {
+        if let twitterURL = URL(string: "twitter://post"),
+           UIApplication.shared.canOpenURL(twitterURL) {
+            UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
+        } else {
+            // TODO: Twitterアプリが入ってないアラート
+        }
+    }
 
     // 下書きに保存するかどうかのアラート
     func openIfDraftAlert(text: String) {
@@ -158,15 +167,16 @@ extension ViewController: Transition {
     
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
-        let datePickerVc = DatePickerViewController(mode: UIDatePicker.Mode.dateAndTime)
-        datePickerVc.datePicker.date = Date()
-        datePickerVc.datePicker.minimumDate = Date()
-        // TODO: MaxiumDate
-//        datePickerVc.datePicker.maximumDate = Date()
-        alert.setContentViewController(vc: datePickerVc)
+        let dp = UIDatePicker()
+        alert.view.addSubview(dp)
+        dp.translatesAutoresizingMaskIntoConstraints = false
+        dp.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50).isActive = true
+        dp.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+        alert.view.heightAnchor.constraint(equalToConstant: 142).isActive = true
+
         alert.addAction(.init(title: L10n.Alert.Cancel.title, style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: L10n.Alert.Ok.title, style: .default, handler: { [weak self] _ in
-            self?.td.actions.setSchedule(date: datePickerVc.datePicker.date)
+            self?.td.actions.setSchedule(date: dp.date)
         }))
         present(alert, animated: true, completion: nil)
     }

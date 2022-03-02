@@ -16,13 +16,16 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet private weak var logoutLabel: UILabel!
 
     @IBOutlet private weak var biometricsSwitch: UISwitch!
-    @IBOutlet private weak var nativeTweetModalSwitch: UISwitch!
+    @IBOutlet private weak var tweetButtonBehavior: UIButton!
     @IBOutlet private weak var marginSafeAreaSwitch: UISwitch!
 
     @IBOutlet private weak var appVersionLabel: UILabel!
 
     private var dController: UIDocumentInteractionController!
     private let dbQueue = Database.shared.dbQueue
+    private let ud = UserDefaults.standard
+    
+    private var selectedTweetButtonType: TweetButtonType = .default
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,12 +64,11 @@ class SettingsTableViewController: UITableViewController {
         })
         tableView.reloadData()
 
-        biometricsSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
+        biometricsSwitch.setOn(ud.bool(forKey: .isUseBiometrics), animated: false)
 
-        nativeTweetModalSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.isNativeTweetModal),
-                                     animated: false)
-
-        marginSafeAreaSwitch.setOn(UserDefaults.standard.bool(forKey: UserDefaultsKey.marginSafeArea), animated: false)
+        marginSafeAreaSwitch.setOn(ud.bool(forKey: .marginSafeArea), animated: false)
+        
+        setupTweetButtonBehavior()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +87,30 @@ class SettingsTableViewController: UITableViewController {
     @objc
     func onDismiss() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setupTweetButtonBehavior() {
+        selectedTweetButtonType = TweetButtonType(rawValue: ud.string(forKey: .tweetButtonType) ?? TweetButtonType.default.rawValue) ?? .default
+        var actions: [UIMenuElement] = []
+        
+        TweetButtonType.allCases.forEach { type in
+            actions.append(UIAction(title: type.title,
+                                    image: nil,
+                                    state: self.selectedTweetButtonType == type ? .on : .off,
+                                    handler: { [weak self] _ in
+                                        self?.changedTweetButtonBehavior(type)
+            }))
+        }
+        tweetButtonBehavior.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        
+        tweetButtonBehavior.showsMenuAsPrimaryAction = true
+        tweetButtonBehavior.setTitle(selectedTweetButtonType.title, for: .normal)
+    }
+    
+    func changedTweetButtonBehavior(_ type: TweetButtonType) {
+        tweetButtonBehavior.setTitle(type.title, for: .normal)
+        selectedTweetButtonType = type
+        ud.set(type.rawValue, forKey: .tweetButtonType)
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -147,15 +173,11 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @IBAction func setBiometrics() {
-        UserDefaults.standard.setValue(biometricsSwitch.isOn, forKey: UserDefaultsKey.isUseBiometrics)
-    }
-
-    @IBAction func setNativeTweetModal() {
-        UserDefaults.standard.setValue(nativeTweetModalSwitch.isOn, forKey: UserDefaultsKey.isNativeTweetModal)
+        ud.set(biometricsSwitch.isOn, forKey: .isUseBiometrics)
     }
 
     @IBAction func setMarginSafeArea() {
-        UserDefaults.standard.setValue(marginSafeAreaSwitch.isOn, forKey: UserDefaultsKey.marginSafeArea)
+        ud.set(marginSafeAreaSwitch.isOn, forKey: .marginSafeArea)
     }
 
     func presentTheme() {
@@ -268,11 +290,11 @@ class SettingsTableViewController: UITableViewController {
     }
 
     func exportSettings() {
-        let userdefaultsData = UserDefaults.standard.dictionaryRepresentation()
+        let userdefaultsData = ud.dictionaryRepresentation()
 
         var dict: [String: Any] = [:]
         for (key, value) in userdefaultsData {
-            if UserDefaultsKey.allKeys.contains(key) {
+            if UserDefaultsKey.allCases.map({ $0.rawValue }).contains(key) {
                 dict[key] = value
             }
         }
@@ -318,9 +340,9 @@ class SettingsTableViewController: UITableViewController {
         let defaultAction: UIAlertAction = UIAlertAction(
             title: L10n.Settings.Logout.Cell.title,
             style: .destructive,
-            handler: { (_: UIAlertAction!) -> Void in
+            handler: { [weak self] _ in
                 URLSession.shared.reset {}
-                UserDefaults.standard.synchronize()
+                self?.ud.synchronize()
                 let dataStore = WKWebsiteDataStore.default()
                 dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
                     print("+===========================+++")
@@ -421,8 +443,8 @@ extension SettingsTableViewController: UIDocumentPickerDelegate {
             let dict: [String: Any] = try! JSONSerialization.jsonObject(with: fileData,
                                                                         options: []) as? [String: Any] ?? [:]
             for (key, value) in dict {
-                if UserDefaultsKey.allKeys.contains(key) {
-                    UserDefaults.standard.setValue(value, forKey: key)
+                if UserDefaultsKey.allCases.map({ $0.rawValue }).contains(key) {
+                    ud.setValue(value, forKey: key)
                 } else if key == "customJSs" {
                     guard let dataString = value as? String else { continue }
                     guard let data = dataString.data(using: .utf8) else { continue }

@@ -12,10 +12,11 @@ protocol MenuDelegate: AnyObject {
     func openProfile()
     func openColumnAdd()
     func reload()
+    func openTdSettings()
 }
 
 class MenuViewController: UIViewController {
-    var delegate: MenuDelegate!
+    weak var delegate: MenuDelegate?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
@@ -26,6 +27,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var reloadMenu: MenuItemView!
     @IBOutlet weak var columnMenu: MenuItemView!
     @IBOutlet weak var twitterSettingsMenu: MenuItemView!
+    @IBOutlet weak var tdSettingsMenu: MenuItemView!
 
     //    @IBOutlet weak var marinDeckLogoView: UIImageView!
 
@@ -40,7 +42,7 @@ class MenuViewController: UIViewController {
         userIconImageView.clipsToBounds = true
         userIconImageView.layer.cornerRadius = 30
 
-        [profileMenu, reloadMenu, columnMenu, twitterSettingsMenu].forEach({
+        [profileMenu, reloadMenu, columnMenu, twitterSettingsMenu, tdSettingsMenu].forEach({
             $0?.iconView.tintColor = .labelColor
             $0?.titleLabel.textColor = .labelColor
         })
@@ -51,6 +53,7 @@ class MenuViewController: UIViewController {
         reloadMenu.setTapEvent(action: #selector(reloadTapped), target: self)
         columnMenu.setTapEvent(action: #selector(columnAddTapped), target: self)
         twitterSettingsMenu.setTapEvent(action: #selector(twitterSettingsTapped), target: self)
+        tdSettingsMenu.setTapEvent(action: #selector(tdSettingsTapped), target: self)
 
         profileMenu.title = L10n.Menu.Profile.title
         reloadMenu.title = L10n.Menu.Reload.title
@@ -63,7 +66,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.profileMenu.backgroundColor = .clear
         })
-        delegate.openProfile()
+        delegate?.openProfile()
     }
 
     @objc
@@ -72,7 +75,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.reloadMenu.backgroundColor = .clear
         })
-        delegate.reload()
+        delegate?.reload()
     }
 
     @objc
@@ -81,13 +84,18 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.columnMenu.backgroundColor = .clear
         })
-        delegate.openColumnAdd()
+        delegate?.openColumnAdd()
     }
 
     @objc
     func twitterSettingsTapped() {
         let vc = TwitterSettingsViewController()
         present(vc, animated: true, completion: nil)
+    }
+    
+    @objc
+    func tdSettingsTapped() {
+        delegate?.openTdSettings()
     }
 
     func setUserIcon(url: String) {
@@ -100,7 +108,7 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction func openSettings() {
-        delegate.openSettings()
+        delegate?.openSettings()
     }
 
 }

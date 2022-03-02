@@ -80,7 +80,7 @@ class TwitterSettingsViewController: UIViewController, WKUIDelegate, WKNavigatio
 
         webView.rx.url
             .subscribe(onNext: {
-                if !($0?.path.contains("/settings") ?? true) {
+                if !($0?.path.contains("/settings") ?? true) || !($0?.host == "mobile.twitter.com") {
                     self.dismiss(animated: true, completion: nil)
                 }
             })

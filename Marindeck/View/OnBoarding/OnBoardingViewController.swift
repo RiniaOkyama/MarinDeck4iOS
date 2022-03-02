@@ -26,7 +26,7 @@ class OnBoardingViewController: UIViewController {
     }
 
     @IBAction func start() {
-        UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isOnBoarding)
+        UserDefaults.standard.set(true, forKey: .isOnBoarding)
         dismiss(animated: true)
     }
 }

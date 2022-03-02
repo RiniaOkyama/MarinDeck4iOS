@@ -47,6 +47,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>youtube</string>
+		<string>twitter</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -115,11 +115,6 @@ extension ViewController: ViewSetup {
 
         webView = WKWebView(frame: mainDeckView.bounds, configuration: webConfiguration)
 
-        //        webView.frame.size.width = view.frame.width
-        //        webView.frame.size.height = view.frame.height - (topBackView.frame.height + bottomBackView.frame.height)
-        //        webView.frame.origin.y = topBackView.frame.height
-        //        webView.frame = view.safeAreaLayoutGuide.layoutFrame
-
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
