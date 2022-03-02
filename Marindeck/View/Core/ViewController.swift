@@ -144,10 +144,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     // ツイートボタンタップ痔の動作
     @objc
     func tweetPressed() {
-        if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
-            openNativeTweetModal()
-        } else {
+        let type = TweetButtonType(rawValue: userDefaults.string(forKey: .tweetButtonType) ?? TweetButtonType.default.rawValue) ?? .default
+        
+        switch type {
+        case .`default`:
             openWebViewTweetModal()
+        case .twitterApp:
+            openTwitterAppTweetModal()
+        case .native:
+            openNativeTweetModal()
         }
     }
 

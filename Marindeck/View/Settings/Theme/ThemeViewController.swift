@@ -98,7 +98,7 @@ extension ThemeViewController: ThemeTableViewCellDelegate {
     func apply(tag: Int) {
         let id = themes[tag].id
         if applyID == id { return }
-        UserDefaults.standard.setValue(id, forKey: UserDefaultsKey.themeID)
+        UserDefaults.standard.set(id, forKey: .themeID)
         viewController.webView.reload()
         updateApplyID()
         tableView.reloadData()

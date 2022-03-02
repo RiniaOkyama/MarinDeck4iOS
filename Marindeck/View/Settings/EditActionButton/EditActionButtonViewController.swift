@@ -87,7 +87,7 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     func saveActions() {
         var _selectedActions = self.selectedActions
         _selectedActions.swapAt(0, 2)
-        UserDefaults.standard.set(_selectedActions.map { $0.rawValue }, forKey: UserDefaultsKey.actionButtoms)
+        UserDefaults.standard.set(_selectedActions.map { $0.rawValue }, forKey: .actionButtoms)
     }
 
     func getActions() -> [ActionButtons] {

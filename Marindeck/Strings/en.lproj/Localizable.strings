@@ -21,7 +21,7 @@
 
 "settings.nativePreview.cell.title" = "Use native preview";
 "settings.biometrics.cell.title" = "Biometrics";
-"settings.nativeTweetModal.cell.title" = "Use native tweet modal";
+"settings.tweetButtonBehavior.cell.title" = "Tweet button behavior";
 "settings.marginSafeArea.cell.title" = "Margin safeArea";
 
 "settings.customJS.cell.title" = "Custom JavaScript";

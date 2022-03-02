@@ -83,6 +83,15 @@ extension ViewController: Transition {
         )
         present(alert, animated: true, completion: nil)
     }
+    
+    func openTwitterAppTweetModal() {
+        if let twitterURL = URL(string: "twitter://post"),
+           UIApplication.shared.canOpenURL(twitterURL) {
+            UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
+        } else {
+            // TODO: Twitterアプリが入ってないアラート
+        }
+    }
 
     // 下書きに保存するかどうかのアラート
     func openIfDraftAlert(text: String) {

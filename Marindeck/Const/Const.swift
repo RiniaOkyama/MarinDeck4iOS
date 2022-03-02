@@ -9,23 +9,67 @@ import Foundation
 import UIKit
 import LocalAuthentication
 
-struct UserDefaultsKey {
-    static let isDebugBtnHidden = "isDebugBtnHidden"
-    static let themeID = "themeID"
-    static let isUseBiometrics = "isUseBiometrics"
-    static let isNativeTweetModal = "isNativeTweetModal"
-    static let isOnBoarding = "isOnBoarding"
-    static let actionButtoms = "actionButtoms"
-    static let marginSafeArea = "marginSafeArea"
+enum UserDefaultsKey: String, CaseIterable {
+    case isDebugBtnHidden = "isDebugBtnHidden"
+    case themeID = "themeID"
+    case isUseBiometrics = "isUseBiometrics"
+    case tweetButtonType = "tweetButtonType"
+    case isOnBoarding = "isOnBoarding"
+    case actionButtoms = "actionButtoms"
+    case marginSafeArea = "marginSafeArea"
+}
 
-    static let allKeys = [
-        isDebugBtnHidden,
-        themeID,
-        isUseBiometrics,
-        isNativeTweetModal,
-        actionButtoms,
-        marginSafeArea
-    ]
+extension UserDefaults {
+    func register(defaults: [UserDefaultsKey: Any]) {
+        var registerValue: [String: Any] = [:]
+        
+        defaults.forEach({ (key, value) in
+            registerValue[key.rawValue] = value
+        })
+        register(defaults: registerValue)
+    }
+    
+    func set(_ value: Any?, forKey key: UserDefaultsKey) {
+        self.set(value, forKey: key.rawValue)
+    }
+    
+    func string(forKey defaultName: UserDefaultsKey) -> String? {
+        string(forKey: defaultName.rawValue)
+    }
+
+    func array(forKey defaultName: UserDefaultsKey) -> [Any]? {
+        array(forKey: defaultName.rawValue)
+    }
+
+    func dictionary(forKey defaultName: UserDefaultsKey) -> [String : Any]? {
+        dictionary(forKey: defaultName.rawValue)
+    }
+
+    func data(forKey defaultName: UserDefaultsKey) -> Data? {
+        data(forKey: defaultName.rawValue)
+    }
+
+    func stringArray(forKey defaultName: UserDefaultsKey) -> [String]? {
+        stringArray(forKey: defaultName.rawValue)
+    }
+
+    func integer(forKey defaultName: UserDefaultsKey) -> Int {
+        integer(forKey: defaultName.rawValue)
+    }
+
+
+    func float(forKey defaultName: UserDefaultsKey) -> Float {
+        float(forKey: defaultName.rawValue)
+    }
+
+
+    func double(forKey defaultName: UserDefaultsKey) -> Double {
+        double(forKey: defaultName.rawValue)
+    }
+
+    func bool(forKey defaultName: UserDefaultsKey) -> Bool {
+        bool(forKey: defaultName.rawValue)
+    }
 }
 
 struct EnvKeys {
@@ -93,6 +137,25 @@ enum ActionButtons: String {
             return L10n.ActionButton.Settings.description
         }
     }
+}
+
+enum TweetButtonType: String, CaseIterable {
+    case `default` = "default"
+    case native = "native"
+    case twitterApp = "twitterApp"
+    
+    public var title: String {
+        get {
+            switch self {
+            case .`default`:
+                return "TweetDeck"
+            case .native:
+                return "ネイティブ"
+            case .twitterApp:
+                return "Twitter"
+        }
+    }
+}
 }
 
 // Codable?
@@ -171,7 +234,7 @@ let themes = [
 
 func fetchTheme() -> Theme {
     let userDefaults = UserDefaults.standard
-    if let themeID = userDefaults.string(forKey: UserDefaultsKey.themeID) {
+    if let themeID = userDefaults.string(forKey: .themeID) {
         return themes.filter({ $0.id == themeID })[0]
     } else {
         return themes[0]
