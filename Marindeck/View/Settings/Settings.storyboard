@@ -114,9 +114,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZL3-fs-sMk">
                                                     <rect key="frame" x="319" y="6.5" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="setBiometrics" destination="YSg-LA-Jo6" eventType="valueChanged" id="cKS-ap-CBF"/>
-                                                        <action selector="setMarginSafeArea" destination="YSg-LA-Jo6" eventType="valueChanged" id="Vg7-My-i9c"/>
-                                                        <action selector="setNativeTweetModal" destination="YSg-LA-Jo6" eventType="valueChanged" id="JTm-h1-t4Q"/>
+                                                        <action selector="setMarginSafeArea" destination="YSg-LA-Jo6" eventType="valueChanged" id="RLg-wd-kNa"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>

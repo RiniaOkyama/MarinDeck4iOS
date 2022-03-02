@@ -64,9 +64,9 @@ class SettingsTableViewController: UITableViewController {
         })
         tableView.reloadData()
 
-        biometricsSwitch.setOn(ud.bool(forKey: UserDefaultsKey.isUseBiometrics), animated: false)
+        biometricsSwitch.setOn(ud.bool(forKey: .isUseBiometrics), animated: false)
 
-        marginSafeAreaSwitch.setOn(ud.bool(forKey: UserDefaultsKey.marginSafeArea), animated: false)
+        marginSafeAreaSwitch.setOn(ud.bool(forKey: .marginSafeArea), animated: false)
         
         setupTweetButtonBehavior()
     }
