@@ -23,6 +23,7 @@
 "settings.biometrics.cell.title" = "生体認証";
 "settings.tweetButtonBehavior.cell.title" = "ツイートボタンの動作";
 "settings.marginSafeArea.cell.title" = "SafeAreaを考慮する";
+"settings.noSleep.cell.title" = "スリープさせない";
 
 "settings.customJS.cell.title" = "カスタムJavaScript";
 "settings.customCSS.cell.title" = "カスタムCSS";

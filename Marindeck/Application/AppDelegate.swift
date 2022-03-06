@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.register(defaults: [.marginSafeArea: true])
         Database.shared.setup()
         Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
+        UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.bool(forKey: .noSleep)
 
         #if DEBUG
         _ = Test()

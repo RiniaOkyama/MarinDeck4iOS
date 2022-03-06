@@ -17,6 +17,7 @@ enum UserDefaultsKey: String, CaseIterable {
     case isOnBoarding = "isOnBoarding"
     case actionButtoms = "actionButtoms"
     case marginSafeArea = "marginSafeArea"
+    case noSleep = "noSleep"
 }
 
 extension UserDefaults {

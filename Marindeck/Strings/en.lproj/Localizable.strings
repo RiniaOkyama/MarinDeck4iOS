@@ -23,6 +23,7 @@
 "settings.biometrics.cell.title" = "Biometrics";
 "settings.tweetButtonBehavior.cell.title" = "Tweet button behavior";
 "settings.marginSafeArea.cell.title" = "Margin safeArea";
+"settings.noSleep.cell.title" = "No Sleep";
 
 "settings.customJS.cell.title" = "Custom JavaScript";
 "settings.customCSS.cell.title" = "Custom CSS";

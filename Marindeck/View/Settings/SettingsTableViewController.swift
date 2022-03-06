@@ -18,6 +18,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet private weak var biometricsSwitch: UISwitch!
     @IBOutlet private weak var tweetButtonBehavior: UIButton!
     @IBOutlet private weak var marginSafeAreaSwitch: UISwitch!
+    @IBOutlet private weak var noSleepSwitch: UISwitch!
 
     @IBOutlet private weak var appVersionLabel: UILabel!
 
@@ -65,10 +66,9 @@ class SettingsTableViewController: UITableViewController {
         tableView.reloadData()
 
         biometricsSwitch.setOn(ud.bool(forKey: .isUseBiometrics), animated: false)
-
         marginSafeAreaSwitch.setOn(ud.bool(forKey: .marginSafeArea), animated: false)
-        
         setupTweetButtonBehavior()
+        noSleepSwitch.setOn(ud.bool(forKey: .noSleep), animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -178,6 +178,11 @@ class SettingsTableViewController: UITableViewController {
 
     @IBAction func setMarginSafeArea() {
         ud.set(marginSafeAreaSwitch.isOn, forKey: .marginSafeArea)
+    }
+    
+    @IBAction func setNoSleep() {
+        ud.set(noSleepSwitch.isOn, forKey: .noSleep)
+        UIApplication.shared.isIdleTimerDisabled = noSleepSwitch.isOn
     }
 
     func presentTheme() {
