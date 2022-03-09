@@ -24,6 +24,8 @@ class ThemeViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        
+        setSwipeBack()
     }
 
     override func viewWillAppear(_ animated: Bool) {

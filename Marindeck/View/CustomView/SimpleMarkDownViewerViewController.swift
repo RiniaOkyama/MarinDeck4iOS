@@ -37,6 +37,8 @@ final class SimpleMarkDownViewerViewController: UIViewController {
         markdownView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         markdownView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         markdownView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        setSwipeBack()
     }
 
 }

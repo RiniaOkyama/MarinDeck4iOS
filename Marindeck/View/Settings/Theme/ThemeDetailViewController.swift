@@ -45,6 +45,8 @@ class ThemeDetailViewController: UIViewController {
         userLabel?.text = theme?.user
 
         reload()
+        
+        setSwipeBack()
     }
 
     func reload() {
