@@ -39,6 +39,18 @@ struct AppDebugView: View {
                 onBoardingVC.modalPresentationStyle = .currentContext
                 vc?.present(onBoardingVC, animated: false, completion: nil)
             })
+            
+            Button("ネイティブTweetModal", action: {
+                let vc = UIViewController()
+                vc.modalPresentationStyle = .overFullScreen
+                let view = TweetView()
+                view.frame = vc.view.bounds
+                view.frame.origin.y = 40
+                view.frame.size.height = 150
+                vc.view.addSubview(view)
+                vc.view.backgroundColor = .clear
+                self.vc?.present(vc, animated: false, completion: nil)
+            })
         }
     }
 }

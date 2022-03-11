@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetView" customModule="Marindeck" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImageButton" destination="svD-eL-4Mt" id="4Sq-32-kiB"/>
+                <outlet property="smallModeButton" destination="nAc-Gx-Fax" id="Cie-ai-mti"/>
+                <outlet property="tweetTextView" destination="0I0-GJ-R8L" id="hvJ-pv-N0Z"/>
+                <outlet property="tweetTextViewConstraint" destination="7iZ-hf-tQp" id="5Au-Ey-JAl"/>
+                <outletCollection property="marginConstraints" destination="bzK-V2-O1F" collectionClass="NSMutableArray" id="z93-4C-YgG"/>
+                <outletCollection property="marginConstraints" destination="JdT-WY-7mt" collectionClass="NSMutableArray" id="a7O-cA-tye"/>
+                <outletCollection property="marginConstraints" destination="0s3-kR-PGw" collectionClass="NSMutableArray" id="vmz-7e-8Pg"/>
+                <outletCollection property="marginConstraints" destination="WT6-qx-0JQ" collectionClass="NSMutableArray" id="PBq-lh-7g2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svD-eL-4Mt">
+                    <rect key="frame" x="12" y="12" width="42" height="42"/>
+                    <color key="backgroundColor" systemColor="systemBrownColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="AQz-dV-FsC"/>
+                        <constraint firstAttribute="width" constant="42" id="SNx-z8-qI0"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0I0-GJ-R8L">
+                    <rect key="frame" x="58" y="12" width="310" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="7iZ-hf-tQp"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAc-Gx-Fax">
+                    <rect key="frame" x="372" y="12" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="IWE-7e-Mup"/>
+                        <constraint firstAttribute="height" constant="30" id="uOS-6K-fVz"/>
+                    </constraints>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                    </buttonConfiguration>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nAc-Gx-Fax" secondAttribute="trailing" constant="12" id="0s3-kR-PGw"/>
+                <constraint firstItem="svD-eL-4Mt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="JdT-WY-7mt"/>
+                <constraint firstItem="0I0-GJ-R8L" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="WT6-qx-0JQ"/>
+                <constraint firstItem="svD-eL-4Mt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="bzK-V2-O1F"/>
+                <constraint firstItem="nAc-Gx-Fax" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="chl-eh-CX1"/>
+                <constraint firstItem="nAc-Gx-Fax" firstAttribute="leading" secondItem="0I0-GJ-R8L" secondAttribute="trailing" constant="4" id="mRW-TN-s6c"/>
+                <constraint firstItem="0I0-GJ-R8L" firstAttribute="leading" secondItem="svD-eL-4Mt" secondAttribute="trailing" constant="4" id="xZb-8p-JSH"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
