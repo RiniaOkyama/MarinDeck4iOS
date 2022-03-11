@@ -27,6 +27,7 @@ class SettingsTableViewController: UITableViewController {
     private let ud = UserDefaults.standard
     
     private var selectedTweetButtonType: TweetButtonType = .default
+    private var versionTapCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,6 +160,8 @@ class SettingsTableViewController: UITableViewController {
             issue()
         case IndexPath(row: 3, section: 2):
             developers()
+        case IndexPath(row: 4, section: 2):
+            versionTapped()
         case IndexPath(row: 5, section: 2):
             checkUpdate()
         case IndexPath(row: 0, section: 3):
@@ -229,6 +232,23 @@ class SettingsTableViewController: UITableViewController {
 
     func developers() {
         openURL(url: "https://hisubway.online/articles/mddeveloper/")
+    }
+    
+    func versionTapped() {
+        versionTapCount += 1
+        if versionTapCount == 5 {
+            versionTapCount = 0
+            ud.set(true, forKey: .appDebugMode)
+            
+            let view = AppDebugView(vc: self)
+            let vc = UIHostingController(rootView: view)
+            // ?
+            vc.definesPresentationContext = true
+            definesPresentationContext = true
+            vc.modalPresentationStyle = .currentContext
+            
+            present(vc, animated: true, completion: nil)
+        }
     }
 
     func checkUpdate() {
