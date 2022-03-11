@@ -168,9 +168,12 @@ extension ViewController: Transition {
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
         let dp = UIDatePicker()
+        let loc = Locale(identifier: "us")
+        dp.locale = loc
         alert.view.addSubview(dp)
         dp.translatesAutoresizingMaskIntoConstraints = false
         dp.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50).isActive = true
+        dp.heightAnchor.constraint(equalToConstant: 36).isActive = true
         dp.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
         alert.view.heightAnchor.constraint(equalToConstant: 142).isActive = true
 
