@@ -54,9 +54,7 @@
                     </constraints>
                     <color key="tintColor" systemColor="labelColor"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                    </buttonConfiguration>
+                    <buttonConfiguration key="configuration" style="plain" image="paperplane" catalog="system"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -77,7 +75,7 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="paperplane" catalog="system" width="128" height="118"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

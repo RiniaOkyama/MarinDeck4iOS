@@ -7,7 +7,12 @@
 
 import UIKit
 
-class TweetView: UIView {
+protocol TweetViewOutput {
+    func tweet(text: String)
+    func dismiss()
+}
+
+final class TweetView: UIView {
     @IBOutlet private weak var avatarImageButton: UIButton!
     @IBOutlet private weak var smallModeButton: UIButton!
     @IBOutlet private weak var tweetTextView: UITextView!
@@ -56,6 +61,10 @@ class TweetView: UIView {
         let dy = newDy - preDy
 
         frame.origin.y += dy
+        
+        if frame.origin.y > UIScreen.main.bounds.height - self.keyboardHeight - self.smallTweetModalHeight {
+            alpha -= dy * 0.01
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,6 +85,7 @@ class TweetView: UIView {
                 self.layer.cornerRadius = 4
                 self.marginConstraints.forEach { $0.constant = 4 }
                 self.tweetTextViewConstraint.constant = self.smallTweetModalHeight - 8
+                self.alpha = 1
             }
         } else {
             isSmall = false
@@ -86,27 +96,27 @@ class TweetView: UIView {
                 self.layer.cornerRadius = 12
                 self.marginConstraints.forEach { $0.constant = 12 }
                 self.tweetTextViewConstraint.constant = self.normalTweetModalHeight
+                self.alpha = 1
             }
         }
     }
     
-//    func doAnimation(small: Bool) {
-//
-//        if small {
-//            UIView.animateWithDuration(
-//                 0.5,
-//                 delay:0.3,
-//                 options:UIViewAnimationOptions.CurveEaseOut,
-//                 animations: {() -> Void in
-//                     // これが大事!
-//                     self.view.layoutIfNeeded()
-//                 },
-//                 completion: nil
-//             );
-//        } else {
-//
-//        }
-//    }
+    func setupToolbar() {
+        // ツールバーのインスタンスを作成
+        let toolBar = UIToolbar()
+
+        // ツールバーに配置するアイテムのインスタンスを作成
+        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let okButton: UIBarButtonItem = UIBarButtonItem(title: "あ", style: .plain, target: self, action: #selector(tapOkButton(_:)))
+        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "CANCEL", style: .plain, target: self, action: #selector(tapCancelButton(_:)))
+
+        toolBar.setItems([okButton], animated: true)
+
+        toolBar.sizeToFit()
+
+        tweetTextView.delegate = self
+        tweetTextView.inputAccessoryView = toolBar
+    }
 
     func loadNib() {
         let view = Bundle.main.loadNibNamed("TweetView", owner: self, options: nil)?.first as! UIView
@@ -136,6 +146,8 @@ class TweetView: UIView {
         
         tweetTextView.textContainerInset = .zero
         tweetTextView.sizeToFit()
+        
+        setupToolbar()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -147,6 +159,17 @@ class TweetView: UIView {
             }
         }
     }
+    
+    @objc func tapOkButton(_ sender: UIButton){
+        // キーボードを閉じる
+        endEditing(true)
+    }
+    @objc func tapCancelButton(_ sender: UIButton){
+    }
 
 
+}
+
+extension TweetView: UITextViewDelegate {
+    
 }
