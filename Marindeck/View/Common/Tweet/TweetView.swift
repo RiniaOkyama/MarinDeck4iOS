@@ -19,6 +19,13 @@ class TweetView: UIView {
     
     private let normalTweetModalHeight: CGFloat = 128
     private let smallTweetModalHeight: CGFloat = 50
+    var normalTweetModalY: CGFloat = 0 {
+        didSet {
+            if !isSmall {
+                frame.origin.y = normalTweetModalY
+            }
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -36,6 +43,8 @@ class TweetView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        frame.size.height = 150
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,7 +67,7 @@ class TweetView: UIView {
     }
     
     func touchUp() {
-        if isSmall ? frame.origin.y > UIScreen.main.bounds.height - keyboardHeight - 150 : frame.origin.y > 150 {
+        if isSmall ? frame.origin.y > UIScreen.main.bounds.height - keyboardHeight - 50 : frame.origin.y > 50 {
             isSmall = true
             avatarImageButton.isEnabled = false
             UIView.animate(withDuration: 0.1) {
@@ -72,7 +81,7 @@ class TweetView: UIView {
             isSmall = false
             avatarImageButton.isEnabled = true
             UIView.animate(withDuration: 0.1) {
-                self.frame.origin.y = 40
+                self.frame.origin.y = self.normalTweetModalY
                 self.frame.size.height = 150
                 self.layer.cornerRadius = 12
                 self.marginConstraints.forEach { $0.constant = 12 }

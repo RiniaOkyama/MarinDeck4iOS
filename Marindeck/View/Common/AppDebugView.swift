@@ -45,10 +45,9 @@ struct AppDebugView: View {
                 vc.modalPresentationStyle = .overFullScreen
                 let view = TweetView()
                 view.frame = vc.view.bounds
-                view.frame.origin.y = 40
-                view.frame.size.height = 150
+                view.normalTweetModalY = 40
                 vc.view.addSubview(view)
-                vc.view.backgroundColor = .clear
+                vc.view.backgroundColor = UIColor.green.withAlphaComponent(0.3)
                 self.vc?.present(vc, animated: false, completion: nil)
             })
         }
