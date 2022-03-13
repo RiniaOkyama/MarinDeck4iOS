@@ -13,25 +13,25 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var tweetBtn: NDTweetBtn!
 
     private var selectedActions: [ActionButtons] = [.debug, .settings, .tweet] // FIXME
-//    var picker:UIPickerView!
+    //    var picker:UIPickerView!
 
     let items: [ActionButtons] = [
         .debug, .draft, .gif, .menu, .settings, .tweet
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         infoLabel.backgroundColor = .secondaryBackgroundColor
         infoLabel.textColor = .subLabelColor
         infoLabel.clipsToBounds = true
         infoLabel.layer.cornerRadius = 4
         infoLabel.padding = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        
+
         setInfo(message: L10n.ActionButton.Description.title)
 
         selectedActions = getActions()
@@ -58,28 +58,27 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
         presentingViewController?.endAppearanceTransition()
     }
 
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         presentingViewController?.beginAppearanceTransition(true, animated: animated)
         presentingViewController?.endAppearanceTransition()
     }
-    
+
     func setInfo(message: String) {
         let text = NSMutableAttributedString(attachment: NSTextAttachment(image: UIImage(systemName: "info.circle")!))
         text.append(NSAttributedString(string: " \(message)"))
         infoLabel.attributedText = text
     }
-    
+
     func updateActions() {
         tweetBtn.removeAllActions()
         var _selectedActions = self.selectedActions
         _selectedActions.swapAt(0, 2)
         _selectedActions.forEach {
             let action = NDTweetBtnAction(
-                    image: $0.getImage(),
-                    handler: { _ in }
+                image: $0.getImage(),
+                handler: { _ in }
             )
             tweetBtn.addAction(action: action)
         }
@@ -96,22 +95,21 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
             return [.debug, .settings, .tweet]
         }
         ab.swapAt(0, 2)
-        return ab.compactMap{ ActionButtons(rawValue: $0) }
-        
+        return ab.compactMap { ActionButtons(rawValue: $0) }
+
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         3
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         items.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: items[row].getTitle(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.labelColor])
     }
-    
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         setInfo(message: items[row].getDescription())

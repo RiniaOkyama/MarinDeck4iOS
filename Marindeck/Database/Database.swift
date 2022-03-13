@@ -8,7 +8,6 @@
 import Foundation
 import GRDB
 
-
 // FIXME: Modelに移動
 struct CustomJS: Codable, FetchableRecord, PersistableRecord {
     var id: Int64?
@@ -44,10 +43,9 @@ class Database {
         print("DATABASE DIR: \(dir.absoluteString + "database.sqlite")")
         return try! DatabaseQueue(path: dir.absoluteString + "database.sqlite")
     }()
-    
-    
+
     func setup() {
-        
+
         try? dbQueue.write { db in
             // CustomJS
             try db.create(table: "customjs") { t in
@@ -79,10 +77,18 @@ class Database {
                 t.column("text", .text).notNull()
             }
         }
+
+        try? dbQueue.write { db in
+            // RetemoJS
+            try db.create(table: "remotejsdata") { t in
+                t.autoIncrementedPrimaryKey("_id")
+                t.column("id", .text).notNull()
+                t.column("title", .text).notNull()
+                t.column("version", .integer).notNull()
+                t.column("jsUrl", .text).notNull()
+                t.column("js", .text)
+            }
+        }
     }
 
 }
-//
-//class CustomJSs {
-//
-//}

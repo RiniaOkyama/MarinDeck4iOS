@@ -1,11 +1,11 @@
 PODS:
-  - Alamofire (5.4.4)
+  - Alamofire (5.5.0)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
   - Highlightr (2.1.0)
   - Keys (1.0.1)
   - Optik (0.4.0)
-  - SPAlert (3.5.1)
+  - SPAlert (4.2.0)
   - SwiftGen (6.5.1)
 
 DEPENDENCIES:
@@ -36,14 +36,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/RiniaOkyama/Optik
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Optik: 64066ad701b3d440bc4b3847a5f354b602e188aa
-  SPAlert: a6f7fd1e56b5a798327af2d67abebc60985774d7
+  SPAlert: 735da1f16a887e294719217572ce1f936d8c8782
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: 59aba1c7bcbb11ecd03763b1b3b76d4b5f347577
+PODFILE CHECKSUM: b4e556e0501898e1865f58d204a9f8fe207c3517
 
 COCOAPODS: 1.11.2

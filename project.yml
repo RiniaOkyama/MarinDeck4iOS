@@ -10,12 +10,18 @@ packages:
   GiphyUISDK:
     url: https://github.com/Giphy/giphy-ios-sdk
     exactVersion: 2.1.16
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift.git
+    exactVersion: 6.5.0
+  RxWebKit:
+    url: https://github.com/RxSwiftCommunity/RxWebKit
+    exactVersion: 2.0.1
 
       
 
 options:
   #bundleIdPrefix: marindeck
-  #postGenCommand: pod install
+  postGenCommand: rbenv exec pod install
   developmentLanguage: en
 
 settingGroups:
@@ -25,8 +31,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.0.24
-    CURRENT_PROJECT_VERSION: 0.0.24
+    MARKETING_VERSION: 0.0.26
+    CURRENT_PROJECT_VERSION: 0.0.26
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
@@ -68,15 +74,33 @@ targets:
       base:
         DEVELOPMENT_TEAM: 726VR75V6L
         PRODUCT_BUNDLE_IDENTIFIER: marindeck
+        DISPLAY_APPNAME: MarinDeck
     dependencies:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift
+    preBuildScripts:
+      - path: ./scripts/swiftlint.sh
+        name: Run SwiftLint
+      - path: ./scripts/vite.sh
+        name: Build Vite
 
-  MarinDeckTests:
-    type: bundle.unit-test
+  Marindeck-dev:
+    type: application
     platform: iOS
     deploymentTarget: "14.1"
-    sources: MarindeckTests
+    sources: Marindeck
+    scheme: {}
+    settings:
+      base:
+        DEVELOPMENT_TEAM: 726VR75V6L
+        PRODUCT_BUNDLE_IDENTIFIER: marindeck.dev
+        DISPLAY_APPNAME: MD-dev
     dependencies:
-      - target: Marindeck
+      - package: GRDB
+      - package: MarkdownView
+      - package: GiphyUISDK
+      - package: RxWebKit
+      - package: RxSwift

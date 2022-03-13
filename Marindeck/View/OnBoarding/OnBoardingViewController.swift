@@ -8,7 +8,7 @@
 import UIKit
 
 class OnBoardingViewController: UIViewController {
-    
+
     @IBOutlet weak var startMarinDeckButton: UIButton!
 
     override func viewDidLoad() {
@@ -18,13 +18,13 @@ class OnBoardingViewController: UIViewController {
         startMarinDeckButton.backgroundColor = .tweetButtonColor
         startMarinDeckButton.setTitleColor(.labelColor, for: .normal)
         startMarinDeckButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
+
         view.backgroundColor = .backgroundColor
-        
+
         startMarinDeckButton.clipsToBounds = true
         startMarinDeckButton.layer.cornerRadius = 6
     }
-    
+
     @IBAction func start() {
         UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isOnBoarding)
         dismiss(animated: true)

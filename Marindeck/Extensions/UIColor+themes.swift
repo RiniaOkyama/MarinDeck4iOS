@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIColor{
+extension UIColor {
 
     static var backgroundColor: UIColor { get { fetchTheme().backgroundColor } }
     static var secondaryBackgroundColor: UIColor { get { fetchTheme().secondaryBackgroundColor } }
@@ -17,8 +17,7 @@ extension UIColor{
     static var lightTopBarColor: UIColor { get { fetchTheme().lightTopBarColor } }
     static var darkTopBarColor: UIColor { get { fetchTheme().darkTopBarColor ?? fetchTheme().lightTopBarColor } }
 
-
-    static func ldColor(light:UIColor, dark:UIColor) -> UIColor {
+    static func ldColor(light: UIColor, dark: UIColor) -> UIColor {
         UIColor { (traits) -> UIColor in
             traits.userInterfaceStyle == .dark ? dark: light
         }

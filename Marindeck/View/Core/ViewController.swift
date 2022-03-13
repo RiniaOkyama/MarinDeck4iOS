@@ -11,9 +11,6 @@ import SafariServices
 
 import Keys
 import Optik
-import GiphyUISDK
-import SwiftUI
-
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     var swipeStruct = {
@@ -46,7 +43,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
 
     var isMenuOpen = false
     let userDefaults = UserDefaults.standard
-    private lazy var dbQueue = Database.shared.dbQueue
+    private(set) lazy var dbQueue = Database.shared.dbQueue
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
 
@@ -74,24 +71,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             }
         }
     }
-    
+
     override var keyCommands: [UIKeyCommand]? {
         [
             .init(title: L10n.ActionButton.Tweet.title, action: #selector(tweetPressed), input: "n", modifierFlags: [.command])
         ]
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-
-//        DGSLogv("%@", getVaList(["ViewDidLoad: DGLog test message"]))
-
         checkBiometrics()
-
-        Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -99,7 +90,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         becomeFirstResponder()
         webView.frame = mainDeckView.bounds
         setupTweetBtn()
-        
+
         if !userDefaults.bool(forKey: UserDefaultsKey.isOnBoarding) {
             let onBoardingVC = OnBoardingViewController()
             onBoardingVC.modalPresentationStyle = .currentContext
@@ -108,14 +99,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     }
 
     func gestureRecognizer(
-            _ gestureRecognizer: UIGestureRecognizer,
-            shouldRecognizeSimultaneouslyWith
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith
             otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
         true
     }
 
-    @objc func onOrientationDidChange(notification: NSNotification) {
+    @objc
+    func onOrientationDidChange(notification: NSNotification) {
         // FIXME
         mainDeckView.bounds = view.bounds
         webView.frame = mainDeckView.bounds
@@ -127,7 +119,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
             true
         }
     }
-
 
     // MARK: StatusbarColor
     private (set) var statusBarStyle: UIStatusBarStyle = .default
@@ -141,8 +132,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         statusBarStyle
     }
 
-
-    @objc func dismissKeyboard() {
+    @objc
+    func dismissKeyboard() {
         webView.resignFirstResponder()
     }
 
@@ -150,222 +141,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         imageView.removeFromSuperview()
     }
 
-
-//    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-//             scrollView.pinchGestureRecognizer?.isEnabled = false
-//    }
-
-
-
     // ツイートボタンタップ痔の動作
-    @objc func tweetPressed() {
+    @objc
+    func tweetPressed() {
         if userDefaults.bool(forKey: UserDefaultsKey.isNativeTweetModal) {
             openNativeTweetModal()
         } else {
             openWebViewTweetModal()
         }
     }
-    
-    // TweetDeckのツイートモーダルに遷移
-    func openWebViewTweetModal() {
-        webView.evaluateJavaScript("document.querySelector('.tweet-button.js-show-drawer:not(.is-hidden)').click()") { object, error in
-            print("webViewLog : ", error ?? "成功")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.td.actions.focusTweetTextArea()
-            }
-        }
-    }
 
-    // デバッグボタンタップ時の動作
-    @objc func debugPressed() {
-        let vc = DebugerViewController()
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
-    }
-
-    // FIXME: evaluteWithErrorは使用しない実装に変更
-    // JS デバッグ
-    @discardableResult
-    func debugJS(script: String) -> (String, Error?) {
-        let (ret, error) = webView.evaluateWithError(javaScript: script)
-        return ((ret as? String) ?? "", error)
-    }
-
-    // CSSをjsに変換
-    func css2JS(css: String) -> String {
-        var deletecomment = css.replacingOccurrences(of: "[\\s\\t]*/\\*/?(\\n|[^/]|[^*]/)*\\*/", with: "")
-        deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
-        deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
-        let script = """
-                     (() => {
-                     const h = document.documentElement;
-                     const s = document.createElement('style');
-                     s.insertAdjacentHTML('beforeend', "\(deletecomment)");
-                     h.insertAdjacentElement('beforeend', s);
-                     })();
-                     """
-        return script
-    }
-
-    // CSS デバッグ
-    func debugCSS(css: String) {
-        let script = css2JS(css: css)
-        webView.evaluateJavaScript(script) { object, error in
-            print("stylecss : ", error ?? "成功")
-        }
-    }
-
-    // GIF選択画面に遷移
-    @objc func openSelectGif() {
-        let giphy = GiphyViewController()
-        GiphyViewController.trayHeightMultiplier = 0.7
-        giphy.shouldLocalizeSearch = true
-        giphy.delegate = self
-        giphy.dimBackground = true
-        giphy.modalPresentationStyle = .overCurrentContext
-
-        present(giphy, animated: true, completion: nil)
-    }
-
-    // 画像を選択
-    @objc func openSelectPhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = false
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
-
-    // 設定を開く
-    func openSettings() {
-//        self.performSegue(withIdentifier: "toSettings", sender: nil)
-        let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-
-    // ネイティブのツイートモーダルを表示
-    func openNativeTweetModal(tweetText: String = "") {
-        let alert = UIAlertController(
-                title: "Tweet Faster",
-                message: "What's Happening!?",
-                preferredStyle: .alert)
-        alert.addTextField(
-                configurationHandler: {_ in }
-        )
-        alert.textFields?[0].text = tweetText
-        alert.addAction(
-                UIAlertAction(
-                        title: "Cancel",
-                        style: UIAlertAction.Style.cancel) { [weak self] _ in
-                    let text = alert.textFields![0].text!
-                    if text == "" { return }
-                    self?.openIfDraftAlert(text: text)
-                }
-        )
-        alert.addAction(
-                UIAlertAction(
-                        title: "Tweet",
-                        style: UIAlertAction.Style.default) { [weak self] _ in
-                            self?.td.actions.tweet(text: alert.textFields![0].text!)
-                }
-        )
-        present(alert, animated: true, completion: nil)
-    }
-
-    // 下書きに保存するかどうかのアラート
-    func openIfDraftAlert(text: String) {
-        let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
-            self?.saveDraft(text: text)
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
     // 下書きを保存
     func saveDraft(text: String) {
         let df = Draft(id: nil, text: text)
-        try! dbQueue.write{ db in
+        try! dbQueue.write { db in
             try df.insert(db)
         }
-    }
-    
-    // ツイート下書きに遷移
-    func openDraft() {
-        let drafts = try! dbQueue.read { db in
-            try Draft.fetchAll(db)
-        }
-        let vc = UIHostingController(rootView: DraftView(selected: { [weak self] index in
-            self?.openNativeTweetModal(tweetText: drafts[index].text)
-            
-            let _ = try! self?.dbQueue.write { db in
-                try drafts[index].delete(db)
-            }
-        }, drafts: drafts))
-        present(vc, animated: true, completion: nil)
-    }
-
-
-    // x, yに画像があれば取ってくる
-    func getPositionElements(x: Int, y: Int) -> (Int, [String]) {
-        guard let value = webView.evaluate(javaScript: "positionElement(\(x), \(y))") else {
-            return (0, [])
-        }
-        let valueStrings = value as! [Any]
-        let index = valueStrings[0] as! Int
-        let urls = valueStrings[1] as! [String]
-
-        let imgUrls = urls.map({
-            url2NomalImg($0)
-        })
-        print("getPositionElements", index, imgUrls)
-
-        return (index, imgUrls)
-    }
-
-    // Menuを閉じる
-    func closeMenu() {
-        isMenuOpen = false
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        mainDeckView.translatesAutoresizingMaskIntoConstraints = false
-        mainDeckBlurView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.2, animations: {
-            self.mainDeckBlurView.backgroundColor = .none
-
-            self.mainDeckBlurView.frame.origin.x = 0
-            self.mainDeckView.frame.origin.x = 0
-            self.bottomBackView.frame.origin.x = 0
-            self.topBackView.frame.origin.x = 0
-
-            self.menuView.frame.origin.x = -self.menuView.frame.width
-        })
-    }
-
-    // Menuを開く
-    func openMenu() {
-        isMenuOpen = true
-        menuView.translatesAutoresizingMaskIntoConstraints = true
-        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
-        mainDeckBlurView.isUserInteractionEnabled = true
-
-        td.account.getAccount { [weak self] account in
-            self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
-            self?.menuVC.setUserNameID(name: account.name ?? "", id: account.userId ?? "")
-        }
-
-        UIView.animate(withDuration: 0.3, animations: {
-            self.menuView.frame.origin.x = 0
-            self.mainDeckBlurView.frame.origin.x = self.menuView.frame.width
-            self.mainDeckView.frame.origin.x = self.menuView.frame.width
-
-            UIView.animate(withDuration: 0.2, animations: {
-                self.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            })
-        })
     }
 
     // ブラーをつける（Menu開いたときのDeckのブラー）
@@ -382,160 +173,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     func dismissfetcher(animated: Any, completion: Any) {
         imageView.removeFromSuperview()
     }
-
-    func url2SmallImg(_ str: String) -> String {
-        var r = str.replacingOccurrences(of: "url(\"", with: "")
-        r = r.replacingOccurrences(of: "\")", with: "")
-        return r
-    }
-
-    func url2NomalImg(_ str: String) -> String {
-        var r = url2SmallImg(str)
-        if let index = r.range(of: "&name")?.lowerBound {
-            r = String(r[...index]) // + "name=orig"
-            return r.replacingOccurrences(of: "format=jpg", with: "format=png")
-        }
-        return ""
-    }
-
-
-    func imagePreviewer(index: Int, urls: [String]) {
-        imagePreviewSelectedIndex = index
-        
-        let imgUrls = urls.map({
-            url2NomalImg($0)
-        })
-        print("parsed", imgUrls)
-
-        if imgUrls.count == 0 {
-            return
-        }
-        if imgUrls[0] == "" {
-            print("imgUrl is nil")
-            return
-        }
-
-        let imgs = imgUrls.compactMap({
-            url2UIImage(url: $0)
-        })
-
-        if imgs.isEmpty {
-            return
-        }
-
-        let imageViewer = Optik.imageViewer(
-                withImages: imgs,
-                initialImageDisplayIndex: imagePreviewSelectedIndex,
-                delegate: self
-        )
-
-        imageView.image = imgs[imagePreviewSelectedIndex]
-        setPreviewImagePosition()
-        view.addSubview(imageView)
-//            imageViewer.presentationController?.delegate = self
-        present(imageViewer, animated: true, completion: nil)
-    }
-
 }
-
 
 extension ViewController: LoginViewControllerOutput {
     func logined() {
         webView.reload()
     }
-    
-}
 
-
-// MARK: - 11 WKWebView WKNavigation delegate
-extension ViewController: WKNavigationDelegate {
-    // MARK: - 読み込み設定（リクエスト前）
-    func webView(_ webView: WKWebView,
-                 decidePolicyFor navigationAction: WKNavigationAction,
-                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url
-        guard let host = url?.host else {
-            decisionHandler(.cancel)
-            return
-        }
-
-        if ((url?.absoluteString.contains("twitter.com/i/cards")) ?? false) ||
-            (url?.absoluteString.contains("youtube.com/embed") ?? false)
-        {
-            decisionHandler(.cancel)
-            return
-        }
-        
-        if host == "tweetdeck.twitter.com" {
-            decisionHandler(.allow)
-//        }else if host.hasPrefix("t.co") {
-//            decisionHandler(.cancel)
-        } else if host == "mobile.twitter.com" {
-            let vc = LoginViewController()
-            vc.delegate = self
-            let nvc = UINavigationController(rootViewController: vc)
-            present(nvc, animated: true, completion: nil)
-            decisionHandler(.cancel)
-        }else {
-            let safariVC = SFSafariViewController(url: url!)
-            present(safariVC, animated: true, completion: nil)
-
-            decisionHandler(.cancel)
-        }
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.loadJsFile(forResource: "moduleraid")
-//        loadJsFile(forResource: "marindeck-css")
-        webView.loadJsFile(forResource: "msecdeck.bundle")
-        webView.loadJsFile(forResource: "marindeck")
-        webView.loadCSSFile(forResource: "marindeck")
-
-        let cjss = try! dbQueue.read { db in
-            try CustomJS.fetchAll(db)
-        }
-            .filter { $0.isLoad }
-            .sorted(by: { $0.loadIndex < $1.loadIndex })
-        for item in cjss {
-            debugJS(script: item.js)
-        }
-
-        let csss = try! dbQueue.read { db in
-            try CustomCSS.fetchAll(db)
-        }
-            .filter { $0.isLoad }
-            .sorted(by: { $0.loadIndex < $1.loadIndex })
-        for item in csss {
-            debugCSS(css: item.css)
-        }
-
-
-        let theme = fetchTheme()
-        debugJS(script: theme.js)
-
-    }
-
-}
-
-extension ViewController: MenuDelegate {
-    func reload() {
-        webView.reload()
-        closeMenu()
-    }
-
-    func openProfile() {
-        closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\"body > div.application.js-app.is-condensed > header > div > div.js-account-summary > a > div\").click()") { object, error in
-            print("openProfile : ", error ?? "成功")
-        }
-    }
-
-    func openColumnAdd() {
-        closeMenu()
-        webView.evaluateJavaScript("document.querySelector(\".js-header-add-column\").click()") { object, error in
-            print(#function, error ?? "成功")
-        }
-    }
 }
 
 extension ViewController: ImageViewerDelegate {
@@ -548,8 +192,7 @@ extension ViewController: ImageViewerDelegate {
         imagePreviewSelectedIndex = index
         setPreviewImagePosition()
     }
-    
-    
+
     func setPreviewImagePosition() {
         var y = Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 1] ?? 0)
         if userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
@@ -562,91 +205,5 @@ extension ViewController: ImageViewerDelegate {
             height: Int(imagePreviewImagePositions[safe: imagePreviewSelectedIndex]?[safe: 3] ?? 0)
         )
     }
-    
-}
 
-
-// FIXME
-func url2UIImage(url: String) -> UIImage? {
-    let url = URL(string: url)
-    if url == nil {
-        return nil
-    }
-    do {
-        let data = try Data(contentsOf: url!)
-        return UIImage(data: data)
-    } catch let err {
-        print("Error : \(err.localizedDescription)")
-    }
-    return nil
-}
-
-
-extension ViewController: GiphyDelegate {
-    func didSearch(for term: String) {
-        print("your user made a search! ", term)
-    }
-
-    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia) {
-        giphyViewController.dismiss(animated: true, completion: { [weak self] in
-//            print(media.url(rendition: .original, fileType: .gif))
-            self?.loadingIndicator.startAnimating()
-            self?.mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            DispatchQueue(label: "tweetgifload.async").async {
-                let url: URL = URL(string: media.url(rendition: .original, fileType: .gif)!)!
-                //Now use image to create into NSData format
-                let imageData: NSData = NSData.init(contentsOf: url)!
-                let data = imageData.base64EncodedString(options: [])
-                DispatchQueue.main.sync {
-                    self?.webView.evaluateJavaScript("addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { object, error in
-                        print("gifLoad : ", error ?? "成功")
-                        self?.loadingIndicator.stopAnimating()
-                        self?.mainDeckBlurView.backgroundColor = .clear
-                    }
-                }
-            }
-        })
-        GPHCache.shared.clear()
-    }
-
-    func didDismiss(controller: GiphyViewController?) {
-        GPHCache.shared.clear()
-    }
-}
-
-
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        print("\(info)")
-        if let image = info[.originalImage] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
-                return
-            }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
-                print("photoselected : ", error ?? "成功")
-            }
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-
-        if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
-            guard let base64img = image.pngData()?.base64EncodedString(options: []) else {
-                return
-            }
-            webView.evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { object, error in
-                print("photoselected : ", error ?? "成功")
-            }
-        } else {
-            print("Error")
-        }
-
-        dismiss(animated: true, completion: nil)
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
 }

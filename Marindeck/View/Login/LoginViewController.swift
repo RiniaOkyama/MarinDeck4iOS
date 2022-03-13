@@ -34,12 +34,14 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         navigationController?.navigationBar.barTintColor = .label
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(self.onDismiss))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(self.onDismiss))
         navigationController?.navigationBar.tintColor = .label
 
         let myURL = URL(string: url)
         let request = URLRequest(url: myURL!)
-
 
         let jsonString = """
                          [{
@@ -53,25 +55,26 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
                          }]
                          """
 
-        WKContentRuleListStore.default().compileContentRuleList(forIdentifier: "ContentBlockingRules", encodedContentRuleList: jsonString) { rulesList, error in
-            if let error = error {
-                print(error)
-                return
+        WKContentRuleListStore.default()
+            .compileContentRuleList(forIdentifier: "ContentBlockingRules",
+                                    encodedContentRuleList: jsonString) { rulesList, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                guard let rulesList = rulesList else {
+                    return
+                }
+                let config = self.webView.configuration
+                config.userContentController.add(rulesList)
+                self.webView.load(request)
             }
-            guard let rulesList = rulesList else {
-                return
-            }
-            let config = self.webView.configuration
-            config.userContentController.add(rulesList)
-            self.webView.load(request)
-        }
     }
 
-
-    @objc func onDismiss() {
+    @objc
+    func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
-
 
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,

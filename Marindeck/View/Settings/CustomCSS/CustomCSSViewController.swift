@@ -7,12 +7,11 @@
 
 import UIKit
 
-
 class CustomCSSViewController: UIViewController {
     private lazy var dbQueue = Database.shared.dbQueue
     private var customCSSs: [CustomCSS] = []
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet public weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,29 +69,28 @@ class CustomCSSViewController: UIViewController {
 
     func deleteCustomCSS(index: Int) {
         let alert = UIAlertController(
-                title: "\(customCSSs[index].title)を消去",
-                message: "本当に削除しますか？",
-                preferredStyle: UIAlertController.Style.alert)
+            title: "\(customCSSs[index].title)を消去",
+            message: "本当に削除しますか？",
+            preferredStyle: UIAlertController.Style.alert)
         alert.addAction(
-                UIAlertAction(
-                        title: "キャンセル",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
         alert.addAction(
-                UIAlertAction(
-                        title: "消去",
-                        style: UIAlertAction.Style.destructive) { _ in
-                    let _ = try! self.dbQueue.write { db in
-                        try self.customCSSs[index].delete(db)
-                    }
-                    self.updateCustomCSSs()
-                    self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            UIAlertAction(
+                title: "消去",
+                style: UIAlertAction.Style.destructive) { _ in
+                _ = try! self.dbQueue.write { db in
+                    try self.customCSSs[index].delete(db)
                 }
+                self.updateCustomCSSs()
+                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            }
         )
 
         present(alert, animated: true, completion: nil)
     }
-
 
     func updateCustomCSS(customCSS: CustomCSS, isReload: Bool = true) {
         try! dbQueue.write { db in
@@ -105,42 +103,40 @@ class CustomCSSViewController: UIViewController {
         }
     }
 
-
     func updateCustomCSSDialog(index: Int) {
         var alertTextField: UITextField?
         var customCSS = customCSSs[index]
 
         let alert = UIAlertController(
-                title: "カスタムCSS名を編集",
-                message: "",
-                preferredStyle: UIAlertController.Style.alert)
+            title: "カスタムCSS名を編集",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
-                configurationHandler: { (textField: UITextField!) in
-                    textField.text = customCSS.title
-                    alertTextField = textField
-                })
+            configurationHandler: { (textField: UITextField!) in
+                textField.text = customCSS.title
+                alertTextField = textField
+            })
         alert.addAction(
-                UIAlertAction(
-                        title: "キャンセル",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
         alert.addAction(
-                UIAlertAction(
-                        title: "変更する",
-                        style: UIAlertAction.Style.default) { _ in
-                    if let text = alertTextField?.text {
-                        customCSS.updateAt = Date()
-                        customCSS.title = text
-                        self.updateCustomCSS(customCSS: customCSS)
-                    }
+            UIAlertAction(
+                title: "変更する",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    customCSS.updateAt = Date()
+                    customCSS.title = text
+                    self.updateCustomCSS(customCSS: customCSS)
                 }
+            }
         )
 
         present(alert, animated: true, completion: nil)
     }
 
 }
-
 
 extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -149,7 +145,8 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if customCSSs.count == indexPath.row {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! CustomAddCellTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell",
+                                                     for: indexPath) as! CustomAddCellTableViewCell
             cell.selectionStyle = .none
             cell.delegate = self
             return cell
@@ -185,23 +182,24 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
 
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .none
     }
 
     // 編集モード時に左にずれるか。
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        false //ずれない。
+        false // ずれない。
     }
 
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    public func tableView(_ tableView: UITableView,
+                          targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                          toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if customCSSs.count == proposedDestinationIndexPath.row {
             return sourceIndexPath
         }
         return proposedDestinationIndexPath
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if customCSSs.count == indexPath.row {
@@ -212,16 +210,21 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         if customCSSs.count == indexPath.row {
             return nil
         }
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { action in
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil) { _ in
                 self.updateCustomCSSDialog(index: indexPath.row)
             }
 
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, attributes: .destructive) { action in
+            let delete = UIAction(title: "Delete",
+                                  image: UIImage(systemName: "trash"),
+                                  identifier: nil,
+                                  attributes: .destructive) { _ in
                 print("indexPath is ", indexPath)
                 self.deleteCustomCSS(index: indexPath.row)
             }
@@ -230,9 +233,7 @@ extension CustomCSSViewController: UITableViewDataSource, UITableViewDelegate {
         return configuration
     }
 
-
 }
-
 
 extension CustomCSSViewController: CustomCellTableViewCellOutput {
     func switched(isOn: Bool, index: Int?) {
@@ -248,32 +249,38 @@ extension CustomCSSViewController: CustomAddCellOutput {
         var alertTextField: UITextField?
 
         let alert = UIAlertController(
-                title: "カスタムCSSを作成",
-                message: "作成するカスタムCSSにタイトルを付けてください",
-                preferredStyle: UIAlertController.Style.alert)
+            title: "カスタムCSSを作成",
+            message: "作成するカスタムCSSにタイトルを付けてください",
+            preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
-                configurationHandler: { (textField: UITextField!) in
-                    alertTextField = textField
-//                 textField.text = self.label1.text
-                })
+            configurationHandler: { (textField: UITextField!) in
+                alertTextField = textField
+                //                 textField.text = self.label1.text
+            })
         alert.addAction(
-                UIAlertAction(
-                        title: "キャンセル",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
+            UIAlertAction(
+                title: "キャンセル",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
         alert.addAction(
-                UIAlertAction(
-                        title: "作成",
-                        style: UIAlertAction.Style.default) { _ in
-                    if let text = alertTextField?.text {
-                        let customCSS = CustomCSS(id: nil, title: text, css: "", createAt: Date(), updateAt: Date(), loadIndex: Int32(self.customCSSs.count), isLoad: true)
+            UIAlertAction(
+                title: "作成",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    let customCSS = CustomCSS(id: nil,
+                                              title: text,
+                                              css: "",
+                                              createAt: Date(),
+                                              updateAt: Date(),
+                                              loadIndex: Int32(self.customCSSs.count),
+                                              isLoad: true)
 
-                        self.createCustomCSS(customCSS: customCSS)
+                    self.createCustomCSS(customCSS: customCSS)
 
-                        let vc = EditCustomCSSViewController(customCSS: self.customCSSs.last!)
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
+                    let vc = EditCustomCSSViewController(customCSS: self.customCSSs.last!)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
+            }
         )
 
         present(alert, animated: true, completion: nil)

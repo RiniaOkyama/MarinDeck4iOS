@@ -6,14 +6,14 @@
 //
 
 extension TD.Settings {
-    
+
     enum Theme: String {
         case light = "light"
         case dark = "dark"
     }
 
-    func getTheme(completion: @escaping (_ theme: Theme?) -> ()) {
-        webView?.evaluateJavaScript("TD.settings.getTheme()") { value, error in
+    func getTheme(completion: @escaping (_ theme: Theme?) -> Void) {
+        webView?.evaluateJavaScript("TD.settings.getTheme()") { value, _ in
             completion(.init(rawValue: value as? String ?? ""))
         }
     }

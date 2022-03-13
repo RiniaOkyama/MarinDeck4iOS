@@ -1,0 +1,72 @@
+excluded:
+  - Carthage
+  - Pods
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - private_outlet
+  - nimble_operator
+  - attributes
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - object_literal
+  - number_separator
+  - prohibited_super_call
+  - fatal_error_message
+  - todo
+
+disabled_rules:
+  - trailing_whitespace
+  - cyclomatic_complexity
+  - function_body_length
+  - type_name
+  - shorthand_operator
+  - multiple_closures_with_trailing_closure
+  - closure_end_indentation
+  - empty_count
+  - identifier_name
+  - force_cast
+  - file_length
+  - type_body_length
+  - unused_setter_value
+  - function_parameter_count
+  - switch_case_on_newline
+  - implicit_getter
+  - force_try
+  - variable_name
+  - redundant_string_enum_value
+  - private_outlet
+# Custom rules
+identifier_name:
+  min_length: 1
+force_cast: warning
+force_try:
+  severity: warning
+
+# 1行の文字列制限
+line_length:
+- 200   # warning
+- 300   # error
+
+# 型の行数制限
+type_body_length:
+- 400   # warning
+- 600   # error
+
+# 1ファイルの行数制限
+file_length:
+- 500   # warning
+- 1000  # error
+
+# メソッドの行数制限
+function_body_length:
+- 100   # warning
+- 200   # error
+number_separator:
+  minimum_length: 5
+large_tuple: 3
