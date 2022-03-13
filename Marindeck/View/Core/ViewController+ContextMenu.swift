@@ -61,7 +61,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
                     return
                 }
                 self.webView
-                    .evaluateJavaScript("addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
+                    .evaluateJavaScript("window.MarinDeckInputs.addTweetImage(\"data:image/png;base64,\(base64img)\", \"image/png\", \"test.png\")") { _, error in
                         print("gifLoad : ", error ?? "成功")
                     }
 

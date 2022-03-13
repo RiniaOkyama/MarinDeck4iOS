@@ -22,7 +22,7 @@ extension ViewController: GiphyDelegate {
                 let imageData: NSData = NSData(contentsOf: url)!
                 let data = imageData.base64EncodedString(options: [])
                 DispatchQueue.main.sync {
-                    self?.webView.evaluateJavaScript("addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { _, error in
+                    self?.webView.evaluateJavaScript("window.MarinDeckInputs.addTweetImage(\"data:image/gif;base64,\(data)\", \"image/gif\", \"test.gif\")") { _, error in
                         print("gifLoad : ", error ?? "成功")
                         self?.loadingIndicator.stopAnimating()
                         self?.mainDeckBlurView.backgroundColor = .clear

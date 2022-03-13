@@ -11,9 +11,20 @@ import WebKit
 // MARK: JS Binding
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name != "general" {
+            return
+        }
+        
+        let messageBody = (message.body as? [String: Any])
+        
+        guard let typeCast = messageBody?["type"] as? String else { return }
+        let type = JSCallbackFlag(rawValue: typeCast)
+        let body = messageBody?["body"] as? [String: Any]
+        
         // FIXME
-        switch JSCallbackFlag(rawValue: message.name) {
-        // MARK: WKWebView Didload
+//        switch JSCallbackFlag(rawValue: message.name) {
+        switch type {
+                // MARK: WKWebView Didload
         case .viewDidLoad:
             loadingIndicator.stopAnimating()
             if !isMainDeckViewLock {
@@ -56,10 +67,10 @@ extension ViewController: WKScriptMessageHandler {
             }
 
         case .jsCallbackHandler:
-            print("JS Log:", (message.body as? [String])?.joined(separator: " ") ?? "\(message.body)")
+            print("JS Log: \(String(describing: body))")
 
         case .imageViewPos:
-            guard let imgpos = message.body as? [[Float]] else {
+            guard let imgpos = body?["positions"] as? [[Float]] else {
                 return
             }
             print("IMGPOS!!!: ", imgpos)
@@ -81,8 +92,9 @@ extension ViewController: WKScriptMessageHandler {
             //            url2UIImage(url: url2NomalImg(url))
             break
 
+        // 使われていない。
         case .fetchImage:
-            guard let imageUrl = message.body as? String else { return }
+            guard let imageUrl = body?["url"] as? String else { return }
             DispatchQueue(label: "fetchImage.async").async {
                 let url: URL = URL(string: imageUrl)!
                 guard let data = try? Data(contentsOf: url) else { return }
@@ -94,9 +106,8 @@ extension ViewController: WKScriptMessageHandler {
             }
 
         case .imagePreviewer:
-            guard let valueStrings = message.body as? [Any] else { return }
-            guard let index = valueStrings[0] as? Int else { return }
-            guard let urls = valueStrings[1] as? [String] else { return }
+            guard let index = body?["selectedIndex"] as? Int else { return }
+            guard let urls = body?["imageUrls"] as? [String] else { return }
             imagePreviewer(index: index, urls: urls)
 
         case .selectedImageBase64:
@@ -108,10 +119,10 @@ extension ViewController: WKScriptMessageHandler {
         //            view.addSubview(iv)
 
         case .isTweetButtonHidden:
-            tweetFloatingBtn.isHidden = message.body as? Bool ?? false
+            tweetFloatingBtn.isHidden = body?["value"] as? Bool ?? false
 
         case .openYoutube:
-            guard let url = message.body as? String else { return }
+            guard let url = body?["url"] as? String else { return }
             guard let range = url.range(of: "?v=") else { return }
             let youtubeId = url[range.upperBound...]
 
@@ -121,9 +132,16 @@ extension ViewController: WKScriptMessageHandler {
             } else if let youtubeURL = URL(string: url) {
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             }
-
-        default:
-            return
+            
+        case .sidebar:
+            if body?["value"] as? String == "open" {
+                openMenu()
+            } else if body?["value"] as? String == "close" {
+                closeMenu()
+            } else {}
+            
+        case .none:
+            fatalError()
         }
     }
 }
