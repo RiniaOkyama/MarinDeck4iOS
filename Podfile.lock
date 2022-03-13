@@ -16,6 +16,14 @@ DEPENDENCIES:
   - SPAlert
   - SwiftGen
 
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - Highlightr
+    - SPAlert
+    - SwiftGen
+
 EXTERNAL SOURCES:
   Keys:
     :path: Pods/CocoaPodsKeys
@@ -38,4 +46,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 59aba1c7bcbb11ecd03763b1b3b76d4b5f347577
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.11.2

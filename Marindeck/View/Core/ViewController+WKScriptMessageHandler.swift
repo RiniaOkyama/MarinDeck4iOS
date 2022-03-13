@@ -11,8 +11,23 @@ import WebKit
 // MARK: JS Binding
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name != "general" {
+            return
+        }
+        
+//        guard let data = (message.body as? String)?.data(using: .utf8) else { return }
+//        let a = try! JSONDecoder().decode(General.self, from: data)
+//        print(a)
+        
+        let body = (message.body as? [String: Any])
+        
+        guard let typeCast = body?["type"] as? String else { return }
+        let type = JSCallbackFlag(rawValue: typeCast)
+        print(body?["body"])
+        
         // FIXME
-        switch JSCallbackFlag(rawValue: message.name) {
+//        switch JSCallbackFlag(rawValue: message.name) {
+        switch type {
                 // MARK: WKWebView Didload
         case .viewDidLoad:
             loadingIndicator.stopAnimating()

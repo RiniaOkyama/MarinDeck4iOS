@@ -15,7 +15,7 @@ packages:
 
 options:
   #bundleIdPrefix: marindeck
-  postGenCommand: pod install
+  #postGenCommand: pod install
   developmentLanguage: en
 
 settingGroups:
@@ -30,6 +30,31 @@ settings:
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
+
+        # schemes:
+        #   Debug:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   Release:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   run:
+        #     config: Release
+        #   test:
+        #     config: Release
+        #   profile:
+        #     config: Release
+        #   analyze:
+        #     config: Release
+        #   archive:
+        #     config: Release
+
 
 
 targets:
@@ -47,3 +72,11 @@ targets:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
+
+  MarinDeckTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "14.1"
+    sources: MarindeckTests
+    dependencies:
+      - target: Marindeck

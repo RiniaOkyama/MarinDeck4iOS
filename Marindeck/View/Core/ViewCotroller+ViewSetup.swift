@@ -94,10 +94,8 @@ extension ViewController {
         let webConfiguration = WKWebViewConfiguration()
 
         let userContentController = WKUserContentController()
-        // FIXME: 循環参照の恐れアリ。
-        JSCallbackFlag.allCases.forEach {
-            userContentController.add(self, name: $0.rawValue)
-        }
+
+        userContentController.add(self, name: "general")
 
         webConfiguration.userContentController = userContentController
         webConfiguration.processPool = WKProcessPool.shared
