@@ -31,7 +31,9 @@ extension TD.ActionsController {
 
     // ツイート
     func tweet(text: String) {
-        webView?.evaluateJavaScript("postTweet('" + text + "')") { _, error in
+        let replaceDict = ["\\": "\\\\", "\"": "\\\"", "\'": "\\\'"]
+        let txt = replaceDict.reduce(text) { $0.replacingOccurrences(of: $1.key, with: $1.value) }
+        webView?.evaluateJavaScript("window.MarinDeckInputs.postTweet('\(txt)')") { _, error in
             print("tweet : ", error ?? "成功")
         }
     }

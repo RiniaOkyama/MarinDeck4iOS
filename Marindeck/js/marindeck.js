@@ -32,8 +32,10 @@ const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
   swiftLog("window onload");
   swiftLog("try didLoad");
   try {
-    webkit.messageHandlers.jsCallbackHandler.postMessage("didLoad");
-    webkit.messageHandlers.viewDidLoad.postMessage(true);
+    window.MD.Native.post({
+      type: "viewDidLoad",
+      body: {}
+    });
   } catch (e) {
     swiftLog("ERROR! viewDidLoad Faild " + String(e));
   }
@@ -77,7 +79,10 @@ const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
   }).observe(document.body, { childList: true, subtree: true });
 })();
 function isTweetButtonHidden(bool) {
-  webkit.messageHandlers.isTweetButtonHidden.postMessage(bool);
+  window.MD.Native.post({
+    type: "isTweetButtonHidden",
+    body: { value: bool }
+  });
 }
 function loginStyled() {
   document.querySelector(".startflow-background").hidden = true;
@@ -113,13 +118,16 @@ function loginStyled() {
 }
 function swiftLog(...msg) {
   console.log("JS Log:", msg);
-  webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
+  window.MD.Native.post({
+    type: "jsCallbackHandler",
+    body: { value: msg }
+  });
 }
 function positionElement(x, y) {
-  webkit.messageHandlers.jsCallbackHandler.postMessage("CALLED position element");
+  swiftLog("CALLED position element");
   const element = document.elementFromPoint(x, y);
   console.log(element);
-  webkit.messageHandlers.jsCallbackHandler.postMessage(String(element.style.backgroundImage));
+  swiftLog(String(element.style.backgroundImage));
   if (!element.classList.contains("js-media-image-link") && !element.classList.contains("media-img")) {
     console.log(element.classList);
     return;
@@ -140,7 +148,10 @@ function positionElement(x, y) {
     const rect = item.getBoundingClientRect();
     positions.push([rect.left, rect.top, rect.width, rect.height]);
   });
-  webkit.messageHandlers.imageViewPos.postMessage(positions);
+  window.MD.Native.post({
+    type: "imageViewPos",
+    body: { positions }
+  });
   return [selectIndex, imgUrls];
 }
 (async () => {
@@ -153,14 +164,23 @@ function positionElement(x, y) {
           if (image.href.includes("youtube.com")) {
             image.addEventListener("click", function(clickedItem) {
               const url = clickedItem.target.href;
-              webkit.messageHandlers.openYoutube.postMessage(url);
+              window.MD.Native.post({
+                type: "openYoutube",
+                body: { url }
+              });
             });
           }
         } else {
           image.addEventListener("click", function(clickedItem) {
             swiftLog("image onClick");
             const res = positionElement(clickedItem.x, clickedItem.y);
-            webkit.messageHandlers.imagePreviewer.postMessage(res);
+            window.MD.Native.post({
+              type: "imagePreviewer",
+              body: {
+                selectedIndex: res[0],
+                imageUrls: res[1]
+              }
+            });
           });
         }
       }
@@ -212,6 +232,12 @@ class MarinDeckInputs {
       element.click();
     }
   }
+  postTweet(text) {
+    window.MD.TwitterAPI.update({
+      status: text,
+      from: window.TD.storage.accountController.getDefault().getUsername()
+    });
+  }
 }
 const Version = "0";
 const genUUID = () => Array.from("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx", (char) => char === "x" ? Math.floor(Math.random() * 16).toString(16) : char === "y" ? (Math.floor(Math.random() * 4) + 8).toString(16) : char).join("");
@@ -223,7 +249,7 @@ const Native = {
       window.webkit.messageHandlers.general.postMessage(object);
     } catch {
     }
-    console.log("mdnative:", string);
+    console.log(`mdnative:${string}`);
   },
   post: function({ type, body }) {
     const uuid = genUUID();
@@ -256,10 +282,68 @@ const Native = {
     }));
   }
 };
+const TwitterAPI = {
+  getClient: function(screenName) {
+    var _a;
+    return window.TD.controller.clients.getClient(((_a = window.TD.storage.accountController.getAll().filter(({ managed }) => managed).find(({ state: { username } }) => username === screenName)) == null ? void 0 : _a.privateState.key) || "");
+  },
+  getPreferredClient: function() {
+    return window.TD.controller.clients.getPreferredClient("twitter");
+  },
+  showUser: function({ screenName = null, userId = null, from = null }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from) || this.getPreferredClient();
+      client ? client.showUser(userId, screenName, resolve, reject) : reject();
+    });
+  },
+  followUser: function({ screenName, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.followUser(screenName, resolve, reject) : reject();
+    });
+  },
+  unfollowUser: function({ screenName, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.unfollowUser(screenName, resolve, reject) : reject();
+    });
+  },
+  show: function({ statusId, from = null }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from) || this.getPreferredClient();
+      client ? client.show(statusId, resolve, reject) : reject();
+    });
+  },
+  update: function({ status, inReplyToStatusId = null, lat = null, long = null, placeId = null, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.update(status, inReplyToStatusId, lat, long, placeId, resolve, reject) : reject();
+    });
+  },
+  destroy: function({ statusId, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.destroy(statusId, resolve, reject) : reject();
+    });
+  },
+  favorite: function({ statusId, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.favorite(statusId, resolve, reject) : reject();
+    });
+  },
+  unfavorite: function({ statusId, from }) {
+    return new Promise((resolve, reject) => {
+      const client = from && this.getClient(from);
+      client ? client.unfavorite(statusId, resolve, reject) : reject();
+    });
+  }
+};
 const configure = () => {
   window.MD = __spreadProps(__spreadValues({}, window.MD || {}), {
     Version,
-    Native
+    Native,
+    TwitterAPI
   });
 };
 window.MarinDeckInputs = new MarinDeckInputs();

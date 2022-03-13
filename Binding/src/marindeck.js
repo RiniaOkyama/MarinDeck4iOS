@@ -22,8 +22,11 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
     swiftLog("window onload");
     swiftLog("try didLoad");
     try {
-        webkit.messageHandlers.jsCallbackHandler.postMessage("didLoad");
-        webkit.messageHandlers.viewDidLoad.postMessage(true);
+        // webkit.messageHandlers.jsCallbackHandler.postMessage("didLoad");
+        window.MD.Native.post({
+            type: 'viewDidLoad',
+            body: {}
+        })
     } catch (e) {
         swiftLog("ERROR! viewDidLoad Faild " + String(e));
     }
@@ -104,7 +107,10 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
 
 function isTweetButtonHidden(bool) {
-    webkit.messageHandlers.isTweetButtonHidden.postMessage(bool);
+    window.MD.Native.post({
+        type: 'isTweetButtonHidden',
+        body: { value: bool }
+    })
 }
 
 
@@ -163,14 +169,20 @@ function loginStyled() {
 
 function swiftLog(...msg) {
     console.log("JS Log:", msg)
-    webkit.messageHandlers.jsCallbackHandler.postMessage(msg);
+
+    window.MD.Native.post({
+        type: 'jsCallbackHandler',
+        body: { value: msg }
+    })
 }
 
+// TODO: 関数名が超絶わかりにくいので修正
+// x, yに画像があれば取ってくる処理 return: 選択されたIndex, 画像urls
 function positionElement(x, y) {
-    webkit.messageHandlers.jsCallbackHandler.postMessage("CALLED position element");
+    swiftLog("CALLED position element");
     const element = document.elementFromPoint(x, y);
     console.log(element);
-    webkit.messageHandlers.jsCallbackHandler.postMessage(String(element.style.backgroundImage));
+    swiftLog(String(element.style.backgroundImage));
 
     if (!element.classList.contains("js-media-image-link") && !element.classList.contains("media-img")) {
         console.log(element.classList)
@@ -216,9 +228,12 @@ function positionElement(x, y) {
          [left, right, width, height]
         ], selectIndex)
  */
-//    webkit.messageHandlers.imageViewPos.postMessage([rect.left, rect.top, rect.width, rect.height]);
-    webkit.messageHandlers.imageViewPos.postMessage(positions)
-    // webkit.messageHandlers.imagePreviewer.postMessage(imgUrls);
+
+    window.MD.Native.post({
+        type: 'imageViewPos',
+        body: { positions: positions }
+    })
+
     return [selectIndex, imgUrls]
 }
 
@@ -234,7 +249,10 @@ function positionElement(x, y) {
                     if (image.href.includes("youtube.com")) {
                         image.addEventListener("click", function (clickedItem) {
                             const url = clickedItem.target.href
-                            webkit.messageHandlers.openYoutube.postMessage(url);
+                            window.MD.Native.post({
+                                type: 'openYoutube',
+                                body: { url: url }
+                            })
                         })
                     }
 
@@ -242,7 +260,14 @@ function positionElement(x, y) {
                     image.addEventListener("click", function (clickedItem) {
                         swiftLog("image onClick")
                         const res = positionElement(clickedItem.x, clickedItem.y);
-                        webkit.messageHandlers.imagePreviewer.postMessage(res);
+
+                        window.MD.Native.post({
+                            type: 'imagePreviewer',
+                            body: { 
+                                selectedIndex: res[0],
+                                imageUrls: res[1]
+                            }
+                        })
                     });
                 }
             }
@@ -268,7 +293,7 @@ const getAllAccounts = () => {
     return accounts
 }
 
-export const postTweet = (text, reply_to_id = null, key = null) => {
+function postTweet(text, reply_to_id = null, key = null) {
     new Promise((resolve, reject) => {
         getClient(key).update(text, reply_to_id, null, null, null, resolve, reject)
     })
