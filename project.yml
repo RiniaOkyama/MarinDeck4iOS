@@ -37,6 +37,31 @@ settings:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
 
+        # schemes:
+        #   Debug:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   Release:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   run:
+        #     config: Release
+        #   test:
+        #     config: Release
+        #   profile:
+        #     config: Release
+        #   analyze:
+        #     config: Release
+        #   archive:
+        #     config: Release
+
+
 
 targets:
   Marindeck:
@@ -59,6 +84,8 @@ targets:
     preBuildScripts:
       - path: ./scripts/swiftlint.sh
         name: Run SwiftLint
+      - path: ./scripts/vite.sh
+        name: Build Vite
 
   Marindeck-dev:
     type: application
