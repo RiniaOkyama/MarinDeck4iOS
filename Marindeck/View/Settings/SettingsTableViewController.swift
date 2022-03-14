@@ -10,11 +10,13 @@ import WebKit
 import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
 import class SwiftUI.UIHostingController
+import Loaf
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet private var titleLabel: [UILabel] = []
     @IBOutlet private weak var logoutLabel: UILabel!
 
+    @IBOutlet private weak var nativePreviewSwitch: UISwitch!
     @IBOutlet private weak var biometricsSwitch: UISwitch!
     @IBOutlet private weak var tweetButtonBehavior: UIButton!
     @IBOutlet private weak var marginSafeAreaSwitch: UISwitch!
@@ -70,6 +72,7 @@ class SettingsTableViewController: UITableViewController {
         marginSafeAreaSwitch.setOn(ud.bool(forKey: .marginSafeArea), animated: false)
         setupTweetButtonBehavior()
         noSleepSwitch.setOn(ud.bool(forKey: .noSleep), animated: false)
+        nativePreviewSwitch.setOn((ud.dictionary(forKey: .jsConfig)?["isNativeImageModal"] as? Bool) ?? true, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -173,6 +176,13 @@ class SettingsTableViewController: UITableViewController {
         default:
             break
         }
+    }
+    
+    @IBAction func setNativePreview() {
+        var configs = ud.dictionary(forKey: .jsConfig) ?? [:]
+        configs["isNativeImageModal"] = nativePreviewSwitch.isOn
+        ud.set(configs, forKey: .jsConfig)
+        Loaf("リロード後に適用されます", state: .success, location: .top, sender: self).show()
     }
 
     @IBAction func setBiometrics() {

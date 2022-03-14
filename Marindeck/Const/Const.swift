@@ -20,6 +20,7 @@ enum UserDefaultsKey: String, CaseIterable {
     case noSleep = "noSleep"
     
     case appDebugMode = "appDebugMode"
+    case jsConfig = "jsConfig"
 }
 
 extension UserDefaults {

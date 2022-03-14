@@ -83,4 +83,8 @@ extension TD.ActionsController {
     func openTDSettings() {
         webView?.evaluateJavaScript("document.querySelector(\".js-app-settings\").click();document.querySelector(\"[data-action='globalSettings']\").click()")
     }
+    
+    func send(uuid: String, value: Any?) {
+        webView?.evaluateJavaScript("window.MD.Native.send({uuid: '\(uuid)', value: \(value ?? "null")})")
+    }
 }

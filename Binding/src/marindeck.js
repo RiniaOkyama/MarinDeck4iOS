@@ -37,74 +37,54 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
         swiftLog("login load error" + String(e));
     }
 
-    // 画像のモーダルを抹殺
-    new MutationObserver((records) => {
-        return [...records || []].forEach((record) => {
-            const target = record.target
-            if (target instanceof HTMLElement) {
-                const isOpenModal = target.id === 'open-modal'
-                if (isOpenModal) {
-                    const mediatable = target.querySelector('.js-mediatable')
-                    const dismiss = target.querySelector('.js-dismiss')
-                    const isVideo = target.getElementsByTagName('video').length > 0
-                    console.log(isVideo)
-                    if (!isVideo) {
-                        if (mediatable && dismiss) dismiss.click()
-                    }
-                }
+    const isNativeImageModal = await window.MD.Native.get({
+        type: "config",
+        body: {
+            action: "get",
+            key: "isNativeImageModal"
+        }
+    })
 
-                const video = target.querySelector("video")
-                if (video !== null) {
-                    const isGif = video.classList.contains("js-media-gif")
-                    if (isGif) {
-                        // video.removeAttribute("loop")
-                        video.setAttribute("controls", "")
-                        video.setAttribute("playsinline", "")
-                        video.setAttribute("webkit-playsinline", "")
-                        const cl = video.classList.value
-                        video.classList.value = "-"
-                        window.setTimeout(function () {
-                            video.classList.value = cl
-                        }, 1);
-                        // video.setAttribute("autoplay", "")
-                        // video.removeAttribute("autoplay")
+    if (isNativeImageModal || isNativeImageModal == null) {
+        // 画像のモーダルを抹殺
+        new MutationObserver((records) => {
+            return [...records || []].forEach((record) => {
+                const target = record.target
+                if (target instanceof HTMLElement) {
+                    const isOpenModal = target.id === 'open-modal'
+                    if (isOpenModal) {
+                        const mediatable = target.querySelector('.js-mediatable')
+                        const dismiss = target.querySelector('.js-dismiss')
+                        const isVideo = target.getElementsByTagName('video').length > 0
+                        console.log(isVideo)
+                        if (!isVideo) {
+                            if (mediatable && dismiss) dismiss.click()
+                        }
+                    }
+
+                    const video = target.querySelector("video")
+                    if (video !== null) {
+                        const isGif = video.classList.contains("js-media-gif")
+                        if (isGif) {
+                            // video.removeAttribute("loop")
+                            video.setAttribute("controls", "")
+                            video.setAttribute("playsinline", "")
+                            video.setAttribute("webkit-playsinline", "")
+                            const cl = video.classList.value
+                            video.classList.value = "-"
+                            window.setTimeout(function () {
+                                video.classList.value = cl
+                            }, 1);
+                            // video.setAttribute("autoplay", "")
+                            // video.removeAttribute("autoplay")
+                        }
                     }
                 }
-            }
-        })
-    }).observe(document.body, {childList: true, subtree: true})
+            })
+        }).observe(document.body, {childList: true, subtree: true})
+    }
 
 })();
-
-
-// カラムのスクロール。 Menu開くときにカラムと一緒に動かなくするため。
-// const columnScroll = {
-//   style: null,
-//   init: () => {
-//     if (!columnScroll.style) {
-//       columnScroll.style = document.createElement('style')
-//       document.head.insertAdjacentElement('beforeend', columnScroll.style)
-//     }
-//     columnScroll.style.textContent = ''
-//   },
-//   on: () => {
-//     columnScroll.init()
-//     columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:auto!important}')
-//   },
-//   off: () => {
-//     columnScroll.init()
-//     columnScroll.style.insertAdjacentHTML('beforeend', '.app-columns-container{overflow-x:hidden!important}')
-//   }
-// }
-
-// document.addEventListener('touchstart', (e) => {
-//   if (e.touches[0].clientX <= 8) {
-//     columnScroll.off()
-//   } else {
-//     columnScroll.on()
-//   }
-// }, { passive: true })
-
 
 function isTweetButtonHidden(bool) {
     window.MD.Native.post({
@@ -238,7 +218,17 @@ function positionElement(x, y) {
 }
 
 (async () => {
+    await sleep(800);
+
     let endedlist = []
+
+    const isNativeImageModal = await window.MD.Native.get({
+        type: "config",
+        body: {
+            action: "get",
+            key: "isNativeImageModal"
+        }
+    })
 
     new MutationObserver( _ => {
         document.querySelectorAll(".js-media-image-link").forEach(function (image) {
@@ -257,45 +247,22 @@ function positionElement(x, y) {
                     }
 
                 } else {
-                    image.addEventListener("click", function (clickedItem) {
-                        swiftLog("image onClick")
-                        const res = positionElement(clickedItem.x, clickedItem.y);
+                    if (isNativeImageModal || isNativeImageModal == null) {
+                        image.addEventListener("click", function (clickedItem) {
+                            swiftLog("image onClick")
+                            const res = positionElement(clickedItem.x, clickedItem.y);
 
-                        window.MD.Native.post({
-                            type: 'imagePreviewer',
-                            body: { 
-                                selectedIndex: res[0],
-                                imageUrls: res[1]
-                            }
+                            window.MD.Native.post({
+                                type: 'imagePreviewer',
+                                body: { 
+                                    selectedIndex: res[0],
+                                    imageUrls: res[1]
+                                }
+                            })
                         })
-                    });
+                    }
                 }
             }
         });
     }).observe(document.body, {childList: true, subtree: true})
 })();
-
-
-/** tweet */
-const getClient = (key = null) => TD.controller.clients.getClient(key || TD.storage.accountController.getDefault().privateState.key) || TD.controller.clients.getPreferredClient('twitter')
-
-const getAllAccounts = () => {
-    const accounts = []
-    TD.storage.accountController.getAll().forEach((x) => {
-        if (x.managed) accounts.push({
-            key: x.privateState.key,
-            name: x.state.name,
-            userId: x.state.userId,
-            username: x.state.username,
-            profileImageURL: x.state.profileImageURL,
-        })
-    })
-    return accounts
-}
-
-function postTweet(text, reply_to_id = null, key = null) {
-    new Promise((resolve, reject) => {
-        getClient(key).update(text, reply_to_id, null, null, null, resolve, reject)
-    })
-    return "Done"
-}

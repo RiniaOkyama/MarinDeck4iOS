@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import Loaf
 
 // MARK: JS Binding
 extension ViewController: WKScriptMessageHandler {
@@ -20,6 +21,7 @@ extension ViewController: WKScriptMessageHandler {
         guard let typeCast = messageBody?["type"] as? String else { return }
         let type = JSCallbackFlag(rawValue: typeCast)
         let body = messageBody?["body"] as? [String: Any]
+        let uuid = messageBody?["uuid"] as? String
         
         // FIXME
 //        switch JSCallbackFlag(rawValue: message.name) {
@@ -140,8 +142,21 @@ extension ViewController: WKScriptMessageHandler {
                 closeMenu()
             } else {}
             
+        case .config:
+            guard let action = body?["action"] as? String else { return }
+            guard let key = body?["key"] as? String else { return }
+            if action == "set" {
+                guard let value = body?["value"] else { return }
+                var configs = userDefaults.dictionary(forKey: .jsConfig)
+                configs?[key] = value
+                userDefaults.set(configs, forKey: .jsConfig)
+            } else if action == "get" {
+                let value = userDefaults.dictionary(forKey: .jsConfig)?[key]
+                td.actions.send(uuid: uuid ?? "", value: value)
+            } else {}
+            
         case .none:
-            fatalError()
+            Loaf("予期しないTypeを受信しました: \(typeCast)", state: .error, location: .top, sender: self).show()
         }
     }
 }

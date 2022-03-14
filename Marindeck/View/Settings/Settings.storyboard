@@ -34,8 +34,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-dU-z54">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-dU-z54">
                                                     <rect key="frame" x="319" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="setNativePreview" destination="YSg-LA-Jo6" eventType="valueChanged" id="Zta-Ml-Sd6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -434,6 +437,7 @@
                         <outlet property="biometricsSwitch" destination="8u2-kh-1Td" id="vdJ-CC-f2w"/>
                         <outlet property="logoutLabel" destination="wpG-r7-2s6" id="SWM-Ln-zjY"/>
                         <outlet property="marginSafeAreaSwitch" destination="ZL3-fs-sMk" id="JS4-md-a81"/>
+                        <outlet property="nativePreviewSwitch" destination="1dv-dU-z54" id="ce8-V5-PwM"/>
                         <outlet property="noSleepSwitch" destination="JeQ-Rx-cTz" id="5BB-eC-SLc"/>
                         <outlet property="tweetButtonBehavior" destination="THI-wz-SKK" id="NiF-9p-SuZ"/>
                         <outletCollection property="titleLabel" destination="cof-5R-WBE" collectionClass="NSMutableArray" id="Zfb-NP-3tG"/>

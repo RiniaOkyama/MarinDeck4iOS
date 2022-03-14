@@ -45,38 +45,47 @@ const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
   } catch (e) {
     swiftLog("login load error" + String(e));
   }
-  new MutationObserver((records) => {
-    return [...records || []].forEach((record) => {
-      const target = record.target;
-      if (target instanceof HTMLElement) {
-        const isOpenModal = target.id === "open-modal";
-        if (isOpenModal) {
-          const mediatable = target.querySelector(".js-mediatable");
-          const dismiss = target.querySelector(".js-dismiss");
-          const isVideo = target.getElementsByTagName("video").length > 0;
-          console.log(isVideo);
-          if (!isVideo) {
-            if (mediatable && dismiss)
-              dismiss.click();
+  const isNativeImageModal = await window.MD.Native.get({
+    type: "config",
+    body: {
+      action: "get",
+      key: "isNativeImageModal"
+    }
+  });
+  if (isNativeImageModal || isNativeImageModal == null) {
+    new MutationObserver((records) => {
+      return [...records || []].forEach((record) => {
+        const target = record.target;
+        if (target instanceof HTMLElement) {
+          const isOpenModal = target.id === "open-modal";
+          if (isOpenModal) {
+            const mediatable = target.querySelector(".js-mediatable");
+            const dismiss = target.querySelector(".js-dismiss");
+            const isVideo = target.getElementsByTagName("video").length > 0;
+            console.log(isVideo);
+            if (!isVideo) {
+              if (mediatable && dismiss)
+                dismiss.click();
+            }
+          }
+          const video = target.querySelector("video");
+          if (video !== null) {
+            const isGif = video.classList.contains("js-media-gif");
+            if (isGif) {
+              video.setAttribute("controls", "");
+              video.setAttribute("playsinline", "");
+              video.setAttribute("webkit-playsinline", "");
+              const cl = video.classList.value;
+              video.classList.value = "-";
+              window.setTimeout(function() {
+                video.classList.value = cl;
+              }, 1);
+            }
           }
         }
-        const video = target.querySelector("video");
-        if (video !== null) {
-          const isGif = video.classList.contains("js-media-gif");
-          if (isGif) {
-            video.setAttribute("controls", "");
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-            const cl = video.classList.value;
-            video.classList.value = "-";
-            window.setTimeout(function() {
-              video.classList.value = cl;
-            }, 1);
-          }
-        }
-      }
-    });
-  }).observe(document.body, { childList: true, subtree: true });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+  }
 })();
 function isTweetButtonHidden(bool) {
   window.MD.Native.post({
@@ -155,9 +164,18 @@ function positionElement(x, y) {
   return [selectIndex, imgUrls];
 }
 (async () => {
+  await sleep(800);
   let endedlist = [];
+  const isNativeImageModal = await window.MD.Native.get({
+    type: "config",
+    body: {
+      action: "get",
+      key: "isNativeImageModal"
+    }
+  });
   new MutationObserver((_) => {
     document.querySelectorAll(".js-media-image-link").forEach(function(image) {
+      swiftLog(isNativeImageModal);
       if (endedlist.indexOf(image) === -1) {
         endedlist.push(image);
         if (image.parentElement.classList.contains("is-video")) {
@@ -171,17 +189,19 @@ function positionElement(x, y) {
             });
           }
         } else {
-          image.addEventListener("click", function(clickedItem) {
-            swiftLog("image onClick");
-            const res = positionElement(clickedItem.x, clickedItem.y);
-            window.MD.Native.post({
-              type: "imagePreviewer",
-              body: {
-                selectedIndex: res[0],
-                imageUrls: res[1]
-              }
+          if (isNativeImageModal || isNativeImageModal == null) {
+            image.addEventListener("click", function(clickedItem) {
+              swiftLog("image onClick");
+              const res = positionElement(clickedItem.x, clickedItem.y);
+              window.MD.Native.post({
+                type: "imagePreviewer",
+                body: {
+                  selectedIndex: res[0],
+                  imageUrls: res[1]
+                }
+              });
             });
-          });
+          }
         }
       }
     });
