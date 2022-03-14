@@ -148,7 +148,7 @@ extension ViewController: Transition {
         })
         print("parsed", imgUrls)
 
-        if imgUrls.count == 0 {
+        if imgUrls.isEmpty {
             return
         }
         if imgUrls[0] == "" {
@@ -170,7 +170,7 @@ extension ViewController: Transition {
             delegate: self
         )
 
-        imageView.image = imgs[imagePreviewSelectedIndex]
+        imageView.image = imgs[safe: imagePreviewSelectedIndex]
         setPreviewImagePosition()
         view.addSubview(imageView)
         //            imageViewer.presentationController?.delegate = self
