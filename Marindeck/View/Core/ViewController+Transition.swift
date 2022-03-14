@@ -82,6 +82,27 @@ extension ViewController: Transition {
             }
         )
         present(alert, animated: true, completion: nil)
+        
+//        let view = TweetView()
+//        view.frame = self.view.bounds
+//        view.normalTweetModalY = 40
+//        view.alpha = 0
+//        view.frame.origin.y = self.view.frame.height
+//        self.view.addSubview(view)
+//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn) {
+//            view.alpha = 1
+//            view.frame.origin.y = 40
+//        }
+
+    }
+    
+    func openTwitterAppTweetModal() {
+        if let twitterURL = URL(string: "twitter://post"),
+           UIApplication.shared.canOpenURL(twitterURL) {
+            UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
+        } else {
+            // TODO: Twitterアプリが入ってないアラート
+        }
     }
     
     func openTwitterAppTweetModal() {
@@ -136,7 +157,7 @@ extension ViewController: Transition {
         })
         print("parsed", imgUrls)
 
-        if imgUrls.count == 0 {
+        if imgUrls.isEmpty {
             return
         }
         if imgUrls[0] == "" {
@@ -158,7 +179,7 @@ extension ViewController: Transition {
             delegate: self
         )
 
-        imageView.image = imgs[imagePreviewSelectedIndex]
+        imageView.image = imgs[safe: imagePreviewSelectedIndex]
         setPreviewImagePosition()
         view.addSubview(imageView)
         //            imageViewer.presentationController?.delegate = self
@@ -168,9 +189,12 @@ extension ViewController: Transition {
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
         let dp = UIDatePicker()
+        let loc = Locale(identifier: "us")
+        dp.locale = loc
         alert.view.addSubview(dp)
         dp.translatesAutoresizingMaskIntoConstraints = false
         dp.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50).isActive = true
+        dp.heightAnchor.constraint(equalToConstant: 36).isActive = true
         dp.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
         alert.view.heightAnchor.constraint(equalToConstant: 142).isActive = true
 

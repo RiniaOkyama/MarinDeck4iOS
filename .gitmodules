@@ -1,0 +1,3 @@
+[submodule "Binding/MarinDeckObject"]
+	path = Binding/MarinDeckObject
+	url = https://github.com/RiniaOkyama/MarinDeckObject

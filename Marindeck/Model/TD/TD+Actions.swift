@@ -16,7 +16,7 @@ extension TD.ActionsController {
 
     // 座標の位置にあるツイートをいいね
     func positionTweetLike(x: Int, y: Int) {
-        webView?.evaluateJavaScript("touchPointTweetLike(\(x), \(y))", completionHandler: { _, error in
+        webView?.evaluateJavaScript("window.MarinDeckInputs.touchPointTweetLike(\(x), \(y))", completionHandler: { _, error in
             print("touchPointTweetLike : ", error ?? "成功")
         })
     }
@@ -31,7 +31,9 @@ extension TD.ActionsController {
 
     // ツイート
     func tweet(text: String) {
-        webView?.evaluateJavaScript("postTweet('" + text + "')") { _, error in
+        let replaceDict = ["\\": "\\\\", "\"": "\\\"", "\'": "\\\'"]
+        let txt = replaceDict.reduce(text) { $0.replacingOccurrences(of: $1.key, with: $1.value) }
+        webView?.evaluateJavaScript("window.MarinDeckInputs.postTweet('\(txt)')") { _, error in
             print("tweet : ", error ?? "成功")
         }
     }
@@ -80,5 +82,9 @@ extension TD.ActionsController {
     
     func openTDSettings() {
         webView?.evaluateJavaScript("document.querySelector(\".js-app-settings\").click();document.querySelector(\"[data-action='globalSettings']\").click()")
+    }
+    
+    func send(uuid: String, value: Any?) {
+        webView?.evaluateJavaScript("window.MD.Native.send({uuid: '\(uuid)', value: \(value ?? "null")})")
     }
 }

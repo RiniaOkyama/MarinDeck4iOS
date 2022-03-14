@@ -16,6 +16,9 @@ packages:
   RxWebKit:
     url: https://github.com/RxSwiftCommunity/RxWebKit
     exactVersion: 2.0.1
+  Loaf:
+    url: https://github.com/schmidyy/Loaf
+    exactVersion: 0.6.0
 
       
 
@@ -31,11 +34,36 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.1.1
-    CURRENT_PROJECT_VERSION: 0.1.1
+    MARKETING_VERSION: 0.1.11
+    CURRENT_PROJECT_VERSION: 0.1.11
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
+
+        # schemes:
+        #   Debug:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   Release:
+        #     build:
+        #     targets:
+        #       MarinDeck: all
+        #       MarinDeckTests: [test]
+        # 
+        #   run:
+        #     config: Release
+        #   test:
+        #     config: Release
+        #   profile:
+        #     config: Release
+        #   analyze:
+        #     config: Release
+        #   archive:
+        #     config: Release
+
 
 
 targets:
@@ -56,9 +84,12 @@ targets:
       - package: GiphyUISDK
       - package: RxWebKit
       - package: RxSwift
+      - package: Loaf
     preBuildScripts:
       - path: ./scripts/swiftlint.sh
         name: Run SwiftLint
+      - path: ./scripts/vite.sh
+        name: Build Vite
 
   Marindeck-dev:
     type: application
@@ -77,3 +108,4 @@ targets:
       - package: GiphyUISDK
       - package: RxWebKit
       - package: RxSwift
+      - package: Loaf

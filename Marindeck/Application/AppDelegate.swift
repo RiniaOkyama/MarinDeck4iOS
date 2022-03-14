@@ -20,9 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        DeployGateSDK
         //            .sharedInstance()
         //            .launchApplication(withAuthor: keys.deploygateUsername, key: keys.deploygateSdkApiKey)
-        UserDefaults.standard.register(defaults: [.marginSafeArea: true])
+        UserDefaults.standard.register(defaults: [.marginSafeArea: true,
+                                                  .appDebugMode: false])
+
         Database.shared.setup()
         Giphy.configure(apiKey: MarindeckKeys().giphyApiKey)
+        UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.bool(forKey: .noSleep)
 
         #if DEBUG
         _ = Test()

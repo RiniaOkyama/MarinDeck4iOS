@@ -263,6 +263,12 @@ internal enum L10n {
       /// 設定
       internal static let title = L10n.tr("Localizable", "settings.navigation.title")
     }
+    internal enum NoSleep {
+      internal enum Cell {
+        /// スリープさせない
+        internal static let title = L10n.tr("Localizable", "settings.noSleep.cell.title")
+      }
+    }
     internal enum TermsOfUse {
       internal enum Cell {
         /// 利用規約

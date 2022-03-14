@@ -68,6 +68,8 @@ final class EditCustomCSSViewController: UIViewController {
                                                selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        
+        setSwipeBack()
     }
 
     override func viewDidAppear(_ animated: Bool) {

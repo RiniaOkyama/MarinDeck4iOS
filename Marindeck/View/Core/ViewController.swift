@@ -88,6 +88,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         becomeFirstResponder()
+        UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.bool(forKey: .noSleep)
         webView.frame = mainDeckView.bounds
         setupTweetBtn()
 

@@ -10,14 +10,17 @@ import WebKit
 import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
 import class SwiftUI.UIHostingController
+import Loaf
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet private var titleLabel: [UILabel] = []
     @IBOutlet private weak var logoutLabel: UILabel!
 
+    @IBOutlet private weak var nativePreviewSwitch: UISwitch!
     @IBOutlet private weak var biometricsSwitch: UISwitch!
     @IBOutlet private weak var tweetButtonBehavior: UIButton!
     @IBOutlet private weak var marginSafeAreaSwitch: UISwitch!
+    @IBOutlet private weak var noSleepSwitch: UISwitch!
 
     @IBOutlet private weak var appVersionLabel: UILabel!
 
@@ -26,6 +29,7 @@ class SettingsTableViewController: UITableViewController {
     private let ud = UserDefaults.standard
     
     private var selectedTweetButtonType: TweetButtonType = .default
+    private var versionTapCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,10 +69,10 @@ class SettingsTableViewController: UITableViewController {
         tableView.reloadData()
 
         biometricsSwitch.setOn(ud.bool(forKey: .isUseBiometrics), animated: false)
-
         marginSafeAreaSwitch.setOn(ud.bool(forKey: .marginSafeArea), animated: false)
-        
         setupTweetButtonBehavior()
+        noSleepSwitch.setOn(ud.bool(forKey: .noSleep), animated: false)
+        nativePreviewSwitch.setOn((ud.dictionary(forKey: .jsConfig)?["isNativeImageModal"] as? Bool) ?? true, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -159,6 +163,8 @@ class SettingsTableViewController: UITableViewController {
             issue()
         case IndexPath(row: 3, section: 2):
             developers()
+        case IndexPath(row: 4, section: 2):
+            versionTapped()
         case IndexPath(row: 5, section: 2):
             checkUpdate()
         case IndexPath(row: 0, section: 3):
@@ -171,6 +177,13 @@ class SettingsTableViewController: UITableViewController {
             break
         }
     }
+    
+    @IBAction func setNativePreview() {
+        var configs = ud.dictionary(forKey: .jsConfig) ?? [:]
+        configs["isNativeImageModal"] = nativePreviewSwitch.isOn
+        ud.set(configs, forKey: .jsConfig)
+        Loaf("リロード後に適用されます", state: .success, location: .top, sender: self).show()
+    }
 
     @IBAction func setBiometrics() {
         ud.set(biometricsSwitch.isOn, forKey: .isUseBiometrics)
@@ -178,6 +191,11 @@ class SettingsTableViewController: UITableViewController {
 
     @IBAction func setMarginSafeArea() {
         ud.set(marginSafeAreaSwitch.isOn, forKey: .marginSafeArea)
+    }
+    
+    @IBAction func setNoSleep() {
+        ud.set(noSleepSwitch.isOn, forKey: .noSleep)
+        UIApplication.shared.isIdleTimerDisabled = noSleepSwitch.isOn
     }
 
     func presentTheme() {
@@ -224,6 +242,23 @@ class SettingsTableViewController: UITableViewController {
 
     func developers() {
         openURL(url: "https://hisubway.online/articles/mddeveloper/")
+    }
+    
+    func versionTapped() {
+        versionTapCount += 1
+        if versionTapCount == 5 {
+            versionTapCount = 0
+            ud.set(true, forKey: .appDebugMode)
+            
+            let view = AppDebugView(vc: self)
+            let vc = UIHostingController(rootView: view)
+            // ?
+            vc.definesPresentationContext = true
+            definesPresentationContext = true
+            vc.modalPresentationStyle = .currentContext
+            
+            present(vc, animated: true, completion: nil)
+        }
     }
 
     func checkUpdate() {

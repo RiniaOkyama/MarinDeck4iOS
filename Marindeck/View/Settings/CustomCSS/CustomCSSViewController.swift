@@ -29,6 +29,8 @@ class CustomCSSViewController: UIViewController {
 
         tableView.isEditing = true
         tableView.allowsSelectionDuringEditing = true
+        
+        setSwipeBack()
     }
 
     override func viewWillAppear(_ animated: Bool) {
