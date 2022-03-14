@@ -175,7 +175,6 @@ function positionElement(x, y) {
   });
   new MutationObserver((_) => {
     document.querySelectorAll(".js-media-image-link").forEach(function(image) {
-      swiftLog(isNativeImageModal);
       if (endedlist.indexOf(image) === -1) {
         endedlist.push(image);
         if (image.parentElement.classList.contains("is-video")) {
