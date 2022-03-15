@@ -89,14 +89,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THI-wz-SKK">
-                                                    <rect key="frame" x="343" y="6.5" width="31" height="31"/>
+                                                    <rect key="frame" x="337" y="6.5" width="31" height="31"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="-"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="THI-wz-SKK" firstAttribute="centerY" secondItem="L3X-bg-D3M" secondAttribute="centerY" id="7Hc-LK-9ZT"/>
-                                                <constraint firstAttribute="trailing" secondItem="THI-wz-SKK" secondAttribute="trailing" id="AIk-Oc-e6S"/>
+                                                <constraint firstAttribute="trailing" secondItem="THI-wz-SKK" secondAttribute="trailing" constant="6" id="AIk-Oc-e6S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -109,6 +109,7 @@ class SettingsTableViewController: UITableViewController {
         
         tweetButtonBehavior.showsMenuAsPrimaryAction = true
         tweetButtonBehavior.setTitle(selectedTweetButtonType.title, for: .normal)
+        tweetButtonBehavior.isPointerInteractionEnabled = true
     }
     
     func changedTweetButtonBehavior(_ type: TweetButtonType) {
