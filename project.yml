@@ -34,8 +34,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.1.11
-    CURRENT_PROJECT_VERSION: 0.1.11
+    MARKETING_VERSION: 0.1.12
+    CURRENT_PROJECT_VERSION: 0.1.12
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
