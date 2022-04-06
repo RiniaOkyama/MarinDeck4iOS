@@ -12,7 +12,7 @@ protocol ViewSetup {
     func setupView()
     func setupTweetBtn()
     func setupWebViewToolBar()
-    func notchLogoSetup()
+//    func notchLogoSetup()
 }
 
 extension ViewController: ViewSetup {
@@ -185,23 +185,23 @@ extension ViewController: ViewSetup {
         webView.addIndexAccessoryView(toolbar: toolbar)
     }
 
-    func notchLogoSetup() {
-        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-
-        if statusBarHeight >= 44.0 {
-            notchLogoImageView = UIImageView(image: Asset.iconWhite.image)
-            notchLogoImageView.contentMode = .scaleAspectFit
-            view.addSubview(notchLogoImageView)
-
-            notchLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                notchLogoImageView.topAnchor.constraint(equalTo: view.topAnchor),
-                notchLogoImageView.heightAnchor.constraint(equalToConstant: 40),
-                notchLogoImageView.leftAnchor.constraint(equalTo: view.leftAnchor),
-                notchLogoImageView.rightAnchor.constraint(equalTo: view.rightAnchor)
-            ])
-        }
-    }
+//    func notchLogoSetup() {
+//        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+//        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+//
+//        if statusBarHeight >= 44.0 {
+//            notchLogoImageView = UIImageView(image: Asset.iconWhite.image)
+//            notchLogoImageView.contentMode = .scaleAspectFit
+//            view.addSubview(notchLogoImageView)
+//
+//            notchLogoImageView.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                notchLogoImageView.topAnchor.constraint(equalTo: view.topAnchor),
+//                notchLogoImageView.heightAnchor.constraint(equalToConstant: 40),
+//                notchLogoImageView.leftAnchor.constraint(equalTo: view.leftAnchor),
+//                notchLogoImageView.rightAnchor.constraint(equalTo: view.rightAnchor)
+//            ])
+//        }
+//    }
 
 }

@@ -62,7 +62,7 @@ extension ViewController: WKScriptMessageHandler {
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
                 td.actions.setStatusBarSpace(height: Int(statusBarHeight))
             }
-            notchLogoSetup()
+//            notchLogoSetup()
 
             td.account.getAccount { [weak self] account in
                 self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
