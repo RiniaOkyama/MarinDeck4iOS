@@ -33,7 +33,7 @@ extension ViewController: MenuDelegate {
             print(#function, error ?? "成功")
         }
     }
-    
+
     func openTdSettings() {
         closeMenu()
         td.actions.openTDSettings()

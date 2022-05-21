@@ -82,20 +82,20 @@ extension ViewController: Transition {
             }
         )
         present(alert, animated: true, completion: nil)
-        
-//        let view = TweetView()
-//        view.frame = self.view.bounds
-//        view.normalTweetModalY = 40
-//        view.alpha = 0
-//        view.frame.origin.y = self.view.frame.height
-//        self.view.addSubview(view)
-//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn) {
-//            view.alpha = 1
-//            view.frame.origin.y = 40
-//        }
+
+        //        let view = TweetView()
+        //        view.frame = self.view.bounds
+        //        view.normalTweetModalY = 40
+        //        view.alpha = 0
+        //        view.frame.origin.y = self.view.frame.height
+        //        self.view.addSubview(view)
+        //        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn) {
+        //            view.alpha = 1
+        //            view.frame.origin.y = 40
+        //        }
 
     }
-    
+
     func openTwitterAppTweetModal() {
         if let twitterURL = URL(string: "twitter://post"),
            UIApplication.shared.canOpenURL(twitterURL) {
@@ -176,7 +176,7 @@ extension ViewController: Transition {
         //            imageViewer.presentationController?.delegate = self
         present(imageViewer, animated: true, completion: nil)
     }
-    
+
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
         let dp = UIDatePicker()

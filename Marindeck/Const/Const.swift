@@ -18,7 +18,7 @@ enum UserDefaultsKey: String, CaseIterable {
     case actionButtoms = "actionButtoms"
     case marginSafeArea = "marginSafeArea"
     case noSleep = "noSleep"
-    
+
     case appDebugMode = "appDebugMode"
     case jsConfig = "jsConfig"
 }
@@ -26,17 +26,17 @@ enum UserDefaultsKey: String, CaseIterable {
 extension UserDefaults {
     func register(defaults: [UserDefaultsKey: Any]) {
         var registerValue: [String: Any] = [:]
-        
+
         defaults.forEach({ (key, value) in
             registerValue[key.rawValue] = value
         })
         register(defaults: registerValue)
     }
-    
+
     func set(_ value: Any?, forKey key: UserDefaultsKey) {
         self.set(value, forKey: key.rawValue)
     }
-    
+
     func string(forKey defaultName: UserDefaultsKey) -> String? {
         string(forKey: defaultName.rawValue)
     }
@@ -45,7 +45,7 @@ extension UserDefaults {
         array(forKey: defaultName.rawValue)
     }
 
-    func dictionary(forKey defaultName: UserDefaultsKey) -> [String : Any]? {
+    func dictionary(forKey defaultName: UserDefaultsKey) -> [String: Any]? {
         dictionary(forKey: defaultName.rawValue)
     }
 
@@ -61,11 +61,9 @@ extension UserDefaults {
         integer(forKey: defaultName.rawValue)
     }
 
-
     func float(forKey defaultName: UserDefaultsKey) -> Float {
         float(forKey: defaultName.rawValue)
     }
-
 
     func double(forKey defaultName: UserDefaultsKey) -> Double {
         double(forKey: defaultName.rawValue)
@@ -147,7 +145,7 @@ enum TweetButtonType: String, CaseIterable {
     case `default` = "default"
     case native = "native"
     case twitterApp = "twitterApp"
-    
+
     public var title: String {
         get {
             switch self {
@@ -157,9 +155,9 @@ enum TweetButtonType: String, CaseIterable {
                 return "ネイティブ"
             case .twitterApp:
                 return "Twitter"
+            }
         }
     }
-}
 }
 
 // Codable?

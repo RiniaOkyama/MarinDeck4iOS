@@ -35,7 +35,7 @@ public class NDActionButton: UIView {
 
         layer.cornerRadius = frame.width / 2
         addSubview(imageView)
-        
+
         enablePointer()
     }
 
@@ -387,7 +387,6 @@ public class NDTweetBtn: UIView {
     }
 
 }
-
 
 extension NDActionButton: UIPointerInteractionDelegate {
 

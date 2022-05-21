@@ -39,7 +39,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return blurView
     }()
     var mainDeckBlurView: UIView!
-//    var notchLogoImageView: UIImageView!
+    //    var notchLogoImageView: UIImageView!
 
     var isMenuOpen = false
     let userDefaults = UserDefaults.standard
@@ -146,7 +146,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     @objc
     func tweetPressed() {
         let type = TweetButtonType(rawValue: userDefaults.string(forKey: .tweetButtonType) ?? TweetButtonType.default.rawValue) ?? .default
-        
+
         switch type {
         case .`default`:
             openWebViewTweetModal()

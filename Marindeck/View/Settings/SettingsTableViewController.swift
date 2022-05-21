@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
     private var dController: UIDocumentInteractionController!
     private let dbQueue = Database.shared.dbQueue
     private let ud = UserDefaults.standard
-    
+
     private var selectedTweetButtonType: TweetButtonType = .default
     private var versionTapCount = 0
 
@@ -92,26 +92,26 @@ class SettingsTableViewController: UITableViewController {
     func onDismiss() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     func setupTweetButtonBehavior() {
         selectedTweetButtonType = TweetButtonType(rawValue: ud.string(forKey: .tweetButtonType) ?? TweetButtonType.default.rawValue) ?? .default
         var actions: [UIMenuElement] = []
-        
+
         TweetButtonType.allCases.forEach { type in
             actions.append(UIAction(title: type.title,
                                     image: nil,
                                     state: self.selectedTweetButtonType == type ? .on : .off,
                                     handler: { [weak self] _ in
                                         self?.changedTweetButtonBehavior(type)
-            }))
+                                    }))
         }
         tweetButtonBehavior.menu = UIMenu(title: "", options: .displayInline, children: actions)
-        
+
         tweetButtonBehavior.showsMenuAsPrimaryAction = true
         tweetButtonBehavior.setTitle(selectedTweetButtonType.title, for: .normal)
         tweetButtonBehavior.isPointerInteractionEnabled = true
     }
-    
+
     func changedTweetButtonBehavior(_ type: TweetButtonType) {
         tweetButtonBehavior.setTitle(type.title, for: .normal)
         selectedTweetButtonType = type
@@ -178,7 +178,7 @@ class SettingsTableViewController: UITableViewController {
             break
         }
     }
-    
+
     @IBAction func setNativePreview() {
         var configs = ud.dictionary(forKey: .jsConfig) ?? [:]
         configs["isNativeImageModal"] = nativePreviewSwitch.isOn
@@ -193,7 +193,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func setMarginSafeArea() {
         ud.set(marginSafeAreaSwitch.isOn, forKey: .marginSafeArea)
     }
-    
+
     @IBAction func setNoSleep() {
         ud.set(noSleepSwitch.isOn, forKey: .noSleep)
         UIApplication.shared.isIdleTimerDisabled = noSleepSwitch.isOn
@@ -244,20 +244,20 @@ class SettingsTableViewController: UITableViewController {
     func developers() {
         openURL(url: "https://hisubway.online/articles/mddeveloper/")
     }
-    
+
     func versionTapped() {
         versionTapCount += 1
         if versionTapCount == 5 {
             versionTapCount = 0
             ud.set(true, forKey: .appDebugMode)
-            
+
             let view = AppDebugView(vc: self)
             let vc = UIHostingController(rootView: view)
             // ?
             vc.definesPresentationContext = true
             definesPresentationContext = true
             vc.modalPresentationStyle = .currentContext
-            
+
             present(vc, animated: true, completion: nil)
         }
     }

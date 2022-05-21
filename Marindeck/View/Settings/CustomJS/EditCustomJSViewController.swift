@@ -68,7 +68,7 @@ class EditCustomJSViewController: UIViewController {
                                                selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-        
+
         setSwipeBack()
     }
 

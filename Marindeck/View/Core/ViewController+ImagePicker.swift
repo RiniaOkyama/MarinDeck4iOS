@@ -21,7 +21,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             } else if pex == "jpg" || pex == "jpeg" {
                 base64imgString = image.jpegData(compressionQuality: 0.7)?.base64EncodedString(options: []) ?? ""
             }
-            
+
             if base64imgString == "" {
                 // TODO: L10n
                 Loaf("画像が読み込めませんでした。", state: .error, location: .top, sender: self).show()

@@ -93,7 +93,7 @@ class MenuViewController: UIViewController {
         let vc = TwitterSettingsViewController()
         present(vc, animated: true, completion: nil)
     }
-    
+
     @objc
     func tdSettingsTapped() {
         delegate?.openTdSettings()

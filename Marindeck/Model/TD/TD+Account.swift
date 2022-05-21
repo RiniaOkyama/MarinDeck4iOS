@@ -28,11 +28,11 @@ extension TD.AccountController {
                                username: dict["username"] as? String))
         }
     }
-    
+
     func getAllAccount(completion: @escaping(_ accounts: [Account]) -> Void) {
         webView?.evaluateJavaScript("window.TD.storage.accountController.getAll().filter(({managed}) => managed)map(({state: {name: fullname, username, userId, profileImageURL}}) => ({fullname, username, userId, profileImageURL}))") {(obj, _) in
             guard let ary = obj as? [[String: Any]] else { return }
-            
+
             var accounts: [Account] = []
             for dict in ary {
                 accounts.append(Account(name: dict["fullname"] as? String,

@@ -21,7 +21,7 @@ final class TweetView: UIView {
 
     private var keyboardHeight: CGFloat = 0
     private var isSmall = false
-    
+
     private let normalTweetModalHeight: CGFloat = 128
     private let smallTweetModalHeight: CGFloat = 50
     var normalTweetModalY: CGFloat = 0 {
@@ -31,7 +31,7 @@ final class TweetView: UIView {
             }
         }
     }
-    
+
     init() {
         super.init(frame: .zero)
         loadNib()
@@ -48,10 +48,10 @@ final class TweetView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         frame.size.height = 150
     }
-    
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchEvent = touches.first!
 
@@ -61,20 +61,20 @@ final class TweetView: UIView {
         let dy = newDy - preDy
 
         frame.origin.y += dy
-        
+
         if frame.origin.y > UIScreen.main.bounds.height - self.keyboardHeight - self.smallTweetModalHeight {
             alpha -= dy * 0.01
         }
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchUp()
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       touchUp()
+        touchUp()
     }
-    
+
     func touchUp() {
         if isSmall ? frame.origin.y > UIScreen.main.bounds.height - keyboardHeight - 50 : frame.origin.y > 50 {
             isSmall = true
@@ -100,7 +100,7 @@ final class TweetView: UIView {
             }
         }
     }
-    
+
     func setupToolbar() {
         // ツールバーのインスタンスを作成
         let toolBar = UIToolbar()
@@ -122,10 +122,10 @@ final class TweetView: UIView {
         let view = Bundle.main.loadNibNamed("TweetView", owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         self.addSubview(view)
-        
+
         setupViews()
     }
-    
+
     func setupViews() {
         NotificationCenter.default.addObserver(
             self,
@@ -133,23 +133,23 @@ final class TweetView: UIView {
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
-        
+
         clipsToBounds = true
         layer.cornerRadius = 12
-        
+
         avatarImageButton.contentMode = .scaleAspectFit
         avatarImageButton.layer.cornerRadius = avatarImageButton.frame.width / 2
         avatarImageButton.clipsToBounds = true
         avatarImageButton.setTitle("", for: .normal)
-        
+
         smallModeButton.setTitle("", for: .normal)
-        
+
         tweetTextView.textContainerInset = .zero
         tweetTextView.sizeToFit()
-        
+
         setupToolbar()
     }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -159,17 +159,16 @@ final class TweetView: UIView {
             }
         }
     }
-    
-    @objc func tapOkButton(_ sender: UIButton){
+
+    @objc func tapOkButton(_ sender: UIButton) {
         // キーボードを閉じる
         endEditing(true)
     }
-    @objc func tapCancelButton(_ sender: UIButton){
+    @objc func tapCancelButton(_ sender: UIButton) {
     }
-
 
 }
 
 extension TweetView: UITextViewDelegate {
-    
+
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AppDebugView: View {
     @Environment(\.presentationMode) var presentationMode
-    weak var vc: UIViewController? = nil
-    
+    weak var vc: UIViewController?
+
     init(vc: UIViewController? = nil) {
         self.vc = vc
     }
@@ -33,13 +33,13 @@ struct AppDebugView: View {
             Button("Twitter設定画面", action: {
                 vc?.present(TwitterSettingsViewController(), animated: true, completion: nil)
             })
-            
+
             Button("OnBoardingを表示", action: {
                 let onBoardingVC = OnBoardingViewController()
                 onBoardingVC.modalPresentationStyle = .currentContext
                 vc?.present(onBoardingVC, animated: false, completion: nil)
             })
-            
+
             Button("ネイティブTweetModal", action: {
                 let vc = UIViewController()
                 vc.modalPresentationStyle = .overFullScreen

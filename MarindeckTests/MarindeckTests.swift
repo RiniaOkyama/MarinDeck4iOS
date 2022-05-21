@@ -25,7 +25,7 @@ class MarindeckTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
-    
+
     func testJsSwiftBindingParse() throws {
         let imageViewerJsonString = """
 {
@@ -54,7 +54,7 @@ class MarindeckTests: XCTestCase {
         let decoder = JSONDecoder()
         guard let decoded = try? decoder.decode(General.self, from: fetchImageJsonString.data(using: .utf8)!) else { return }
         print(decoded.content)
-        
+
     }
 
     func testPerformanceExample() throws {
@@ -65,4 +65,3 @@ class MarindeckTests: XCTestCase {
     }
 
 }
-    
