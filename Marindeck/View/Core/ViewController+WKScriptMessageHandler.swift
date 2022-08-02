@@ -85,6 +85,10 @@ extension ViewController: WKScriptMessageHandler {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.openSettings()
             }
+            
+        case .presentAlert:
+            guard let text = body?["text"] as? String else { return }
+            presentAlert(text)
 
         case .loadImage:
             //            guard let url = (message.body as? String) else {

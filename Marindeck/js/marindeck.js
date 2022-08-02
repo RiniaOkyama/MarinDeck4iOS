@@ -213,6 +213,12 @@ class MarinDeckBindings {
       body: { value: true }
     });
   }
+  alert(text) {
+    window.MD.Native.post({
+      type: "presentAlert",
+      body: { text }
+    });
+  }
 }
 const jQuery = (() => {
   const id = Math.random().toString(36).substring(7);
