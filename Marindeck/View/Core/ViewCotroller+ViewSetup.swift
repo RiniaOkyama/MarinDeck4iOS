@@ -117,6 +117,7 @@ extension ViewController: ViewSetup {
         webView.navigationDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
+        webView.scrollView.bounces = false
         //        webView.scrollView.delegate = self
 
         //        self.mainDeckView.addSubview(webView)
