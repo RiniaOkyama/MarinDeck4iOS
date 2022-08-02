@@ -206,6 +206,14 @@ function positionElement(x, y) {
     });
   }).observe(document.body, { childList: true, subtree: true });
 })();
+class MarinDeckBindings {
+  openSettings() {
+    window.MD.Native.post({
+      type: "openSettings",
+      body: { value: true }
+    });
+  }
+}
 const jQuery = (() => {
   const id = Math.random().toString(36).substring(7);
   const args = [
@@ -366,4 +374,5 @@ const configure = () => {
   });
 };
 window.MarinDeckInputs = new MarinDeckInputs();
+window.Bindings = new MarinDeckBindings();
 configure();
