@@ -47,6 +47,7 @@ class MenuViewController: UIViewController {
             $0?.titleLabel.textColor = .labelColor
         })
         settingsButton.tintColor = .labelColor
+        settingsButton.isPointerInteractionEnabled = true
         //        marinDeckLogoView.image =  marinDeckLogoView.image?.withRenderingMode(.alwaysTemplate)
         //        marinDeckLogoView.tintColor = .labelColor
         profileMenu.setTapEvent(action: #selector(profileTapped), target: self)
@@ -92,7 +93,7 @@ class MenuViewController: UIViewController {
         let vc = TwitterSettingsViewController()
         present(vc, animated: true, completion: nil)
     }
-    
+
     @objc
     func tdSettingsTapped() {
         delegate?.openTdSettings()

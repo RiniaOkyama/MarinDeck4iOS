@@ -1,11 +1,20 @@
-// interface Window {
-//     webkit?: any;
-// }
+export interface MarinDeckBindingsInterface {
+    openSettings(): void
+    alert(text: string): void
+}
 
-// declare var window: Window;
+export class MarinDeckBindings implements MarinDeckBindingsInterface {
+    openSettings() {
+        window.MD.Native.post({
+            type: 'openSettings',
+            body: { value: true }
+        })
+    }
 
-
-
-// export function openSettings() {
-//     window.webkit.messageHandlers.openSettings.postMessage(true)
-// }
+    alert(text: string): void {
+        window.MD.Native.post({
+            type: "presentAlert",
+            body: { text: text }
+        })
+    }
+}

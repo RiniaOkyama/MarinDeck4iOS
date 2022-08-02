@@ -66,7 +66,7 @@ extension TD.ActionsController {
     func setBlob(url: String, base64: String, mimeType: String) {
         webView?.evaluateJavaScript("MD4iOS.Blob.set(\(url), \(base64), \(mimeType)")
     }
-    
+
     func setSchedule(date: Date) {
         let calendar = Calendar.current
         let Y = calendar.component(.year, from: date)
@@ -74,16 +74,16 @@ extension TD.ActionsController {
         let D = calendar.component(.day, from: date)
         let h = calendar.component(.hour, from: date)
         let m = calendar.component(.minute, from: date)
-        
+
         webView?.evaluateJavaScript("updateSchedule(\(Y), \(M), \(D), \(h), \(m))") { _, error in
             print(#function, error ?? "成功")
         }
     }
-    
+
     func openTDSettings() {
         webView?.evaluateJavaScript("document.querySelector(\".js-app-settings\").click();document.querySelector(\"[data-action='globalSettings']\").click()")
     }
-    
+
     func send(uuid: String, value: Any?) {
         webView?.evaluateJavaScript("window.MD.Native.send({uuid: '\(uuid)', value: \(value ?? "null")})")
     }

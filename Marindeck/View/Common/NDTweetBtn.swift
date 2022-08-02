@@ -35,6 +35,8 @@ public class NDActionButton: UIView {
 
         layer.cornerRadius = frame.width / 2
         addSubview(imageView)
+
+        enablePointer()
     }
 
     public func setImage(_ image: UIImage) {
@@ -384,4 +386,31 @@ public class NDTweetBtn: UIView {
         //        return nil
     }
 
+}
+
+extension NDActionButton: UIPointerInteractionDelegate {
+
+    func enablePointer() {
+        isUserInteractionEnabled = true
+        addInteraction(UIPointerInteraction(delegate: self))
+    }
+
+    public func pointerInteraction(_ interaction: UIPointerInteraction, regionFor request: UIPointerRegionRequest, defaultRegion: UIPointerRegion) -> UIPointerRegion? {
+        // ポインタが反応すべきframeを返す
+        return UIPointerRegion(rect: rectForTitle())
+    }
+
+    private func rectForTitle() -> CGRect {
+        // AttributedTextが表示されているrectを返す
+        return bounds
+    }
+
+    public func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        // ポインタのエフェクト（UIPointerEffect）や形（UIPointerShape）を返す
+        let targetedPreview = UITargetedPreview(view: self)
+        let effect: UIPointerEffect = .highlight(targetedPreview)
+        let shape: UIPointerShape = .roundedRect(rectForTitle(), radius: UIPointerShape.defaultCornerRadius)
+        let pointerStyle = UIPointerStyle(effect: effect, shape: shape)
+        return pointerStyle
+    }
 }

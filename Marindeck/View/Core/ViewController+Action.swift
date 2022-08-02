@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewControllerAction {
     func getPositionElements(x: Int, y: Int) -> (Int, [String])
     func openWebViewTweetModal()
+    func presentAlert(_ msg: String)
 }
 
 extension ViewController: ViewControllerAction {
@@ -38,5 +40,11 @@ extension ViewController: ViewControllerAction {
                 self.td.actions.focusTweetTextArea()
             }
         }
+    }
+    
+    func presentAlert(_ msg: String) {
+        let alert = UIAlertController(title: "Debugger", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }

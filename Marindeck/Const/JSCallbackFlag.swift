@@ -11,6 +11,7 @@ enum JSCallbackFlag: String, CaseIterable, Codable {
     case imageViewPos = "imageViewPos" // 画像の座標
     case viewDidLoad = "viewDidLoad"
     case openSettings = "openSettings"
+    case presentAlert = "presentAlert"
     case loadImage = "loadImage"
     case fetchImage = "fetchImage"
     case selectedImageBase64 = "selectedImageBase64"

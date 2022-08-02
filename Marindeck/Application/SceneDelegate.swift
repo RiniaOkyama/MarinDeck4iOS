@@ -15,21 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        
+
         guard let scene = (scene as? UIWindowScene) else { return }
-        
+
         window = UIWindow(windowScene: scene)
-        
+
         if UserDefaults.standard.bool(forKey: .appDebugMode) {
             let view = AppDebugView(vc: nil)
             let vc = UIHostingController(rootView: view)
             window?.rootViewController = vc
             (window?.rootViewController as! UIHostingController<AppDebugView>).rootView.vc = window?.rootViewController
-        }else {
+        } else {
             let view = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
             window?.rootViewController = view
         }
-        
+
         window?.makeKeyAndVisible()
     }
 

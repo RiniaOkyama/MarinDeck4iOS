@@ -41,7 +41,7 @@ class EditActionButtonViewController: UIViewController, UIPickerViewDelegate, UI
         updateActions()
         tweetBtn.isPressing = true
         tweetBtn.isLock = true
-        
+
         setSwipeBack()
     }
 

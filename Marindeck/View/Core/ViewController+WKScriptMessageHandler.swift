@@ -15,18 +15,18 @@ extension ViewController: WKScriptMessageHandler {
         if message.name != "general" {
             return
         }
-        
+
         let messageBody = (message.body as? [String: Any])
-        
+
         guard let typeCast = messageBody?["type"] as? String else { return }
         let type = JSCallbackFlag(rawValue: typeCast)
         let body = messageBody?["body"] as? [String: Any]
         let uuid = messageBody?["uuid"] as? String
-        
+
         // FIXME
-//        switch JSCallbackFlag(rawValue: message.name) {
+        //        switch JSCallbackFlag(rawValue: message.name) {
         switch type {
-                // MARK: WKWebView Didload
+        // MARK: WKWebView Didload
         case .viewDidLoad:
             loadingIndicator.stopAnimating()
             if !isMainDeckViewLock {
@@ -62,7 +62,7 @@ extension ViewController: WKScriptMessageHandler {
                 let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
                 td.actions.setStatusBarSpace(height: Int(statusBarHeight))
             }
-            notchLogoSetup()
+            //            notchLogoSetup()
 
             td.account.getAccount { [weak self] account in
                 self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
@@ -85,6 +85,10 @@ extension ViewController: WKScriptMessageHandler {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.openSettings()
             }
+            
+        case .presentAlert:
+            guard let text = body?["text"] as? String else { return }
+            presentAlert(text)
 
         case .loadImage:
             //            guard let url = (message.body as? String) else {
@@ -134,14 +138,14 @@ extension ViewController: WKScriptMessageHandler {
             } else if let youtubeURL = URL(string: url) {
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             }
-            
+
         case .sidebar:
             if body?["value"] as? String == "open" {
                 openMenu()
             } else if body?["value"] as? String == "close" {
                 closeMenu()
             } else {}
-            
+
         case .config:
             guard let action = body?["action"] as? String else { return }
             guard let key = body?["key"] as? String else { return }
@@ -154,7 +158,7 @@ extension ViewController: WKScriptMessageHandler {
                 let value = userDefaults.dictionary(forKey: .jsConfig)?[key]
                 td.actions.send(uuid: uuid ?? "", value: value)
             } else {}
-            
+
         case .none:
             Loaf("予期しないTypeを受信しました: \(typeCast)", state: .error, location: .top, sender: self).show()
         }
