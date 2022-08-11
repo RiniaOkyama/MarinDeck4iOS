@@ -13,6 +13,48 @@ import SPAlert
 
 // MARK: - WKWebView ui delegate
 extension ViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        completionHandler()
+        print(#function, message, frame)
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default)
+        )
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.present(alert, animated: true, completion: nil)
+//            self.debuggerVC?.present(alert, animated: true)
+        }
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default) { _ in completionHandler(true) }
+        )
+        alert.addAction(
+            UIAlertAction(title: "Cancel", style: .cancel) { _ in completionHandler(false)}
+        )
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        let alert = UIAlertController(title: "", message: prompt, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default) { _ in
+                if let textField = alert.textFields?.first {
+                    completionHandler(textField.text)
+                } else {
+                    completionHandler("")
+                }
+            }
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) {
+            _ in completionHandler(nil)
+        }
+        )
+        alert.addTextField { $0.text = defaultText }
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 struct ContextMenuStruct {
