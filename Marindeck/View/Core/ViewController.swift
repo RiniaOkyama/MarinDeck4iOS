@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     @IBOutlet weak var tweetFloatingBtn: NDTweetBtn!
     @IBOutlet weak var menuView: UIView!
     var menuVC: MenuViewController!
+    var debuggerVC: DebugerViewController?
 
     let imageView: UIImageView! = UIImageView()
     let blurView: UIVisualEffectView = {

@@ -135,9 +135,9 @@ extension ViewController: Transition {
     // デバッグボタンタップ時の動作
     @objc
     func openDebugModal() {
-        let vc = DebugerViewController()
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
+        debuggerVC = DebugerViewController()
+        debuggerVC!.delegate = self
+        present(debuggerVC!, animated: true, completion: nil)
     }
 
     func imagePreviewer(index: Int, urls: [String]) {
