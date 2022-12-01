@@ -10,12 +10,6 @@ packages:
   GiphyUISDK:
     url: https://github.com/Giphy/giphy-ios-sdk
     exactVersion: 2.1.16
-  RxSwift:
-    url: https://github.com/ReactiveX/RxSwift.git
-    exactVersion: 6.5.0
-  RxWebKit:
-    url: https://github.com/RxSwiftCommunity/RxWebKit
-    exactVersion: 2.0.1
   Loaf:
     url: https://github.com/schmidyy/Loaf
     exactVersion: 0.6.0
@@ -82,8 +76,6 @@ targets:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
-      - package: RxWebKit
-      - package: RxSwift
       - package: Loaf
     preBuildScripts:
       - path: ./scripts/swiftlint.sh
@@ -106,6 +98,4 @@ targets:
       - package: GRDB
       - package: MarkdownView
       - package: GiphyUISDK
-      - package: RxWebKit
-      - package: RxSwift
       - package: Loaf
