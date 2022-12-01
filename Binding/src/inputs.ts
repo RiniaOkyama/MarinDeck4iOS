@@ -5,6 +5,7 @@ export interface MarinDeckInputsInterface {
     addTweetImage(base64: string, type: string, name: string): void
     touchPointTweetLike(x: number, y: number): void
     postTweet(text: string, reply_to_id, key): void
+    updateSchedule(Y: number, M: number, D: number, h: number, m: number): void
 }
 
 /** tweet */
@@ -55,5 +56,9 @@ export class MarinDeckInputs implements MarinDeckInputsInterface {
             from: window.TD.storage.accountController.getDefault().getUsername()
         })
             // getClient(key).update(text, reply_to_id, null, null, null, resolve, reject)
+    }
+
+    updateSchedule(Y: number, M: number, D: number, h: number, m: number): void {
+        jQuery('.js-docked-compose').parent().trigger('uiComposeScheduleDate', {date: new Date(Y, M-1, D, h, m, 0, 0)});
     }
 }

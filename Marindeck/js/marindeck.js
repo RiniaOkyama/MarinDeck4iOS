@@ -271,6 +271,9 @@ class MarinDeckInputs {
       from: window.TD.storage.accountController.getDefault().getUsername()
     });
   }
+  updateSchedule(Y, M, D, h, m) {
+    jQuery(".js-docked-compose").parent().trigger("uiComposeScheduleDate", { date: new Date(Y, M - 1, D, h, m, 0, 0) });
+  }
 }
 const Version = "0";
 const genUUID = () => Array.from("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx", (char) => char === "x" ? Math.floor(Math.random() * 16).toString(16) : char === "y" ? (Math.floor(Math.random() * 4) + 8).toString(16) : char).join("");
