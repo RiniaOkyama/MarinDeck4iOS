@@ -221,7 +221,6 @@ function positionElement(x, y) {
         subscribedActionUrls.push(element.href);
         console.log("subscribed", element.href);
         element.addEventListener("click", (e) => {
-          console.log("marindeck.js, tapped action url", e.currentTarget.href);
           window.Bindings.openUrl(e.currentTarget.href);
         });
       }
