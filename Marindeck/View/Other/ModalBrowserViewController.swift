@@ -82,14 +82,7 @@ class ModalBrowserViewController: UIViewController, WKUIDelegate, WKNavigationDe
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//        let url = navigationAction.request.url
-
-//        if !(url?.path.contains("/settings") ?? true) || !(url?.host == "mobile.twitter.com") {
-//            decisionHandler(.cancel)
-//            self.dismiss(animated: true, completion: nil)
-//        } else {
             decisionHandler(.allow)
-//        }
     }
 }
 
