@@ -12,16 +12,15 @@
 
 ![MarinDeck4iOSSct](https://user-images.githubusercontent.com/54408846/207113913-55dc4285-2107-41cb-81c5-1c19c4373578.png)
 
-Check out [hisubway.online/marindeck](https://hisubway.online/marindeck/) and follow us on [twitter.com/HiSubway](https://twitter.com/HiSubway) and [twitter.com/vitomcharm](https://twitter.com/vitomcharm)
 
-[[日本語](README-ja.md) / English]
+[日本語 / [English](README.md)]
 
-## Requirements
+## 必要条件
 
 * iOS14.1+
 * Xcode14
 
-## Installation
+## セットアップ
 
 ```
 $ brew install mint
@@ -33,22 +32,21 @@ $ xed .
 
 
 
-## Contribute
+## 貢献
 
-If you want to contribute to MarinDeck4iOS, you are very welcome
+貢献お待ちしております✨
 - [New issue](https://github.com/RiniaOkyama/MarinDeck4iOS/issues/new)
 - [New Pull Request](https://github.com/RiniaOkyama/MarinDeck4iOS/compare)
 
 
 ## Support
 
+iOSアプリについてサポートが必要な場合や質問がある場合は Discordチャンネル([#苹果](https://discord.gg/JKsqaxcnCW))でサポートを受けることができます。バグを発見した場合は、Githubに新しいissueを作成するか、Discordチャンネル([#苹果](https://discord.gg/JKsqaxcnCW))までお願いします。
 
-If you need help or have questions about the iOS app, you can get support on our Discord channel ([#苹果](https://discord.gg/JKsqaxcnCW)). If you find a bug, please create a new issue on Github or send it to our Discord channel ([#苹果](https://discord.gg/JKsqaxcnCW)).
-
-Please note that this repository only deals with iOS apps; it is separate from the Android version.
+このリポジトリはiOSアプリのみを扱っています。Android版とは別なので注意してください。
 
 ## LICENSE
-someday...
+いつか
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FRiniaOkyama%2FMarinDeck4iOS?ref=badge_large)
 
