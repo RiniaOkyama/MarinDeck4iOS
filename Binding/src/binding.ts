@@ -1,6 +1,7 @@
 export interface MarinDeckBindingsInterface {
     openSettings(): void
     alert(text: string): void
+    openUrl(url: string): void
 }
 
 export class MarinDeckBindings implements MarinDeckBindingsInterface {
@@ -15,6 +16,13 @@ export class MarinDeckBindings implements MarinDeckBindingsInterface {
         window.MD.Native.post({
             type: "presentAlert",
             body: { text: text }
+        })
+    }
+
+    openUrl(url: string): void {
+        window.MD.Native.post({
+            type: "openUrl",
+            body: { url: url }
         })
     }
 }

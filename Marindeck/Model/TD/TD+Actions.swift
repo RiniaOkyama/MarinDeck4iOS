@@ -75,7 +75,7 @@ extension TD.ActionsController {
         let h = calendar.component(.hour, from: date)
         let m = calendar.component(.minute, from: date)
 
-        webView?.evaluateJavaScript("updateSchedule(\(Y), \(M), \(D), \(h), \(m))") { _, error in
+        webView?.evaluateJavaScript("window.MarinDeckInputs.updateSchedule(\(Y), \(M), \(D), \(h), \(m))") { _, error in
             print(#function, error ?? "成功")
         }
     }

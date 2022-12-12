@@ -158,6 +158,11 @@ extension ViewController: WKScriptMessageHandler {
                 let value = userDefaults.dictionary(forKey: .jsConfig)?[key]
                 td.actions.send(uuid: uuid ?? "", value: value)
             } else {}
+        case .openUrl:
+            guard let url = body?["url"] as? String else { return }
+            let vc = ModalBrowserViewController()
+            vc.url = url
+            present(vc, animated: true)
 
         case .none:
             Loaf("予期しないTypeを受信しました: \(typeCast)", state: .error, location: .top, sender: self).show()
