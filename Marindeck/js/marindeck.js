@@ -84,13 +84,18 @@ const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
           }
         }
       });
-    }).observe(document.body, { childList: true, subtree: true });
+    }).observe(document.body, {
+      childList: true,
+      subtree: true
+    });
   }
 })();
 function isTweetButtonHidden(bool) {
   window.MD.Native.post({
     type: "isTweetButtonHidden",
-    body: { value: bool }
+    body: {
+      value: bool
+    }
   });
 }
 function loginStyled() {
@@ -129,7 +134,9 @@ function swiftLog(...msg) {
   console.log("JS Log:", msg);
   window.MD.Native.post({
     type: "jsCallbackHandler",
-    body: { value: msg }
+    body: {
+      value: msg
+    }
   });
 }
 function positionElement(x, y) {
@@ -159,13 +166,16 @@ function positionElement(x, y) {
   });
   window.MD.Native.post({
     type: "imageViewPos",
-    body: { positions }
+    body: {
+      positions
+    }
   });
   return [selectIndex, imgUrls];
 }
 (async () => {
   await sleep(800);
   let endedlist = [];
+  let subscribedActionUrls = [];
   const isNativeImageModal = await window.MD.Native.get({
     type: "config",
     body: {
@@ -183,7 +193,9 @@ function positionElement(x, y) {
               const url = clickedItem.target.href;
               window.MD.Native.post({
                 type: "openYoutube",
-                body: { url }
+                body: {
+                  url
+                }
               });
             });
           }
@@ -204,7 +216,20 @@ function positionElement(x, y) {
         }
       }
     });
-  }).observe(document.body, { childList: true, subtree: true });
+    Array.from(document.getElementsByClassName("js-action-url")).forEach((element) => {
+      if (!subscribedActionUrls.includes(element.href)) {
+        subscribedActionUrls.push(element.href);
+        console.log("subscribed", element.href);
+        element.addEventListener("click", (e) => {
+          console.log("marindeck.js, tapped action url", e.currentTarget.href);
+          window.Bindings.openUrl(e.currentTarget.href);
+        });
+      }
+    });
+  }).observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 })();
 class MarinDeckBindings {
   openSettings() {
@@ -217,6 +242,12 @@ class MarinDeckBindings {
     window.MD.Native.post({
       type: "presentAlert",
       body: { text }
+    });
+  }
+  openUrl(url) {
+    window.MD.Native.post({
+      type: "openUrl",
+      body: { url }
     });
   }
 }

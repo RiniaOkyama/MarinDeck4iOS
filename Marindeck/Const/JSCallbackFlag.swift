@@ -19,4 +19,5 @@ enum JSCallbackFlag: String, CaseIterable, Codable {
     case openYoutube = "openYoutube"
     case sidebar = "sidebar"
     case config = "config"
+    case openUrl = "openUrl"
 }

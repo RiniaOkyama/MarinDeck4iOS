@@ -81,7 +81,10 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
                     }
                 }
             })
-        }).observe(document.body, {childList: true, subtree: true})
+        }).observe(document.body, {
+            childList: true,
+            subtree: true
+        })
     }
 
 })();
@@ -89,7 +92,9 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 function isTweetButtonHidden(bool) {
     window.MD.Native.post({
         type: 'isTweetButtonHidden',
-        body: { value: bool }
+        body: {
+            value: bool
+        }
     })
 }
 
@@ -138,7 +143,7 @@ function loginStyled() {
     document.querySelector(".js-signin-ui .Button").style.outline = "none"
 
     document.querySelectorAll(".app-signin-wrap")[1].style.width = "100%";
-    
+
     document.querySelector(".startflow-link").removeAttribute("target");
 
     isTweetButtonHidden(true)
@@ -152,7 +157,9 @@ function swiftLog(...msg) {
 
     window.MD.Native.post({
         type: 'jsCallbackHandler',
-        body: { value: msg }
+        body: {
+            value: msg
+        }
     })
 }
 
@@ -175,18 +182,18 @@ function positionElement(x, y) {
     element.parentElement.parentElement.querySelectorAll(".js-media-image-link").forEach(function (item, index) {
         if (item === element) {
             selectIndex = index
-            
-//            const obj = item.querySelector("img")
-//           
-//            var cvs = document.createElement('canvas');
-//            cvs.width  = obj.width;
-//            cvs.height = obj.height;
-//            var ctx = cvs.getContext('2d');
-//            ctx.drawImage(obj, 0, 0);
-//           
-//            const data = cvs.toDataURL("image/png");
-//            webkit.messageHandlers.selectedImageBase64.postMessage(data);
-            
+
+            //            const obj = item.querySelector("img")
+            //           
+            //            var cvs = document.createElement('canvas');
+            //            cvs.width  = obj.width;
+            //            cvs.height = obj.height;
+            //            var ctx = cvs.getContext('2d');
+            //            ctx.drawImage(obj, 0, 0);
+            //           
+            //            const data = cvs.toDataURL("image/png");
+            //            webkit.messageHandlers.selectedImageBase64.postMessage(data);
+
         }
         const img = item.style.backgroundImage
         if (img === "") {
@@ -194,24 +201,26 @@ function positionElement(x, y) {
         } else {
             imgUrls.push(img);
         }
-        
+
         const rect = item.getBoundingClientRect()
         positions.push([rect.left, rect.top, rect.width, rect.height])
     })
 
-//    var rect = element.getBoundingClientRect();
-//    console.log(rect);
-/* Ex
-        ([
-         [left, right, width, height],
-         [left, right, width, height],
-         [left, right, width, height]
-        ], selectIndex)
- */
+    //    var rect = element.getBoundingClientRect();
+    //    console.log(rect);
+    /* Ex
+            ([
+             [left, right, width, height],
+             [left, right, width, height],
+             [left, right, width, height]
+            ], selectIndex)
+     */
 
     window.MD.Native.post({
         type: 'imageViewPos',
-        body: { positions: positions }
+        body: {
+            positions: positions
+        }
     })
 
     return [selectIndex, imgUrls]
@@ -221,6 +230,7 @@ function positionElement(x, y) {
     await sleep(800);
 
     let endedlist = []
+    let subscribedActionUrls = []
 
     const isNativeImageModal = await window.MD.Native.get({
         type: "config",
@@ -230,7 +240,7 @@ function positionElement(x, y) {
         }
     })
 
-    new MutationObserver( _ => {
+    new MutationObserver(_ => {
         document.querySelectorAll(".js-media-image-link").forEach(function (image) {
             if (endedlist.indexOf(image) === -1) {
                 endedlist.push(image);
@@ -241,7 +251,9 @@ function positionElement(x, y) {
                             const url = clickedItem.target.href
                             window.MD.Native.post({
                                 type: 'openYoutube',
-                                body: { url: url }
+                                body: {
+                                    url: url
+                                }
                             })
                         })
                     }
@@ -254,7 +266,7 @@ function positionElement(x, y) {
 
                             window.MD.Native.post({
                                 type: 'imagePreviewer',
-                                body: { 
+                                body: {
                                     selectedIndex: res[0],
                                     imageUrls: res[1]
                                 }
@@ -264,5 +276,19 @@ function positionElement(x, y) {
                 }
             }
         });
-    }).observe(document.body, {childList: true, subtree: true})
+
+        // FIXME: Array.from
+        Array.from(document.getElementsByClassName("js-action-url")).forEach((element) => {
+            if (!subscribedActionUrls.includes(element.href)) {
+                subscribedActionUrls.push(element.href);
+                console.log("subscribed", element.href)
+                element.addEventListener("click", e => {
+                    window.Bindings.openUrl(e.currentTarget.href);
+                })
+            }
+        })
+    }).observe(document.body, {
+        childList: true,
+        subtree: true
+    })
 })();
