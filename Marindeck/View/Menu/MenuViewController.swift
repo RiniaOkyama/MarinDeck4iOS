@@ -100,7 +100,13 @@ class MenuViewController: UIViewController {
     }
 
     func setUserIcon(url: String) {
-        userIconImageView.image = UIImage(url: url)
+        Task {
+            if let img = try? await UIImage(url: url) {
+                Task { @MainActor in
+                    userIconImageView.image = img
+                }
+            }
+        }
     }
 
     func setUserNameID(name: String, id: String) {

@@ -83,11 +83,12 @@ extension ViewController: UIContextMenuInteractionDelegate {
         let previewProvider: () -> ImageHapticPreviewViewController? = { [] in
             vc
         }
-
-        DispatchQueue.global().async {
-            image = UIImage(url: imgurl.1[imgurl.0])
-
-            DispatchQueue.main.async {
+        
+        Task {
+            guard let tmpImage = try? await UIImage(url: imgurl.1[imgurl.0]) else { return }
+            image = tmpImage
+            
+            Task { @MainActor in
                 self.imageView.image = image
                 self.view.addSubview(self.imageView)
                 vc.image = image
@@ -129,20 +130,29 @@ extension ViewController: UIContextMenuInteractionDelegate {
                                 animator: UIContextMenuInteractionCommitAnimating) {
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
-            let imgs = self.imagePreviewImageStrings.compactMap({
-                UIImage(url: $0)
-            })
-            if imgs.isEmpty {
-                return
+            
+            Task {
+                var imgs: [UIImage] = []
+                for imgUrl in self.imagePreviewImageStrings {
+                    if let img = try? await UIImage(url: imgUrl) {
+                        imgs.append(img)
+                    }
+                }
+                if imgs.isEmpty {
+                    return
+                }
+                
+                Task { @MainActor in
+                    self.contextMenuStruct.isOpend = true
+                    self.view.addSubview(self.imageView)
+                    let imageViewer = Optik.imageViewer(
+                        withImages: imgs,
+                        initialImageDisplayIndex: self.imagePreviewSelectedIndex,
+                        delegate: self
+                    )
+                    self.present(imageViewer, animated: false, completion: nil)
+                }
             }
-            self.contextMenuStruct.isOpend = true
-            self.view.addSubview(self.imageView)
-            let imageViewer = Optik.imageViewer(
-                withImages: imgs,
-                initialImageDisplayIndex: self.imagePreviewSelectedIndex,
-                delegate: self
-            )
-            self.present(imageViewer, animated: false, completion: nil)
         }
     }
 
