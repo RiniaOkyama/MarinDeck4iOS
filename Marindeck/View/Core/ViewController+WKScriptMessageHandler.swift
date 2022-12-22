@@ -15,62 +15,24 @@ extension ViewController: WKScriptMessageHandler {
         if message.name != "general" {
             return
         }
-
+        
         let messageBody = (message.body as? [String: Any])
-
+        
         guard let typeCast = messageBody?["type"] as? String else { return }
         let type = JSCallbackFlag(rawValue: typeCast)
         let body = messageBody?["body"] as? [String: Any]
         let uuid = messageBody?["uuid"] as? String
-
+        
         // FIXME
         //        switch JSCallbackFlag(rawValue: message.name) {
         switch type {
-        // MARK: WKWebView Didload
+            // MARK: WKWebView Didload
         case .viewDidLoad:
-            loadingIndicator.stopAnimating()
-            if !isMainDeckViewLock {
-                tweetFloatingBtn.isHidden = false
-                mainDeckView.isHidden = false
-            }
-            //            self.mainDeckView.addSubview(webView)
-            //            self.view.addSubview(mainDeckBlurView)
-
-            view.backgroundColor = .backgroundColor
-            webView.backgroundColor = .backgroundColor
-            bottomBackView.backgroundColor = .backgroundColor
-            //            self.topBackView.backgroundColor = .topBarColor
-            menuVC.loadViewIfNeeded()
-            menuVC.viewDidLoad()
-            setupWebViewToolBar()
-
-            //            self.bottomBackView.isHidden = false
-            td.settings.getTheme { [weak self] theme in
-                if theme == .light {
-                    self?.topBackView.backgroundColor = .lightTopBarColor
-                    self?.setStatusBarStyle(style: fetchTheme().lightStatusBarColor)
-                } else {
-                    self?.topBackView.backgroundColor = .darkTopBarColor
-                    self?.setStatusBarStyle(style: fetchTheme().darkStatusBarColor)
-                }
-            }
-
-            webView.frame = mainDeckView.bounds
-
-            if !userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
-                let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-                let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-                td.actions.setStatusBarSpace(height: Int(statusBarHeight))
-            }
-            //            notchLogoSetup()
-
-            td.account.getAccount { [weak self] account in
-                self?.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
-            }
-
+            jsCallback.viewDidLoad()
+            
         case .jsCallbackHandler:
             print("JS Log: \(String(describing: body))")
-
+            
         case .imageViewPos:
             guard let imgpos = body?["positions"] as? [[Float]] else {
                 return
@@ -80,7 +42,7 @@ extension ViewController: WKScriptMessageHandler {
             //            imageView.center = view.center
             //            imageView.frame.origin.y = view.frame.origin.y
             setPreviewImagePosition()
-
+            
         case .openSettings:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.openSettings()
@@ -89,8 +51,8 @@ extension ViewController: WKScriptMessageHandler {
         case .presentAlert:
             guard let text = body?["text"] as? String else { return }
             presentAlert(text)
-
-        // 使われていない。
+            
+            // 使われていない。
         case .fetchImage:
             guard let imageUrl = body?["url"] as? String else { return }
             DispatchQueue(label: "fetchImage.async").async {
@@ -102,34 +64,34 @@ extension ViewController: WKScriptMessageHandler {
                                             mimeType: data.mimeType)
                 }
             }
-
+            
         case .imagePreviewer:
             guard let index = body?["selectedIndex"] as? Int else { return }
             guard let urls = body?["imageUrls"] as? [String] else { return }
             imagePreviewer(index: index, urls: urls)
-
+            
         case .isTweetButtonHidden:
             tweetFloatingBtn.isHidden = body?["value"] as? Bool ?? false
-
+            
         case .openYoutube:
             guard let url = body?["url"] as? String else { return }
             guard let range = url.range(of: "?v=") else { return }
             let youtubeId = url[range.upperBound...]
-
+            
             if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
                UIApplication.shared.canOpenURL(youtubeURL) {
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             } else if let youtubeURL = URL(string: url) {
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             }
-
+            
         case .sidebar:
             if body?["value"] as? String == "open" {
                 openMenu()
             } else if body?["value"] as? String == "close" {
                 closeMenu()
             } else {}
-
+            
         case .config:
             guard let action = body?["action"] as? String else { return }
             guard let key = body?["key"] as? String else { return }
@@ -147,7 +109,7 @@ extension ViewController: WKScriptMessageHandler {
             let vc = ModalBrowserViewController()
             vc.url = url
             present(vc, animated: true)
-
+            
         case .none:
             Loaf("予期しないTypeを受信しました: \(typeCast)", state: .error, location: .top, sender: self).show()
         }
@@ -161,22 +123,60 @@ extension ViewController {
         init(vc: ViewController) {
             self.vc = vc
         }
+        func viewDidLoad() {
+            vc.loadingIndicator.stopAnimating()
+            if !vc.isMainDeckViewLock {
+                vc.tweetFloatingBtn.isHidden = false
+                vc.mainDeckView.isHidden = false
+            }
+            //            self.mainDeckView.addSubview(webView)
+            //            self.view.addSubview(mainDeckBlurView)
+            
+            vc.view.backgroundColor = .backgroundColor
+            vc.webView.backgroundColor = .backgroundColor
+            vc.bottomBackView.backgroundColor = .backgroundColor
+            //            self.topBackView.backgroundColor = .topBarColor
+            vc.menuVC.loadViewIfNeeded()
+            vc.menuVC.viewDidLoad()
+            vc.setupWebViewToolBar()
+            
+            //            self.bottomBackView.isHidden = false
+            vc.td.settings.getTheme { [weak self] theme in
+                if theme == .light {
+                    self?.vc.topBackView.backgroundColor = .lightTopBarColor
+                    self?.vc.setStatusBarStyle(style: fetchTheme().lightStatusBarColor)
+                } else {
+                    self?.vc.topBackView.backgroundColor = .darkTopBarColor
+                    self?.vc.setStatusBarStyle(style: fetchTheme().darkStatusBarColor)
+                }
+            }
+            
+            vc.webView.frame = vc.mainDeckView.bounds
+            
+            if !vc.userDefaults.bool(forKey: UserDefaultsKey.marginSafeArea) {
+                let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+                vc.td.actions.setStatusBarSpace(height: Int(statusBarHeight))
+            }
+            //            notchLogoSetup()
+            
+            vc.td.account.getAccount { [weak self] account in
+                self?.vc.menuVC.setUserIcon(url: account.profileImageUrl ?? "")
+            }
+        }
         
         func imagePreviewer(selectedIndex: Int, urls: [String]) {
-                
+            
         }
         
         func openSettings() {
-                
+            
         }
         
         func presentAlert(message: String) {
-                
-        }
-        
-        func viewDidLoad() {
             
         }
+        
         func jsCallbackHandler(log: Any?) {
         }
         
