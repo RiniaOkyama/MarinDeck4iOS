@@ -32,10 +32,10 @@ extension ViewController: Transition {
         giphy.delegate = self
         giphy.dimBackground = true
         giphy.modalPresentationStyle = .overCurrentContext
-
+        
         present(giphy, animated: true, completion: nil)
     }
-
+    
     // 画像を選択
     @objc
     func openSelectPhoto() {
@@ -45,7 +45,7 @@ extension ViewController: Transition {
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-
+    
     // 設定を開く
     func openSettings() {
         //        self.performSegue(withIdentifier: "toSettings", sender: nil)
@@ -54,7 +54,7 @@ extension ViewController: Transition {
         present(nvc, animated: true, completion: nil)
         //        self.navigationController?.pushViewController(vc!, animated: true)
     }
-
+    
     // ネイティブのツイートモーダルを表示
     func openNativeTweetModal(tweetText: String = "") {
         let alert = UIAlertController(
@@ -69,20 +69,20 @@ extension ViewController: Transition {
             UIAlertAction(
                 title: "Cancel",
                 style: UIAlertAction.Style.cancel) { [weak self] _ in
-                let text = alert.textFields![0].text!
-                if text == "" { return }
-                self?.openIfDraftAlert(text: text)
-            }
+                    let text = alert.textFields![0].text!
+                    if text == "" { return }
+                    self?.openIfDraftAlert(text: text)
+                }
         )
         alert.addAction(
             UIAlertAction(
                 title: "Tweet",
                 style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.td.actions.tweet(text: alert.textFields![0].text!)
-            }
+                    self?.td.actions.tweet(text: alert.textFields![0].text!)
+                }
         )
         present(alert, animated: true, completion: nil)
-
+        
         //        let view = TweetView()
         //        view.frame = self.view.bounds
         //        view.normalTweetModalY = 40
@@ -93,9 +93,9 @@ extension ViewController: Transition {
         //            view.alpha = 1
         //            view.frame.origin.y = 40
         //        }
-
+        
     }
-
+    
     func openTwitterAppTweetModal() {
         if let twitterURL = URL(string: "twitter://post"),
            UIApplication.shared.canOpenURL(twitterURL) {
@@ -104,19 +104,19 @@ extension ViewController: Transition {
             // TODO: Twitterアプリが入ってないアラート
         }
     }
-
+    
     // 下書きに保存するかどうかのアラート
     func openIfDraftAlert(text: String) {
         let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
-
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
             self?.saveDraft(text: text)
         }))
-
+        
         present(alert, animated: true, completion: nil)
     }
-
+    
     // ツイート下書きに遷移
     func openDraft() {
         let drafts = try! dbQueue.read { db in
@@ -124,14 +124,14 @@ extension ViewController: Transition {
         }
         let vc = UIHostingController(rootView: DraftView(selected: { [weak self] index in
             self?.openNativeTweetModal(tweetText: drafts[index].text)
-
+            
             _ = try! self?.dbQueue.write { db in
                 try drafts[index].delete(db)
             }
         }, drafts: drafts))
         present(vc, animated: true, completion: nil)
     }
-
+    
     // デバッグボタンタップ時の動作
     @objc
     func openDebugModal() {
@@ -139,15 +139,17 @@ extension ViewController: Transition {
         debuggerVC!.delegate = self
         present(debuggerVC!, animated: true, completion: nil)
     }
-
+    
     func imagePreviewer(index: Int, urls: [String]) {
         imagePreviewSelectedIndex = index
-
+        loadingIndicator.startAnimating()
+        mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
         let imgUrls = urls.map({
             TDTools.url2NomalImg($0)
         })
         print("parsed", imgUrls)
-
+        
         if imgUrls.isEmpty {
             return
         }
@@ -155,28 +157,53 @@ extension ViewController: Transition {
             print("imgUrl is nil")
             return
         }
-
-        let imgs = imgUrls.compactMap({
-            UIImage(url: $0)
-        })
-
-        if imgs.isEmpty {
-            return
+        
+        Task {
+            async let task1 = Task { () -> UIImage? in
+                print("TASK1")
+                guard let imgUrl = imgUrls[safe: 0] else { return nil }
+                return try? await UIImage(url: imgUrl)
+            }
+            async let task2 = Task { () -> UIImage? in
+                print("TASK2")
+                guard let imgUrl = imgUrls[safe: 1] else { return nil }
+                return try? await UIImage(url: imgUrl)
+            }
+            async let task3 = Task { () -> UIImage? in
+                print("TASK3")
+                guard let imgUrl = imgUrls[safe: 2] else { return nil }
+                return try? await UIImage(url: imgUrl)
+            }
+            async let task4 = Task { () -> UIImage? in
+                print("task4")
+                guard let imgUrl = imgUrls[safe: 3] else { return nil }
+                return try? await UIImage(url: imgUrl)
+            }
+            let imgs = try! await [task1.result.get(), task2.result.get(), task3.result.get(), task4.result.get()].compactMap { $0 }
+            
+            if imgs.isEmpty {
+                return
+            }
+            
+            let imageViewer = Optik.imageViewer(
+                withImages: imgs,
+                initialImageDisplayIndex: imagePreviewSelectedIndex,
+                delegate: self
+            )
+            
+            Task { @MainActor in
+                imageView.image = imgs[safe: imagePreviewSelectedIndex]
+                setPreviewImagePosition()
+                view.addSubview(imageView)
+                //            imageViewer.presentationController?.delegate = self
+                present(imageViewer, animated: true, completion: nil)
+                
+                loadingIndicator.stopAnimating()
+                mainDeckBlurView.backgroundColor = .clear
+            }
         }
-
-        let imageViewer = Optik.imageViewer(
-            withImages: imgs,
-            initialImageDisplayIndex: imagePreviewSelectedIndex,
-            delegate: self
-        )
-
-        imageView.image = imgs[safe: imagePreviewSelectedIndex]
-        setPreviewImagePosition()
-        view.addSubview(imageView)
-        //            imageViewer.presentationController?.delegate = self
-        present(imageViewer, animated: true, completion: nil)
     }
-
+    
     @objc func presentDatePicker() {
         let alert = UIAlertController(title: "日付を選択", message: "", preferredStyle: .alert)
         let dp = UIDatePicker()

@@ -9,14 +9,22 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    public convenience init?(url: String) {
+    enum FetchError: Error {
+        case badUrl, badImage, apiError(Error)
+    }
+    
+    public convenience init?(url: String) async throws {
         guard let url = URL(string: url) else {
             self.init()
             return
         }
-        do {
-            print(url)
-            let data = try Data(contentsOf: url)
+        do {  
+            var request = URLRequest(url: url)
+            // https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/useprotocolcachepolicy
+            request.cachePolicy = .returnCacheDataElseLoad
+
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.badUrl }
             self.init(data: data)
             return
         } catch let err {
