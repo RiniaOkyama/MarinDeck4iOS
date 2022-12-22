@@ -33,7 +33,7 @@ extension ViewController: Transition {
         giphy.dimBackground = true
         giphy.modalPresentationStyle = .overCurrentContext
         
-        present(giphy, animated: true, completion: nil)
+        present(giphy, animated: true)
     }
     
     // 画像を選択
@@ -43,16 +43,14 @@ extension ViewController: Transition {
         imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+        present(imagePickerController, animated: true)
     }
     
     // 設定を開く
     func openSettings() {
-        //        self.performSegue(withIdentifier: "toSettings", sender: nil)
         let vc = storyboard?.instantiateViewController(identifier: "Settings") as! SettingsTableViewController
         let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
-        //        self.navigationController?.pushViewController(vc!, animated: true)
+        present(nvc, animated: true)
     }
     
     // ネイティブのツイートモーダルを表示
@@ -82,18 +80,6 @@ extension ViewController: Transition {
                 }
         )
         present(alert, animated: true, completion: nil)
-        
-        //        let view = TweetView()
-        //        view.frame = self.view.bounds
-        //        view.normalTweetModalY = 40
-        //        view.alpha = 0
-        //        view.frame.origin.y = self.view.frame.height
-        //        self.view.addSubview(view)
-        //        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn) {
-        //            view.alpha = 1
-        //            view.frame.origin.y = 40
-        //        }
-        
     }
     
     func openTwitterAppTweetModal() {
@@ -114,7 +100,7 @@ extension ViewController: Transition {
             self?.saveDraft(text: text)
         }))
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     // ツイート下書きに遷移
@@ -129,7 +115,7 @@ extension ViewController: Transition {
                 try drafts[index].delete(db)
             }
         }, drafts: drafts))
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
     
     // デバッグボタンタップ時の動作
@@ -148,34 +134,27 @@ extension ViewController: Transition {
         let imgUrls = urls.map({
             TDTools.url2NomalImg($0)
         })
-        print("parsed", imgUrls)
+        print("imgUrls:", imgUrls)
         
-        if imgUrls.isEmpty {
-            return
-        }
-        if imgUrls[0] == "" {
-            print("imgUrl is nil")
+        if imgUrls.isEmpty,
+           imgUrls[0] == "" {
             return
         }
         
         Task {
             async let task1 = Task { () -> UIImage? in
-                print("TASK1")
                 guard let imgUrl = imgUrls[safe: 0] else { return nil }
                 return try? await UIImage(url: imgUrl)
             }
             async let task2 = Task { () -> UIImage? in
-                print("TASK2")
                 guard let imgUrl = imgUrls[safe: 1] else { return nil }
                 return try? await UIImage(url: imgUrl)
             }
             async let task3 = Task { () -> UIImage? in
-                print("TASK3")
                 guard let imgUrl = imgUrls[safe: 2] else { return nil }
                 return try? await UIImage(url: imgUrl)
             }
             async let task4 = Task { () -> UIImage? in
-                print("task4")
                 guard let imgUrl = imgUrls[safe: 3] else { return nil }
                 return try? await UIImage(url: imgUrl)
             }
@@ -195,8 +174,7 @@ extension ViewController: Transition {
                 imageView.image = imgs[safe: imagePreviewSelectedIndex]
                 setPreviewImagePosition()
                 view.addSubview(imageView)
-                //            imageViewer.presentationController?.delegate = self
-                present(imageViewer, animated: true, completion: nil)
+                present(imageViewer, animated: true)
                 
                 loadingIndicator.stopAnimating()
                 mainDeckBlurView.backgroundColor = .clear
@@ -220,6 +198,6 @@ extension ViewController: Transition {
         alert.addAction(UIAlertAction(title: L10n.Alert.Ok.title, style: .default, handler: { [weak self] _ in
             self?.td.actions.setSchedule(date: dp.date)
         }))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
 }

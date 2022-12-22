@@ -27,12 +27,10 @@ extension ViewController: ViewSetup {
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleAspectFill
 
-        //        tweetFloatingBtn.layer.cornerRadius = tweetFloatingBtn.frame.width / 2
         tweetFloatingBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tweetFloatingBtn.layer.shadowColor = UIColor.black.cgColor
         tweetFloatingBtn.layer.shadowOpacity = 0.3
         tweetFloatingBtn.layer.shadowRadius = 4
-        //        tweetFloatingBtn.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         tweetFloatingBtn.setImage(Asset.tweet.image)
         tweetFloatingBtn.tapped = tweetPressed
 
@@ -46,9 +44,6 @@ extension ViewController: ViewSetup {
         mainDeckBlurView = UIView(frame: CGRect(origin: .zero, size: view.bounds.size))
         mainDeckBlurView.backgroundColor = .none
         mainDeckBlurView.isUserInteractionEnabled = false
-
-        //        menuView.translatesAutoresizingMaskIntoConstraints = true
-        //        mainDeckView.translatesAutoresizingMaskIntoConstraints = true
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(onOrientationDidChange(notification:)),
@@ -185,24 +180,4 @@ extension ViewController: ViewSetup {
 
         webView.addIndexAccessoryView(toolbar: toolbar)
     }
-
-    //    func notchLogoSetup() {
-    //        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-    //        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-    //
-    //        if statusBarHeight >= 44.0 {
-    //            notchLogoImageView = UIImageView(image: Asset.iconWhite.image)
-    //            notchLogoImageView.contentMode = .scaleAspectFit
-    //            view.addSubview(notchLogoImageView)
-    //
-    //            notchLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-    //            NSLayoutConstraint.activate([
-    //                notchLogoImageView.topAnchor.constraint(equalTo: view.topAnchor),
-    //                notchLogoImageView.heightAnchor.constraint(equalToConstant: 40),
-    //                notchLogoImageView.leftAnchor.constraint(equalTo: view.leftAnchor),
-    //                notchLogoImageView.rightAnchor.constraint(equalTo: view.rightAnchor)
-    //            ])
-    //        }
-    //    }
-
 }
