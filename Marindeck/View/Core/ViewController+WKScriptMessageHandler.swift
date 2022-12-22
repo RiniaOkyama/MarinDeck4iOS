@@ -90,14 +90,6 @@ extension ViewController: WKScriptMessageHandler {
             guard let text = body?["text"] as? String else { return }
             presentAlert(text)
 
-        case .loadImage:
-            //            guard let url = (message.body as? String) else {
-            //                return
-            //            }
-            //            print("loading image", url)
-            //            url2UIImage(url: url2NomalImg(url))
-            break
-
         // 使われていない。
         case .fetchImage:
             guard let imageUrl = body?["url"] as? String else { return }
@@ -115,14 +107,6 @@ extension ViewController: WKScriptMessageHandler {
             guard let index = body?["selectedIndex"] as? Int else { return }
             guard let urls = body?["imageUrls"] as? [String] else { return }
             imagePreviewer(index: index, urls: urls)
-
-        case .selectedImageBase64:
-            break
-        //            guard let base64 = message.body as? String else { return }
-        //            let imageData = NSData(base64Encoded: base64, options: .ignoreUnknownCharacters)
-        //            let iv = UIImageView(frame: view.bounds)
-        //            iv.image = UIImage(data: imageData! as Data)
-        //            view.addSubview(iv)
 
         case .isTweetButtonHidden:
             tweetFloatingBtn.isHidden = body?["value"] as? Bool ?? false
@@ -166,6 +150,65 @@ extension ViewController: WKScriptMessageHandler {
 
         case .none:
             Loaf("予期しないTypeを受信しました: \(typeCast)", state: .error, location: .top, sender: self).show()
+        }
+    }
+}
+
+extension ViewController {
+    final class Callback: JSCallback {
+        let vc: ViewController
+        
+        init(vc: ViewController) {
+            self.vc = vc
+        }
+        
+        func imagePreviewer(selectedIndex: Int, urls: [String]) {
+                
+        }
+        
+        func openSettings() {
+                
+        }
+        
+        func presentAlert(message: String) {
+                
+        }
+        
+        func viewDidLoad() {
+            
+        }
+        func jsCallbackHandler(log: Any?) {
+        }
+        
+        func imageViewPos(positions: [[Float]]) {
+            
+        }
+        
+        func fetchImage(url: String) {
+            
+        }
+        
+        func isTweetButtonState(isHidden: Bool) {
+            
+        }
+        
+        func openYoutube(url: String) {
+            
+        }
+        
+        func sidebarState(isOpen: Bool) {
+        }
+        
+        func setConfig(key: String, value: String) {
+            
+        }
+        
+        func getConfig(key: String) -> Any? {
+            return nil
+        }
+        
+        func openUrl(url: String) {
+            
         }
     }
 }

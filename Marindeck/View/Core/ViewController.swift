@@ -13,13 +13,10 @@ import Keys
 import Optik
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
-    var swipeStruct = {
-        SwipeStruct()
-    }()
-
-    var contextMenuStruct = {
-        ContextMenuStruct()
-    }()
+    
+    lazy var swipeStruct = SwipeStruct()
+    lazy var contextMenuStruct = ContextMenuStruct()
+    private(set) lazy var jsCallback = Callback(vc: self)
 
     var webView: WKWebView!
     public let td = TD.shared
