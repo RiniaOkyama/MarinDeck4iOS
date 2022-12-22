@@ -159,31 +159,27 @@ extension ViewController: Transition {
         }
         
         Task {
-            var imgs: [UIImage] = []
-
-            // TODO: リファクタリング
-            let tasks = imgUrls.compactMap { imgUrl in Task { () -> UIImage? in
-                guard let img = try? await UIImage(url: imgUrl) else { return nil }
-                return img
-            }}
-            
             async let task1 = Task { () -> UIImage? in
                 print("TASK1")
-                return try? await tasks[safe: 0]?.result.get()
+                guard let imgUrl = imgUrls[safe: 0] else { return nil }
+                return try? await UIImage(url: imgUrl)
             }
             async let task2 = Task { () -> UIImage? in
                 print("TASK2")
-                return try? await tasks[safe: 1]?.result.get()
+                guard let imgUrl = imgUrls[safe: 1] else { return nil }
+                return try? await UIImage(url: imgUrl)
             }
             async let task3 = Task { () -> UIImage? in
                 print("TASK3")
-                return try? await tasks[safe: 2]?.result.get()
+                guard let imgUrl = imgUrls[safe: 2] else { return nil }
+                return try? await UIImage(url: imgUrl)
             }
             async let task4 = Task { () -> UIImage? in
                 print("task4")
-                return try? await tasks[safe: 3]?.result.get()
+                guard let imgUrl = imgUrls[safe: 3] else { return nil }
+                return try? await UIImage(url: imgUrl)
             }
-            imgs = try! await [task1.result.get(), task2.result.get(), task3.result.get(), task4.result.get()].compactMap { $0 }
+            let imgs = try! await [task1.result.get(), task2.result.get(), task3.result.get(), task4.result.get()].compactMap { $0 }
             
             if imgs.isEmpty {
                 return
