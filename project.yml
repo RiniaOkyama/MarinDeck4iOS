@@ -28,8 +28,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.1.18
-    CURRENT_PROJECT_VERSION: 0.1.18
+    MARKETING_VERSION: 0.1.19
+    CURRENT_PROJECT_VERSION: 0.1.19
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
@@ -64,7 +64,7 @@ targets:
   Marindeck:
     type: application
     platform: iOS
-    deploymentTarget: "14.1"
+    deploymentTarget: "15"
     sources: Marindeck
     scheme: {}
     settings:
@@ -86,7 +86,7 @@ targets:
   Marindeck-dev:
     type: application
     platform: iOS
-    deploymentTarget: "14.1"
+    deploymentTarget: "15"
     sources: Marindeck
     scheme: {}
     settings:
