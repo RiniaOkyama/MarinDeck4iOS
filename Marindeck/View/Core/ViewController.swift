@@ -40,7 +40,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
         return blurView
     }()
     var mainDeckBlurView: UIView!
-    //    var notchLogoImageView: UIImageView!
 
     var isMenuOpen = false
     let userDefaults = UserDefaults.standard
