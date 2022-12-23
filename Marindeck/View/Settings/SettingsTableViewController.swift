@@ -11,7 +11,6 @@ import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
 import class SwiftUI.UIHostingController
 import Loaf
-import SwiftyStoreKit
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet private var titleLabel: [UILabel] = []
@@ -413,22 +412,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func donate() {
-        let productIds: Set = ["300yen"]
-
-        SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
-            if result.retrievedProducts.first != nil {
-                let products = result.retrievedProducts.sorted { (firstProduct, secondProduct) -> Bool in
-                    return firstProduct.price.doubleValue < secondProduct.price.doubleValue
-                }
-                for product in products {
-                    print(product)
-                }
-            } else if result.invalidProductIDs.first != nil {
-                print("Invalid product identifier : \(result.invalidProductIDs)")
-            } else {
-                print("Error : \(result.error.debugDescription)")
-            }
-        }
+        let alert = UIAlertController(title: "いつかきっと...", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
