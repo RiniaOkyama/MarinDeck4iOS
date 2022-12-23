@@ -17,6 +17,7 @@
 "settings.general.header.title" = "General";
 "settings.customize.header.title" = "Customize";
 "settings.appinfo.header.title" = "App info";
+"settings.donate.header.title" = "Donate";
 "settings.logout.header.title" = "Logout";
 
 "settings.nativePreview.cell.title" = "Use native preview";
@@ -41,6 +42,8 @@
 
 "settings.importSettings.cell.title" = "Import settings";
 "settings.exportSettings.cell.title" = "Export settings";
+
+"settings.donate.cell.title" = "donate";
 
 "settings.logout.cell.title" = "logout";
 

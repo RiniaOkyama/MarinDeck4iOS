@@ -11,6 +11,7 @@ import UniformTypeIdentifiers //  iOS14~
 import MobileCoreServices     // ~iOS13
 import class SwiftUI.UIHostingController
 import Loaf
+import SwiftyStoreKit
 
 class SettingsTableViewController: UITableViewController {
     @IBOutlet private var titleLabel: [UILabel] = []
@@ -130,6 +131,8 @@ class SettingsTableViewController: UITableViewController {
             case 2:
                 headerTitle = L10n.Settings.Appinfo.Header.title
             case 4:
+                headerTitle = L10n.Settings.Donate.Header.title
+            case 5:
                 headerTitle = L10n.Settings.Logout.Header.title
             default:
                 break
@@ -173,6 +176,8 @@ class SettingsTableViewController: UITableViewController {
         case IndexPath(row: 1, section: 3):
             exportSettings()
         case IndexPath(row: 0, section: 4):
+            donate()
+        case IndexPath(row: 0, section: 5):
             logout()
         default:
             break
@@ -405,6 +410,25 @@ class SettingsTableViewController: UITableViewController {
 
         present(alert, animated: true, completion: nil)
 
+    }
+    
+    func donate() {
+        let productIds: Set = ["300yen"]
+
+        SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
+            if result.retrievedProducts.first != nil {
+                let products = result.retrievedProducts.sorted { (firstProduct, secondProduct) -> Bool in
+                    return firstProduct.price.doubleValue < secondProduct.price.doubleValue
+                }
+                for product in products {
+                    print(product)
+                }
+            } else if result.invalidProductIDs.first != nil {
+                print("Invalid product identifier : \(result.invalidProductIDs)")
+            } else {
+                print("Error : \(result.error.debugDescription)")
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

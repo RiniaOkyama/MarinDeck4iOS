@@ -17,6 +17,7 @@
 "settings.general.header.title" = "一般";
 "settings.customize.header.title" = "カスタマイズ";
 "settings.appinfo.header.title" = "アプリについて";
+"settings.donate.header.title" = "寄付";
 "settings.logout.header.title" = "ログアウト";
 
 "settings.nativePreview.cell.title" = "ネイティブのプレビューを使用";
@@ -41,6 +42,8 @@
 
 "settings.importSettings.cell.title" = "設定をインポート";
 "settings.exportSettings.cell.title" = "設定をエクスポート";
+
+"settings.donate.cell.title" = "寄付";
 
 "settings.logout.cell.title" = "ログアウト";
 

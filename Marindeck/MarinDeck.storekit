@@ -1,0 +1,35 @@
+{
+  "identifier" : "DC4893CB",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6445212370",
+      "localizations" : [
+        {
+          "description" : "MarinDeckに320円の寄付ができます。",
+          "displayName" : "320円寄付",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "300yen",
+      "referenceName" : "300円",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1558663979",
+    "_developerTeamID" : "726VR75V6L",
+    "_lastSynchronizedDate" : 693436252.22703195
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
