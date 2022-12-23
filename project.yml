@@ -13,6 +13,9 @@ packages:
   Loaf:
     url: https://github.com/schmidyy/Loaf
     exactVersion: 0.6.0
+  SwiftyStoreKit:
+    url: https://github.com/bizz84/SwiftyStoreKit
+    exactVersion: 0.16.4
 
       
 
@@ -28,8 +31,8 @@ settingGroups:
 settings:
   base:
     DEVELOPMENT_TEAM: 726VR75V6L
-    MARKETING_VERSION: 0.1.19
-    CURRENT_PROJECT_VERSION: 0.1.19
+    MARKETING_VERSION: 0.2.0
+    CURRENT_PROJECT_VERSION: 0.2.0
   config:
     debug:
       DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
@@ -77,6 +80,7 @@ targets:
       - package: MarkdownView
       - package: GiphyUISDK
       - package: Loaf
+      - package: SwiftyStoreKit
     preBuildScripts:
       - path: ./scripts/swiftlint.sh
         name: Run SwiftLint
@@ -99,3 +103,4 @@ targets:
       - package: MarkdownView
       - package: GiphyUISDK
       - package: Loaf
+      - package: SwiftyStoreKit

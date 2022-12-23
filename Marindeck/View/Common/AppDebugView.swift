@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyStoreKit
 
 struct AppDebugView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -50,6 +51,25 @@ struct AppDebugView: View {
                 vc.view.backgroundColor = UIColor.green.withAlphaComponent(0.3)
                 self.vc?.present(vc, animated: false, completion: nil)
             })
+            
+            Button("Test課金") {
+                let productIds: Set = ["300yen"]
+
+                SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
+                    if result.retrievedProducts.first != nil {
+                        let products = result.retrievedProducts.sorted { (firstProduct, secondProduct) -> Bool in
+                            return firstProduct.price.doubleValue < secondProduct.price.doubleValue
+                        }
+                        for product in products {
+                            print(product)
+                        }
+                    } else if result.invalidProductIDs.first != nil {
+                        print("Invalid product identifier : \(result.invalidProductIDs)")
+                    } else {
+                        print("Error : \(result.error.debugDescription)")
+                    }
+                }
+            }
         }
     }
 }
