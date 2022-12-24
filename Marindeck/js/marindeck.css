@@ -66,3 +66,7 @@ thanks @hakunagi
 .mdl .width--300 {
     width: auto!important;
 }
+
+.js-add-image-button, .js-scheduler {
+    display: none!important;
+}
