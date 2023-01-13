@@ -70,3 +70,9 @@ thanks @hakunagi
 .js-add-image-button, .js-scheduler {
     display: none!important;
 }
+
+/* ツイートはコピーできるようにする */
+.tweet-text{
+    -webkit-user-select: text;
+    user-select: unset;
+}
