@@ -129,9 +129,9 @@ class SettingsTableViewController: UITableViewController {
                 headerTitle = L10n.Settings.Customize.Header.title
             case 2:
                 headerTitle = L10n.Settings.Appinfo.Header.title
+//            case 4:
+//                headerTitle = L10n.Settings.Donate.Header.title
             case 4:
-                headerTitle = L10n.Settings.Donate.Header.title
-            case 5:
                 headerTitle = L10n.Settings.Logout.Header.title
             default:
                 break
@@ -174,9 +174,9 @@ class SettingsTableViewController: UITableViewController {
             importSettings()
         case IndexPath(row: 1, section: 3):
             exportSettings()
+//        case IndexPath(row: 0, section: 4):
+//            donate()
         case IndexPath(row: 0, section: 4):
-            donate()
-        case IndexPath(row: 0, section: 5):
             logout()
         default:
             break

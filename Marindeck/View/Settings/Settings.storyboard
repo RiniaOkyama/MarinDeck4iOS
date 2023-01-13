@@ -440,30 +440,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="settings.donate.header.title" id="JdV-yu-iUD">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="CjP-LN-wen">
-                                        <rect key="frame" x="20" y="1016.5" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CjP-LN-wen" id="Vti-ty-2Vc">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="settings.donate.cell.title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-r7-2s6">
-                                                    <rect key="frame" x="20" y="11" width="182" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="settings.logout.header.title" id="PBp-cr-rLA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="EzJ-uu-jm8">
-                                        <rect key="frame" x="20" y="1110" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="1016.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EzJ-uu-jm8" id="EzB-fA-eaO">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -514,7 +494,6 @@
                         <outletCollection property="titleLabel" destination="ozl-aQ-0Wd" collectionClass="NSMutableArray" id="RbI-aN-Aqj"/>
                         <outletCollection property="titleLabel" destination="PjC-g8-3Rp" collectionClass="NSMutableArray" id="3u8-en-cVw"/>
                         <outletCollection property="titleLabel" destination="mup-Kh-VV1" collectionClass="NSMutableArray" id="lNS-Ek-bRc"/>
-                        <outletCollection property="titleLabel" destination="wpG-r7-2s6" collectionClass="NSMutableArray" id="bdS-sf-BJj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekk-F3-Apt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
