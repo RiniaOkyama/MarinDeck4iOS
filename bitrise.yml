@@ -1,9 +1,23 @@
----
-format_version: '11'
+format_version: "11"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
+app:
+  envs:
+  - BITRISE_PROJECT_PATH: Marindeck.xcworkspace
+    opts:
+      is_expand: false
+  - BITRISE_SCHEME: Marindeck
+    opts:
+      is_expand: false
+  - BITRISE_DISTRIBUTION_METHOD: ad-hoc
+    opts:
+      is_expand: false
+meta:
+  bitrise.io:
+    machine_type_id: g2-m1.8core
+    stack: osx-xcode-14.1.x-ventura
 trigger_map:
-- push_branch: "*"
+- tag: '*'
   workflow: primary
 workflows:
   deploy:
@@ -17,94 +31,93 @@ workflows:
     - certificate-and-profile-installer@1: {}
     - recreate-user-schemes@1:
         inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
+        - project_path: $BITRISE_PROJECT_PATH
     - cocoapods-install@2: {}
     - xcode-test@4:
         inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
     - xcode-archive@4:
         inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
-        - distribution_method: "$BITRISE_DISTRIBUTION_METHOD"
+        - automatic_code_signing: api-key
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
+        - distribution_method: $BITRISE_DISTRIBUTION_METHOD
     - deploy-to-bitrise-io@2: {}
     - cache-push@2: {}
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.1.x
   primary:
     steps:
+    - script@1:
+        inputs:
+        - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug log\nset -x\n\ncurl \\\n-H \"Content-Type: multipart/form-data\" \\\n-F 'payload_json={\"content\": \"\U0001F6E0ビルド開始\U0001F6E0\"}' \\\n$DISCORD_WEBHOOK_URL\n"
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
+    - git-clone@7.0: {}
     - cache-pull@2: {}
     - cocoapod-key@2:
         inputs:
-        - keys: "\n\n"
+        - keys: |2+
+
+
     - xcodegen@0: {}
-    - ios-auto-provision-appstoreconnect@2:
+    - manage-ios-code-signing@1:
         inputs:
-        - distribution_type: ad-hoc
+        - distribution_method: ad-hoc
     - certificate-and-profile-installer@1: {}
-    - xcode-archive@4:
+    - xcode-archive@4.7:
         inputs:
         - scheme: Marindeck
         - distribution_method: ad-hoc
-        - verbose_log: 'yes'
-        - project_path: "$BITRISE_SOURCE_DIR/Marindeck.xcworkspace"
+        - verbose_log: "yes"
+        - project_path: $BITRISE_SOURCE_DIR/Marindeck.xcworkspace
     - deploygate--upload-app-bitrise-step@1:
+        is_always_run: true
         inputs:
         - owner_name: RiniaOk_yama
-        - app_path: "$BITRISE_IPA_PATH"
+        - app_path: $BITRISE_IPA_PATH
         - visibility: public
         - release_note: |-
-            $BITRISE_PULL_REQUEST
-
             $BITRISE_GIT_MESSAGE
 
 
             bitriseによる自動アップデート。
         - distribution_key: 7bde246206a41886a45929f51e70525f3248c22b
-        - api_key: "$DEPLOYGATE_KEY"
-        is_always_run: true
+        - api_key: $DEPLOYGATE_KEY
+    - deploy-to-bitrise-io@2: {}
     - script@1:
         inputs:
-        - content: |+
+        - content: |
             #!/usr/bin/env bash
             # fail if any commands fails
             set -e
             # debug log
             set -x
 
-            echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON
-            # fileurl=(`echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON | jq ".results .file"`)
             version=(`echo $DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON | jq ".results .revision"`)
             version=v$version
 
-            echo $version
-
-
             curl \
             -H "Content-Type: multipart/form-data" \
-            -F 'payload_json={"content": "'$version' update!"}' \
+            -F 'payload_json={"content": "'$version' だよ〜"}' \
             -F "file1=@$BITRISE_IPA_PATH" \
             $DISCORD_WEBHOOK_URL
-
+    - script:
+        is_always_run: true
+        run_if: .IsBuildFailed
+        inputs:
+        - content: "#!/bin/bash\ncurl \\\n-H \"Content-Type: multipart/form-data\" \\\n-F 'payload_json={\"content\": \"Bitrise FAILD. @RiniaOk_yama \U0001F448\U0001F92F\"}' \\\n$DISCORD_WEBHOOK_URL"
     - cache-push@2:
         inputs:
-        - cache_paths: |-
+        - is_debug_mode: "true"
+        - compress_archive: "true"
+        - cache_paths: |+
             $GEM_CACHE_PATH -> ./.ruby-version
             vendor/bundle -> Gemfile.lock
-meta:
-  bitrise.io:
-    stack: osx-xcode-13.0.x
-    machine_type_id: g2.4core
-app:
-  envs:
-  - opts:
-      is_expand: false
-    BITRISE_PROJECT_PATH: Marindeck.xcworkspace
-  - opts:
-      is_expand: false
-    BITRISE_SCHEME: Marindeck
-  - opts:
-      is_expand: false
-    BITRISE_DISTRIBUTION_METHOD: ad-hoc
+            ./.bundle
+
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.1.x
