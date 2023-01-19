@@ -67,12 +67,22 @@ thanks @hakunagi
     width: auto!important;
 }
 
-.js-add-image-button, .js-scheduler {
+.js-add-image-button, .js-scheduler, .js-reply-add-image {
     display: none!important;
 }
 
 /* ツイートはコピーできるようにする */
-.tweet-text{
+.tweet-text {
     -webkit-user-select: text;
     user-select: unset;
+}
+
+/* モーダル関連 */
+.is-touch-modal .mdl-dismiss {
+    padding: 15px!important;
+}
+
+.mdl-buttonbar {
+    padding-inline: 32px!important;
+    margin-bottom: calc(24px + env(safe-area-inset-bottom))!important;
 }
