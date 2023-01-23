@@ -76,17 +76,14 @@ extension ViewController: UIContextMenuInteractionDelegate {
         imagePreviewSelectedIndex = imgurl.0
         imagePreviewImageStrings = imgurl.1
 
-        var image: UIImage?
-
-        let vc = ImageHapticPreviewViewController(image: image)
+        let vc = ImageHapticPreviewViewController(image: nil)
 
         let previewProvider: () -> ImageHapticPreviewViewController? = { [] in
             vc
         }
         
         Task {
-            guard let tmpImage = try? await UIImage(url: imgurl.1[imgurl.0]) else { return }
-            image = tmpImage
+            guard let image = try? await UIImage(url: imgurl.1[imgurl.0]) else { return }
             
             Task { @MainActor in
                 self.imageView.image = image
@@ -100,7 +97,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { _ in
             let tweetAction = UIAction(title: L10n.ContextMenu.TweetImage.title,
                                        image: Asset.tweet.image.withRenderingMode(.alwaysTemplate)) { _ in
-                guard let base64img = image?.pngData()?.base64EncodedString(options: []) else {
+                guard let base64img = vc.image?.pngData()?.base64EncodedString(options: []) else {
                     return
                 }
                 self.webView
@@ -116,7 +113,7 @@ extension ViewController: UIContextMenuInteractionDelegate {
             }
             let saveAction = UIAction(title: L10n.ContextMenu.SaveImage.title,
                                       image: UIImage(systemName: "square.and.arrow.down")) { [weak self] _ in
-                guard let image = image else { return }
+                guard let image = vc.image else { return }
                 UIImageWriteToSavedPhotosAlbum(image,
                                                self,
                                                #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -128,29 +125,48 @@ extension ViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
                                 willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
                                 animator: UIContextMenuInteractionCommitAnimating) {
+        loadingIndicator.startAnimating()
+        mainDeckBlurView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
         animator.preferredCommitStyle = .pop
         animator.addCompletion {
-            
             Task {
-                var imgs: [UIImage] = []
-                for imgUrl in self.imagePreviewImageStrings {
-                    if let img = try? await UIImage(url: imgUrl) {
-                        imgs.append(img)
-                    }
+                async let task1 = Task { () -> UIImage? in
+                    guard let imgUrl = await self.imagePreviewImageStrings[safe: 0] else { return nil }
+                    return try? await UIImage(url: imgUrl)
                 }
+                async let task2 = Task { () -> UIImage? in
+                    guard let imgUrl = await self.imagePreviewImageStrings[safe: 1] else { return nil }
+                    return try? await UIImage(url: imgUrl)
+                }
+                async let task3 = Task { () -> UIImage? in
+                    guard let imgUrl = await self.imagePreviewImageStrings[safe: 2] else { return nil }
+                    return try? await UIImage(url: imgUrl)
+                }
+                async let task4 = Task { () -> UIImage? in
+                    guard let imgUrl = await self.imagePreviewImageStrings[safe: 3] else { return nil }
+                    return try? await UIImage(url: imgUrl)
+                }
+                let imgs = try! await [task1.result.get(), task2.result.get(), task3.result.get(), task4.result.get()].compactMap { $0 }
+                
                 if imgs.isEmpty {
                     return
                 }
                 
+                let imageViewer = Optik.imageViewer(
+                    withImages: imgs,
+                    initialImageDisplayIndex: self.imagePreviewSelectedIndex,
+                    delegate: self
+                )
+                
                 Task { @MainActor in
-                    self.contextMenuStruct.isOpend = true
+                    self.imageView.image = imgs[safe: self.imagePreviewSelectedIndex]
+                    self.setPreviewImagePosition()
                     self.view.addSubview(self.imageView)
-                    let imageViewer = Optik.imageViewer(
-                        withImages: imgs,
-                        initialImageDisplayIndex: self.imagePreviewSelectedIndex,
-                        delegate: self
-                    )
-                    self.present(imageViewer, animated: false, completion: nil)
+                    self.present(imageViewer, animated: true)
+                    
+                    self.loadingIndicator.stopAnimating()
+                    self.mainDeckBlurView.backgroundColor = .clear
                 }
             }
         }

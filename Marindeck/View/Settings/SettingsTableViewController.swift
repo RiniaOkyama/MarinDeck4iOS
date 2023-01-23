@@ -129,6 +129,8 @@ class SettingsTableViewController: UITableViewController {
                 headerTitle = L10n.Settings.Customize.Header.title
             case 2:
                 headerTitle = L10n.Settings.Appinfo.Header.title
+//            case 4:
+//                headerTitle = L10n.Settings.Donate.Header.title
             case 4:
                 headerTitle = L10n.Settings.Logout.Header.title
             default:
@@ -172,6 +174,8 @@ class SettingsTableViewController: UITableViewController {
             importSettings()
         case IndexPath(row: 1, section: 3):
             exportSettings()
+//        case IndexPath(row: 0, section: 4):
+//            donate()
         case IndexPath(row: 0, section: 4):
             logout()
         default:
@@ -405,6 +409,12 @@ class SettingsTableViewController: UITableViewController {
 
         present(alert, animated: true, completion: nil)
 
+    }
+    
+    func donate() {
+        let alert = UIAlertController(title: "いつかきっと...", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

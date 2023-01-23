@@ -111,7 +111,7 @@ class MenuViewController: UIViewController {
 
     func setUserNameID(name: String, id: String) {
         nameLabel.text = name
-        idLabel.text = id
+        idLabel.text = "@\(id)"
     }
 
     @IBAction func openSettings() {
