@@ -10,9 +10,7 @@ if (viewport) {
     viewport.content += ',maximum-scale=1'
 }
 
-//const moduleRaid = require('./moduleraid');
-let mR = moduleRaid();
-// Grab TweetDeck's jQuery from webpack
+const mR = moduleRaid();
 var jq = mR && mR.findFunction('jQuery') && mR.findFunction('jquery:')[0];
 
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
@@ -22,7 +20,6 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
     swiftLog("window onload");
     swiftLog("try didLoad");
     try {
-        // webkit.messageHandlers.jsCallbackHandler.postMessage("didLoad");
         window.MD.Native.post({
             type: 'viewDidLoad',
             body: {}
@@ -62,14 +59,12 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
                         }
                     }
 
-                    const video = target.querySelector("video")
+                    const video = target.querySelector("video");
                     if (video !== null) {
                         const isGif = video.classList.contains("js-media-gif")
                         if (isGif) {
-                            // video.removeAttribute("loop")
-                            video.setAttribute("controls", "")
+                            video.setAttribute("controls", "false")
                             video.setAttribute("playsinline", "")
-                            video.setAttribute("webkit-playsinline", "")
                             const cl = video.classList.value
                             video.classList.value = "-"
                             window.setTimeout(function () {
