@@ -1,0 +1,82 @@
+// MARK: Menu
+"menu.profile.title" = "Perfil";
+"menu.reload.title" = "Recarregar";
+"menu.addColumn.title" = "Adicionar coluna";
+
+// MARK: ContextMenu(Image)
+"contextMenu.tweetImage.title" = "Imagem de Tweet";
+"contextMenu.like.title" = "Como";
+"contextMenu.saveImage.title" = "Salvar imagem";
+"contextMenu.saved.title" = "Salvo";
+
+// MARK: OnBoarding
+"onBoarding.startMarinDeck.title" = "Iniciar o MarinDeck";
+
+// MARK: Settings
+"settings.navigation.title" = "Configurações";
+"settings.general.header.title" = "Geral";
+"settings.customize.header.title" = "Personalizar";
+"settings.appinfo.header.title" = "Informação do aplicativo";
+"settings.donate.header.title" = "Doe";
+"settings.logout.header.title" = "Logout";
+
+"settings.nativePreview.cell.title" = "Use visualização nativa";
+"settings.biometrics.cell.title" = "Biometria";
+"settings.tweetButtonBehavior.cell.title" = "Comportamento do botão Tweet";
+"settings.marginSafeArea.cell.title" = "Margem de segurançaeArea";
+"settings.noSleep.cell.title" = "Não Dormir";
+
+"settings.customJS.cell.title" = "JavaScript personalizado";
+"settings.customCSS.cell.title" = "CSS personalizado";
+"settings.theme.cell.title" = "Temas";
+"settings.customActonButtons.cell.title" = "Botões de ação personalizados";
+"settings.icon.cell.title" = "Ícones";
+
+"settings.termsOfUse.cell.title" = "Equipe de uso";
+"settings.license.cell.title" = "Licença";
+"settings.issueEnhancement.cell.title" = "emissão, aprimoramento";
+"settings.developers.cell.title" = "Desenvolvedores";
+"settings.donate.cell.title" = "Doe";
+"settings.version.cell.title" = "Versão";
+"settings.checkUpdate.cell.title" = "Verificar atualização";
+
+"settings.importSettings.cell.title" = "Configurações de importação";
+"settings.exportSettings.cell.title" = "Configurações de exportação";
+
+"settings.donate.cell.title" = "doe";
+
+"settings.logout.cell.title" = "logout";
+
+"settings.checkUpdate.checkingForUpdates.title" = "Verificação de atualizações.";
+"settings.checkUpdate.existUpdate.title" = "Haverá uma atualização.";
+"settings.checkUpdate.latest.title" = "mais recentes.";
+
+
+// MARK: ActionButtons
+"actionButton.debug.title" = "Debug";
+"actionButton.gif.title" = "GIF";
+"actionButton.tweet.title" = "Tweet";
+"actionButton.menu.title" = "Menu";
+"actionButton.draft.title" = "Rascunho";
+"actionButton.settings.title" = "Configurações";
+
+"actionButton.debug.description" = "Abrir o debug modal.";
+"actionButton.gif.description" = "Selecione GIF";
+"actionButton.tweet.description" = "Abrir o modal tweet";
+"actionButton.menu.description" = "Abra o menu";
+"actionButton.draft.description" = "Abra um rascunho";
+"actionButton.settings.description" = "Configurações abertas";
+"actionButton.description.title" = "Defina o botão de ação a ser exibido ao pressionar e segurar o botão de tweet.";
+
+// MARK: Alert
+"alert.OK.title" = "OK";
+"alert.close.title" = "Fechar";
+"alert.open.title" = "Aberto";
+"alert.update.title" = "Atualização";
+"alert.cancel.title" = "Cancelar";
+
+"alert.openUrl.title" = "Abrir URL?";
+"alert.logoutMessage.title" = "";
+
+"alert.importedSettings.title" = "Importou a configuração.";
+"alert.recommendRestartApp.title" = "Recomendamos que a aplicação seja reiniciada.";
