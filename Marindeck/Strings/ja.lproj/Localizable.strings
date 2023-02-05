@@ -1,3 +1,5 @@
+"lang" = "ja";
+
 // MARK: Menu
 "menu.profile.title" = "プロフィール";
 "menu.reload.title" = "リロード";

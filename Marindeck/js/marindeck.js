@@ -24,7 +24,7 @@ const viewport = document.querySelector("meta[name=viewport]");
 if (viewport) {
   viewport.content += ",maximum-scale=1";
 }
-let mR = moduleRaid();
+const mR = moduleRaid();
 mR && mR.findFunction("jQuery") && mR.findFunction("jquery:")[0];
 const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
 (async () => {
@@ -72,9 +72,8 @@ const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
           if (video !== null) {
             const isGif = video.classList.contains("js-media-gif");
             if (isGif) {
-              video.setAttribute("controls", "");
+              video.setAttribute("controls", "false");
               video.setAttribute("playsinline", "");
-              video.setAttribute("webkit-playsinline", "");
               const cl = video.classList.value;
               video.classList.value = "-";
               window.setTimeout(function() {

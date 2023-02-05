@@ -1,3 +1,5 @@
+"lang" = "en";
+
 // MARK: Menu
 "menu.profile.title" = "Profile";
 "menu.reload.title" = "Reload";
