@@ -507,7 +507,7 @@ div.column-title-back>span {
 
 div.column-title-back>span:after {
     font-size: 14px;
-    content: "Voltar para";
+    content: " Voltar para";
 }
 
 div.column-title-back>span>span {
