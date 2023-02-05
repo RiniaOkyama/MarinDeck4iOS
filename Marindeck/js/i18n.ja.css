@@ -1,0 +1,1062 @@
+Button.tweet-button>span {
+    font-size: 0 !important
+}
+
+Button.tweet-button>span:before {
+    font-size: 14px;
+    content: "ツイートする";
+}
+
+a[data-title="Add column"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Add column"]>div.app-nav-link-text:before {
+    font-size: 14px;
+    content: "カラムを追加";
+}
+
+a[data-title="Expand"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Expand"]>div.app-nav-link-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "閉じる";
+}
+
+a[data-title="Accounts"]>div.app-nav-tab-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Accounts"]>div.app-nav-tab-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "アカウント";
+}
+
+a[data-title="Settings"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Settings"]>div.app-nav-link-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "設定";
+}
+
+div.drawer header>div>h1.compose-title-text {
+    font-size: 0;
+}
+
+div.drawer header>div>h1.compose-title-text:before {
+    font-size: 16px;
+    content: "新しいツイート";
+}
+
+div.drawer header.with-dm-icon>div>h1.compose-title-text:before {
+    font-size: 16px;
+    content: "新しいメッセージ";
+}
+
+div.drawer div.margin-v--14>div.compose-text-title {
+    font-size: 0;
+}
+
+div.drawer div.margin-v--14>div.compose-text-title:before {
+    font-size: 14px;
+    content: "アカウント";
+}
+
+div.drawer div.compose-message-recipient-container>p.compose-text-title {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container>p.compose-text-title:before {
+    font-size: 14px;
+    content: "宛先";
+}
+
+div.drawer div.compose-message-recipient-container.is-hidden+div {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container.is-hidden+div:before {
+    font-size: 14px;
+    content: "ツイート";
+}
+
+div.drawer div.compose-message-recipient-container+div {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container+div:before {
+    font-size: 14px;
+    content: "メッセージ";
+}
+
+div.drawer header.with-dm-icon~div>div.pull-right button,
+button.js-send {
+    font-size: 0 !important;
+}
+
+div.drawer header.with-dm-icon~div>div.pull-right button:before,
+button.js-send:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "メッセージを送信";
+}
+
+div.drawer button.js-add-image-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-add-image-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "写真・動画を追加";
+}
+
+div.drawer header.with-dm-icon~button.js-add-image-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer header.with-dm-icon~button.js-add-image-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "写真を追加";
+}
+
+div.drawer button.js-schedule-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-schedule-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "予約ツイート";
+}
+
+div.drawer button.js-dm-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-dm-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "ダイレクトメッセージ";
+}
+
+div.drawer button.js-tweet-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-tweet-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "新しいツイート";
+}
+
+div.recent-search-clear {
+    font-size: 0;
+}
+
+div.recent-search-clear:before {
+    font-size: 13px;
+    content: "すべて消去";
+}
+
+ul.js-typeahead-recent-search-list>h4 {
+    font-size: 0;
+}
+
+ul.js-typeahead-recent-search-list>h4:before {
+    font-size: 14px;
+    content: "最近";
+}
+
+div.js-show-this-thread>p {
+    font-size: 0 !important;
+}
+
+div.js-show-this-thread>p:before {
+    vertical-align: middle;
+    font-size: 12px;
+    content: "このスレッドを表示";
+}
+
+div.other-replies {
+    font-size: 0;
+    line-height: initial;
+}
+
+div.other-replies:before {
+    font-size: .85714rem;
+    padding-right: 3px;
+    content: "返信先:";
+}
+
+div.other-replies a {
+    font-size: .85714rem;
+    white-space: normal;
+}
+
+div.js-card-container>div[data-testid="pollBadge"] {
+    font-size: 0 !important;
+}
+
+div.js-card-container>div[data-testid="pollBadge"]:after {
+    vertical-align: middle;
+    font-size: .85714rem;
+    content: "投票";
+}
+
+div[data-type="repliers"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="repliers"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "件の返信";
+}
+
+div[data-type="retweeters"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="retweeters"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "件のリツイート";
+}
+
+div[data-type="favoriters"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="favoriters"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "件のいいね";
+}
+
+div.tweet-stats>a.js-open-analytics>span {
+    font-size: 0 !important;
+}
+
+div.tweet-stats>a.js-open-analytics>span:before {
+    font-size: .71429rem;
+    content: "ツイートアクティビティを表示";
+}
+
+a[rel="translateTweet"] {
+    font-size: 0;
+}
+
+a[rel="translateTweet"]:before {
+    font-size: 0.95rem;
+    content: "ツイートを翻訳";
+}
+
+button.js-send-button {
+    font-size: 0 !important;
+}
+
+button.js-send-button:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "ツイートする";
+}
+
+div.activity-header>div[class*="txt-line-"]:after {
+    font-size: 0.95rem;
+}
+
+div.activity-header>div[class*="txt-line-"] a {
+    line-height: 0;
+    font-size: 1rem;
+}
+
+div.activity-header>div[class*="txt-line-"].txt-size-variable--12:after {
+    line-height: 0;
+    font-size: 0.85rem;
+}
+
+div.activity-header>div[class*="txt-line-"].txt-size-variable--12 a {
+    line-height: 0;
+    font-size: .85714rem;
+}
+
+article[data-key^="favorite_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="favorite_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "さんがいいねしました";
+}
+
+article[data-key^="retweet_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="retweet_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "さんがリツイートしました";
+}
+
+div.tweet div.tweet-context>div.nbfc {
+    font-size: 0 !important;
+}
+
+div.tweet div.tweet-context>div.nbfc>a {
+    font-size: .85714rem;
+}
+
+div.tweet div.tweet-context>div.nbfc:after {
+    padding-left: 3px;
+    line-height: 0;
+    font-size: 0.85rem;
+    content: "さんがリツイートしました";
+}
+
+article[data-key^="favorited_mention_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="favorited_mention_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "さんが返信をいいねしました";
+}
+
+article[data-key^="follow_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="follow_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "さんがフォローしました";
+}
+
+header[class*="column-header"] div.column-title span.column-heading:before {
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+header[class*="column-header"] i.icon-home~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-home~div.column-title span.column-heading:before {
+    content: "ホーム";
+}
+
+header[class*="column-header"] i.icon-notifications~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-notifications~div.column-title span.column-heading:before {
+    content: "通知";
+}
+
+header[class*="column-header"] i.icon-trending~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-trending~div.column-title span.column-heading:before {
+    content: "トレンド";
+}
+
+header[class*="column-header"] i.icon-user~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-user~div.column-title span.column-heading:before {
+    content: "ユーザー";
+}
+
+header[class*="column-header"] i.icon-message~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-message~div.column-title span.column-heading:before {
+    content: "メッセージ";
+}
+
+header[class*="column-header"] i.icon-favorite~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-favorite~div.column-title span.column-heading:before {
+    content: "いいね";
+}
+
+header[class*="column-header"] i.icon-mention~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-mention~div.column-title span.column-heading:before {
+    content: "@ツイート";
+}
+
+header[class*="column-header"] i.icon-follow~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-follow~div.column-title span.column-heading:before {
+    content: "フォロワー";
+}
+
+header[class*="column-header"] i.icon-schedule~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-schedule~div.column-title span.column-heading:before {
+    content: "予約ツイート";
+}
+
+header[class*="column-header"] i.icon-activity~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-activity~div.column-title span.column-heading:before {
+    content: "アクティビティ";
+}
+
+form[data-testid="columnOptions"] div.facet-type-content>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-content>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "コンテンツ";
+}
+
+form[data-testid="columnOptions"] div.facet-type-user>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-user>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "ユーザー";
+}
+
+form[data-testid="columnOptions"] div.facet-type-preferences>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-preferences>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "環境設定";
+}
+
+form[data-testid="columnOptions"] div.facet-type-location>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-location>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "場所";
+}
+
+form[data-testid="columnOptions"] div.facet-type-engagement>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-engagement>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "エンゲージメント";
+}
+
+form[data-testid="columnOptions"] div.facet-type-action>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-action>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "通知の種類";
+}
+
+form[data-testid="columnOptions"] button>span {
+    font-size: 0;
+}
+
+form[data-testid="columnOptions"] button>span:before {
+    font-size: 13px;
+}
+
+form[data-testid="columnOptions"] button[data-action="clear"]>span:before {
+    content: "クリア";
+}
+
+form[data-testid="columnOptions"] button[data-action="remove"]>span:before {
+    content: "削除";
+}
+
+form[data-testid="columnOptions"] button.js-share-column>span:before {
+    content: "共有";
+}
+
+div.column-title-back>span {
+    font-size: 0;
+}
+
+div.column-title-back>span:after {
+    font-size: 14px;
+    content: "に戻る";
+}
+
+div.column-title-back>span>span {
+    font-size: 14px;
+}
+
+li.is-selectable>a:after {
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+a[data-action="embed"] {
+    font-size: 0 !important;
+}
+
+a[data-action="embed"]:after {
+    content: "ツイートを埋め込む";
+}
+
+a[data-action="reference-to"] {
+    font-size: 0 !important;
+}
+
+a[data-action="reference-to"]:after {
+    content: "ツイートへのリンクをコピー";
+}
+
+a[data-action="message-to"] {
+    font-size: 0 !important;
+}
+
+a[data-action="message-to"]:after {
+    content: "ダイレクトメッセージで共有";
+}
+
+a[data-action="email"] {
+    font-size: 0 !important;
+}
+
+a[data-action="email"]:after {
+    content: "メールで共有";
+}
+
+a[data-action="message"] {
+    font-size: 0 !important;
+}
+
+a[data-action="message"]:after {
+    content: "ダイレクトメッセージを送信";
+}
+
+a[data-action="lists"] {
+    font-size: 0 !important;
+}
+
+a[data-action="lists"]:after {
+    content: "リストに追加/削除";
+}
+
+a[data-action="customtimelines"] {
+    font-size: 0 !important;
+}
+
+a[data-action="customtimelines"]:after {
+    content: "コレクションに追加";
+}
+
+a[data-action="search-for-quoted"] {
+    font-size: 0 !important;
+}
+
+a[data-action="search-for-quoted"]:after {
+    content: "引用したツイートを検索";
+}
+
+a[data-action="muteConversation"] {
+    font-size: 0 !important;
+}
+
+a[data-action="muteConversation"]:after {
+    content: "この会話をミュート";
+}
+
+a[data-action="flag-media"] {
+    font-size: 0 !important;
+}
+
+a[data-action="flag-media"]:after {
+    content: "画像を報告";
+}
+
+a[data-action="destroy"] {
+    font-size: 0 !important;
+}
+
+a[data-action="destroy"]:after {
+    content: "ツイートを削除";
+}
+
+a[data-action="report-tweet"] {
+    font-size: 0 !important;
+}
+
+a[data-action="report-tweet"]:after {
+    content: "ツイートを報告";
+}
+
+a[data-action="translate"] {
+    font-size: 0 !important;
+}
+
+a[data-action="translate"]:after {
+    content: "ツイートを翻訳";
+}
+
+a[data-action="copy-search-query"] {
+    font-size: 0 !important;
+}
+
+a[data-action="copy-search-query"]:after {
+    content: "検索クエリをコピー";
+}
+
+li.is-selectable>a.release-notes-item {
+    font-size: 0 !important;
+}
+
+li.is-selectable>a.release-notes-item:after {
+    content: "リリースノート";
+}
+
+a[data-action="keyboardShortcutList"] {
+    font-size: 0 !important;
+}
+
+a[data-action="keyboardShortcutList"]:after {
+    content: "キーボードショートカット";
+}
+
+a[data-action="searchOperatorList"] {
+    font-size: 0 !important;
+}
+
+a[data-action="searchOperatorList"]:after {
+    content: "検索のヒント";
+}
+
+a[data-action="globalSettings"] {
+    font-size: 0 !important;
+}
+
+a[data-action="globalSettings"]:after {
+    content: "設定";
+}
+
+a[data-action="signOut"] {
+    font-size: 0 !important;
+}
+
+a[data-action="signOut"]:after {
+    content: "ログアウト";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button {
+    font-size: 0;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button:after {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button>i {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button {
+    width: auto;
+    padding: 3px 6px;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.follow-text:after {
+    content: "フォロー";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.following-text:after {
+    content: "フォロー中";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.unfollow-text:after {
+    content: "フォロー解除";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.block-text:after {
+    content: "ブロック中";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.unblock-text:after {
+    content: "ブロック解除";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.pending-text:after {
+    content: "未承認";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.cancel-req-text:after {
+    content: "キャンセル";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.thats-you-text:after {
+    content: "プロフィールを編集";
+}
+
+div.s-profile ul.prf-stats>li>a {
+    font-size: 0;
+}
+
+div.s-profile ul.prf-stats>li>a:before {
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+div.s-profile ul.prf-stats>li>a>strong {
+    font-size: 14px;
+}
+
+div.s-profile ul.prf-stats>li>a[data-type="tweets"]:before {
+    content: "ツイート数";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/following"]:before {
+    content: "フォロー中";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/followers"]:before {
+    content: "フォロワー";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/memberships"]:before {
+    content: "リスト";
+}
+
+div.s-profile ul.lst-profile>li[data-type]>a>span {
+    font-size: 0;
+}
+
+div.s-profile ul.lst-profile>li[data-type]>a>span:before {
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+div.s-profile ul.lst-profile>li[data-type="tweets"]>a>span:before {
+    content: "ツイート";
+}
+
+div.s-profile ul.lst-profile>li[data-type="mentions"]>a>span:before {
+    content: "@ツイート";
+}
+
+div.s-profile ul.lst-profile>li[data-type="lists"]>a>span:before {
+    content: "リスト";
+}
+
+div.s-profile ul.lst-profile>li[data-type="customtimelines"]>a>span:before {
+    content: "コレクション";
+}
+
+div.s-profile ul.lst-profile>li[data-type="favorites"]>a>span:before {
+    content: "いいね";
+}
+
+button.js-dismiss>span {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+button.js-dismiss>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "完了";
+}
+
+#settings-modal header>h3.js-header-title {
+    font-size: 0;
+}
+
+#settings-modal header>h3.js-header-title:before {
+    font-size: 16px;
+    content: "設定";
+}
+
+#settings-modal ul>li>a[data-action]>strong {
+    font-size: 0;
+}
+
+#settings-modal ul>li>a[data-action]>strong:before {
+    vertical-align: middle;
+    font-size: 13.9px;
+}
+
+#settings-modal ul>li>a[data-action="general"]>strong:before {
+    content: "全般";
+}
+
+#settings-modal ul>li>a[data-action="services"]>strong:before {
+    content: "リンク短縮";
+}
+
+#settings-modal ul>li>a[data-action="filter"]>strong:before {
+    content: "ミュート";
+}
+
+fieldset#general_settings div.control-group i+span {
+    font-size: 0;
+}
+
+fieldset#general_settings div.control-group i+span:before {
+    font-size: 0.95rem;
+}
+
+fieldset#general_settings div.control-group i#streaming-updates+span:before {
+    content: "リアルタイムでツイートをストリーミングする";
+}
+
+fieldset#general_settings div.control-group i#show-startup-notifications+span:before {
+    content: "起動時に通知を表示する";
+}
+
+fieldset#general_settings div.control-group i#display-sensitive-media+span:before {
+    content: "センシティブな内容を含む可能性のあるメディアを表示する";
+}
+
+fieldset#general_settings div.control-group i#auto-play-gifs+span:before {
+    content: "GIF画像を自動再生する";
+}
+
+fieldset#general_settings div.control-group div.cf>div>label.txt-uppercase>b {
+    font-size: 0;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label.txt-uppercase>b:before {
+    font-size: 13px;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label {
+    font-size: 0 !important;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label:before {
+    font-size: 13px;
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label.txt-uppercase>b:before {
+    content: "テーマ";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label:nth-child(2):before {
+    content: "ダーク";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label:nth-child(3):before {
+    content: "ライト";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label.txt-uppercase>b:before {
+    content: "カラム";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(2):before {
+    content: "狭い";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(3):before {
+    content: "普通";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(4):before {
+    content: "広い";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label.txt-uppercase {
+    width: auto;
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label.txt-uppercase>b:before {
+    content: "フォントサイズ";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(2):before {
+    font-size: 12px;
+    content: "極小";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(3):before {
+    font-size: 13px;
+    content: "小";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(4):before {
+    font-size: 14px;
+    content: "中";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(5):before {
+    font-size: 15px;
+    content: "大";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(6):before {
+    font-size: 16px;
+    content: "極大";
+}
+
+fieldset#services_settings label[for="link-shortening"] {
+    font-size: 0;
+}
+
+fieldset#services_settings label[for="link-shortening"]:before {
+    font-size: 13px;
+    content: "リンク短縮サービス";
+}
+
+fieldset#global_filter_settings label:before {
+    font-size: 13px;
+}
+
+fieldset#global_filter_settings label[for="filter-types"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings label[for="filter-types"]:before {
+    content: "フィルタータイプ";
+}
+
+fieldset#global_filter_settings label[for="filter-input"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings label[for="filter-input"]:before {
+    content: "条件";
+}
+
+fieldset#global_filter_settings button[name="add-filter"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings button[name="add-filter"]:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "ミュート";
+}
+
+div#open-modal ul.lst-launcher>li[data-type]>a>span {
+    font-size: 0 !important;
+}
+
+div#open-modal ul.lst-launcher>li[data-type]>a>span:before {
+    font-size: 14px !important;
+}
+
+div#open-modal ul.lst-launcher>li[data-type="timeline"]>a>span:before {
+    content: "ホーム";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="tweets"]>a>span:before {
+    content: "ユーザー";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="interactions"]>a>span:before {
+    content: "通知";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="search"]>a>span:before {
+    content: "検索";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="lists"]>a>span:before {
+    content: "リスト";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="customtimelines"]>a>span:before {
+    content: "コレクション";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="trends"]>a>span:before {
+    content: "トレンド";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="favorites"]>a>span:before {
+    content: "いいね";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="messages"]>a>span:before {
+    content: "メッセージ";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="mentions"]>a>span:before {
+    content: "@ツイート";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="followers"]>a>span:before {
+    content: "フォロワー";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="scheduled"]>a>span:before {
+    content: "予約ツイート";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="privateMe"]>a>span:nth-child(2):before {
+    content: "メッセージ";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="privateMe"]>a>span:nth-child(3):before {
+    font-size: 11px !important;
+    content: "(すべてのアカウント)";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="me"]>a>span:nth-child(2):before {
+    content: "@ツイート";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="me"]>a>span:nth-child(3):before {
+    font-size: 11px !important;
+    content: "(すべてのアカウント)";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="networkactivity"]>a>span:nth-child(2):before {
+    content: "アクティビティ";
+}
+
+div#open-modal button.js-add-column {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+div#open-modal button.js-add-column:after {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "カラムを追加";
+}
+
+div#open-modal button.js-back {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+div#open-modal button.js-back:after {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "← 戻る";
+}

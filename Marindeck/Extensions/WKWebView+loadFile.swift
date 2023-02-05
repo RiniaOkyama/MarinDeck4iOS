@@ -23,10 +23,12 @@ extension WKWebView {
         deletecomment = deletecomment.replacingOccurrences(of: "\"", with: "\\\"")
         deletecomment = deletecomment.replacingOccurrences(of: "\n", with: "\\\n")
         let script = """
+                     {
                      const h = document.documentElement;
                      const s = document.createElement('style');
                      s.insertAdjacentHTML('beforeend', "\(deletecomment)");
                      h.insertAdjacentElement('beforeend', s)
+                     }
                      """
         self.evaluateJavaScript(script) { _, error in
             print("stylecss : ", error ?? "成功")

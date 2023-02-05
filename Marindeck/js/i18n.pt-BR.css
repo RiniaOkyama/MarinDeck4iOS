@@ -1,0 +1,1063 @@
+Button.tweet-button>span {
+    font-size: 0 !important
+}
+
+Button.tweet-button>span:before {
+    font-size: 14px;
+    content: "Tweet";
+}
+
+a[data-title="Add column"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Add column"]>div.app-nav-link-text:before {
+    font-size: 14px;
+    content: "Adicionar coluna";
+}
+
+a[data-title="Expand"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Expand"]>div.app-nav-link-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "fechar";
+}
+
+a[data-title="Accounts"]>div.app-nav-tab-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Accounts"]>div.app-nav-tab-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "conta";
+}
+
+a[data-title="Settings"]>div.app-nav-link-text {
+    font-size: 0 !important;
+}
+
+a[data-title="Settings"]>div.app-nav-link-text:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "configuração";
+}
+
+div.drawer header>div>h1.compose-title-text {
+    font-size: 0;
+}
+
+div.drawer header>div>h1.compose-title-text:before {
+    font-size: 16px;
+    content: "Novo tweet";
+}
+
+div.drawer header.with-dm-icon>div>h1.compose-title-text:before {
+    font-size: 16px;
+    content: "Nova mensagem";
+}
+
+div.drawer div.margin-v--14>div.compose-text-title {
+    font-size: 0;
+}
+
+div.drawer div.margin-v--14>div.compose-text-title:before {
+    font-size: 14px;
+    content: "conta";
+}
+
+div.drawer div.compose-message-recipient-container>p.compose-text-title {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container>p.compose-text-title:before {
+    font-size: 14px;
+    content: "endereço";
+}
+
+div.drawer div.compose-message-recipient-container.is-hidden+div {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container.is-hidden+div:before {
+    font-size: 14px;
+    content: "Tweet";
+}
+
+div.drawer div.compose-message-recipient-container+div {
+    font-size: 0;
+}
+
+div.drawer div.compose-message-recipient-container+div:before {
+    font-size: 14px;
+    content: "Mensagem";
+}
+
+div.drawer header.with-dm-icon~div>div.pull-right button,
+button.js-send {
+    font-size: 0 !important;
+}
+
+div.drawer header.with-dm-icon~div>div.pull-right button:before,
+button.js-send:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Enviar mensagem";
+}
+
+div.drawer button.js-add-image-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-add-image-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Adicionar fotos e vídeos";
+}
+
+div.drawer header.with-dm-icon~button.js-add-image-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer header.with-dm-icon~button.js-add-image-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Adicionar foto";
+}
+
+div.drawer button.js-schedule-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-schedule-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Tweet de reserva";
+}
+
+div.drawer button.js-dm-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-dm-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "mensagens diretas";
+}
+
+div.drawer button.js-tweet-button>span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+div.drawer button.js-tweet-button>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Novo tweet";
+}
+
+div.recent-search-clear {
+    font-size: 0;
+}
+
+div.recent-search-clear:before {
+    font-size: 13px;
+    content: "Apagar tudo";
+}
+
+ul.js-typeahead-recent-search-list>h4 {
+    font-size: 0;
+}
+
+ul.js-typeahead-recent-search-list>h4:before {
+    font-size: 14px;
+    content: "recentemente";
+}
+
+div.js-show-this-thread>p {
+    font-size: 0 !important;
+}
+
+div.js-show-this-thread>p:before {
+    vertical-align: middle;
+    font-size: 12px;
+    content: "Veja esta linha";
+}
+
+div.other-replies {
+    font-size: 0;
+    line-height: initial;
+}
+
+div.other-replies:before {
+    font-size: .85714rem;
+    padding-right: 3px;
+    content: "Responder a:";
+}
+
+div.other-replies a {
+    font-size: .85714rem;
+    white-space: normal;
+}
+
+div.js-card-container>div[data-testid="pollBadge"] {
+    font-size: 0 !important;
+}
+
+div.js-card-container>div[data-testid="pollBadge"]:after {
+    vertical-align: middle;
+    font-size: .85714rem;
+    content: "votação";
+}
+
+div[data-type="repliers"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="repliers"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "respostas";
+}
+
+div[data-type="retweeters"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="retweeters"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "retweet";
+}
+
+div[data-type="favoriters"]>span.stat-word {
+    font-size: 0 !important;
+}
+
+div[data-type="favoriters"]>span.stat-word:before {
+    font-size: .85714rem;
+    content: "favorito";
+}
+
+div.tweet-stats>a.js-open-analytics>span {
+    font-size: 0 !important;
+}
+
+div.tweet-stats>a.js-open-analytics>span:before {
+    font-size: .71429rem;
+    content: "Ver atividade de tweet";
+}
+
+a[rel="translateTweet"] {
+    font-size: 0;
+}
+
+a[rel="translateTweet"]:before {
+    font-size: 0.95rem;
+    content: "Tweet traduzido";
+}
+
+button.js-send-button {
+    font-size: 0 !important;
+}
+
+button.js-send-button:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Tweet";
+}
+
+div.activity-header>div[class*="txt-line-"]:after {
+    font-size: 0.95rem;
+}
+
+div.activity-header>div[class*="txt-line-"] a {
+    line-height: 0;
+    font-size: 1rem;
+}
+
+div.activity-header>div[class*="txt-line-"].txt-size-variable--12:after {
+    line-height: 0;
+    font-size: 0.85rem;
+}
+
+div.activity-header>div[class*="txt-line-"].txt-size-variable--12 a {
+    line-height: 0;
+    font-size: .85714rem;
+}
+
+article[data-key^="favorite_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="favorite_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "gostou disso";
+}
+
+article[data-key^="retweet_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="retweet_"] div.activity-header>div[class*="txt-line-"]:before {
+    padding-left: 3px;
+    content: "Retweeted por";
+}
+
+div.tweet div.tweet-context>div.nbfc {
+    font-size: 0 !important;
+}
+
+div.tweet div.tweet-context>div.nbfc>a {
+    font-size: .85714rem;
+}
+
+div.tweet div.tweet-context>div.nbfc:after {
+    padding-left: 3px;
+    line-height: 0;
+    font-size: 0.85rem;
+    content: "Retweeted";
+}
+
+article[data-key^="favorited_mention_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="favorited_mention_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "Liked";
+}
+
+article[data-key^="follow_"] div.activity-header>div[class*="txt-line-"] {
+    font-size: 0 !important;
+}
+
+article[data-key^="follow_"] div.activity-header>div[class*="txt-line-"]:after {
+    padding-left: 3px;
+    content: "followed";
+}
+
+header[class*="column-header"] div.column-title span.column-heading:before {
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+header[class*="column-header"] i.icon-home~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-home~div.column-title span.column-heading:before {
+    content: "Início";
+}
+
+header[class*="column-header"] i.icon-notifications~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-notifications~div.column-title span.column-heading:before {
+    content: "aviso";
+}
+
+header[class*="column-header"] i.icon-trending~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-trending~div.column-title span.column-heading:before {
+    content: "tendência";
+}
+
+header[class*="column-header"] i.icon-user~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-user~div.column-title span.column-heading:before {
+    content: "usuário";
+}
+
+header[class*="column-header"] i.icon-message~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-message~div.column-title span.column-heading:before {
+    content: "Mensagem";
+}
+
+header[class*="column-header"] i.icon-favorite~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-favorite~div.column-title span.column-heading:before {
+    content: "Bom";
+}
+
+header[class*="column-header"] i.icon-mention~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-mention~div.column-title span.column-heading:before {
+    content: "@Tweet";
+}
+
+header[class*="column-header"] i.icon-follow~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-follow~div.column-title span.column-heading:before {
+    content: "seguidor";
+}
+
+header[class*="column-header"] i.icon-schedule~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-schedule~div.column-title span.column-heading:before {
+    content: "Tweet de reserva";
+}
+
+header[class*="column-header"] i.icon-activity~div.column-title span.column-heading {
+    font-size: 0 !important;
+}
+
+header[class*="column-header"] i.icon-activity~div.column-title span.column-heading:before {
+    content: "atividade";
+}
+
+form[data-testid="columnOptions"] div.facet-type-content>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-content>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "conteúdo";
+}
+
+form[data-testid="columnOptions"] div.facet-type-user>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-user>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "usuário";
+}
+
+form[data-testid="columnOptions"] div.facet-type-preferences>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-preferences>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "ambiente";
+}
+
+form[data-testid="columnOptions"] div.facet-type-location>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-location>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "Localização";
+}
+
+form[data-testid="columnOptions"] div.facet-type-engagement>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-engagement>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "compromisso";
+}
+
+form[data-testid="columnOptions"] div.facet-type-action>div.accordion-header>div.facet-title>span {
+    font-size: 0 !important;
+}
+
+form[data-testid="columnOptions"] div.facet-type-action>div.accordion-header>div.facet-title>span:before {
+    font-size: 13px;
+    content: "Tipo de notificação";
+}
+
+form[data-testid="columnOptions"] button>span {
+    font-size: 0;
+}
+
+form[data-testid="columnOptions"] button>span:before {
+    font-size: 13px;
+}
+
+form[data-testid="columnOptions"] button[data-action="clear"]>span:before {
+    content: "claro";
+}
+
+form[data-testid="columnOptions"] button[data-action="remove"]>span:before {
+    content: "exclusão";
+}
+
+form[data-testid="columnOptions"] button.js-share-column>span:before {
+    content: "share";
+}
+
+div.column-title-back>span {
+    font-size: 0;
+}
+
+div.column-title-back>span:after {
+    font-size: 14px;
+    content: "Voltar para";
+}
+
+div.column-title-back>span>span {
+    font-size: 14px;
+}
+
+li.is-selectable>a:after {
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+a[data-action="embed"] {
+    font-size: 0 !important;
+}
+
+a[data-action="embed"]:after {
+    content: "Incorpore um tweet";
+}
+
+a[data-action="reference-to"] {
+    font-size: 0 !important;
+}
+
+a[data-action="reference-to"]:after {
+    content: "Copiar link para tweet";
+}
+
+a[data-action="message-to"] {
+    font-size: 0 !important;
+}
+
+a[data-action="message-to"]:after {
+    content: "Compartilhar via mensagem direta";
+}
+
+a[data-action="email"] {
+    font-size: 0 !important;
+}
+
+a[data-action="email"]:after {
+    content: "Compartilhar por e-mail";
+}
+
+a[data-action="message"] {
+    font-size: 0 !important;
+}
+
+a[data-action="message"]:after {
+    content: "Enviar uma mensagem direta";
+}
+
+a[data-action="lists"] {
+    font-size: 0 !important;
+}
+
+a[data-action="lists"]:after {
+    content: "Adicionar à/remover da lista";
+}
+
+a[data-action="customtimelines"] {
+    font-size: 0 !important;
+}
+
+a[data-action="customtimelines"]:after {
+    content: "Adicionar à coleta";
+}
+
+a[data-action="search-for-quoted"] {
+    font-size: 0 !important;
+}
+
+a[data-action="search-for-quoted"]:after {
+    content: "Busca de tweets cotados";
+}
+
+a[data-action="muteConversation"] {
+    font-size: 0 !important;
+}
+
+a[data-action="muteConversation"]:after {
+    content: "Silencie esta conversa";
+}
+
+a[data-action="flag-media"] {
+    font-size: 0 !important;
+}
+
+a[data-action="flag-media"]:after {
+    content: "Relatar imagem";
+}
+
+a[data-action="destroy"] {
+    font-size: 0 !important;
+}
+
+a[data-action="destroy"]:after {
+    content: "Tweets eliminados";
+}
+
+a[data-action="report-tweet"] {
+    font-size: 0 !important;
+}
+
+a[data-action="report-tweet"]:after {
+    content: "Relatar tweet";
+}
+
+a[data-action="translate"] {
+    font-size: 0 !important;
+}
+
+a[data-action="translate"]:after {
+    content: "Tweet traduzido";
+}
+
+a[data-action="copy-search-query"] {
+    font-size: 0 !important;
+}
+
+a[data-action="copy-search-query"]:after {
+    content: "Consulta de pesquisa de cópias";
+}
+
+li.is-selectable>a.release-notes-item {
+    font-size: 0 !important;
+}
+
+li.is-selectable>a.release-notes-item:after {
+    content: "Notas de Lançamento";
+}
+
+a[data-action="keyboardShortcutList"] {
+    font-size: 0 !important;
+}
+
+a[data-action="keyboardShortcutList"]:after {
+    content: "atalho de teclado";
+}
+
+a[data-action="searchOperatorList"] {
+    font-size: 0 !important;
+}
+
+a[data-action="searchOperatorList"]:after {
+    content: "Dicas de busca.";
+}
+
+a[data-action="globalSettings"] {
+    font-size: 0 !important;
+}
+
+a[data-action="globalSettings"]:after {
+    content: "configuração";
+}
+
+a[data-action="signOut"] {
+    font-size: 0 !important;
+}
+
+a[data-action="signOut"]:after {
+    content: "logout";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button {
+    font-size: 0;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button:after {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button>i {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button {
+    width: auto;
+    padding: 3px 6px;
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.follow-text:after {
+    content: "siga";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.following-text:after {
+    content: "A seguir";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.unfollow-text:after {
+    content: "Desatender-me";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.block-text:after {
+    content: "no bloco";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.unblock-text:after {
+    content: "desbloqueio";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.pending-text:after {
+    content: "não autorizado";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.cancel-req-text:after {
+    content: "cancelar";
+}
+
+div.s-profile div.prf-follow-state div.follow-btn>button.thats-you-text:after {
+    content: "Editar perfil";
+}
+
+div.s-profile ul.prf-stats>li>a {
+    font-size: 0;
+}
+
+div.s-profile ul.prf-stats>li>a:before {
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+div.s-profile ul.prf-stats>li>a>strong {
+    font-size: 14px;
+}
+
+div.s-profile ul.prf-stats>li>a[data-type="tweets"]:before {
+    content: "Número de tweets";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/following"]:before {
+    content: "A seguir";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/followers"]:before {
+    content: "seguidor";
+}
+
+div.s-profile ul.prf-stats>li>a[href$="/memberships"]:before {
+    content: "lista";
+}
+
+div.s-profile ul.lst-profile>li[data-type]>a>span {
+    font-size: 0;
+}
+
+div.s-profile ul.lst-profile>li[data-type]>a>span:before {
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+div.s-profile ul.lst-profile>li[data-type="tweets"]>a>span:before {
+    content: "tweet";
+}
+
+div.s-profile ul.lst-profile>li[data-type="mentions"]>a>span:before {
+    content: "@Tweet";
+}
+
+div.s-profile ul.lst-profile>li[data-type="lists"]>a>span:before {
+    content: "lista";
+}
+
+div.s-profile ul.lst-profile>li[data-type="customtimelines"]>a>span:before {
+    content: "coleção";
+}
+
+div.s-profile ul.lst-profile>li[data-type="favorites"]>a>span:before {
+    content: "Bom";
+}
+
+button.js-dismiss>span {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+button.js-dismiss>span:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "conclusão";
+}
+
+#settings-modal header>h3.js-header-title {
+    font-size: 0;
+}
+
+#settings-modal header>h3.js-header-title:before {
+    font-size: 16px;
+    content: "configuração";
+}
+
+#settings-modal ul>li>a[data-action]>strong {
+    font-size: 0;
+}
+
+#settings-modal ul>li>a[data-action]>strong:before {
+    vertical-align: middle;
+    font-size: 13.9px;
+}
+
+#settings-modal ul>li>a[data-action="general"]>strong:before {
+    content: "geral";
+}
+
+#settings-modal ul>li>a[data-action="services"]>strong:before {
+    content: "redução do link";
+}
+
+#settings-modal ul>li>a[data-action="filter"]>strong:before {
+    content: "mudo";
+}
+
+fieldset#general_settings div.control-group i+span {
+    font-size: 0;
+}
+
+fieldset#general_settings div.control-group i+span:before {
+    font-size: 0.95rem;
+}
+
+fieldset#general_settings div.control-group i#streaming-updates+span:before {
+    content: "Tweets em tempo real";
+}
+
+fieldset#general_settings div.control-group i#show-startup-notifications+span:before {
+    content: "Exibir notificações na partida";
+}
+
+fieldset#general_settings div.control-group i#display-sensitive-media+span:before {
+    content: "Meios de exibição que podem conter conteúdo sensível";
+}
+
+fieldset#general_settings div.control-group i#auto-play-gifs+span:before {
+    content: "Reprodução automática de imagens GIF";
+}
+
+fieldset#general_settings div.control-group div.cf>div>label.txt-uppercase>b {
+    font-size: 0;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label.txt-uppercase>b:before {
+    font-size: 13px;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label {
+    font-size: 0 !important;
+}
+
+fieldset#general_settings div.control-group div.cf>div>label:before {
+    font-size: 13px;
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label.txt-uppercase>b:before {
+    content: "tema";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label:nth-child(2):before {
+    content: "escuro";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-theme>label:nth-child(3):before {
+    content: "luz";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label.txt-uppercase>b:before {
+    content: "coluna";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(2):before {
+    content: "estreito";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(3):before {
+    content: "geralmente";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-column-size>label:nth-child(4):before {
+    content: "wide";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label.txt-uppercase {
+    width: auto;
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label.txt-uppercase>b:before {
+    content: "tamanho da fonte";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(2):before {
+    font-size: 12px;
+    content: "mínimo";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(3):before {
+    font-size: 13px;
+    content: "pequeno";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(4):before {
+    font-size: 14px;
+    content: "durante";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(5):before {
+    font-size: 15px;
+    content: "grande";
+}
+
+fieldset#general_settings div.control-group div.cf>div.js-font-size>label:nth-child(6):before {
+    font-size: 16px;
+    content: "máximo";
+}
+
+fieldset#services_settings label[for="link-shortening"] {
+    font-size: 0;
+}
+
+fieldset#services_settings label[for="link-shortening"]:before {
+    font-size: 13px;
+    content: "serviço de encurtamento de links";
+}
+
+fieldset#global_filter_settings label:before {
+    font-size: 13px;
+}
+
+fieldset#global_filter_settings label[for="filter-types"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings label[for="filter-types"]:before {
+    content: "Tipo de filtro";
+}
+
+fieldset#global_filter_settings label[for="filter-input"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings label[for="filter-input"]:before {
+    content: "termos e condições";
+}
+
+fieldset#global_filter_settings button[name="add-filter"] {
+    font-size: 0;
+}
+
+fieldset#global_filter_settings button[name="add-filter"]:before {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "mudo";
+}
+
+div#open-modal ul.lst-launcher>li[data-type]>a>span {
+    font-size: 0 !important;
+}
+
+div#open-modal ul.lst-launcher>li[data-type]>a>span:before {
+    font-size: 14px !important;
+}
+
+div#open-modal ul.lst-launcher>li[data-type="timeline"]>a>span:before {
+    content: "Início";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="tweets"]>a>span:before {
+    content: "usuário";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="interactions"]>a>span:before {
+    content: "aviso";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="search"]>a>span:before {
+    content: "busca";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="lists"]>a>span:before {
+    content: "lista";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="customtimelines"]>a>span:before {
+    content: "coleção";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="trends"]>a>span:before {
+    content: "tendência";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="favorites"]>a>span:before {
+    content: "Bom";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="messages"]>a>span:before {
+    content: "Mensagem";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="mentions"]>a>span:before {
+    content: "@Tweet";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="followers"]>a>span:before {
+    content: "seguidor";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="scheduled"]>a>span:before {
+    content: "Tweet de reserva";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="privateMe"]>a>span:nth-child(2):before {
+    content: "Mensagem";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="privateMe"]>a>span:nth-child(3):before {
+    font-size: 11px !important;
+    content: "(Todas as contas)";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="me"]>a>span:nth-child(2):before {
+    content: "@tweet";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="me"]>a>span:nth-child(3):before {
+    font-size: 11px !important;
+    content: "(Todas as contas)";
+}
+
+div#open-modal ul.lst-launcher>li[data-type="networkactivity"]>a>span:nth-child(2):before {
+    content: "atividade";
+}
+
+div#open-modal button.js-add-column {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+div#open-modal button.js-add-column:after {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "Adicionar coluna";
+}
+
+div#open-modal button.js-back {
+    vertical-align: middle;
+    font-size: 0;
+}
+
+div#open-modal button.js-back:after {
+    vertical-align: middle;
+    font-size: 14px;
+    content: "← retornar";
+}
+

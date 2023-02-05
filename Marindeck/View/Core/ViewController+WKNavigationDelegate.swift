@@ -74,7 +74,24 @@ extension ViewController: WKNavigationDelegate {
         rjs.update { [weak self] () in
             self?.webView.inject(js: rjs.getJs(id: .navigationTab) ?? "")
         }
+        
+        setupMDi18n()
 
+    }
+    
+    // TweetDeck本体のi18n
+    private func setupMDi18n() {
+        print("i18n lang:", L10n.lang)
+        switch L10n.lang {
+        case "en":
+            break // デフォルトで英語のため適用しない
+        case "ja":
+            webView.loadCSSFile(forResource: "i18n.ja")
+        case "pt-BR":
+            webView.loadCSSFile(forResource: "i18n.pt-BR")
+        default:
+            break // 非対応言語は英語
+        }
     }
 
 }
