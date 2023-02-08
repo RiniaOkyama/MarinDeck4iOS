@@ -120,6 +120,12 @@ extension ViewController: ViewSetup {
         webView.isOpaque = false
         //        webView.allowsLinkPreview = false
         //        webView.navigationDelegate = self
+        
+        let cookie = HTTPCookie(properties: [
+                                    HTTPCookiePropertyKey.name: "tweetdeck_version",
+                                    HTTPCookiePropertyKey.value: "legacy",
+                                    HTTPCookiePropertyKey.domain: ".twitter.com",
+                                    HTTPCookiePropertyKey.path: "/"])!
 
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panTop))
         edgePan.edges = .left
@@ -136,7 +142,11 @@ extension ViewController: ViewSetup {
 
             var urlRequest = URLRequest(url: deckURL!)
             urlRequest.cachePolicy = .returnCacheDataElseLoad // https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/useprotocolcachepolicy
-            webView.load(urlRequest)
+            
+            // Cookieをセット
+            webConfiguration.websiteDataStore.httpCookieStore.setCookie(cookie) { [weak self] in
+                self?.webView.load(urlRequest)
+            }
         }
         self.mainDeckView.addSubview(webView)
         td.webView = webView
