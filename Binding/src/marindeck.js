@@ -4,10 +4,6 @@ document.documentElement.style.webkitUserSelect = 'none';
 // menu 禁止
 document.documentElement.style.webkitTouchCallout = 'none';
 
-// TweetDeck Betaをレガシーに変更する
-document.cookie = "tweetdeck_version=legacy; domain=.twitter.com";
-document.cookie = "tweetdeck_version=legacy; domain=tweetdeck.twitter.com";
-
 // Zoom禁止
 const viewport = document.querySelector('meta[name=viewport]')
 if (viewport) {

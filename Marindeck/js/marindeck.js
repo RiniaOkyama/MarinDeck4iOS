@@ -20,8 +20,6 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 document.body.style.backgroundColor = "#15202b";
 document.documentElement.style.webkitUserSelect = "none";
 document.documentElement.style.webkitTouchCallout = "none";
-document.cookie = "tweetdeck_version=legacy; domain=.twitter.com";
-document.cookie = "tweetdeck_version=legacy; domain=tweetdeck.twitter.com";
 const viewport = document.querySelector("meta[name=viewport]");
 if (viewport) {
   viewport.content += ",maximum-scale=1";
