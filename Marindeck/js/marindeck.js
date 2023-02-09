@@ -215,15 +215,26 @@ function positionElement(x, y) {
         }
       }
     });
-    Array.from(document.getElementsByClassName("js-action-url")).forEach((element) => {
+    const jsActionUrls = Array.from(document.getElementsByClassName("js-action-url"));
+    if (jsActionUrls.length == 0) {
+      subscribedActionUrls = [];
+    }
+    jsActionUrls.forEach((element) => {
       if (!subscribedActionUrls.includes(element.href)) {
         subscribedActionUrls.push(element.href);
-        console.log("subscribed", element.href);
         element.addEventListener("click", (e) => {
           window.Bindings.openUrl(e.currentTarget.href);
         });
       }
     });
+    const actionProfile = document.getElementsByClassName("js-action-profile");
+    if (actionProfile.length == 0)
+      ;
+    else {
+      actionProfile[0].addEventListener("click", (e) => {
+        window.Bindings.openUrl("https://twitter.com/settings/profile");
+      });
+    }
   }).observe(document.body, {
     childList: true,
     subtree: true
