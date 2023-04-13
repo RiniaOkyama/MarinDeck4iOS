@@ -26,13 +26,23 @@ extension ViewController: WKNavigationDelegate {
 
         if host == "tweetdeck.twitter.com" {
             decisionHandler(.allow)
-            //        }else if host.hasPrefix("t.co") {
-            //            decisionHandler(.cancel)
         } else if host == "mobile.twitter.com" {
             let vc = LoginViewController()
             vc.delegate = self
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true, completion: nil)
+            decisionHandler(.cancel)
+        } else if host == "twitter.com" {
+            var isOk = false
+            if url?.pathComponents[safe: 2] == "status" {
+                if let tweetId = url?.pathComponents[safe: 3] {
+                    isOk = openTwitterAppTweet(tweetId: tweetId)
+                }
+            }
+            if !isOk {
+                let safariVC = SFSafariViewController(url: url!)
+                present(safariVC, animated: true, completion: nil)
+            }
             decisionHandler(.cancel)
         } else {
             let safariVC = SFSafariViewController(url: url!)

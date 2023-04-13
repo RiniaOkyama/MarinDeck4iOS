@@ -91,6 +91,16 @@ extension ViewController: Transition {
         }
     }
     
+    func openTwitterAppTweet(tweetId: String) -> Bool {
+        if let twitterURL = URL(string: "twitter://status?id=\(tweetId)"),
+           UIApplication.shared.canOpenURL(twitterURL) {
+            UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // 下書きに保存するかどうかのアラート
     func openIfDraftAlert(text: String) {
         let alert = UIAlertController(title: "下書きに保存しますか？", message: nil, preferredStyle: .alert)
