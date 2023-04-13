@@ -18,9 +18,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     lazy var contextMenuStruct = ContextMenuStruct()
     private(set) lazy var jsCallback = Callback(vc: self)
 
-    var webView: WKWebView!
+    public var webView: WKWebView!
     public let td = TD.shared
-    public var javaScriptString = ""
+    private(set) lazy var dbQueue = Database.shared.dbQueue
+    public let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var mainDeckView: UIView!
     @IBOutlet weak var bottomBackView: UIView!
     @IBOutlet weak var bottomBackViewConstraint: NSLayoutConstraint!
@@ -39,8 +41,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresenta
     var mainDeckBlurView: UIView!
 
     var isMenuOpen = false
-    let userDefaults = UserDefaults.standard
-    private(set) lazy var dbQueue = Database.shared.dbQueue
     var isMainDeckViewLock = false
     var picker: UIImagePickerController! = UIImagePickerController()
 
