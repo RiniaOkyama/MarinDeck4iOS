@@ -218,7 +218,7 @@ html.dark .js-schedule-datepicker-holder>.popover {
 }
 
 @media (min-width:512px) {
-
+    
     .js-schedule-datepicker-holder>.popover,
     html.dark .js-schedule-datepicker-holder>.popover {
         width: 512px !important;
@@ -389,11 +389,11 @@ body .mdl-media-prev {
         border-left: none !important;
         width: 100% !important
     }
-
+    
     .mdl-inner>.horizontal-flow-container {
         white-space: normal !important
     }
-
+    
     .mdl-column-med {
         width: auto !important;
         min-width: 100% !important;
@@ -403,20 +403,20 @@ body .mdl-media-prev {
         overflow-y: hidden !important;
         transition: height .5s
     }
-
+    
     .mdl-column-rhs {
         border-left: none !important;
         width: 100% !important;
         height: 100% !important
     }
-
+    
     .lst-group>.js-list-container {
         display: grid !important;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
         grid-auto-rows: 1fr !important;
         grid-gap: 0 !important
     }
-
+    
     #container>div>section:nth-child(n) {
         width: 100vw
     }
@@ -519,7 +519,7 @@ body .mdl-media-prev {
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
         padding: 4px !important
     }
-
+    
     .lst-launcher .btn .Icon,
     .lst-launcher .btn .icon {
         font-size: 36px !important
@@ -666,4 +666,32 @@ body .mdl-media-prev {
 .mdl-buttonbar {
     padding-inline: 32px !important;
     margin-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+}
+
+
+
+/* 検索、リストなどをスマホで見やすくする */
+.mdl-content {
+    display: flex;
+    flex-direction: column;
+}
+.mdl-content > .mdl-column-med {
+    width: 100% !important;
+}
+.mdl-content > .mdl-column-med:first-child {
+    height: 300px !important;
+}
+.mdl-content > .mdl-column-med:first-child > .l-column-scrollv {
+    display: flex;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+.mdl-content > .mdl-column-med:first-child > .l-column-scrollv > .lst-group {
+    width: 100%;
+    min-width: 50% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+.mdl-content > .mdl-column-med:first-child > .l-column-scrollv > .lst-group > * {
+    grid-template-columns: repeat(auto-fit, 100%)!important;
 }
